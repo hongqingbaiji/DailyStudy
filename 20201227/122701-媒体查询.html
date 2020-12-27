@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒体查询</title>
+    <!-- <style>
+        /* 用法1：根据不同的屏幕尺寸更改颜色，320以下用红色，540以下用绿色，540以上用蓝色 */
+        @media screen and (max-width:319px) {
+            /* 这里我经常会忘记加body这层，记住要给谁定义样式就写谁 */
+            body {
+                background-color: red;
+            }
+        }
+        @media screen and (min-width:320px) {
+            body {
+                background-color: green;
+            }
+        }
+        @media screen and (min-width:540px) {
+            body {
+                background-color: blue;
+            }
+        }
+    </style> -->
+    <style>
+        @media screen and (max-width:539px) {
+            html {
+                font-size: 14px;
+            }
+        }
+
+        @media screen and (min-width:540px) {
+            html {
+                font-size: 20px;
+            }
+        }
+
+        div {
+            width: 100%;
+            height: 3rem;
+            background-color: green;
+            font-size: 1rem;
+            text-align: center;
+            line-height: 3rem;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        购物车
+    </div>
+</body>
+
+</html>
