@@ -1,0 +1,14 @@
+.header {
+  width: 100px;
+  height: 100px;
+  background-color: pink;
+  text-align: center;
+  line-height: 100px;
+}
+.header a {
+  color: red;
+  text-decoration: none;
+}
+.header a:hover {
+  color: blue;
+}
