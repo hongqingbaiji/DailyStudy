@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input里的小三角，经过旋转</title>
+    <style>
+        .one {
+            position: relative;
+            width: 200px;
+            height: 40px;
+            border: 2px solid #333;
+        }
+
+        .two {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            margin-top: -8px;
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid #333;
+            border-bottom: 2px solid #333;
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+
+        .one:hover .two {
+            transform: rotate(225deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one">
+        <div class="two"></div>
+    </div>
+</body>
+
+</html>

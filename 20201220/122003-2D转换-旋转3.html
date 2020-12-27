@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旋转切换盒子</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: teal;
+            overflow: hidden;
+        }
+
+        .two {
+
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background-color: tomato;
+            transition: all 0.5s;
+            transform: rotate(90deg);
+            transform-origin: left bottom;
+        }
+
+        .one:hover .two {
+
+            transform: rotate(0deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one">
+        <div class="two">传媒</div>
+    </div>
+</body>
+
+</html>

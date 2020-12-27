@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D转换</title>
+    <!-- 想法是鼠标经过哪个三角就移动哪个三角，未实现 2020/12/19-->
+    <!-- 解答：为什么没有实现呢？
+    1、三角其实是一个正方形，其他三个角隐藏而已，第四个正方形会盖住前三个
+    所以出现只有第四个三角能动；
+    2、可以用动画实现；设想是，鼠标经过后三角通过动画效果移开，移开后保持动画移动后状态； 
+    2020/12/27-->
+    <style>
+        .main {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+
+        .one {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            width: 0;
+            height: 0;
+            border: 50px solid;
+            border-color: rebeccapurple transparent transparent transparent;
+            animation: one 0.5s linear infinite alternate forwards;
+        }
+
+        .two {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            width: 0;
+            height: 0;
+            border: 50px solid;
+            border-color: transparent salmon transparent transparent;
+            animation: two 0.5s linear 0.2s infinite alternate forwards;
+        }
+
+        .three {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            width: 0;
+            height: 0;
+            border: 50px solid;
+            border-color: transparent transparent seagreen transparent;
+            animation: three 0.5s linear 0.4s infinite alternate forwards;
+        }
+
+        .four {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            width: 0;
+            height: 0;
+            border: 50px solid;
+            border-color: transparent transparent transparent sienna;
+            animation: four 0.5s linear 0.6s infinite alternate forwards;
+        }
+
+        .main:hover .one {
+            animation-play-state: paused;
+        }
+
+        .main:hover .two {
+            animation-play-state: paused;
+        }
+
+        .main:hover .three {
+            animation-play-state: paused;
+        }
+
+        .main:hover .four {
+            animation-play-state: paused;
+        }
+
+
+        /* .one:hover {
+            transform: translateY(-100px);
+        }
+
+        .two:hover {
+            transform: translateX(100px);
+        }
+
+        .three:hover {
+            transform: translateY(100px);
+        }
+
+        .four:hover {
+            transform: translateX(-100px);
+        } */
+
+        @keyframes one {
+            100% {
+                transform: translateY(-50px);
+            }
+        }
+
+        @keyframes two {
+            100% {
+                transform: translateX(50px);
+            }
+        }
+
+        @keyframes three {
+            100% {
+                transform: translateY(50px);
+            }
+        }
+
+        @keyframes four {
+            100% {
+                transform: translateX(-50px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+        <div class="four"></div>
+    </div>
+</body>
+
+</html>

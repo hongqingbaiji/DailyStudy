@@ -1,0 +1,56 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.w {
+    width: 1200px;
+    margin:auto;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+body{
+    color:#f3f5f7;
+}
+.header{
+    height: 100px;
+    background-color: pink;
+}
+.logo{
+    float: left;
+    padding-top:29px;
+}
+.nav{
+    float: left;
+    line-height: 100px;
+    margin-left:50px;
+}
+.nav ul li{
+    float: left;
+    
+}
+.nav ul li a{
+    color: #050505;
+    font-size:18px;
+    padding-top: 41px;
+    padding-left: 10px;
+}
+.nav ul li a:hover{
+    color:#00a4ff;
+    border-bottom: 2px solid #00a4ff;
+}
+.search{
+    float: left;
+    line-height: 100px;
+}
+.user{
+    float: right;
+    line-height: 100px;
+    margin-right: 10px;
+}
+.touxiang img{
+    vertical-align: middle;
+}

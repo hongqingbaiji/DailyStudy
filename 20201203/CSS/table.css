@@ -1,0 +1,50 @@
+body{
+	font-family:Verdana,Geneva,Arial,sans-serif;
+	font-size:small;
+}
+table{
+	border:thin solid black;
+	margin-left:20px;
+	margin-right:20px;
+	caption-side:bottom;
+	border-collapse:collapse;
+}
+th{
+	background-color:#cc6600;
+}
+td,th{
+	border:thin dotted gray;
+	padding:5px;
+}
+caption{
+	padding-top:8px;
+	font-style:italic;
+}
+.center-aligned{
+	text-align:center;
+}
+.right-aligned{
+	text-align:right;
+}
+.rowcolor{
+	background-color:#fcba7a;
+}
+table table th{
+	background-color:white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

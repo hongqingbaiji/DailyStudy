@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes palse {
+            70% {  width: 30px; height: 30px; opacity: 1; }
+            100% { width: 50px; height: 50px; opacity: 0; }
+        }
+        .main {
+            position: relative;
+            width: 300px; height: 300px; border: 1px solid #000;
+        }
+        .main>div {
+            position: absolute;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 8px;  height: 8px; border-radius: 50%;
+        }
+        .dotted {
+            background-color: red;
+        }
+
+        div[class^="palse"] {
+            box-shadow: 0 0 12px red;
+            animation: palse 1.2s linear infinite;
+        }
+        .main .palse2 {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="dotted"></div>
+        <div class="palse1"></div>
+        <div class="palse2"></div>
+    </div>
+</body>
+
+</html>

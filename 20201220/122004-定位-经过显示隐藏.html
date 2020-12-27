@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>经过显示隐藏内容</title>
+    <style>
+        .one {
+            position: relative;
+            width: 100px;
+            height: 300px;
+            background-color: pink;
+            margin: 100px auto;
+        }
+
+        .two {
+            position: absolute;
+            top: 0;
+            left: 100px;
+            display: none;
+            width: 400px;
+            height: 300px;
+            background-color: tomato;
+
+        }
+
+        .one:hover .two {
+            display: block;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="one">
+            <div class="two"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

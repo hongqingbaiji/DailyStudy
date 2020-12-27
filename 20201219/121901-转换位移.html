@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform-translate</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: blueviolet;
+            transition: all 2s;
+        }
+
+        .one:hover {
+            transform: translate(50px, 50px);
+        }
+
+        .two {
+            width: 100px;
+            height: 100px;
+            background-color: coral;
+            transition: all 2s;
+        }
+
+        .two:hover {
+            border-radius: 50px;
+            transform: translateX(50px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one"></div>
+    <div class="two"></div>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            perspective: 500px;
+
+        }
+
+        .main {
+            position: relative;
+            margin: 100px;
+            width: 200px;
+            height: 200px;
+            background-color: #ddd;
+            transform-style: preserve-3d;
+            transition: all 1s;
+
+        }
+
+        .one,
+        .two {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 20px;
+            line-height: 100px;
+            text-align: center;
+        }
+
+        .one {
+            background-color: tomato;
+            z-index: 1;
+        }
+
+        .two {
+            background-color: pink;
+            transform: rotateY(180deg);
+        }
+
+        .main:hover {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="one">正面</div>
+        <div class="two">反面</div>
+    </div>
+</body>
+
+</html>

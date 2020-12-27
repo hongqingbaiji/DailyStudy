@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字围绕浮动元素</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        body {
+            margin: 50px;
+        }
+
+        div {
+            width: 400px;
+            height: 155px;
+            background-color: skyblue;
+
+        }
+
+        img {
+            float: left;
+            width: 233px;
+            height: 155px;
+            margin-right: 10px;
+        }
+
+        /* p {
+            /* 多行文本溢出隐藏 
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 7;
+            -webkit-box-orient: vertical;
+        } */
+        p {
+            /* 一行文本溢出隐藏 */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="pic.png" alt="123">
+        <p>
+            单行文本：三个步骤；先强制一行内显示文本：white-space：nowrap；
+            超出部分隐藏：overflow：hidden；文字用省略号替代超出的部分：text-overflow：ellipsis;
+        </p>
+
+    </div>
+</body>
+
+</html>

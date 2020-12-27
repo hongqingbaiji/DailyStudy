@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三角形的画法</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            margin: 50px;
+            height: 3000px;
+        }
+
+        .main {
+            width: 0;
+            height: 0;
+        }
+
+        .one {
+            /* 这是正方形的画法 */
+            border: 50px solid skyblue;
+            margin-bottom: 20px;
+        }
+
+        .two {
+            /* 分解border后 */
+            border-top: 50px solid #333;
+            border-right: 50px solid #666;
+            border-bottom: 50px solid #999;
+            border-left: 50px solid #bbb;
+            margin-bottom: 20px;
+        }
+
+        .three {
+            /* 左三角的画法 先画一个透明的正方形 */
+            border: 50px solid transparent;
+            border-right-color: #666;
+            margin-bottom: 20px;
+        }
+
+        .four {
+            /* 等腰直角三角形的画法 */
+            border-right: 50px solid transparent;
+            border-bottom: 50px solid #999;
+            border-left: 50px solid transparent;
+            margin-bottom: 20px;
+        }
+
+        .five {
+            /* 等腰直角三角形的画法 */
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid #999;
+            border-left: 50px solid transparent;
+            margin-bottom: 20px;
+        }
+
+        .six {
+            /* 直角三角形的画法 */
+            width: 0;
+            height: 0;
+            border-top: 100px solid transparent;
+            border-right: 50px solid #666;
+            border-left: 50px solid transparent;
+            margin-bottom: 20px;
+        }
+
+        .seven {
+            /* 等边三角形的画法 */
+            /* 如果底三角形是等边三角形的话，
+            那等边三角形的高就是bottom的大小，也就是50px，
+            也能由此算出等边三角形的一半是28.8px左右，约等于29px；
+            也就是说，需要把左右边框的距离设置成29px； */
+            width: 0;
+            height: 0;
+            border-bottom: 50px solid peru;
+            border-right: 29px solid skyblue;
+            border-left: 29px solid rgb(90, 158, 90);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+        <div class="four"></div>
+        <div class="five"></div>
+        <div class="six"></div>
+        <div class="seven"></div>
+    </div>
+
+</body>
+
+</html>

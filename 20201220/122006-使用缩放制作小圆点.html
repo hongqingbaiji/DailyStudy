@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .one {
+            width: 962px;
+            height: 320px;
+            border: 1px solid #ddd;
+        }
+
+        .one li {
+            overflow: hidden;
+            float: left;
+            margin: 0 10px 10px 0;
+            width: 233px;
+            height: 155px;
+        }
+
+        .one li:nth-child(4n) {
+            margin-right: 0px;
+        }
+
+        img {
+
+            transition: all 1s;
+        }
+
+        img:hover {
+            transform: scale(1.2);
+        }
+
+        .two {
+            margin: 30px 100px;
+            width: 416px;
+            height: 40px;
+            border: 1px solid tomato;
+        }
+
+        .two li {
+            float: left;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #666;
+            border-radius: 15px;
+            margin: 5px 10px;
+            transition: all 0.3s;
+        }
+
+        .two li:hover {
+            transform: scale(1.5);
+            background-color: tomato;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one">
+        <ul>
+            <li><a href="#"><img src="images/pic.png" alt=""></a></li>
+            <li><a href="#"><img src="images/pic.png" alt=""></a></li>
+            <li><a href="#"><img src="images/pic.png" alt=""></a></li>
+            <li><a href="#"><img src="images/pic.png" alt=""></a></li>
+            <li><a href="#"><img src="images/pic.png" alt=""></a></li>
+            <li><a href="#"><img src="images/pic.png" alt=""></a></li>
+            <li><a href="#"><img src="images/pic.png" alt=""></a></li>
+            <li><a href="#"><img src="images/pic.png" alt=""></a></li>
+        </ul>
+    </div>
+    <div class="two">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>
