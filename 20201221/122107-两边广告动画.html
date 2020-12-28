@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes move{
+            0%{
+
+            }
+            100%{
+                transform:translate(0,500px);
+            }
+        }
+        div{
+            width: 200px;
+            height: 400px;
+            line-height: 400px;
+            font-size: 30px;
+            font-weight: 700;
+            color:#fff;
+            text-align: center;
+            background-color: hotpink;
+            animation-name:move;
+            animation-duration:5s;
+            animation-iteration-count:infinite;
+            animation-direction:alternate;
+        }
+        .one {
+            float: left;
+        }
+        .two {
+            float: right;
+        }
+        div:hover{       
+            animation-play-state: paused;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="one">广告招商</div>
+    <div class="two">广告招商</div>
+</body>
+</html>

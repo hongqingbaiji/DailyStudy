@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes quan{
+            0%{
+
+            }
+            70%{
+                width: 30px;
+                height: 30px;
+                opacity: 1;
+            }
+            100%{
+                width: 50px;
+                height: 50px;
+                opacity: 0;
+            }
+        }
+        body{
+            background-color: #333; 
+        }
+        .main{  
+            position: relative;
+            margin: 0 auto;
+            width: 747px;
+            height:617px;  
+            background: url(media/map.png) no-repeat;  
+
+        }
+        .city{
+            position: absolute;
+            top: 228px;
+            left: 549px;
+        }
+        .tb{
+            position: absolute;
+            top: 486px;
+            left: 668px;
+        }
+        .gz{
+            position: absolute;
+            top: 533px;
+            left: 549px;
+        }
+
+        .one{ 
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: red;
+        }
+        .city div[class^="pause"]{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            width: 8px;
+            height: 8px;
+            box-shadow: 0 0 12px red;
+            border-radius: 50%;
+            animation: quan 1.2s linear infinite;
+        }
+        .city div.pause2{
+            animation-delay: 0.4s;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="city">
+            <div class="one"></div>
+            <div class="pause1"></div>
+            <div class="pause2"></div>
+        </div>
+        <div class="city tb">
+            <div class="one"></div>
+            <div class="pause1"></div>
+            <div class="pause2"></div>
+        </div>
+        <div class="city gz">
+            <div class="one"></div>
+            <div class="pause1"></div>
+            <div class="pause2"></div>
+        </div>
+    </div>
+
+
+</body>
+</html>

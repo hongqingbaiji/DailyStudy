@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes one{
+            100%{
+                transform: translate(120px,200px);
+            }
+        }
+        @keyframes two{
+            100%{
+                transform: translate(180px,200px);
+            }
+        }
+        @keyframes three{
+            100%{
+                transform: translate(240px,200px);
+            }
+        }
+        @keyframes four{
+            100%{
+                transform: translate(300px,200px);
+            }
+        }
+        .main{
+            position: relative;
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+        }
+        .one{
+            position: absolute;
+            top:-60px;
+            float: left;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 50px;
+            color: orange;
+            line-height: 30px;
+            animation:one 3s cubic-bezier(0, 0.7, 0.2, 1) forwards;
+            
+        }
+        .two{
+            position: absolute;
+            top:-60px;
+            float: left;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 50px;
+            color: orange;
+            line-height: 30px;
+            animation:two 2.5s cubic-bezier(0, 0.7, 0.2, 1) forwards;
+            animation-delay: 0.5s;
+        }
+        .three{
+            position: absolute;
+            top:-60px;
+            float: left;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 50px;
+            color: orange;
+            line-height: 30px;
+            animation:three 2s cubic-bezier(0, 0.7, 0.2, 1) forwards;
+            animation-delay: 1s;
+        }
+        .four{
+            position: absolute;
+            top:-60px;
+            float: left;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 50px;
+            color: orange;
+            line-height: 30px;
+            animation:four 1.5s cubic-bezier(0, 0.7, 0.2, 1) forwards;
+            animation-delay: 1.5s;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="one">橙</div>
+        <div class="two">光</div>
+        <div class="three">游</div>
+        <div class="four">戏</div>
+    </div>
+
+</body>
+</html>

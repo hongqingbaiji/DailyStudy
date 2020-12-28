@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>直角三角形的用法</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            margin: 100px;
+        }
+        .one{
+            /*还需要清除下浮动，此处省略*/
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #f5f5f5;
+            font-size: 0px;
+         
+        }
+        .prev{
+            position: relative;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            height:40px;
+            width: 110px;
+            background-color: red;
+            float: left;
+        }
+        .prev:before{
+            content: "";
+            position: absolute;
+            top:0;
+            left:95px;
+            width: 0;
+            height: 0;
+            border-top: 40px solid red;
+            border-right:15px solid #f5f5f5;
+        }
+      
+        .next{
+            font-size: 14px;
+            color: #999999;
+            text-decoration: line-through;
+            height: 40px;
+            width: 90px;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+
+        <div class="one">
+            <div class="prev">&yen;2000.00</div>
+            <div class="next">&yen;1999.00</div>
+        </div>
+
+</body>
+</html>

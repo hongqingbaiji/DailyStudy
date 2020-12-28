@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <title>伪元素使用字体图标</title>
+    <style>
+        .iconfont {   
+            position: relative;     
+            width: 200px;
+            height: 40px;
+            border: 2px solid gray;
+        }
+        .iconfont::before {
+            position: absolute;
+            right: 5px;
+            top:50%;
+            margin-top: -15px;
+            content: "\e617";
+            font-size: 30px;
+            color: gray;
+            cursor: pointer;
+        }
+        input{
+            width: 155px;
+            height: 38px;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            margin-left:5px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="iconfont ">
+        <input type="text" >
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>进度条</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing:border-box;
+        }
+        body{
+            margin: 50px;
+        }
+        div{
+            width: 200px;
+            height: 12px;
+            border: 2px solid red;
+            border-radius: 5px;
+            padding:1px;
+        }
+        div::before{
+            content: '';
+            display: table;
+            width: calc(100% - 100px);
+            height: 6px;
+            border-radius: 5px;
+            background-color: red;
+            transition: width 1s;
+        }
+        div:hover::before{
+            width: calc(100% - 10px);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

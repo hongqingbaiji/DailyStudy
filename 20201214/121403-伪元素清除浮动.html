@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪元素清除浮动</title>
+    <style>
+        .header{
+            width: 330px;
+            background-color: rosybrown;
+        }
+        .one,.two,.three{
+            float: left;
+            width: 100px;
+            height: 100px;
+            background-color: seagreen;
+        }
+        .footer{
+            width: 400px;
+            height: 200px;
+            background-color: springgreen;
+        }
+        .header::before{
+            content: '';
+            display: block;
+            height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+    </div>
+    <div class="footer"></div>
+</body>
+</html>

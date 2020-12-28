@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            margin: 50px;
+        }
+        textarea{
+            /* 文本域禁止拖拽 resize：none；*/
+            resize:none;
+            /* 清除点击文字域时默认高亮的边框 outline:none;*/
+            outline:none;
+
+            /* 垂直方向对齐 vertical-align:middle; */
+            vertical-align: middle;
+        }
+        input{
+            /* 按钮点击光标改成小手光标 */
+            cursor:pointer;
+            /* 如果以按钮为参照，来设置水平居中的话，那没有办法实现按钮和文字域对齐 */
+            /* vertical-align:middle; */
+        }
+
+        .one{
+            width: 40px;
+            height: 80px;
+            margin-top: 20px;
+        }
+        .one span{
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            font-size: 20px;
+            text-align: center;
+            line-height: 38px;
+            border: 1px solid #999;
+            margin-top: -1px;
+        }
+        .one span:hover{
+            position: relative;
+            border-color: red;   
+        }
+        .jia{
+            cursor:pointer;
+
+        }
+        .jian{
+            cursor:not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <input type="submit" name="" id="" value="提交">
+    <div class="one">
+        <span class="jia">+</span>
+        <span class="jian">-</span>
+    </div>
+</body>
+</html>

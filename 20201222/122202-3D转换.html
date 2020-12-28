@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            margin: 100px;
+        }
+        li{
+            float: left;
+            margin: 0 3px;
+            list-style:none;
+            width: 100px;
+            height: 36px;
+            line-height: 36px;
+            color:#fff;
+            font-size: 16px;
+            text-align: center;
+            perspective: 500px;
+            transform-style: preserve-3d;
+        }
+        .box{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: all 0.5s;
+            transform-style: preserve-3d;
+        }
+        .box:hover{
+            transform: rotateX(90deg);
+        }
+        .one, 
+        .two{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 36px;
+        }
+        .one{
+            background-color: indigo;
+            transform: translateZ(18px);
+            /* z-index: 1; */
+        }
+        .two{
+            background-color: lightcoral;
+            transform: translateY(18px) rotateX(-90deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <ul>
+            <li>
+                <div class="box">
+                    <div class="one">3D转换</div>
+                    <div class="two">真好玩</div>
+                </div>
+            </li>
+            <li>
+                <div class="box">
+                    <div class="one">3D转换</div>
+                    <div class="two">真好玩</div>
+                </div>
+            </li>
+            <li>
+                <div class="box">
+                    <div class="one">3D转换</div>
+                    <div class="two">真好玩</div>
+                </div>
+            </li>
+            <li>
+                <div class="box">
+                    <div class="one">3D转换</div>
+                    <div class="two">真好玩</div>
+                </div>
+            </li>
+            <li>
+                <div class="box">
+                    <div class="one">3D转换</div>
+                    <div class="two">真好玩</div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</body>
+</html>

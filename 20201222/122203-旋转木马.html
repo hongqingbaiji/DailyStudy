@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        .main{
+            position: relative;
+            margin: 400px auto;
+            width: 300px;
+            height: 200px;
+            transform-style: preserve-3d;
+        }
+        .main:hover{
+            transition: all,20s;
+            transform: rotateY(360deg);
+        }
+        .main div{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(images/dog.jpg) no-repeat;
+        }
+        .xuan1{
+            transform: translateZ(300px);
+        }
+        .xuan2{
+            transform: rotateY(60deg) translateZ(300px) ;
+        }
+        .xuan3{
+            transform: rotateY(120deg) translateZ(300px) ;
+        }
+        .xuan4{
+            transform: rotateY(180deg) translateZ(300px) ;
+        }
+        .xuan5{
+            transform: rotateY(240deg) translateZ(300px) ;
+        }
+        .xuan6{
+            transform: rotateY(300deg) translateZ(300px) ;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="xuan1"></div>
+        <div class="xuan2"></div>
+        <div class="xuan3"></div>
+        <div class="xuan4"></div>
+        <div class="xuan5"></div>
+        <div class="xuan6"></div>
+    </div>
+</body>
+</html>
