@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <style>
+        .row>div {
+            background-color: pink;
+            height: 100px;
+        }
+        
+        .row span {
+            background-color: green;
+            height: 30px;
+            line-height: 30px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">1
+                <span class="col-lg-12 hidden-md hidden-sm hidden-xs">超大屏才显示</span>
+                <span class="visible-lg">我的背景颜色呢</span>
+            </div>
+            <div class="col-lg-3 col-md-4 hidden-sm hidden-xs">2</div>
+            <div class="col-lg-3 hidden-md hidden-sm hidden-xs">3</div>
+            <div class="col-lg-3 col-md-4 col-sm-6 hidden-xs">4</div>
+        </div>
+    </div>
+</body>
+
+</html>
