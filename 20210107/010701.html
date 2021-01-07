@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- <script>
+        function sum(a, b) {
+            return a + b;
+        }
+        var sum2 = sum(3, 2); //调用函数
+        alert(sum2);
+        var sum3 = sum; //访问函数指针
+        alert(sum3(2, 2));
+    </script> -->
+
+    <!-- <script>
+        function num(a) {
+            return a + 100;
+        }
+        function num(a) {
+            return a * 2;
+        }
+        var b = num(10);
+        alert(b); // 4
+    </script> -->
+
+    <!-- <script>
+        alert(sum(10, 20)); //30，能正常执行
+        alert(sum2(20, 20)); //会报错，sum2不是个函数
+        function sum(a, b) { //函数声明
+            return a + b;
+        }
+        var sum2 = function(a, b) { //函数表达式
+            return a + b;
+        }
+        alert(sum2(30, 30));//60，把报错行注释后能正常运行
+    </script> -->
+
+    <!-- <script>
+        function fun1(fun2, num) {
+            return fun2(num);
+        }
+        function sum(num) {
+            return num * 2;
+        }
+        var a = fun1(sum, 10);
+        alert(a);// 20
+    </script> -->
+
+    <!-- <script>
+        function fun1(agu) {
+            return function(obj1, obj2) {
+                var a = obj1[agu];
+                var b = obj2[agu];
+                if (a > b) {
+                    return 1;
+                } else if (a < b) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            };
+        }
+        var data = [{
+            name: "zs",
+            age: 12
+        }, {
+            name: "ls",
+            age: 22
+        }];
+        data.sort(fun1("name"));
+        alert(data[0].name);
+    </script> -->
+
+    <!-- <script>
+        function fun(num) {
+            if (num <= 1) {
+                return 1;
+            } else {
+                // return num * fun(num - 1);
+                return num * arguments.callee(num - 1);
+            }
+        }
+        alert(fun(5));
+    </script> -->
+
+    <!-- <script>
+        window.color = "red";
+        var o = {
+            color: "blue"
+        };
+        function sayColor() {
+            alert(this.color);
+        }
+        sayColor(); //red
+        o.sayColor = sayColor;
+        o.sayColor(); //blue
+    </script> -->
+
+    <!-- <script>
+        function a(n) {
+            alert(n);
+        }
+        function b(n, m) {
+            return n + m;
+        }
+        function c() {
+            alert("hi");
+        }
+        alert(a.length); // 1
+        alert(b.length); // 2
+        alert(c.length); // 0
+    </script> -->
+
+    <!-- <script>
+        function sum(num1, num2) {
+            return num1 + num2;
+        }
+        function sum1(num1, num2) {
+            return sum.apply(this, arguments);
+        }
+        function sum2(num1, num2) {
+            return sum.apply(this, [num1, num2]);
+        }
+        alert(sum1(10, 10));
+        alert(sum2(10, 20));
+    </script> -->
+
+    <!-- <script>
+        window.color = "red";
+        var o = {
+            color: "blue"
+        };
+
+        function sayColor() {
+            alert(this.color);
+        }
+        var say = sayColor.bind(o);
+        say();
+    </script> -->
+
+    <script>
+        var num = 99;
+        alert(num.toPrecision(30));
+        alert(num.toPrecision(50));
+        alert(num.toPrecision(100));
+    </script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
