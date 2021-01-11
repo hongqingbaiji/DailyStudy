@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象</title>
+</head>
+
+<body>
+    <!-- <script>
+        var dog = {
+            dogName: '可可',
+            type: '阿拉斯加犬',
+            age: '5岁',
+            color: '棕红色',
+            jn: function() {
+                console.log('汪汪汪');
+                console.log('演电影');
+            }
+        };
+        console.log(dog.dogName);
+        console.log(dog.type);
+        console.log(dog.age);
+        console.log(dog.color);
+        dog.jn();
+    </script> -->
+    <!-- <script>
+        function Star(uname, age, sex) {
+            this.name = uname;
+            this.age = age;
+            this.sex = sex;
+            this.sing = function(song) {
+                console.log(song);
+            }
+
+        }
+        var ldh = new Star('刘德华', 18, '男');
+        var zxy = new Star('张学友', 19, '男');
+        console.log(ldh);
+        ldh.sing('冰雨');
+        console.log(zxy);
+        zxy.sing('李香兰');
+    </script> -->
+    <!-- <script>
+        function Wzry(uName, uType, uBlood, uAttack) {
+            this.name = uName;
+            this.type = uType;
+            this.blood = uBlood;
+            this.attack = uAttack;
+
+        }
+        var lp = new Wzry('廉颇', '力量型', 500, '近战');
+        console.log(lp);
+
+        var hy = new Wzry('后羿', '射手型', 100, '远程');
+        console.log(hy);
+    </script> -->
+
+
+    <!-- <script>
+        var dog = {
+            dogName: '可可',
+            type: '阿拉斯加犬',
+            age: '5岁',
+            color: '棕红色',
+            jn: function() {
+                console.log('汪汪汪');
+                console.log('演电影');
+            }
+        };
+        for (key in dog) {
+            console.log(key + ':' + dog[key]);
+        }
+    </script> -->
+
+    <!-- <script>
+        // 冒泡
+        function sort(arr) {
+            for (var i = 0; i < arr.length - 1; i++) {
+                for (var j = 0; j < arr.length - i - 1; j++) {
+                    var temp;
+                    if (arr[j] > arr[j + 1]) {
+                        temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+        console.log(sort([2, 3, 5, 43, 23, 76, 123, 12]));
+    </script> -->
+
+    <!-- <script>
+        // 封装一个myMath对象；
+        var myMath = {
+            PI: 3.141592653,
+            max: function() {
+                var max = arguments[0];
+                for (var i = 1; i < arguments.length; i++) {
+                    if (max < arguments[i]) {
+                        max = arguments[i];
+                    }
+                }
+                return max;
+            },
+            min: function() {
+                var min = arguments[0];
+                for (var i = 1; i < arguments.length; i++) {
+                    if (min > arguments[i]) {
+                        min = arguments[i];
+                    }
+                }
+                return min;
+            }
+        }
+        console.log(myMath.PI);
+        console.log(myMath.max(-10, 43, 1, -4));
+        console.log(myMath.min(-10, 43, 1, -4));
+    </script> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
