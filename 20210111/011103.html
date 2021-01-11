@@ -120,8 +120,69 @@
         console.log(myMath.min(-10, 43, 1, -4));
     </script> -->
 
+    <!-- <script>
+        function getRandom() {
+            return Math.random();
+        }
+        console.log(getRandom());
+    </script> -->
 
+    <!-- <script>
+        function getRandom(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+        console.log(getRandom(2, 5));
+    </script> -->
 
+    <!-- <script>
+        function getRandom(min, max) {
+            // min = Math.ceil(min);
+            // max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+        console.log(getRandom(3.1, 5.3));
+    </script> -->
+
+    <script>
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+        var a = getRandom(1, 100);
+        for (var i = 5; i > 0; i--) {
+            var num = prompt('请输入一个数字:');
+            if (num > a) {
+                alert('数字大了');
+            } else if (num < a) {
+                alert('数字小了');
+            } else {
+                alert('猜对了');
+                break;
+            }
+            if (i == 1) {
+                alert('你没有机会了~');
+                break;
+            }
+            alert('你还有' + (i - 1) + '次机会!');
+        }
+        // var i = 5;
+        // while (true) {
+        //     var num = prompt('请输入一个数字:');
+        //     if (num > a) {
+        //         alert('数字大了');
+        //     } else if (num < a) {
+        //         alert('数字小了');
+        //     } else {
+        //         alert('猜对了');
+        //         break;
+        //     }
+        //     i--;
+        //     if (i == 0) {
+        //         alert('你没有机会了');
+        //         break;
+        //     }
+        //     alert('你还有' + i + '次机会!');
+        // }
+    </script>
 
 
 
