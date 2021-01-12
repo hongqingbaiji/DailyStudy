@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本包装类型</title>
+</head>
+
+<body>
+    <!-- <script>
+        var str = 'wenhe';
+        console.log(str.length); // 5
+        // 第一行代码实际上执行的是：
+        var temp = new String('wenhe'); //1、先把简单数据类型包装成复杂数据类型;
+        str = temp; //2、再把临时变量的值给 str ;
+        temp = null; //3、销毁这个临时变量
+    </script> -->
+
+    <!-- <script>
+        //查找字符串中'o'出现的位置以及次数，用数组打印出来
+        var str = 'oabcoefoxyozzopap';
+        var arr = []; //新建空数组
+        var index = str.indexOf('o'); //第一次查找o，把索引值给 index
+        var num = 0; //计数器
+        while (index !== -1) { //查找不到o就退出的循环
+            arr.push(index); //push 进数组中
+            //console.log(index); //直接打印出来
+            num++; //计数器
+            index = str.indexOf('o', index + 1); //查找后续的o
+        }
+        console.log(arr);
+        console.log('o出现的次数：' + num);
+    </script> -->
+
+    <!-- <script>
+        //查找数组中某个元素出现的位置，以及次数；
+        var arr = ['red', 'blue', 'red', 'yellow', 'blue', 'red', 'red', 'pink'];
+        var num = 0;
+        var index = arr.indexOf('red');
+        while (index !== -1) {
+            console.log(index);
+            num++;
+            index = arr.indexOf('red', index + 1);
+        }
+        console.log('red 出现的次数' + num);
+    </script> -->
+
+    <!-- <script>
+        var str = 'wenhe';
+        console.log(str[0]); // w
+        console.log(str.charCodeAt(0)); // 119 w的ASCII码是119
+    </script> -->
+
+    <script>
+        //判断一个字符串中出现次数最多的字符，并统计其次数
+        var str = 'abcocefoasdfjosigoocsgo';
+        var obj = {}; //创建一个空的对象;
+        for (var i = 0; i < str.length; i++) {
+            var chars = str.charAt(i);
+            if (obj[chars]) {
+                obj[chars]++;
+            } else {
+                obj[chars] = 1;
+            }
+        }
+        console.log(obj);
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
