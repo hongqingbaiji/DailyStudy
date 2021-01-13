@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: url(images/1.jpg) no-repeat center top;
+        }
+        
+        ul {
+            overflow: hidden;
+            width: 420px;
+            margin: 100px auto;
+            padding: 3px 0 0 2px;
+            background-color: #fff;
+        }
+        
+        li {
+            list-style: none;
+            float: left;
+            border: 2px solid #fff;
+        }
+        
+        img {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<!-- <body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+    <script>
+        排他思想
+        var btns = document.getElementsByTagName('button');
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].onclick = function() {
+                //清除其他按钮的样式；
+                for (var i = 0; i < btns.length; i++) {
+                    btns[i].style.backgroundColor = '';
+                }
+                this.style.backgroundColor = 'pink';
+            }
+        }
+    </script>
+</body> -->
+
+<body>
+    <ul>
+        <li><img src="images/1.jpg" alt="1"></li>
+        <li><img src="images/2.jpg" alt="2"></li>
+        <li><img src="images/3.jpg" alt="3"></li>
+        <li><img src="images/4.jpg" alt="4"></li>
+    </ul>
+
+    <script>
+        var img = document.getElementsByTagName('img');
+        for (var i = 0; i < img.length; i++) {
+            img[i].onclick = function() {
+                document.body.style.backgroundImage = 'url(' + this.src + ')';
+            }
+        }
+    </script>
+</body>
+
+</html>
