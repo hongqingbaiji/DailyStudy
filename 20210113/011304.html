@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: relative;
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin: 100px;
+        }
+        
+        div button {
+            position: absolute;
+            top: 0;
+            left: -25px;
+        }
+    </style>
+</head>
+
+<!-- <body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div');
+        div.onclick = function() {
+            // this.style = 'background-color: purple;width:300px;';
+            //和上面那行代码效果一样，下面这种方法需要注意命名规范；
+            this.style.backgroundColor = 'purple';
+            this.style.width = '300px';
+        }
+    </script>
+</body> -->
+
+<body>
+    <div>
+        <button>X</button>
+    </div>
+    <script>
+        var div = document.querySelector('div');
+        var btn = document.querySelector('button');
+        btn.onclick = function() {
+            div.style = 'display:none';
+        }
+    </script>
+</body>
+
+</html>
