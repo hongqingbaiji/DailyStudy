@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        .tab {
+            width: 600px;
+            margin: 100px auto;
+        }
+        
+        .tabhd {
+            border-bottom: 2px solid red;
+            height: 40px;
+            background-color: #eee;
+        }
+        
+        .tabhd li {
+            float: left;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 20px;
+        }
+        
+        .tabhd li:hover {
+            cursor: pointer;
+        }
+        
+        .tabhd .current {
+            background-color: #c81623;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .tabbd {
+            margin-top: 40px;
+        }
+        
+        .tabbd .item {
+            display: none;
+        }
+    </style>
+</head>
+
+<!-- <body>
+    <div id="demo" index='1'></div>
+
+    <script>
+        var div = document.getElementById('demo');
+        // div.id = 'demo1';
+        div.setAttribute('id', 'wenhe');
+        console.log(div.getAttribute('index'));
+        div.setAttribute('index', 'wen');
+        console.log(div.getAttribute('index'));
+
+        div.removeAttribute('index');
+    </script>
+</body> -->
+
+<body>
+    <!-- tab栏切换 -->
+    <div class="tab">
+        <div class="tabhd">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tabbd">
+            <div class="item" style="display: block;">商品介绍板块内容</div>
+            <div class="item">规格与包装板块内容</div>
+            <div class="item">售后保障板块内容</div>
+            <div class="item">商品评价板块内容</div>
+            <div class="item">手机社区板块内容</div>
+        </div>
+    </div>
+
+    <script>
+        //获取事件源
+        var lis = document.querySelector('.tabhd').querySelectorAll('li');
+        var items = document.querySelectorAll('.item');
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].setAttribute('index', i); //设置一个自定义属性index
+            lis[i].onclick = function() {
+                //排他思想1，点击一个li后把所有li的样式清了
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = '';
+                }
+                再把CSS里li的current里的类名给点击项
+                this.className = 'current';
+
+                var index = this.getAttribute('index'); //获取自定义属性
+                //排他思想2，点击li后把所有的item隐藏起来
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = 'none';
+                }
+                //然后根据获取的自定义属性把当前的内容显示出来；
+                items[index].style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>
