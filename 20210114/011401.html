@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 100px auto;
+            border-collapse: collapse;
+            width: 300px;
+            height: 150px;
+        }
+        
+        table tr {
+            height: 30px;
+        }
+        
+        table thead {
+            background-color: #22AEFD;
+            color: #fff;
+        }
+        
+        table thead td:nth-child(1) {
+            text-align: center;
+        }
+        
+        table thead td:nth-child(n+2) {
+            padding-left: 10px;
+            font-weight: 700;
+        }
+        
+        table tbody {
+            background-color: #eee;
+        }
+        
+        tbody td:nth-child(1) {
+            text-align: center;
+        }
+        
+        tbody td:nth-child(n+2) {
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <td><input type="checkbox" id="cbAll"></td>
+                <td>商品</td>
+                <td>价钱</td>
+            </tr>
+        </thead>
+        <tbody id="tbs">
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>iPhone8</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>iPad Pro</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>iPad Air</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>Apple Watch</td>
+                <td>2000</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        //全选复选框思路：1.点击全选按钮，其他选项也全部选上，或者全部取消；
+        // 2.其他按钮全部勾选上，全选按钮也要选上，任何一项没有勾上，都要取消勾选全选按钮；
+
+        //获取事件源
+        var trsAll = document.getElementById('cbAll');
+        var trs = document.querySelector('tbody').querySelectorAll('input');
+        //绑定事件类型
+        trsAll.onclick = function() {
+            //第一步，点击全选按钮，其他选项都选中或都取消选中
+            for (var i = 0; i < trs.length; i++) {
+                trs[i].checked = trsAll.checked;
+            }
+            //第二步，每次勾选上其他按钮，都判断一次其他按钮是否全部勾选上，如果勾选上了就把全选按钮也勾选上
+            for (var i = 0; i < trs.length; i++) {
+                //给每个按钮绑定点击事件，并且每次点击按钮就循判断下其他按钮是否已经全部勾选上
+                trs[i].onclick = function() {
+                    var flag = true; //声明一个变量来决定全选按钮是否要勾选上；
+                    //循环检查
+                    for (var i = 0; i < trs.length; i++) {
+                        if (!trs[i].checked) { //false
+                            flag = false;
+                            break;
+                        }
+                    }
+                    trsAll.checked = flag;
+                }
+            }
+        }
+    </script>
+
+    <!-- <script>
+        var trsAll = document.getElementById('cbAll');
+        var trs = document.getElementById('tbs').getElementsByTagName('input');
+        trsAll.onclick = function() {
+            for (var i = 0; i < trs.length; i++) {
+                trs[i].checked = this.checked;
+            }
+            for (var i = 0; i < trs.length; i++) {
+                trs[i].onclick = function() {
+                    var flag = true;
+                    for (var i = 0; i < trs.length; i++) {
+                        if (!trs[i].checked) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    trsAll.checked = flag;
+                }
+            }
+        }
+    </script> -->
+</body>
+
+</html>
