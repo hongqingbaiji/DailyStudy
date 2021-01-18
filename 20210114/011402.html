@@ -117,6 +117,7 @@
     </script> -->
 
     <script>
+<<<<<<< HEAD
         var lis = document.querySelector('.tabhd').querySelectorAll('li');
         var items = document.getElementsByClassName('item');
 
@@ -133,6 +134,24 @@
                     items[i].style.display = 'none';
                 }
                 items[index].style.display = 'block';
+=======
+        var lis = document.querySelectorAll('.tabhd li');
+        var items = document.querySelectorAll('.item');
+
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].setAttribute('index', i);
+            lis[i].onclick = function() {
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = '';
+                }
+                this.className = 'current';
+                var index = this.getAttribute('index');
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = 'none';
+                }
+                items[index].style.display = 'block';
+
+>>>>>>> 7ad7b08191d4d560a04c921c33d3a43378f09f9f
             }
         }
     </script>

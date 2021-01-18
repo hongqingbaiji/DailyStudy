@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下拉菜单</title>
+    <style>
+        ul,
+        li,
+        a {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .ul1 {
+            width: 600px;
+            height: 30px;
+            margin: 100px 20px;
+            border-bottom: 1px solid #ccc;
+            background-color: #eee;
+        }
+        
+        li {
+            list-style: none;
+            line-height: 30px;
+            text-align: center;
+            width: 100px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #666;
+        }
+        
+        a:hover {
+            color: tomato;
+        }
+        
+        .lis {
+            float: left;
+        }
+        
+        .uls {
+            display: none;
+        }
+        
+        .uls li {
+            border: 1px solid yellowgreen;
+            border-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="ul1">
+        <li class="lis"><a href="#">登录</a></li>
+        <li class="lis">
+            <a href="#">微博</a>
+            <ul class="uls">
+                <li><a href="#">私信</a></li>
+                <li><a href="#">评论</a></li>
+                <li><a href="#">@我</a></li>
+            </ul>
+        </li>
+        <li class="lis">
+            <a href="#">博客</a>
+            <ul class="uls">
+                <li><a href="#">博客评论</a></li>
+                <li><a href="#">未读提醒</a></li>
+            </ul>
+        </li>
+        <li class="lis">
+            <a href="#">邮箱</a>
+            <ul class="uls">
+                <li><a href="#">免费邮箱</a></li>
+                <li><a href="#">VIP邮箱</a></li>
+                <li><a href="#">企业邮箱</a></li>
+            </ul>
+        </li>
+        <li class="lis"><a href="#">网站导航</a></li>
+    </ul>
+
+    <script>
+        var ul1 = document.querySelector('.ul1');
+        var li1 = ul1.children;
+        for (var i = 0; i < li1.length; i++) {
+            li1[i].onmouseover = function() {
+                this.children[1].style.display = 'block';
+            }
+            li1[i].onmouseout = function() {
+                this.children[1].style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>
