@@ -78,7 +78,7 @@
         </tbody>
     </table>
 
-    <script>
+    <!-- <script>
         //全选复选框思路：1.点击全选按钮，其他选项也全部选上，或者全部取消；
         // 2.其他按钮全部勾选上，全选按钮也要选上，任何一项没有勾上，都要取消勾选全选按钮；
 
@@ -107,7 +107,7 @@
                 }
             }
         }
-    </script>
+    </script> -->
 
     <!-- <script>
         var trsAll = document.getElementById('cbAll');
@@ -127,6 +127,28 @@
                     }
                     trsAll.checked = flag;
                 }
+            }
+        }
+    </script> -->
+
+    <!-- <script>
+        var cbAll = document.getElementById('cbAll');
+        var trs = document.getElementById('tbs').getElementsByTagName('input');
+        cbAll.onclick = function() {
+            for (var i = 0; i < trs.length; i++) {
+                trs[i].checked = this.checked;
+            }
+        }
+        for (var i = 0; i < trs.length; i++) {
+            trs[i].onclick = function() {
+                var flag = true;
+                for (var i = 0; i < trs.length; i++) {
+                    if (!trs[i].checked) {
+                        flag = false;
+                        break;
+                    }
+                }
+                cbAll.checked = flag;
             }
         }
     </script> -->

@@ -91,7 +91,7 @@
         </div>
     </div>
 
-    <!-- <script>
+    <script>
         //获取事件源
         var lis = document.querySelector('.tabhd').querySelectorAll('li');
         var items = document.querySelectorAll('.item');
@@ -102,7 +102,7 @@
                 for (var i = 0; i < lis.length; i++) {
                     lis[i].className = '';
                 }
-                //再把CSS里li的current里的类名给点击项
+                再把CSS里li的current里的类名给点击项
                 this.className = 'current';
 
                 var index = this.getAttribute('index'); //获取自定义属性
@@ -114,29 +114,7 @@
                 items[index].style.display = 'block';
             }
         }
-    </script> -->
-
-    <script>
-        var lis = document.querySelector('.tabhd').querySelectorAll('li');
-        var items = document.getElementsByClassName('item');
-
-        for (let i = 0; i < lis.length; i++) {
-            lis[i].setAttribute('index', i);
-            lis[i].onclick = function() {
-                for (let i = 0; i < lis.length; i++) {
-                    lis[i].className = '';
-                }
-                this.className = 'current';
-
-                var index = this.getAttribute('index');
-                for (let i = 0; i < items.length; i++) {
-                    items[i].style.display = 'none';
-                }
-                items[index].style.display = 'block';
-            }
-        }
     </script>
-
 </body>
 
 </html>
