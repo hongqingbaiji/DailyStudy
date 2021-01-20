@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: relative;
+            margin: 100px auto;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        
+        .djs {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 30px;
+            background-color: purple;
+            color: #fff;
+            font-size: 14px;
+            line-height: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .gb {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            background-color: purple;
+            color: #fff;
+            font-size: 20px;
+            line-height: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<!-- <body>
+    <div>
+        123
+    </div>
+    <script>
+        var div = document.querySelector('div');
+        window.addEventListener('resize', function() {
+            console.log(window.innerWidth);
+            if (window.innerWidth <= 500) {
+                div.style.display = 'none';
+            } else {
+                div.style.display = 'block';
+            }
+        })
+    </script>
+</body> -->
+
+<body>
+    <div>
+        <span class="djs">倒计时3s后可关闭</span>
+    </div>
+    <script>
+        var div = document.querySelector('div');
+        var span = document.querySelector('span');
+        var timer = window.setTimeout(callback, 3000);
+
+
+        function callback() {
+            span.className = 'gb';
+            span.innerHTML = "X";
+            span.addEventListener('click', function() {
+                div.style.display = 'none';
+            })
+        }
+    </script>
+</body>
+
+</html>
