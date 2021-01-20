@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div,
+        input {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .search {
+            position: relative;
+            width: 250px;
+            height: 100px;
+        }
+        
+        .con {
+            display: none;
+            position: absolute;
+            top: 5px;
+            width: 200px;
+            height: 40px;
+            font-size: 20px;
+            border: 1px solid #000;
+        }
+        
+        input {
+            position: absolute;
+            bottom: 5px;
+            margin-top: 10px;
+            width: 200px;
+            height: 30px;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <script>
+        document.addEventListener('keyup', function() {
+            console.log('弹起');
+        })
+        document.addEventListener('keypress', function() {
+            console.log('按下press');
+        })
+        document.addEventListener('keydown', function() {
+            console.log('按下');
+        })
+    </script> -->
+    <!-- <script>
+        document.addEventListener('keydown', function(e) {
+            console.log('keydown:' + e.keyCode);
+        })
+        document.addEventListener('keypress', function(e) {
+            console.log('keypress:' + e.keyCode);
+        })
+    </script> -->
+
+    <!-- <input type="text">
+    <script>
+        var input = document.querySelector('input');
+        document.addEventListener('keyup', function(e) {
+            if (e.keyCode === 83) { //判断是否按下s
+                input.focus(); //input获得焦点
+            }
+        })
+    </script> -->
+
+    <div class="search">
+        <div class="con"></div>
+        <input type="text">
+    </div>
+
+    <script>
+        var con = document.querySelector('.con');
+        var input = document.querySelector('input');
+        input.addEventListener('keyup', function(e) {
+            if (this.value == '') {
+                con.style.display = 'none';
+            } else {
+                con.style.display = 'block';
+                con.innerHTML = input.value;
+            }
+        })
+        input.addEventListener('blur', function() {
+            con.style.display = 'none';
+        })
+        input.addEventListener('focus', function() {
+            if (this.value !== '') {
+                con.style.display = 'block';
+            }
+        })
+    </script>
+</body>
+
+</html>
