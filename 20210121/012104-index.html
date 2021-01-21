@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            color: red;
+            font-weight: 700;
+            padding-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>首页</p>
+    <span></span>欢迎光临
+    <script>
+        var span = document.querySelector('span');
+        //截取字符，从第1个字符开始截取
+        var str = location.search.substr(1);
+        var arr = str.split('='); //利用=把字符串分割成数组；
+        span.innerHTML = arr[1];
+    </script>
+</body>
+
+</html>
