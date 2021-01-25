@@ -152,6 +152,7 @@
         loginHd.addEventListener('mousedown', function(e) {
             var x = e.pageX - login.offsetLeft;
             var y = e.pageY - login.offsetTop;
+            console.log(x, y);
             document.addEventListener('mousemove', move);
 
             function move(e) {
