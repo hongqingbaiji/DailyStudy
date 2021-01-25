@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        img {
+            vertical-align: middle;
+        }
+        
+        .box {
+            position: relative;
+            /* overflow: hidden; */
+            margin: 100px auto;
+            height: 300px;
+            background-color: pink;
+        }
+        
+        .ul1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .ul1 li {
+            float: left;
+            width: 500px;
+            height: 300px;
+        }
+        
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class='box'>
+        <ul class='ul1'>
+            <li>1<img src="images/1.jpg" alt="1"></li>
+            <li>2<img src="images/2.jpg" alt="2"></li>
+            <li>3<img src="images/3.jpg" alt="3"></li>
+            <li>4<img src="images/4.jpg" alt="4"></li>
+        </ul>
+
+    </div>
+
+    <script>
+        var box = document.querySelector('.box');
+        var ul1 = document.querySelector('.ul1');
+        var lis = ul1.querySelectorAll('li');
+        var x = 500;
+    </script>
+</body>
+
+</html>
