@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="animate.js"></script>
+    <style>
+        div {
+            position: absolute;
+            top: 60px;
+            left: 10px;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn500">移动到500</button>
+    <button class="btn800">移动到800</button>
+    <div></div>
+    <script>
+        var btn500 = document.querySelector('.btn500');
+        var btn800 = document.querySelector('.btn800');
+        var div = document.querySelector('div');
+        btn500.addEventListener('click', function() {
+            animate(div, 500, function() {
+                div.style.backgroundColor = 'red';
+            });
+        })
+        btn800.addEventListener('click', function() {
+            animate(div, 800, function() {
+                div.style.backgroundColor = 'purple';
+            });
+        })
+    </script>
+</body>
+
+</html>
