@@ -102,7 +102,7 @@
             cursor: pointer;
         }
         
-        .current {
+        .circle .current {
             background-color: red;
         }
     </style>
@@ -128,6 +128,10 @@
             </li>
         </ul>
         <ol class="circle">
+            <!-- <li class="current"></li>
+            <li></li>
+            <li></li>
+            <li></li> -->
         </ol>
     </div>
     <script>
@@ -137,7 +141,6 @@
         var ul1 = document.querySelector('.ul1');
         var lis1 = ul1.querySelectorAll('li');
         var circle = document.querySelector('.circle');
-        var lis2 = circle.querySelectorAll('li');
         //鼠标经过显示左右按钮，鼠标离开则隐藏
         focus.addEventListener('mouseover', function() {
             arrowL.style.display = 'block';
@@ -151,14 +154,14 @@
         for (var i = 0; i < lis1.length; i++) {
             var li = document.createElement('li');
             circle.appendChild(li);
+            circle.children[0].className = 'current';
             //点击小圆圈，该小圆圈变色，其他小圆圈去除变色，使用排他思想
             li.addEventListener('click', function() {
-                for (var i = 0; i < lis2.length; i++) {
+                for (var i = 0; i < lis1.length; i++) {
                     circle.children[i].className = '';
                 }
                 this.className = 'current';
             })
-
         }
         // 动态计算ul1的宽度， 记得加上单位
         ul1.style.width = 360 * lis1.length + 'px';
