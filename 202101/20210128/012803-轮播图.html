@@ -22,11 +22,13 @@
             margin: 100px auto;
             width: 360px;
             height: 228px;
-            /* overflow: hidden; */
+            overflow: hidden;
         }
         
         .ul1 {
             position: absolute;
+            top: 0;
+            left: 0;
         }
         
         .ul1 li {
@@ -40,31 +42,10 @@
             height: 100%;
         }
         
-        .arrow-l {
-            display: none;
-            position: absolute;
-            left: 0;
-            top: 50%;
-            margin-top: -15px;
-            width: 30px;
-            height: 30px;
-            font-size: 20px;
-            color: #fff;
-            font-weight: 700;
-            text-align: center;
-            line-height: 26px;
-            background-color: #000;
-            opacity: 0.5;
-            cursor: pointer;
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
-            z-index: 9999;
-        }
-        
+        .arrow-l,
         .arrow-r {
             display: none;
             position: absolute;
-            right: 0;
             top: 50%;
             margin-top: -15px;
             width: 30px;
@@ -74,12 +55,27 @@
             font-weight: 700;
             text-align: center;
             line-height: 26px;
-            background-color: #000;
-            opacity: 0.5;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* opacity: 0.5;  透明度，此处用的效果不好，会把里面文字的颜色也改变*/
             cursor: pointer;
+            z-index: 9999;
+        }
+        
+        .arrow-l {
+            left: 0;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        
+        .arrow-r {
+            right: 0;
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
-            z-index: 9999;
+        }
+        
+        .arrow-l:hover,
+        .arrow-r:hover {
+            color: red;
         }
         
         .circle {
@@ -141,30 +137,107 @@
         var ul1 = document.querySelector('.ul1');
         var lis1 = ul1.querySelectorAll('li');
         var circle = document.querySelector('.circle');
+        var focusWidth = focus.offsetWidth;
+
         //鼠标经过显示左右按钮，鼠标离开则隐藏
         focus.addEventListener('mouseover', function() {
             arrowL.style.display = 'block';
             arrowR.style.display = 'block';
+            clearInterval(timer);
+            timer = null; //清除定时器变量
         });
         focus.addEventListener('mouseout', function() {
             arrowL.style.display = 'none';
             arrowR.style.display = 'none';
+            timer = setInterval(function() {
+                arrowR.click();
+            }, 2000);
         });
         //动态生成小圆圈
         for (var i = 0; i < lis1.length; i++) {
             var li = document.createElement('li');
+            li.setAttribute('index', i);
             circle.appendChild(li);
             circle.children[0].className = 'current';
             //点击小圆圈，该小圆圈变色，其他小圆圈去除变色，使用排他思想
             li.addEventListener('click', function() {
-                for (var i = 0; i < lis1.length; i++) {
+                for (var i = 0; i < circle.children.length; i++) {
                     circle.children[i].className = '';
                 }
                 this.className = 'current';
+                // 点击小圆圈，就让图片滚动，用小圆圈的索引号乘以图片的宽度作为ul移动的距离
+                // var focusWidth = focus.offsetWidth;//把获取ul的宽度的代码放到外面，当全局变量，后面还有用到
+                var index = this.getAttribute('index');
+                num = index;
+                cired = index;
+                animate(ul1, -focusWidth * index);
             })
         }
+
+        // 克隆第一张图片，放到ul1的最后面
+        var first = ul1.children[0].cloneNode(true);
+        ul1.appendChild(first);
+
+        //点击左右侧按钮arrowL和arrowR，图片滚动一张
+        var num = 0;
+        var cired = 0; //控制小圆圈的播放
+        var flag = true; //节流阀
+        arrowR.addEventListener('click', function() {
+            if (flag) {
+                flag = false;
+                if (num == circle.children.length) {
+                    ul1.style.left = 0;
+                    num = 0;
+                }
+                num++;
+                animate(ul1, -num * focusWidth, function() {
+                    flag = true;
+                });
+
+                // 点击右侧按钮，小圆圈也跟着走
+                cired++;
+                if (cired == circle.children.length) {
+                    cired = 0;
+                }
+                changecircle();
+            }
+
+        })
+        arrowL.addEventListener('click', function() {
+                if (flag) {
+                    flag = false;
+                    if (num == 0) {
+                        num = circle.children.length;
+                        ul1.style.left = -focusWidth * num + 'px';
+                    }
+                    num--;
+                    animate(ul1, -num * focusWidth, function() {
+                        flag = true;
+                    });
+
+                    // 点击左侧按钮，小圆圈也跟着走
+                    if (cired == 0) {
+                        cired = circle.children.length;
+                    }
+                    cired--;
+                    changecircle();
+
+                }
+            })
+            // 把点击小圆圈清除其他小圆圈，只保留自己的操作封装成函数
+        function changecircle() {
+            for (var i = 0; i < circle.children.length; i++) {
+                circle.children[i].className = '';
+            }
+            circle.children[cired].className = 'current';
+        }
+        //自动播放
+        var timer = setInterval(function() {
+            arrowR.click();
+        }, 2000);
+
         // 动态计算ul1的宽度， 记得加上单位
-        ul1.style.width = 360 * lis1.length + 'px';
+        ul1.style.width = focusWidth * ul1.children.length + 'px';
     </script>
 </body>
 
