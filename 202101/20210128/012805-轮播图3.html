@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        ul,
+        ol,
+        li {
+            list-style: none;
+        }
+        
+        .focus {
+            position: relative;
+            margin: 100px auto;
+            width: 360px;
+            height: 228px;
+            /* overflow: hidden; */
+        }
+        
+        .ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .ul li {
+            float: left;
+            width: 360px;
+            height: 228px;
+        }
+        
+        .ul img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .arrow-l,
+        .arrow-r {
+            display: none;
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            color: #fff;
+            font-weight: 700;
+            text-align: center;
+            line-height: 26px;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* opacity: 0.5;  透明度，此处用的效果不好，会把里面文字的颜色也改变*/
+            cursor: pointer;
+            z-index: 9999;
+        }
+        
+        .arrow-l {
+            left: 0;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        
+        .arrow-r {
+            right: 0;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        
+        .arrow-l:hover,
+        .arrow-r:hover {
+            color: red;
+        }
+        
+        .circle {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        
+        .circle li {
+            float: left;
+            width: 14px;
+            height: 14px;
+            margin: 4px;
+            background-color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .circle .current {
+            background-color: red;
+        }
+    </style>
+    <script src="js/index2.js"></script>
+    <script src="animate.js"></script>
+</head>
+
+<body>
+    <div class="focus">
+        <span class="arrow-l">&lt;</span>
+        <span class="arrow-r">&gt;</span>
+        <ul class="ul">
+            <li>
+                <a href="#"><img src="images/focus.jpg" alt="0"></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/focus1.jpg" alt="1"></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/focus2.jpg" alt="2"></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/focus3.jpg" alt="3"></a>
+            </li>
+        </ul>
+        <ol class="circle"></ol>
+    </div>
+</body>
+
+</html>
