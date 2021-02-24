@@ -67,7 +67,7 @@
         </div>
     </div>
 
-    <script>
+    <!-- <script>
         var tabList = document.querySelector('.tab_list');
         var lis = tabList.querySelectorAll('li');
         var tabCon = document.querySelector('.tab_con');
@@ -87,6 +87,28 @@
                 }
                 items[index].style.display = 'block';
 
+            }
+        }
+    </script> -->
+
+    <script>
+        var tabList = document.querySelector('.tab_list');
+        var lis = tabList.querySelectorAll('li');
+        var tabCon = document.querySelector('.tab_con');
+        var items = tabCon.querySelectorAll('.item');
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].setAttribute('index', i);
+            lis[0].className = 'change';
+            lis[i].onclick = function() {
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = '';
+                }
+                this.className = 'change';
+                var index = this.getAttribute('index');
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = 'none';
+                }
+                items[index].style.display = 'block';
             }
         }
     </script>
