@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+            text-align: center;
+            line-height: 200px;
+            color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="begin">开启定时器</button>
+    <button class="stop">停止定时器</button>
+    <div>
+        <span class="day"></span>
+        <span class="hour"></span>
+        <span class="minute"></span>
+        <span class="second"></span>
+    </div>
+
+    <script>
+        var day = document.querySelector('.day');
+        var hour = document.querySelector('.hour');
+        var minute = document.querySelector('.minute');
+        var second = document.querySelector('.second');
+        var inputTime = +new Date('2021-2-29 00:00:00');
+        var begin = document.querySelector('.begin');
+        var stop = document.querySelector('.stop');
+        var timer = null;
+        countDown();
+        begin.addEventListener('click', function() {
+            timer = setInterval(countDown, 1000);
+        })
+        stop.addEventListener('click', function() {
+            clearInterval(timer);
+        })
+
+
+        function countDown() {
+            var nowTime = +new Date();
+            var date = (inputTime - nowTime) / 1000;
+            var d = parseInt(date / 60 / 60 / 24);
+            d = d < 10 ? '0' + d : d;
+            day.innerHTML = d + '天';
+            var h = parseInt(date / 60 / 60 % 24);
+            h = h < 10 ? '0' + h : h;
+            hour.innerHTML = h + ':';
+            var m = parseInt(date / 60 % 60);
+            m = m < 10 ? '0' + m : m;
+            minute.innerHTML = m + ':';
+            var s = parseInt(date % 60);
+            s = s < 10 ? '0' + s : s;
+            second.innerHTML = s;
+        }
+    </script>
+</body>
+
+</html>
