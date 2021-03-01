@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="animate.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        ul,
+        ol,
+        li {
+            list-style: none;
+        }
+        
+        .focus {
+            position: relative;
+            margin: 100px;
+            width: 500px;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .ul img {
+            width: 500px;
+            height: 300px;
+        }
+        
+        .ul li {
+            float: left;
+        }
+        
+        .arrow-l,
+        .arrow-r {
+            display: none;
+            position: absolute;
+            top: 50%;
+            margin-top: -20px;
+            width: 20px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, .3);
+            text-align: center;
+            line-height: 40px;
+            font-size: 20px;
+            color: #fff;
+            cursor: pointer;
+            z-index: 9999;
+        }
+        
+        .arrow-l:hover,
+        .arrow-r:hover {
+            background-color: rgba(0, 0, 0, .6);
+        }
+        
+        .arrow-l {
+            left: 0;
+        }
+        
+        .arrow-r {
+            right: 0;
+        }
+        
+        .ol {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        
+        .ol li {
+            float: left;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin: 5px;
+            cursor: pointer;
+        }
+        
+        .ol .current {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="focus">
+        <ul class="ul">
+            <li><img src="upload/focus.jpg"></li>
+            <li><img src="upload/focus1.jpg"></li>
+            <li><img src="upload/focus2.jpg"></li>
+            <li><img src="upload/focus3.jpg"></li>
+        </ul>
+        <ol class="ol">
+            <!-- <li class="current"></li>
+            <li></li>
+            <li></li>
+            <li></li> -->
+        </ol>
+        <div class="arrow-l">&lt;</div>
+        <div class="arrow-r">&gt;</div>
+    </div>
+    <script>
+        // 需求：
+        // 1）鼠标经过轮播图左右按钮显示，鼠标离开左右按钮隐藏；
+        // 2）动态生成小圆圈，有几张图就生成几个小圆圈；
+        // 3）实现点击小圆圈，可以播放相应的图片；
+        // 4）点击右侧按钮一次，图片往左播放一张，以此类推，左侧按钮同理；
+        // 5）图片播放的同时，下面小圆圈模块跟随一起变化；
+        // 6）鼠标不经过轮播图，轮播图也会自动播放图片；
+        // 7）鼠标经过轮播图，自动播放停止；     
+        var focus = document.querySelector('.focus');
+        var ul1 = document.querySelector('.ul');
+        var ol1 = document.querySelector('.ol');
+        var arrowL = document.querySelector('.arrow-l');
+        var arrowR = document.querySelector('.arrow-r');
+        var focusWidth = focus.offsetWidth;
+        //鼠标经过focus,显示左右按钮，离开消失；
+        focus.addEventListener('mouseover', function() {
+            arrowL.style.display = 'block';
+            arrowR.style.display = 'block';
+            clearInterval(timer);
+            timer = null;
+        });
+        focus.addEventListener('mouseout', function() {
+            arrowL.style.display = 'none';
+            arrowR.style.display = 'none';
+            timer = setInterval(function() {
+                arrowR.click();
+            }, 2000)
+        });
+        //动态生成小圆圈
+        for (var i = 0; i < ul1.children.length; i++) {
+            var li = document.createElement('li');
+            ol1.appendChild(li);
+            li.setAttribute('index', i);
+            ol1.children[0].className = 'current';
+            li.addEventListener('click', function() {
+                for (var i = 0; i < ol1.children.length; i++) {
+                    ol1.children[i].className = '';
+                }
+                this.className = 'current';
+                var index = this.getAttribute('index');
+                num = index;
+                animate(ul1, -index * focusWidth);
+            })
+        }
+        var first = ul1.children[0].cloneNode(true);
+        ul1.appendChild(first);
+
+        var num = 0;
+        var cired = 0;
+        var flag = true;
+        arrowL.addEventListener('click', function() {
+            if (flag) {
+                flag = false;
+                if (num == 0) {
+                    num = ol1.children.length;
+                    ul1.style.left = -num * focusWidth + 'px';
+                }
+                num--;
+                animate(ul1, -num * focusWidth, function() {
+                    flag = true;
+                });
+                if (cired == 0) {
+                    cired = ol1.children.length;
+                }
+                cired--;
+                changecircle();
+            }
+        })
+        arrowR.addEventListener('click', function() {
+            if (flag) {
+                flag = false;
+                if (num == ol1.children.length) {
+                    num = 0;
+                    ul1.style.left = 0;
+                }
+                num++;
+                animate(ul1, -num * focusWidth, function() {
+                    flag = true;
+                });
+                cired++;
+                if (cired == ol1.children.length) {
+                    cired = 0;
+                }
+                changecircle();
+            }
+
+        })
+
+        function changecircle() {
+            for (var i = 0; i < ol1.children.length; i++) {
+                ol1.children[i].className = '';
+            }
+            ol1.children[cired].className = 'current';
+        }
+
+        var timer = setInterval(function() {
+            arrowR.click();
+        }, 2000)
+
+
+        ul1.style.width = focusWidth * ul1.children.length + 'px';
+    </script>
+</body>
+
+</html>
