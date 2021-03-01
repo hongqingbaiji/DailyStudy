@@ -115,7 +115,7 @@
         <div class="arrow-l">&lt;</div>
         <div class="arrow-r">&gt;</div>
     </div>
-    <script>
+    <!-- <script>
         // 需求：
         // 1）鼠标经过轮播图左右按钮显示，鼠标离开左右按钮隐藏；
         // 2）动态生成小圆圈，有几张图就生成几个小圆圈；
@@ -217,6 +217,108 @@
 
 
         ul1.style.width = focusWidth * ul1.children.length + 'px';
+    </script> -->
+
+    <script>
+        // 需求：
+        // 1）鼠标经过轮播图左右按钮显示，鼠标离开左右按钮隐藏；
+        // 2）动态生成小圆圈，有几张图就生成几个小圆圈；
+        // 3）实现点击小圆圈，可以播放相应的图片；
+        // 4）点击右侧按钮一次，图片往左播放一张，以此类推，左侧按钮同理；
+        // 5）图片播放的同时，下面小圆圈模块跟随一起变化；
+        // 6）鼠标不经过轮播图，轮播图也会自动播放图片；
+        // 7）鼠标经过轮播图，自动播放停止； 
+        var focus = document.querySelector('.focus');
+        var ul = document.querySelector('.ul');
+        var ol = document.querySelector('.ol');
+        var arrowL = document.querySelector('.arrow-l');
+        var arrowR = document.querySelector('.arrow-r');
+        var focusWidth = focus.offsetWidth;
+        focus.addEventListener('mouseover', function() {
+            arrowL.style.display = 'block';
+            arrowR.style.display = 'block';
+            clearInterval(timer);
+            timer = null;
+        })
+        focus.addEventListener('mouseout', function() {
+            arrowL.style.display = 'none';
+            arrowR.style.display = 'none';
+            timer = setInterval(function() {
+                arrowR.click();
+            }, 2000);
+        })
+
+        for (var i = 0; i < ul.children.length; i++) {
+            var li = document.createElement('li');
+            ol.appendChild(li);
+            li.setAttribute('index', i);
+            ol.children[0].className = 'current';
+            li.addEventListener('click', function() {
+                for (var i = 0; i < ol.children.length; i++) {
+                    ol.children[i].className = '';
+                }
+                this.className = 'current';
+                var index = this.getAttribute('index');
+                num = index;
+                circle = index;
+                animate(ul, -index * focusWidth);
+            })
+        }
+        var num = 0;
+        var circle = 0;
+        var flag = true;
+        var first = ul.children[0].cloneNode(true);
+        ul.appendChild(first);
+        arrowL.addEventListener('click', function() {
+            if (flag) {
+                flag = false;
+                if (num == 0) {
+                    num = ul.children.length - 1;
+                    ul.style.left = -num * focusWidth + 'px';
+                }
+                num--;
+                animate(ul, -num * focusWidth, function() {
+                    flag = true;
+                });
+
+                if (circle == 0) {
+                    circle = ol.children.length;
+                }
+                circle--;
+                for (var i = 0; i < ol.children.length; i++) {
+                    ol.children[i].className = '';
+                }
+                ol.children[circle].className = 'current';
+            }
+
+        })
+        arrowR.addEventListener('click', function() {
+            if (flag) {
+                flag = false;
+                if (num == ul.children.length - 1) {
+                    num = 0;
+                    ul.style.left = 0;
+                }
+                num++;
+                animate(ul, -num * focusWidth, function() {
+                    flag = true;
+                });
+                circle++;
+                if (circle == ol.children.length) {
+                    circle = 0;
+                }
+                for (var i = 0; i < ol.children.length; i++) {
+                    ol.children[i].className = '';
+                }
+                ol.children[circle].className = 'current';
+            }
+
+        })
+
+        var timer = setInterval(function() {
+            arrowR.click();
+        }, 2000);
+        ul.style.width = ul.children.length * focusWidth + 'px';
     </script>
 </body>
 

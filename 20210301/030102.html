@@ -106,6 +106,7 @@
         var lis = document.querySelectorAll('li');
         var bannerTop = banner.offsetTop;
         var mainTop = main1.offsetTop;
+        var ul = top1.querySelector('ul');
 
         document.addEventListener('scroll', function() {
             if (window.pageYOffset >= bannerTop) {
@@ -124,6 +125,24 @@
                 lis[lis.length - 1].style.display = 'none';
             }
         })
+        ul.children[ul.children.length - 1].addEventListener('click', function() {
+            animate(window, 0);
+        })
+
+        function animate(obj, target, callback) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function() {
+                var step = (target - window.pageYOffset) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (window.pageYOffset == target) {
+                    clearInterval(obj.timer);
+                    if (callback) {
+                        callback();
+                    }
+                }
+                window.scroll(0, window.pageYOffset + step)
+            }, 15);
+        }
     </script>
 
 </body>
