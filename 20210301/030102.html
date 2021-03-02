@@ -109,36 +109,35 @@
         var ul = top1.querySelector('ul');
 
         document.addEventListener('scroll', function() {
-            if (window.pageYOffset >= bannerTop) {
-                top1.style.position = 'fixed';
-                top1.style.top = mainTop - bannerTop + 'px';
-
-            } else {
-                top1.style.position = 'absolute';
-                top1.style.top = '520px';
-            }
-            if (window.pageYOffset >= mainTop) {
-                for (var i = 0; i < lis.length; i++) {
-                    lis[lis.length - 1].style.display = 'block';
+                if (window.pageYOffset >= bannerTop) {
+                    top1.style.position = 'fixed';
+                    top1.style.top = mainTop - bannerTop + 'px';
+                } else {
+                    top1.style.position = 'absolute';
+                    top1.style.top = '520px';
                 }
-            } else {
-                lis[lis.length - 1].style.display = 'none';
-            }
-        })
+                if (window.pageYOffset >= mainTop) {
+                    for (var i = 0; i < lis.length; i++) {
+                        lis[lis.length - 1].style.display = 'block';
+                    }
+                } else {
+                    lis[lis.length - 1].style.display = 'none';
+                }
+            })
+            //ul.children[ul.children.length - 1] 最后一个li
         ul.children[ul.children.length - 1].addEventListener('click', function() {
-            animate(window, 0);
-        })
-
+                animate(window, 0);
+            })
+            //滚动效果加上动画函数
         function animate(obj, target, callback) {
             clearInterval(obj.timer);
             obj.timer = setInterval(function() {
+                //window.pageYOffset 可以获取页面滚动了多少
                 var step = (target - window.pageYOffset) / 10;
                 step = step > 0 ? Math.ceil(step) : Math.floor(step);
                 if (window.pageYOffset == target) {
                     clearInterval(obj.timer);
-                    if (callback) {
-                        callback();
-                    }
+                    callback && callback();
                 }
                 window.scroll(0, window.pageYOffset + step)
             }, 15);

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="animate.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        body {
+            background-color: black;
+        }
+        
+        .nav {
+            position: relative;
+            margin: 50px 10px;
+            width: 800px;
+            height: 42px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, .3);
+            border-radius: 7px;
+        }
+        
+        .nav ul {
+            position: absolute;
+        }
+        
+        .nav li {
+            float: left;
+            text-align: center;
+            line-height: 42px;
+            width: 83px;
+            font-size: 14px;
+        }
+        
+        .nav li a {
+            display: inline-block;
+            text-decoration: none;
+            color: #333;
+            width: 83px;
+            height: 42px;
+        }
+        
+        .nav li a:hover {
+            color: #fff;
+        }
+        
+        .cloud {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 83px;
+            height: 42px;
+            background: url(images/cloud.gif) no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <span class="cloud"></span>
+        <ul>
+            <li><a href="#">首页新闻</a></li>
+            <li><a href="#">师资力量</a></li>
+            <li><a href="#">活动策划</a></li>
+            <li><a href="#">企业文化</a></li>
+            <li><a href="#">招聘信息</a></li>
+            <li><a href="#">公司简介</a></li>
+            <li><a href="#">上海校区</a></li>
+            <li><a href="#">广州校区</a></li>
+        </ul>
+    </div>
+    <script>
+        var cloud = document.querySelector('.cloud');
+        var nav = document.querySelector('.nav');
+        var lis = nav.querySelectorAll('li');
+        var current = 0; //筋斗云的起始位置
+        for (var i = 0; i < lis.length; i++) {
+            //鼠标经过把当前小li的位置作为目标值
+            lis[i].addEventListener('mouseenter', function() {
+                animate(cloud, this.offsetLeft);
+            });
+            //鼠标离开就复原为0
+            lis[i].addEventListener('mouseleave', function() {
+                animate(cloud, current);
+            });
+            //鼠标点击，把当前位置作为目标值
+            lis[i].addEventListener('click', function() {
+                current = this.offsetLeft;
+
+            });
+
+        }
+    </script>
+</body>
+
+</html>
