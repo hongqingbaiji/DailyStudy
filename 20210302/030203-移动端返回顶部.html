@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .one {
+            width: 100%;
+            height: 200px;
+            background-color: blueviolet;
+        }
+        
+        .two {
+            width: 100%;
+            height: 300px;
+            background-color: pink;
+        }
+        
+        .three {
+            width: 100%;
+            height: 300px;
+            background-color: purple;
+        }
+        
+        .four {
+            width: 100%;
+            height: 200px;
+            background-color: lightgreen;
+        }
+        
+        .goback {
+            display: none;
+            position: fixed;
+            right: 10px;
+            bottom: 50px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background-color: brown;
+            border-radius: 50%;
+            z-index: 2;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one">1</div>
+    <div class="two">2</div>
+    <div class="three">3</div>
+    <div class="four">4</div>
+    <div class="goback">TOP</div>
+    <script>
+        var goback = document.querySelector('.goback');
+        var two = document.querySelector('.two');
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset >= two.offsetTop) {
+                goback.style.display = 'block';
+            } else {
+                goback.style.display = 'none';
+            }
+        })
+        goback.addEventListener('click', function() {
+            window.scroll(0, 0);
+        })
+    </script>
+</body>
+
+</html>
