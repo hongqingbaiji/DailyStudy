@@ -12,6 +12,8 @@
 <body>
     <a href="#" title="1234">都挺好</a>
     <input type="checkbox">
+    <div index="0">div</div>
+    <span>123</span>
 
     <script>
         $(function() {
@@ -20,6 +22,10 @@
             $('input').change(function() {
                 console.log($(this).prop('checked'));
             });
+            console.log($('div').attr('index'));
+
+            $('span').data('uname', 'wenhe');
+            console.log($('span').data('uname'));
         })
     </script>
 </body>

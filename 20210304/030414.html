@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <style>
+        .quantity_form a {
+            text-decoration: none;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            color: #333;
+            border: 1px solid #ccc;
+        }
+        
+        .quantity_form .itxt {
+            width: 40px;
+            height: 20px;
+            outline: none;
+            text-align: center;
+            color: #333;
+        }
+        
+        .quantity_form span {
+            display: inline-block;
+            width: 60px;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quantity_form">
+        <span class="dj">￥12.60</span>
+        <a href="#" class="decrement">-</a>
+        <input type="text" class="itxt" value="1">
+        <a href="#" class="increment">+</a>
+        <span class="zj">￥12.60</span>
+    </div>
+    <div class="quantity_form">
+        <span class="dj">￥120.00</span>
+        <a href="#" class="decrement">-</a>
+        <input type="text" class="itxt" value="1">
+        <a href="#" class="increment">+</a>
+        <span class="zj">￥120.00</span>
+    </div>
+    <div class="quantity_form">
+        <span class="dj">￥15.99</span>
+        <a href="#" class="decrement">-</a>
+        <input type="text" class="itxt" value="1">
+        <a href="#" class="increment">+</a>
+        <span class="zj">￥15.99</span>
+    </div>
+    <script>
+        $('.increment').click(function() {
+            var n = $(this).siblings('.itxt').val();
+            n++;
+            $(this).siblings('.itxt').val(n);
+            var dj = $(this).siblings('.dj').text().substr(1);
+            var zj = (dj * n).toFixed(2);
+            $(this).siblings('.zj').text('￥' + zj);
+
+        });
+        $('.decrement').click(function() {
+            var n = $(this).siblings('.itxt').val();
+            if (n == 1) {
+                return false;
+            }
+            n--;
+            $(this).siblings('.itxt').val(n);
+            var dj = $(this).siblings('.dj').text().substr(1);
+            var zj = (dj * n).toFixed(2);
+            $(this).siblings('.zj').text('￥' + zj);
+        });
+        //当表单里的值发生变化时，重新计算一次价格
+        $('.itxt').change(function() {
+            var n = $(this).val();
+            var dj = $(this).siblings('.dj').text().substr(1);
+            var zj = (dj * n).toFixed(2);
+            $(this).siblings('.zj').text('￥' + zj);
+        });
+    </script>
+</body>
+
+</html>
