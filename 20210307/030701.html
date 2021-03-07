@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        
+        .current {
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<!-- <body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+        var arr = ['red', 'green', 'blue', 'yellow'];
+        var sum = 0;
+        $('div').each(function(index, domEle) {
+            $(domEle).css('color', arr[index]);
+            sum += parseFloat($(domEle).text());
+        });
+        console.log(sum);
+    </script>
+</body> -->
+
+<!-- <body>
+    <ul>
+        <li>原li</li>
+    </ul>
+    <div class="test">原div</div>
+    <script>
+        var li = $('<li>新li1</li>');
+        $('ul').append(li);
+        var li = $('<li>新li2</li>');
+        $('ul').prepend(li);
+        var div = $('<div>新div1</div>');
+        $('.test').append(div);
+        var div = $('<div>新div2</div>');
+        $('.test').prepend(div);
+    </script>
+</body> -->
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <ol>
+
+    </ol>
+    <div></div>
+    <script>
+        // $('div').on({
+        //     mouseenter: function() {
+        //         $(this).css('background', 'purple');
+        //     },
+        //     mouseleave: function() {
+        //         $(this).css('background', 'pink');
+        //     },
+        //     click: function() {
+        //         $(this).css('width', 200);
+        //     }
+        // });
+        // $('div').off('click mouseleave');
+
+        // $('div').on('mouseenter mouseleave', function() {
+        //     $(this).toggleClass('current');
+        // });
+        $('ul').on('click', 'li', function() {
+            alert(11);
+        });
+        $('ul').off('click', 'li');
+
+
+        // $('ol').on('click', 'li', function() {
+        //     alert(1);
+        // })
+        // var li = $('<li>后来的li</li>')
+        // $('ol').append(li);
+    </script>
+</body>
+
+</html>
