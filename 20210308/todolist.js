@@ -5,7 +5,6 @@ $(function() {
         if (e.keyCode === 13) {
             if ($(this).val() == '') {
                 alert('请输入内容');
-                return false;
             } else {
                 // 先读取本地存储原来的数据  封装一个函数
                 var local = getDate();
@@ -58,17 +57,21 @@ $(function() {
         var data = getDate();
         //遍历这个数据
         //遍历数据之前要先把ol里面的数据清空
-        $('ol').empty();
-        $('ul').empty();
+        $('ol, ul').empty();
+        var todoCount = 0;
+        var doneCount = 0;
         $.each(data, function(i, n) {
-            $('ol').prepend('<li><input type = "checkbox"><p>' + n.title + '</p><a href = "javascript:;" id="' + i + '">x</a></li>');
-            // if (n.done) {
-            //     $('ul').prepend('<li><input type = "checkbox" checked="checked"><p>' + n.title + '</p><a href = "javascript:;" id="' + i + '">x</a></li>');
-            // } else {
-            //     $('ol').prepend('<li><input type = "checkbox"><p>' + n.title + '</p><a href = "javascript:;" id="' + i + '">x</a></li>');
-            // }
-
+            // $('ol').prepend('<li><input type = "checkbox"><p>' + n.title + '</p><a href = "javascript:;" id="' + i + '">x</a></li>');
+            if (n.done) {
+                $('ul').prepend('<li><input type = "checkbox" checked="checked"><p>' + n.title + '</p><a href = "javascript:;" id="' + i + '">x</a></li>');
+                doneCount++;
+            } else {
+                $('ol').prepend('<li><input type = "checkbox"><p>' + n.title + '</p><a href = "javascript:;" id="' + i + '">x</a></li>');
+                todoCount++;
+            }
         });
+        $("#todocount").text(todoCount);
+        $("#donecount").text(doneCount);
     }
 
 
