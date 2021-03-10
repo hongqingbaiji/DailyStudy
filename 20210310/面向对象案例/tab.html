@@ -49,7 +49,7 @@
             width: 15px;
             height: 15px;
             line-height: 10px;
-            background-color: #000;
+            background-color: #333;
             color: #fff;
         }
         
@@ -70,15 +70,28 @@
             width: 100%;
             height: 450px;
         }
+        
+        .tabsbox .liactive {
+            border-bottom: 0;
+        }
+        
+        .tabscon section {
+            display: none;
+            padding: 20px;
+        }
+        
+        .tabscon .conactive {
+            display: block;
+        }
     </style>
 </head>
 
 <body>
-    <div class="tabsbox">
+    <div class="tabsbox" id="tab">
         <!-- tab标签 -->
         <nav class="firstnav">
             <ul>
-                <li><span class="liactive">测试1</span><span class="close">x</span></li>
+                <li class="liactive"><span>测试1</span><span class="close">x</span></li>
                 <li><span>测试2</span><span class="close">x</span></li>
                 <li><span>测试3</span><span class="close">x</span></li>
             </ul>
