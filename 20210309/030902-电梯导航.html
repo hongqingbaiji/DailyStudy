@@ -104,7 +104,7 @@
             <li>slide</li>
         </ul>
     </div>
-    <script>
+    <!-- <script>
         $(function() {
             var top1 = $('.nav').offset().top;
             var flag = true;
@@ -124,12 +124,9 @@
                         }
                     })
                 }
-
             }
             $(window).scroll(function() {
                 toggleTool();
-
-
             })
             $('.dt li').click(function() {
                 flag = false;
@@ -142,11 +139,85 @@
                 }, function() {
                     flag = true;
                 });
+            });
+        })
+    </script> -->
+
+    <!-- <script>
+        $(function() {
+            toggleTool();
+            var flag = true;
+
+            function toggleTool() {
+                var boxTop = $('.nav').offset().top;
+                if ($(document).scrollTop() >= boxTop) {
+                    $('.dt ul').fadeIn(500);
+                } else {
+                    $('.dt ul').fadeOut(500);
+                }
+            }
+            $(window).scroll(function() {
+                toggleTool();
+                if (flag) {
+                    $('.daohang div').each(function(i, ele) {
+                        if ($(document).scrollTop() >= $(ele).offset().top) {
+                            $('.dt li').eq(i).addClass('current1').siblings().removeClass();
+                        }
+                    });
+                }
 
             });
+            $('.dt li').click(function() {
+                flag = false;
+                $(this).addClass('current1').siblings().removeClass();
+                //点击里，需要滚动到相应位置
+                var current = $('.daohang div').eq($(this).index()).offset().top;
+                $('body,html').stop().animate({
+                    scrollTop: current
+                }, function() {
+                    flag = true;
+                });
+            });
+        })
+    </script> -->
 
+    <script>
+        $(function() {
+            toggleTool();
+
+            function toggleTool() {
+                var boxTop = $('.nav').offset().top;
+                if ($(document).scrollTop() >= boxTop) {
+                    $('.dt ul').slideDown(500);
+                } else {
+                    $('.dt ul').slideUp(500);
+                }
+            }
+            $(window).scroll(function() {
+                toggleTool();
+                if (flag) {
+                    $('.daohang div').each(function(i, ele) {
+                        if ($(document).scrollTop() >= $(ele).offset().top) {
+                            $('.dt li').eq(i).addClass('current1').siblings().removeClass();
+                        }
+                    });
+                }
+
+            });
+            var flag = true;
+            $('.dt li').click(function() {
+                flag = false;
+                $(this).addClass('current1').siblings().removeClass();
+                var current = $('.daohang div').eq($(this).index()).offset().top;
+                $('body,html').stop().animate({
+                    scrollTop: current
+                }, function() {
+                    flag = true;
+                });
+            });
         })
     </script>
+
 </body>
 
 </html>
