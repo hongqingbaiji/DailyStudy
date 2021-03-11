@@ -22,7 +22,8 @@
             margin: 100px auto;
             width: 800px;
             height: 500px;
-            border: 1px solid #ccc;
+            border: 1px solid lightsalmon;
+            position: relative;
         }
         
         .firstnav {
@@ -38,16 +39,25 @@
             text-align: center;
             line-height: 50px;
             border-right: 1px solid #ccc;
-            border-bottom: 1px solid #ccc;
             cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .firstnav li span textarea {
+            width: 80px;
+            height: 30px;
+            outline: none;
+            padding: 6px;
+            margin: 10px;
         }
         
         .close {
             position: absolute;
             top: 0;
             right: 0;
-            width: 15px;
-            height: 15px;
+            width: 12px;
+            height: 12px;
+            font-size: 12px;
             line-height: 10px;
             background-color: #333;
             color: #fff;
@@ -55,10 +65,11 @@
         
         .tabadd {
             height: 50px;
-            /* border-bottom: 1px solid #ccc; */
+            border-bottom: 1px solid #ccc;
         }
         
         .tabadd span {
+            display: block;
             padding: 1px 5px;
             border: 1px solid #ccc;
             float: right;
@@ -67,17 +78,32 @@
         }
         
         .tabscon {
+            position: absolute;
+            top: 50px;
+            left: 0px;
             width: 100%;
             height: 450px;
+            padding: 30px;
+            overflow: auto;
+        }
+        
+        .tabscon section textarea {
+            width: 500px;
+            height: 300px;
+            outline: none;
+            padding: 6px;
         }
         
         .tabsbox .liactive {
-            border-bottom: 0;
+            border-bottom: 1px solid #fff;
+            z-index: 9;
         }
         
-        .tabscon section {
+        .tabscon section,
+        .tabscon .conactive {
             display: none;
-            padding: 20px;
+            width: 100%;
+            height: 100%;
         }
         
         .tabscon .conactive {
