@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script>
+        var gl = Math.ceil(prompt('请输入公里数'));
+        alert(gl);
+        var dc = prompt('是否堵车，0代表没有，1代表堵车了');
+        var money = 13;
+        if (gl <= 0) {
+            alert('输入错误，请输入一个大于0的数');
+        } else if (gl <= 3) {
+            if (dc == 0) {
+                alert('行驶公里数小于3，并且没有堵车，收取金额：' + money);
+            } else if (dc == 1) {
+                money += 10;
+                alert('行驶公里数小于3，堵车了，收取金额：' + money);
+            } else {
+                alert('输入错误');
+            }
+        } else {
+            money += (gl - 3) * 5;
+            if (dc == 0) {
+                alert('行驶公里数' + gl + '，没有堵车，收取金额：' + money);
+            } else if (dc == 1) {
+                money += 10;
+                alert('行驶公里数' + gl + '，堵车了，收取金额：' + money);
+            } else {
+                alert('输入错误');
+            }
+        }
+    </script> -->
+
+    <script>
+        var car = (function() {
+            var start = 13; //起步价
+            var total = 0; //总价
+            return {
+                //正常的总价
+                price: function(n) {
+                    if (n <= 3) {
+                        total = start;
+                    } else {
+                        total = start + (n - 3) * 5;
+                    }
+                    return total;
+                },
+                //拥堵之后的费用
+                yd: function(flag) {
+                    return flag ? total + 10 : total;
+                }
+            }
+        })();
+        console.log(car.price(5)); //23
+        console.log(car.yd(true)); //33
+    </script>
+
+</body>
+
+</html>
