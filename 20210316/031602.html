@@ -9,16 +9,33 @@
 </head>
 
 <body>
-    <script>
+    <!-- <script>
         // var str = 'wenhewenhe';
         // console.log(str.replace(/wen/g, '*')); //*he*he
 
 
-        function sum(num1, num2) {
-            num1 + num2;
-        }
-        console.log(sum(1, 2));
+        var colors = ['red', 'green', 'blue'];
+        var removed = colors.splice(0, 1);
+        removed = colors.splice(0, 0, 'yellow', 'orange');
+        console.log(removed);
+        console.log(colors);
+    </script> -->
+
+    <script>
+        function Person() {}
+
+        Person.prototype.name = 'wenhe';
+
+        var person1 = new Person();
+        console.log(person1.hasOwnProperty('name')); //false
+
+        person1.name = 'baiji'; //实例对象增加name属性
+        console.log(person1.hasOwnProperty('name')); //true
+
+        delete person1.name; //删除实例对象中的name属性
+        console.log(person1.hasOwnProperty('name')); //false
     </script>
+
 </body>
 
 </html>
