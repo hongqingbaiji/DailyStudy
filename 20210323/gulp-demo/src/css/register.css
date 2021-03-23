@@ -1,0 +1,147 @@
+.w {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.zhuce-hd {
+    border-bottom: 2px solid #b1191a;
+    height: 84px;
+    line-height: 82px;
+    font-size: 0;
+    margin-bottom: 20px;
+}
+
+.zhuce-con {
+    height: 522px;
+    border: 1px solid #dfdfdf;
+}
+
+.zhuce-con1 {
+    border-bottom: 1px solid #dfdfdf;
+    height: 43px;
+    color: #333;
+    background-color: #ececec;
+}
+
+.zhuce-con1 h3 {
+    float: left;
+    font-size: 18px;
+    line-height: 41px;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+.zhuce-con1 span {
+    float: right;
+    font-size: 14px;
+    line-height: 41px;
+    padding-right: 10px;
+}
+
+.zhuce-con1 span a {
+    color: #c81623;
+}
+
+.zhuce-con2 {
+    /* height: 480px; */
+    width: 600px;
+    margin: 54px auto;
+}
+
+.zhuce-con2 .table {
+    margin-top: 54px;
+}
+
+
+/* 表单样式开始 */
+
+.zcul li label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.zcul li input {
+    width: 200px;
+    height: 30px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    outline: none;
+    border: 1px solid #ccc;
+}
+
+.zcul li span {
+    margin-left: 10px;
+}
+
+#yzm {
+    width: 80px;
+}
+
+.yzm {
+    padding: 3px 6px;
+    margin-left: 10px;
+}
+
+.anquan {
+    display: inline-block;
+    padding-left: 154px;
+    margin-bottom: 10px;
+}
+
+.zcul li .ruo,
+.zcul li .zhong,
+.zcul li .qiang {
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    color: #fff;
+    margin-left: 0px;
+}
+
+.ruo {
+    background-color: red;
+}
+
+.zhong {
+    background-color: green;
+}
+
+.qiang {
+    background-color: salmon;
+}
+
+#check {
+    width: 12px;
+    height: 12px;
+    margin: 20px 0px 20px 110px;
+}
+
+.zcul .check {
+    margin-right: 0;
+    width: 88px;
+}
+
+.zcul a {
+    color: blue;
+}
+
+.wczc {
+    padding: 10px 50px;
+    margin: 10px 130px;
+    background-color: red;
+    color: #fff;
+    border: none;
+}
+
+.success {
+    color: green;
+}
+
+.wrong {
+    color: red;
+}
+
+
+/* 表单样式结束*/
