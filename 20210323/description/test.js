@@ -1,0 +1,1 @@
+console.log('test.js文件被执行了');
