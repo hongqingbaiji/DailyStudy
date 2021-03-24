@@ -5,7 +5,9 @@
   "main": "gulpfile.js",
   "dependencies": {
     "gulp": "^4.0.2",
+    "gulp-file-include": "^2.3.0",
     "gulp-htmlmin": "^5.0.1",
+    "gulp-less": "^4.0.1",
     "webpack": "^5.27.2"
   },
   "devDependencies": {},
