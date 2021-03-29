@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btnUser {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+        
+        th {
+            background-color: #eee;
+        }
+        
+        th,
+        td {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btnUser">添加用户</button>
+    <form action="localhost:3000" method="GET">
+        <table>
+            <thead>
+                <tr>
+                    <th>用户名</th>
+                    <th>年龄</th>
+                    <th>爱好</th>
+                    <th>游戏</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>张三</td>
+                    <td>20</td>
+                    <td>敲代码</td>
+                    <td>zhangsan@163.com</td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+
+</html>

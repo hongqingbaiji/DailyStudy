@@ -17,34 +17,34 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 //创建文档
-// User.create([{
-//     name: 'ww',
-//     age: 33,
-//     email: 'wangwu@163.com',
-//     password: 123456,
-//     hobbies: ['玩游戏', '爬山']
-// }, {
-//     name: 'zm',
-//     age: 20,
-//     email: 'zhangma@163.com',
-//     password: 123456,
-//     hobbies: ['音乐', '电影']
-// }, {
-//     name: 'hg',
-//     age: 20,
-//     email: 'huge@163.com',
-//     password: 123456,
-//     hobbies: ['电影', '读书']
-// }, {
-//     name: 'sn',
-//     age: 20,
-//     email: 'shaonian@163.com',
-//     password: 123456,
-//     hobbies: ['玩游戏', '美食']
-// }], (err, doc) => {
-//     console.log(err);
-//     console.log(doc);
-// });
+User.create([{
+    name: 'ww',
+    age: 33,
+    email: 'wangwu@163.com',
+    password: 123456,
+    hobbies: ['玩游戏', '爬山']
+}, {
+    name: 'zm',
+    age: 20,
+    email: 'zhangma@163.com',
+    password: 123456,
+    hobbies: ['音乐', '电影']
+}, {
+    name: 'hg',
+    age: 20,
+    email: 'huge@163.com',
+    password: 123456,
+    hobbies: ['电影', '读书']
+}, {
+    name: 'sn',
+    age: 20,
+    email: 'shaonian@163.com',
+    password: 123456,
+    hobbies: ['玩游戏', '美食']
+}], (err, doc) => {
+    console.log(err);
+    console.log(doc);
+});
 
 // //查找用户集合中的所有文档
 // User.find().then(result => console.log(result));
