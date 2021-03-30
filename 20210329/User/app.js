@@ -26,7 +26,98 @@ app.on('request', async(req, res) => {
     });
     if (method == 'GET') {
         if (pathname == '/list') {
-            res.end();
+            // 使用异步的方式查询数据
+            let users = await User.find();
+            let list = `
+            <!DOCTYPE html>
+            <html lang="en">
+            
+            <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Document</title>
+                <style>
+                    .btnUser {
+                        margin-bottom: 10px;
+                        cursor: pointer;
+                    }
+                    
+                    table,
+                    th,
+                    td {
+                        border: 1px solid #ccc;
+                        border-collapse: collapse;
+                    }
+                    
+                    th {
+                        background-color: #eee;
+                    }
+                    
+                    th,
+                    td {
+                        padding: 10px 20px;
+                    }
+                </style>
+            </head>
+            
+            <body>
+                <h5>
+                    <a href="localhost:3000/add">填加用户</a>
+                </h5>
+                <form action="localhost:3000" method="GET">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>用户名</th>
+                                <th>年龄</th>
+                                <th>爱好</th>
+                                <th>游戏</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            // 对数据库进行循环操作
+            users.forEach(item => {
+                list += `
+                <tr>
+                <td>${item.name}</td>
+                <td>${item.age}</td>
+                <td>
+                `;
+
+                //再次对爱好这个数组进行循环操作
+                item.hobbies.forEach(item => {
+                    list += `
+                        <span>${item}</span>
+                    `;
+                });
+
+
+                list += `
+                </td>
+                <td>${item.email}</td>
+                <td>
+                    <a href="#">修改</a>
+                    <a href="#">删除</a>
+                </td>
+                </tr>
+                `;
+            });
+
+            list += `
+            </tbody>
+            </table>
+            </form>
+        </body>
+        
+        </html>
+            `;
+            res.end(list);
+        } else if (pathname == '/add') {
+
         }
     } else if (method == 'POST') {
 
