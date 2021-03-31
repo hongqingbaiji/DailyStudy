@@ -17,11 +17,13 @@
 
 
 const http = require('http');
-const mongoose = require('mongoose');
 const url = require('url');
 const querystring = require('querystring');
 
-
+// 导入连接数据库的模块
+require('./model/index');
+//导入User模块
+const User = require('./model/user');
 
 // 创建web服务器
 const app = http.createServer();
@@ -338,45 +340,3 @@ app.on('request', async(req, res) => {
 //监听端口
 app.listen(3000);
 console.log('网站服务器启动成功');
-
-
-//连接数据库
-mongoose.connect('mongodb://localhost/playground', {
-        useUnifiedTopology: true,
-        useNewUrlParser: true
-    })
-    .then(() => console.log('数据库连接成功'))
-    .catch(err => console.log(err, '数据库连接失败'));
-
-//创建用户集合
-const userSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        minlength: 2,
-        maxlength: 10
-    },
-    age: {
-        type: Number,
-        min: 18,
-        max: 60
-    },
-    email: String,
-    password: String,
-    hobbies: [String]
-});
-//创建集合
-const User = mongoose.model('User', userSchema);
-
-//
-
-// //创建用户
-// User.create({
-//         name: 'wenhe',
-//         age: 28,
-//         email: 'wenhe@163.com',
-//         password: '123456',
-//         hobbies: ['敲代码']
-//     })
-//     .then(doc => console.log(doc))
-//     .catch(err => console.log(err));
