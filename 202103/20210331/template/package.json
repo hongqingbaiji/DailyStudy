@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "art-template": "^4.13.2"
+    "art-template": "^4.13.2",
+    "dateformat": "^4.5.1"
   },
   "devDependencies": {},
   "scripts": {
