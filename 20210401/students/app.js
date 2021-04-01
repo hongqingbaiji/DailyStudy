@@ -9,9 +9,18 @@
 
 //创建网站服务器
 
+const { timeStamp } = require('console');
 const http = require('http');
 const app = http.createServer();
 const url = require('url');
+const template = require('art-template');
+const path = require('path');
+
+//导入模板变量
+template.defaults.imports.dateFormat = dateFormat;
+//设置模板的默认后缀
+template.defaults.extname = '.art';
+
 
 // 导入连接数据库的模板
 require('./model/index');
@@ -29,9 +38,12 @@ app.on('request', (req, res) => {
         "content-type": "text/html;charset=utf8"
     });
 
+
+
     if (method == 'GET') {
         if (pathname == '/list') {
-            res.end('list');
+            list += ``;
+            res.end(list);
         }
     } else if (method == "POST") {
 
