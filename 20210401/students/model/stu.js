@@ -21,7 +21,7 @@ const stuSchema = new mongoose.Schema({
     email: String,
     hobbies: [String],
     college: String,
-    time: {
+    enterDate: {
         type: Date,
         default: Date.now
     }
@@ -40,5 +40,5 @@ module.exports = Stu;
 //     email: 'zhangsan@163.com',
 //     hobbies: '篮球',
 //     college: '软件学院',
-//     time: '2013/9/1'
+//     enterDate: '2013/9/1'
 // }).then(doc => console.log(doc)).catch(err => console.log(err));

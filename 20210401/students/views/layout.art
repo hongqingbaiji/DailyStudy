@@ -38,15 +38,17 @@
                 <th>所属学院</th>
                 <th>入学日期</th>
             </tr>
+            {{each stus}}
             <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-                <td>7</td>
+                <td>{{$value.name}}</td>
+                <td>{{$value.age}}</td>
+                <td>{{$value.sex}}</td>
+                <td>{{$value.email}}</td>
+                <td>{{$value.hobbies}}</td>
+                <td>{{$value.college}}</td>
+                <td>{{$value.enterDate}}</td>
             </tr>
+            {{/each}}
         </table>
 
     </div>

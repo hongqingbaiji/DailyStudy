@@ -10,25 +10,32 @@
 //创建网站服务器
 
 const { timeStamp } = require('console');
+
+// 导入连接数据库的模板
+require('./model/content');
+//导入Stu模块
+const Stu = require('./model/stu');
+
 const http = require('http');
 const app = http.createServer();
 const url = require('url');
 const template = require('art-template');
 const path = require('path');
+const dateFormat = require('dateformat');
 
+const getRouter = require('router');
+//获取路由对象
+const router = getRouter();
+
+//设置模板的根目录
+template.defaults.roots = path.join(__dirname, 'views');
 //导入模板变量
 template.defaults.imports.dateFormat = dateFormat;
 //设置模板的默认后缀
 template.defaults.extname = '.art';
 
 
-// 导入连接数据库的模板
-require('./model/index');
-//导入Stu模块
-const Stu = require('./model/stu');
-
-
-app.on('request', (req, res) => {
+app.on('request', async(req, res) => {
     //获取请求方式
     const method = req.method;
     // 获取请求地址
@@ -39,11 +46,15 @@ app.on('request', (req, res) => {
     });
 
 
-
     if (method == 'GET') {
         if (pathname == '/list') {
-            list += ``;
-            res.end(list);
+            //使用异步的方式查询数据
+            let stus = await Stu.find();
+            console.log(stus);
+            const html = template('layout', {
+
+            });
+
         }
     } else if (method == "POST") {
 
@@ -52,5 +63,5 @@ app.on('request', (req, res) => {
     }
 
 });
-app.listen(3000);
+app.listen(80);
 console.log('网站服务器已启动');
