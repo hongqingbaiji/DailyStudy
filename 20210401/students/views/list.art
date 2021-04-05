@@ -5,24 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        table,
-        th,
-        td {
-            border: 1px solid #ccc;
-            border-collapse: collapse;
-        }
-        
-        th,
-        td {
-            padding: 5px 20px;
-        }
-        
-        td {
-            text-align: center;
-        }
-    </style>
+    <title>学生列表</title>
+    <link rel="stylesheet" href="./css/list.css">
 </head>
 
 <body>
@@ -44,9 +28,13 @@
                 <td>{{$value.age}}</td>
                 <td>{{$value.sex}}</td>
                 <td>{{$value.email}}</td>
-                <td>{{$value.hobbies}}</td>
+                <td>
+                    {{each $value.hobbies}}
+                        <span>{{$value}}</span>
+                    {{/each}}
+                </td>
                 <td>{{$value.college}}</td>
-                <td>{{$value.enterDate}}</td>
+                <td>{{dateFormat($value.enterDate,'yyyy-mm-dd')}}</td>
             </tr>
             {{/each}}
         </table>

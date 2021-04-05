@@ -7,61 +7,37 @@
 // 6、实现学生信息添加功能
 // 7、实现学生信息展示功能
 
-//创建网站服务器
-
-const { timeStamp } = require('console');
+//引入HTTP模块
+const http = require('http');
+//引入模板引擎
+const template = require('art-template');
+//引入PATH模块
+const path = require('path');
+//引入静态资源访问模块
+const serveStatic = require('serve-static');
+//引入处理日期的第三方模块
+const dateFormat = require('dateformat');
 
 // 导入连接数据库的模板
 require('./model/content');
-//导入Stu模块
-const Stu = require('./model/stu');
-
-const http = require('http');
+// 导入路由模块
+const router = require('./route/route');
+// 连接数据库
 const app = http.createServer();
-const url = require('url');
-const template = require('art-template');
-const path = require('path');
-const dateFormat = require('dateformat');
 
-const getRouter = require('router');
-//获取路由对象
-const router = getRouter();
-
+//实现静态资源访问服务
+const serve = serveStatic(path.join(__dirname, 'public'));
 //设置模板的根目录
-template.defaults.roots = path.join(__dirname, 'views');
-//导入模板变量
+template.defaults.root = path.join(__dirname, 'views');
+//处理日期格式的方法
 template.defaults.imports.dateFormat = dateFormat;
-//设置模板的默认后缀
-template.defaults.extname = '.art';
-
-
+//当客户端访问服务器端的时候
 app.on('request', async(req, res) => {
-    //获取请求方式
-    const method = req.method;
-    // 获取请求地址
-    let { pathname, query } = url.parse(req.url, true);
-    // 响应报文以及字符编码
-    res.writeHead(200, {
-        "content-type": "text/html;charset=utf8"
-    });
-
-
-    if (method == 'GET') {
-        if (pathname == '/list') {
-            //使用异步的方式查询数据
-            let stus = await Stu.find();
-            console.log(stus);
-            const html = template('layout', {
-
-            });
-
-        }
-    } else if (method == "POST") {
-
-    } else {
-        res.end('访问页面不存在');
-    }
-
+    //启用路由功能,函数是必填项
+    router(req, res, () => {});
+    //启用静态资源访问服务功能
+    serve(req, res, () => {});
 });
+//端口监听，默认是80端口
 app.listen(80);
 console.log('网站服务器已启动');

@@ -32,7 +32,7 @@ const Stu = mongoose.model('Stu', stuSchema);
 //导出Stu
 module.exports = Stu;
 
-// 添加数据
+// 静态添加数据
 // Stu.create({
 //     name: '张三',
 //     age: 20,
