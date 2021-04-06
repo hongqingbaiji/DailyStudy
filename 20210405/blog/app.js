@@ -3,12 +3,15 @@
 const express = require('express');
 // 引入path模块
 const path = require('path');
+// 引入body-parser模块
+const bodyParser = require('body-parser');
 // 创建网站服务器
 const app = express();
-
 //数据库连接
 require('./model/connect');
 // require('./model/user'); // 创建一个管理员用户
+// 处理post请求参数
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // 告诉express框架使用什么模板引擎渲染什么后缀的模板文件
 app.engine('art', require('express-art-template'));
