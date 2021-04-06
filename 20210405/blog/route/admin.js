@@ -8,6 +8,11 @@ admin.get('/login', (req, res) => {
     res.render('admin/login');
 });
 
+//实现登录功能
+admin.post('/login', (req, res) => {
+    //接收请求参数
+});
+
 admin.get('/user', (req, res) => {
     res.render('admin/user');
 });
