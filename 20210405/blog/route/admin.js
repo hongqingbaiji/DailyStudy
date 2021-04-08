@@ -1,8 +1,11 @@
 //创建博客的后台管理页面
 //引入express框架
 const express = require('express');
+//导入 bcrypt
+const bcrypt = require('bcrypt');
 //导入用户集合构造函数
 const { User } = require('../model/user');
+
 //创建博客后台管理页面路由
 const admin = express.Router();
 //挂载二级路由
@@ -29,7 +32,9 @@ admin.post('/login', async(req, res) => {
     if (user) {
         //查询到了用户
         // 将客户端传递过来的密码和用户信息中的密码进行比对
-        if (password == user.password) {
+        // true 比对成功 false 比对失败
+        let isEqual = await bcrypt.compare(password, user.password);
+        if (isEqual) {
             //登录成功
             res.send('登录成功');
         } else {

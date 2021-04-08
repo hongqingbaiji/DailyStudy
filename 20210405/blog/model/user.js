@@ -1,6 +1,8 @@
 //设定用户集合
 //引入mongoose模块
 const mongoose = require('mongoose');
+//引入 bcrypt
+const bcrypt = require('bcrypt');
 //创建用户集合规则
 const userSchema = new mongoose.Schema({
     username: {
@@ -18,8 +20,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 6,
-        maxlength: 16
+        unique: false
     },
     //可以规定admin代表超级管理员 ，normal 代表普通用户
     role: {
@@ -33,6 +34,19 @@ const userSchema = new mongoose.Schema({
 });
 // 创建集合
 const User = mongoose.model('User', userSchema);
+
+async function createUser() {
+    const salt = await bcrypt.genSalt(10);
+    const pwd = await bcrypt.hash('123456', salt);
+    const user = await User.create({
+        username: 'admin',
+        email: 'admin@163.com',
+        password: pwd,
+        role: 'admin',
+        state: 0
+    });
+}
+// createUser();
 
 //创建用户
 // User.create({
