@@ -36,7 +36,13 @@ admin.post('/login', async(req, res) => {
         let isEqual = await bcrypt.compare(password, user.password);
         if (isEqual) {
             //登录成功
-            res.send('登录成功');
+            //将用户名存储在请求对象中
+            req.session.username = user.username;
+            // res.send('登录成功');
+            // 
+            req.app.locals.userInfo = user;
+            //重定向到用户列表页面
+            res.redirect('/admin/user');
         } else {
             res.status(400).render('admin/error', { msg: '邮箱地址或者密码错误' });
         }
@@ -46,7 +52,7 @@ admin.post('/login', async(req, res) => {
         res.status(400).render('admin/error', { msg: '邮箱地址或者密码错误' });
     }
 });
-
+// 创建用户列表路由
 admin.get('/user', (req, res) => {
     res.render('admin/user');
 });
