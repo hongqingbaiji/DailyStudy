@@ -32,25 +32,22 @@ app.set('view engine', 'art');
 // 开放静态资源文件
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
 //导入路由模块 home 和 admin
 const home = require('./route/home');
 const admin = require('./route/admin');
+
 //拦截请求，判断用户的登录状态
-app.use('/admin', (req, res, next) => {
-    // 判断用户访问的是否是登录页面
-    // 判断用户的登录状态，如果登录将请求放行，如果不是，将请求重定向到登录页面
-    if (req.url != '/login' && !req.session.username) {
-        res.redirect('/admin/login');
-    } else {
-        // 如果是登录状态，则放行
-        next();
-    }
-});
+app.use('/admin', require('./middleware/loginGuard'));
 //为路由匹配请求路径
 app.use('/home', home);
 app.use('/admin', admin);
+
+//错误处理中间件
+app.use((err, req, res, next) => {
+    //将字符串转换成对象类型 JSON.parse()
+    const result = JSON.parse(err);
+    res.redirect(`${result.path}?message=${result.message}`);
+});
 
 // 监听端口
 app.listen(80);
