@@ -17,5 +17,9 @@ admin.get('/logout', require('./admin/logout'));
 admin.get('/user-edit', require('./admin/user-edit'));
 //创建实现用户添加功能路由
 admin.post('/user-edit', require('./admin/user-edit-fn'));
+//实现用户修改功能
+admin.post('/user-modify', require('./admin/user-modify'));
+
+
 //将路由对象作为模块成员进行导出
 module.exports = admin;

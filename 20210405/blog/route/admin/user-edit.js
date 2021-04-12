@@ -1,6 +1,25 @@
-module.exports = (req, res) => {
-    const { message } = req.query;
-    res.render('admin/user-edit', {
-        message: message
-    });
+const { User } = require('../../model/user');
+module.exports = async(req, res) => {
+    // 获取到地址栏中的id参数
+    const { message, id } = req.query;
+
+    // 如果当前传递了id参数，说明是修改操作，如果没有就是添加操作
+    if (id) {
+        // 修改操作
+        let user = await User.findOne({ _id: id });
+        //渲染用户编辑功能（修改）
+        res.render('admin/user-edit', {
+            message: message,
+            user: user,
+            link: '/admin/user-modify?id=' + id,
+            button: '修改'
+        });
+    } else {
+        // 添加操作
+        res.render('admin/user-edit', {
+            message: message,
+            link: '/admin/user-edit',
+            button: '添加'
+        });
+    }
 };
