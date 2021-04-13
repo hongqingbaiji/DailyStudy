@@ -19,7 +19,12 @@ admin.get('/user-edit', require('./admin/user-edit'));
 admin.post('/user-edit', require('./admin/user-edit-fn'));
 //实现用户修改功能
 admin.post('/user-modify', require('./admin/user-modify'));
+//实现用户删除功能
+admin.get('/user-delete', require('./admin/user-delete'));
 
+// 文章列表页面路由
+
+// 文章编辑页面路由
 
 //将路由对象作为模块成员进行导出
 module.exports = admin;
