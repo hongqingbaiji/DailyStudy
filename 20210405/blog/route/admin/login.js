@@ -21,8 +21,8 @@ module.exports = async(req, res) => {
         //查询到了用户
         // 将客户端传递过来的密码和用户信息中的密码进行比对
         // true 比对成功 false 比对失败
-        let isEqual = await bcrypt.compare(password, user.password);
-        if (isEqual) {
+        let isValid = await bcrypt.compare(password, user.password);
+        if (isValid) {
             //登录成功
             //将用户名存储在请求对象中
             req.session.username = user.username;
