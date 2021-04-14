@@ -29,6 +29,15 @@ const articleSchema = new mongoose.Schema({
 // 3. 根据规则创建集合
 const Article = mongoose.model('Article', articleSchema);
 
+// //创建文章
+// Article.create({
+//         title: '我是标题标题',
+//         author: 'admin',
+//         content: '我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容'
+//     })
+//     .then(() => { console.log('文章创建成功') })
+//     .catch(() => { console.log('文章创建失败') });
+
 // 4. 将集合规则作为模块成员进行导出
 module.exports = {
     Article: Article

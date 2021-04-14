@@ -7,6 +7,10 @@ const path = require('path');
 const bodyParser = require('body-parser');
 // 引入express-session模块
 const session = require('express-session');
+// 引入art-template模块
+const template = require('art-template');
+// 引入 dateformat 模块
+const dateFormat = require('dateformat');
 // 创建网站服务器
 const app = express();
 //数据库连接
@@ -28,6 +32,8 @@ app.engine('art', require('express-art-template'));
 app.set('views', path.join(__dirname, 'views'));
 // 告诉express框架模板的默认后缀是什么
 app.set('view engine', 'art');
+//向模板内部导入dateFormate 变量
+template.defaults.imports.dateFormat = dateFormat;
 
 // 开放静态资源文件
 app.use(express.static(path.join(__dirname, 'public')));
