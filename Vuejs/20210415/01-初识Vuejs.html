@@ -39,7 +39,7 @@
     </script>
 </body> -->
 
-<body>
+<!-- <body>
     <div id="app">
         <h2>当前计数：{{counter}}</h2>
         <button @click="increment">+</button>
@@ -62,7 +62,7 @@
         </script>
     </div>
 
-    <!-- <div id="app2">
+    -- <div id="app2">
         <h2>当前计数：{{counter}}</h2>
         <button v-on:click="counter++">+</button>
         <button v-on:click="counter--">-</button>
@@ -74,7 +74,64 @@
                 }
             });
         </script>
-    </div> -->
+    </div> --
+</body> -->
+
+
+<body>
+    <div id="app">
+        <span v-bind:title="message">鼠标停留</span>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '页面加载于' + new Date().toLocaleString()
+            }
+        });
+    </script>
+
+    <div id="app2">
+        <p v-if="seen">你看我是怎么隐身的</p>
+    </div>
+    <script>
+        const app2 = new Vue({
+            el: '#app2',
+            data: {
+                seen: true
+            }
+        });
+    </script>
+
+    <div id="app3">
+        <p>{{message}}</p>
+        <button v-on:click="reverseMessage">翻转字符</button>
+    </div>
+    <script>
+        const app3 = new Vue({
+            el: '#app3',
+            data: {
+                message: 'Hello Wenhe'
+            },
+            methods: {
+                reverseMessage: function() {
+                    this.message = this.message.split('').reverse().join('')
+                }
+            }
+        });
+    </script>
+    <div id="app4">
+        <p>{{ message }}</p>
+        <input v-model="message">
+    </div>
+    <script>
+        const app4 = new Vue({
+            el: '#app4',
+            data: {
+                message: 'good job'
+            }
+        });
+    </script>
 </body>
 
 </html>
