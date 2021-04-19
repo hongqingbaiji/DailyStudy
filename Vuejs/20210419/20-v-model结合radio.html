@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<!-- <body>
+  <div id='app'>
+    <label for="man">
+      <input type="radio" name="sex" id="man" value="男" v-model="sex">男
+    </label>
+    <label for="woman">
+      <input type="radio" name="sex" id="woman" value="女" v-model="sex">女
+    </label>
+    <h3>{{ sex }}</h3>
+  </div>
+  <script src='../js/vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello',
+        sex: '男'
+      },
+    });
+  </script>
+</body> -->
+
+<!-- <body>
+  <div id='app'>
+    <label for="agree">
+      <input type="checkbox" id="agree" v-model="isAgree">同意协议
+    </label>
+    <button :disabled="!isAgree">确认</button>
+    <h3>您选择的是：{{ isAgree }}</h3>
+  </div>
+  <script src='../js/vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        isAgree: false
+      },
+    });
+  </script>
+</body> -->
+
+<!-- <body>
+  <div id='app'>
+    <input type="checkbox" value="篮球" v-model="hobbies">篮球
+    <input type="checkbox" value="足球" v-model="hobbies">足球
+    <input type="checkbox" value="看书" v-model="hobbies">看书
+    <input type="checkbox" value="跑步" v-model="hobbies">跑步
+    <h3>{{ hobbies }}</h3>
+  </div>
+  <script src='../js/vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        hobbies: []
+      },
+    });
+  </script>
+</body> -->
+
+<body>
+  <div id='app'>
+    <h3>您选择的爱好是{{ hobbies }}</h3>
+    <label v-for="item in originHobbies" :for="item">
+      <input type="checkbox" :value="item" :id="item" v-model="hobbies">{{ item }}
+    </label>
+  </div>
+  <script src='../js/vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        hobbies: [],
+        originHobbies: ['篮球', '足球', '乒乓球', '羽毛球']
+      },
+    });
+  </script>
+</body>
+
+</html>
