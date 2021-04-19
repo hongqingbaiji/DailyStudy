@@ -56,7 +56,7 @@
             <td>{{item.id}}</td>
             <td>{{item.bName}}</td>
             <td>{{item.date}}</td>
-            <td>{{getFinalPrice(item.price)}}</td>
+            <td>{{getFinalPrice(item.price*item.counter)}}</td>
             <td>
               <button @click="decrement(index)" :disabled="item.counter <=1">-</button> {{item.counter}}
               <button @click="increment(index)">+</button>
