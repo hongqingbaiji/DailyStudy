@@ -1,21 +1,24 @@
+// 公共的配置
+
 const path = require('path');
-// const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const webpack = require('webpack');
+const { VueLoaderPlugin } = require('vue-loader');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   // 入口
   entry: './src/main.js',
   // 出口
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, '../dist'),
     filename: 'bundle.js',
-    publicPath: 'dist/'
   },
   module: {
     rules: [
       // style-loader负责将样式添加到DOM中
       // css-loader 只负责将css文件进行加载
       // 使用多个loader时，是从右向左的
-      { test: /\.css$/i, use: ['style-loader', 'css-loader'] },
-      { test: /\.ts$/, use: 'ts-loader' },
+      { test: /\.css$/i, use: ['vue-style-loader', 'style-loader', 'css-loader'] },
       { test: /\.less$/i, use: ['style-loader', 'css-loader', 'less-loader'] },
       {
         // url-loader 和 file-loader
@@ -42,21 +45,23 @@ module.exports = {
           }
         },
       },
-      {
-        // 配置 vue-loader
-        test: /\.vue$/,
-        use: {
-          loader: 'vue-loader'
-        }
-      },
+      { test: /\.vue$/, use: 'vue-loader' },
     ],
   },
   resolve: {
     //alias:别名
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
-    }
+    },
+    //引用文件时省略以下文件的后缀名
+    extensions: ['.js', '.css', '.vue']
   },
-  // plugins: [new VueLoaderPlugin()],
+  plugins: [
+    new VueLoaderPlugin(),
+    new webpack.BannerPlugin('最终版权归wenhe所有'),
+    new HtmlWebpackPlugin({
+      template: 'index.html'
+    }),
+  ],
   mode: 'development',
 }

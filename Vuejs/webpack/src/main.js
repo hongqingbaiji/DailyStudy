@@ -23,3 +23,5 @@ new Vue({
     App
   }
 });
+
+document.writeln(`<h3>1234</h3>`);
