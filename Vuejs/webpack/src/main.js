@@ -9,3 +9,17 @@ console.log(name, age, sex);
 
 // 依赖css文件
 require('./css/normal.css');
+require('./css/special.less');
+
+// 使用Vue进行开发
+import Vue from 'vue';
+// 导入App.vue
+import App from './vue/App.vue';
+
+new Vue({
+  el: '#app',
+  template: '<App/>',
+  components: {
+    App
+  }
+});
