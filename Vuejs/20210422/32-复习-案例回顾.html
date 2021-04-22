@@ -215,8 +215,6 @@
       <cpn @info="cpnInfo"></cpn>
       <input type="text" :value="name" v-on:input="uname">
     </div>
-
-
   </div>
   <template id="cpn">
     <div>
@@ -253,16 +251,16 @@
     const app = new Vue({
       el: '#app',
       data: {
-        cpnInfo(item) {
-          name = item.name;
-          console.log(name);
-        },
-        name: name
+        name: this.name,
       },
       methods: {
         uname(event) {
           this.name = event.target.value;
-        }
+        },
+        cpnInfo(item) {
+          this.name = item.name;
+          console.log(this.name);
+        },
       },
       components: {
         cpn
