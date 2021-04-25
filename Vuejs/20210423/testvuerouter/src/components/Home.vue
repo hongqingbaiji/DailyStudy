@@ -10,8 +10,16 @@
 
 <script>
 export default {
-  name:'Home'
-
+  name:'Home',
+  // created(){
+  //   document.title = '首页';
+  // }
+  created(){
+    console.log('Home created');
+  },
+  destroyed(){
+    console.log('Home destroued');
+  }
 }
 </script>
 

@@ -13,6 +13,15 @@ export default {
     uid(){
       return this.$route.params.uid;
     }
+  },
+  //   created(){
+  //   document.title = '用户';
+  // }
+    created(){
+    console.log('user created');
+  },
+  destroyed(){
+    console.log('user destroued');
   }
 }
 </script>

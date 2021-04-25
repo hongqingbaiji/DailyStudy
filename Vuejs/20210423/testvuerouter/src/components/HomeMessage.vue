@@ -12,7 +12,13 @@
 
 <script>
 export default {
-  name:'HomeMessage'
+  name:'HomeMessage',
+    created(){
+    console.log('HomeMessage created');
+  },
+  destroyed(){
+    console.log('HomeMessage destroued');
+  }
 }
 </script>
 
