@@ -1,12 +1,15 @@
 <template>
   <div>
-    {{counter}}
+    {{$store.state.counter}}
   </div>
 </template>
 
 <script>
 export default {
-  name:'HelloVuex'
+  name:'HelloVuex',
+  props:{
+    counter:Number
+  }
 }
 </script>
 
