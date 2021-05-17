@@ -1,0 +1,22 @@
+<div id='app'>
+  <h3>
+    <ul>
+      <li v-for="todo in todos">{{todo.text}}</li>
+    </ul>
+  </h3>
+</div>
+<script src='../js/vue.js'></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      todos: [{
+        text: 1111111
+      }, {
+        text: 2222222
+      }, {
+        text: 3333333
+      }]
+    }
+  });
+</script>
