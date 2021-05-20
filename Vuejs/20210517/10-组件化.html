@@ -15,31 +15,88 @@
     3.使用组件
   -->
 
-  <div id='app'>
-    <!-- 3. 使用组件 -->
-    <my-cpn></my-cpn>
-  </div>
-  <script src='../js/vue.js'></script>
+  <!-- <div id='app'> -->
+  <!-- 3. 使用组件 -->
+  <!-- <cpn2></cpn2> -->
+  <!-- </div> -->
+  <!-- <script src='../js/vue.js'></script>
   <script>
     // 1. 创建组件构造器对象
-    const cpnC = Vue.extend({
+    const cpnC1 = Vue.extend({
       template: `
         <div>
-          <h3>我是标题</h3>
-          <p>我是内容</p>
+          <h3>我是标题1</h3>
+          <p>我是内容1</p>
         </div>
       `,
     });
-    //2. 注册组件
-    Vue.component('my-cpn', cpnC)
+    const cpnC2 = Vue.extend({
+      template: `
+        <div>
+          <h3>我是标题2</h3>
+          <p>我是内容2</p>
+          <cpn1></cpn1>
+        </div>
+      `,
+      components: {
+        cpn1: cpnC1
+      }
+    });
+
+    // //2. 注册组件
+    // Vue.component('cpn1', cpnC1)
 
     const app = new Vue({
       el: '#app',
       data: {
         message: 'hello'
+      },
+      components: {
+        // cpn1: cpnC1,
+        cpn2: cpnC2
+      }
+    });
+  </script> -->
+
+
+  <div id='app'>
+    <cpn></cpn>
+  </div>
+
+  <template id="cpnC">
+    <div>
+      <button @click="decrement" :disabled="count<=1">-</button>
+      {{ count }}
+      <button @click="increment">+</button>
+    </div>
+  </template>
+
+  <script src='../js/vue.js'></script>
+  <script>
+    const cpn = {
+      template: '#cpnC',
+      data() {
+        return {
+          count: 1
+        }
+      },
+      methods: {
+        decrement() {
+          this.count--
+        },
+        increment() {
+          this.count++
+        }
+      },
+    };
+    const app = new Vue({
+      el: '#app',
+      components: {
+        cpn
       }
     });
   </script>
+
 </body>
 
 </html>
