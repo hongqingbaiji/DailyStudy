@@ -8,7 +8,7 @@
   <title>Document</title>
 </head>
 
-<body>
+<!-- <body>
   <div id='app'>
     <cpn @item-click="itemClick"></cpn>
   </div>
@@ -61,6 +61,55 @@
         itemClick(item) {
           console.log(item.name);
         }
+      }
+    });
+  </script>
+</body> -->
+
+<body>
+  <div id='app'>
+    <cpn @decrement="changeCount" @increment="changeCount"></cpn>
+    <h3>{{ total }}</h3>
+  </div>
+  <template id="cpnC">  
+    <div>
+      <button @click="decrement" :disabled="count<=1">-</button>
+      <button @click="increment">+</button>
+    </div>
+  </template>
+  <script src='../js/vue.js'></script>
+  <script>
+    const cpn = {
+      template: '#cpnC',
+      data() {
+        return {
+          count: 1
+        }
+      },
+      methods: {
+        decrement() {
+          this.count--;
+          this.$emit('decrement', this.count);
+        },
+        increment() {
+          this.count++;
+          this.$emit('increment', this.count);
+        },
+
+      }
+    };
+    const app = new Vue({
+      el: '#app',
+      data: {
+        total: 1
+      },
+      methods: {
+        changeCount(count) {
+          this.total = count;
+        }
+      },
+      components: {
+        cpn
       }
     });
   </script>
