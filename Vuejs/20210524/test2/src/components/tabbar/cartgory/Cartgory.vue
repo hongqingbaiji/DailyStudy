@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h3>标题</h3>
+    <h3>cartgory</h3>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
+  name: 'Cartgory',
   components: {},
   data() {
     return {
@@ -19,4 +19,3 @@ export default {
 <style scoped>
 
 </style>
-
