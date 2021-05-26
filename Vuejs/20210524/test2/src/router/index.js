@@ -9,6 +9,10 @@ const Shop = () =>
   import ('../components/tabbar/shop/Shop');
 const Profile = () =>
   import ('../components/tabbar/profile/Profile');
+const News = () =>
+  import ('../components/tabbar/home/News');
+const Message = () =>
+  import ('../components/tabbar/home/Message');
 
 Vue.use(VueRouter)
 
@@ -17,7 +21,17 @@ const routes = [{
   redirect: '/home'
 }, {
   path: '/home',
-  component: Home
+  component: Home,
+  children: [{
+    path: '/',
+    redirect: "news"
+  }, {
+    path: 'news',
+    component: News
+  }, {
+    path: 'message',
+    component: Message
+  }]
 }, {
   path: '/cartgory',
   component: Cartgory
@@ -25,7 +39,7 @@ const routes = [{
   path: '/shop',
   component: Shop
 }, {
-  path: '/profile',
+  path: '/profile/:id',
   component: Profile
 }]
 

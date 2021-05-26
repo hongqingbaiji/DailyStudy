@@ -1,13 +1,17 @@
 <template>
   <div>
-    <h3>profile</h3>
-    <p>你好，{{$route.params.id}}</p>
+    <ol>
+      <li>消息1</li>
+      <li>消息2</li>
+      <li>消息3</li>
+      <li>消息4</li>
+    </ol>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Profile',
+  name: 'Message',
   components: {},
   data() {
     return {
