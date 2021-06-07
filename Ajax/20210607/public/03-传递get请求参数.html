@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" name="uname">
+  <input type="text" name="age">
+  <input type="button" value="提交" class="btn">
+  <script>
+    const btn = document.queryselector('.btn');
+    btn.addElementListen('click', function() {
+      const xhr = new XMLHttpRequest();
+      xhr.open('get', 'http://localhost:3000/');
+      xhr.send();
+      const res
+    });
+  </script>
+</body>
+
+</html>
