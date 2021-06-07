@@ -9,16 +9,31 @@
 </head>
 
 <body>
-  <input type="text" name="uname">
-  <input type="text" name="age">
-  <input type="button" value="提交" class="btn">
+  <input type="text" name="uname" id="uname">
+  <input type="text" name="age" id="age">
+  <input type="button" value="提交" id="btn">
   <script>
-    const btn = document.queryselector('.btn');
-    btn.addElementListen('click', function() {
+    const btn = document.querySelector('#btn');
+    const uname = document.querySelector('#uname');
+    const age = document.querySelector('#age');
+
+    btn.addEventListener('click', function() {
+      // 创建ajax对象
       const xhr = new XMLHttpRequest();
-      xhr.open('get', 'http://localhost:3000/');
+      // 获取用户在文本框中输入的值
+      const nameValue = uname.value;
+      const ageValue = age.value;
+      // 拼接请求参数
+      const params = 'uname=' + nameValue + '&age=' + ageValue;
+      //指定ajax要从哪请求，用什么方式请求
+      xhr.open('get', 'http://localhost:3000/get?' + params);
+      // 发送请求
       xhr.send();
-      const res
+      // 获取服务器端响应到客户端的数据
+      xhr.onload = function() {
+        console.log(xhr.responseText);
+      }
+
     });
   </script>
 </body>

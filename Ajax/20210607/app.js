@@ -19,6 +19,10 @@ app.get('/responseData', (req, res) => {
   });
 });
 
+app.get('/get', (req, res) => {
+  res.send(req.query);
+});
+
 // 监听端口
 app.listen(3000);
 // 控制台提示输出
