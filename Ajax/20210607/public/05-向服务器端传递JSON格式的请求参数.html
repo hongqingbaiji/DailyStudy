@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 创建ajax对象
+    const xhr = new XMLHttpRequest();
+    // 配置ajax对象
+    xhr.open('post', 'http://localhost:3000/json');
+    // 设置请求报文
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    // 发送请求
+    xhr.send(JSON.stringify({
+      name: 'wenhe',
+      age: 18
+    }));
+    // 获取服务器端响应到客户端的数据
+    xhr.onload = function() {
+      console.log(xhr.responseText);
+    }
+  </script>
+</body>
+
+</html>
