@@ -3,6 +3,7 @@ const express = require('express');
 // 路径处理模块
 const path = require('path');
 const bodyParser = require('body-parser');
+const fs = require('fs');
 // 创建web服务器
 const app = express();
 
@@ -46,6 +47,12 @@ app.get('/readystate', (req, res) => {
 // 对应07html文件
 app.get('/error', (req, res) => {
   res.status(400).send('not ok');
+});
+// 对应08html文件
+app.get('/cache', (req, res) => {
+  fs.readFile('./test.txt', (err, result) => {
+    res.send(result);
+  })
 });
 
 // 监听端口
