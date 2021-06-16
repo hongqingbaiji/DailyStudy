@@ -11,22 +11,38 @@
 <body>
   <script>
     function ajax(options) {
+
+      // 存储的是默认值
+      const defaults = {
+        type: 'get',
+        url: '',
+        data: {},
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function() {},
+        error: function() {}
+      };
+
+      // 对象覆盖，使用options对象中的属性覆盖defaults对象中的属性
+      Object.assign(defaults, options);
+
       const xhr = new XMLHttpRequest();
       let params = '';
-      for (let attr in options.data) {
-        params += attr + '=' + options.data[attr] + '&';
+      for (let attr in defaults.data) {
+        params += attr + '=' + defaults.data[attr] + '&';
       }
       params = params.substr(0, params.length - 1);
-      if (options.type == 'get') {
-        options.url += '?' + params;
+      if (defaults.type == 'get') {
+        defaults.url += '?' + params;
       }
-      xhr.open(options.type, options.url);
-      if (options.type == 'post') {
+      xhr.open(defaults.type, defaults.url);
+      if (defaults.type == 'post') {
         // 设置请求餐求格式的类型
-        const contentType = options.header['Content-Type'];
+        const contentType = defaults.header['Content-Type'];
         xhr.setRequestHeader('Content-Type', contentType);
         if (contentType == 'application/json') {
-          xhr.send(JSON.stringify(options.data));
+          xhr.send(JSON.stringify(defaults.data));
         } else {
           xhr.send(params);
         }
@@ -34,17 +50,24 @@
         xhr.send();
       }
       xhr.onload = () => {
+
+        const contentType = xhr.getResponseHeader('Content-Type');
+        const responseText = xhr.responseText;
+        if (contentType.includes('application/json')) {
+          responseText = JSON.parse(responseText);
+        }
+
         if (xhr.status == 200) {
-          options.success(xhr.responseText, xhr);
+          defaults.success(responseText, xhr);
         } else {
-          options.error(xhr.responseText, xhr);
+          defaults.error(responseText, xhr);
         }
 
       };
     }
     ajax({
       type: 'post',
-      url: 'http://localhost:3000/first',
+      url: 'http://localhost:3000/responseData',
       data: {
         name: 'zhangsan',
         age: 20
