@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid #000;
+      border-collapse: collapse;
+    }
+    
+    th,
+    td {
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text"> <button>新增</button>
+    <hr>
+    <table>
+      <thead>
+        <th>#</th>
+        <th>品牌名称</th>
+        <th>状态</th>
+        <th>创建日期</th>
+        <th>操作</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>宝马</td>
+          <td>已禁用</td>
+          <td>2021-10-1 10:00:00</td>
+          <td><a href="#">删除</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="lib/vue-2.6.12.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>
