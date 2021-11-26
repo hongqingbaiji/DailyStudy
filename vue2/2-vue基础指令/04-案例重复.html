@@ -8,90 +8,88 @@
   <title>Document</title>
   <style>
     table,
-    th,
-    td {
-      border: 1px solid #000;
+    td,
+    th {
+      border: 1px solid #ccc;
       border-collapse: collapse;
     }
     
-    th,
-    td {
+    td,
+    th {
       padding: 10px 20px;
     }
   </style>
 </head>
 
 <body>
+
   <div id="app">
     <input type="text" v-model.trim="brand">
-    <button @click="add">新增</button>
+    <input type="button" value="新增" @click="add">
     <hr>
     <table>
       <thead>
-        <th>#</th>
-        <th>品牌名称</th>
-        <th>状态</th>
-        <th>创建日期</th>
-        <th>操作</th>
+        <tr>
+          <th>#</th>
+          <th>品牌名称</th>
+          <th>状态</th>
+          <th>创建时间</th>
+          <th>操作</th>
+        </tr>
       </thead>
       <tbody>
         <tr v-for="item in list" :key="item.id">
           <td>{{item.id}}</td>
           <td>{{item.name}}</td>
           <td>
-            <input type="checkbox" name="" :id="'cb'+item.id" v-model="item.status">
+            <input type="checkbox" :id="'cb'+item.id" v-model="item.status">
             <label v-if="item.status" :for="'cb'+item.id">已启用</label>
             <label v-else :for="'cb'+item.id">已禁用</label>
           </td>
-          <td>{{item.time | dateFormat}}</td>
+          <td>{{item.time}}</td>
           <td><a href="javascript:;" @click="remove(item.id)">删除</a></td>
         </tr>
       </tbody>
     </table>
   </div>
   <script src="lib/vue-2.6.12.js"></script>
-  <script src="lib/dayjs.min.js"></script>
   <script>
-    Vue.filter('dateFormat', (time) => {
-      return dayjs(time).format('YYYY-MM-DD HH:mm:ss');
-    });
-
     const vm = new Vue({
-      el: '#app',
+      el: "#app",
       data: {
-        brand: '', //用户输入的品牌名称
+        brand: '',
         nextId: 4,
         list: [{
-          id: 1,
+          id: '1',
           name: '宝马',
           status: true,
           time: new Date()
         }, {
-          id: 2,
+          id: '2',
           name: '奔驰',
           status: false,
           time: new Date()
         }, {
-          id: 3,
+          id: '3',
           name: '奥迪',
           status: true,
           time: new Date()
-        }, ]
+        }]
       },
       methods: {
-        remove(id) {
-          this.list = this.list.filter(item => item.id !== id);
-        },
         add() {
-          if (this.brand === '') return alert('必须填写品牌名称！');
+          if (this.brand === '') return alert('请输入品牌名称！');
           this.list.push({
             id: this.nextId,
             name: this.brand,
             status: true,
             time: new Date()
           });
-          this.nextId++;
           this.brand = '';
+          this.nextId++;
+        },
+        remove(id) {
+          this.list = this.list.filter(item => item.id !== id)
         }
       }
     });
