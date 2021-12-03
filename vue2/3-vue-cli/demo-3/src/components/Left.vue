@@ -1,8 +1,8 @@
 <template>
   <div class="left">
-    <h3>这是Left组件</h3>
+    <h3>这是Left组件---{{ count }}</h3>
     <hr>
-    <my-count :init="9"></my-count>
+    <button @click="count++">+1</button>
   </div>
 </template>
 
@@ -12,23 +12,30 @@ export default {
   components: {},
   data() {
     return {
-
+      count:0
     }
+  },
+  created(){
+    console.log('组件被创建了');
+  },
+  destroyed(){
+    console.log('组件被销毁了');
+  },
+  activated(){
+    console.log('组件被激活了');
+  },
+  deactivated(){
+    console.log('组件被缓存了');
   }
 }
 </script>
 
 <style scoped>
   .left{
-    width: 200px;
     height: 200px;
     background-color: pink;
-  }
-  h3{
-    color:red
+    flex:1;
+    padding:10px;
   }
 
-  h5{
-    color:green
-  }
 </style>

@@ -2,7 +2,9 @@
   <div class="right">
     <h3>这是Right组件</h3>
     <hr>
-    <my-count :init="6"></my-count>
+    <slot name="right">
+      <h6>这是 Right 里的内容</h6>
+    </slot>
   </div>
 </template>
 
@@ -20,8 +22,9 @@ export default {
 
 <style scoped>
   .right{
-    width: 200px;
     height: 200px;
-    background-color: purple;
+    background-color: skyblue;
+    flex:1;
+    padding:10px;
   }
 </style>
