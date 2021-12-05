@@ -10,7 +10,7 @@
 
     <!-- 右侧按钮区域 -->
     <div class="layout-header-right">
-      <button type="button" class="btn btn-light">退出登录</button>
+      <button type="button" class="btn btn-light" @click="logout">退出登录</button>
     </div>
   </div>
 </template>
@@ -18,6 +18,12 @@
 <script>
 export default {
   name: 'MyHeader',
+  methods:{
+    logout(){
+      localStorage.removeItem('token')
+      this.$router.push('/login')
+    }
+  }
 }
 </script>
 

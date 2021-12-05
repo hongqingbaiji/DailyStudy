@@ -1,6 +1,12 @@
 <template>
   <div class="home-container">
-    后台主页
+    <MyHeader></MyHeader>
+    <div class="home-main-box">
+      <MyAside></MyAside>
+      <div class="home-main-body">
+        <router-view></router-view>
+      </div>
+    </div>
   </div>
 </template>
 
