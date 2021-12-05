@@ -1,6 +1,6 @@
 <template>
   <div class="right">
-    <h3>这是Right组件</h3>
+    <h3 v-color="color='red'">这是Right组件</h3>
     <hr>
     <slot name="right">
       <h6>这是 Right 里的内容</h6>

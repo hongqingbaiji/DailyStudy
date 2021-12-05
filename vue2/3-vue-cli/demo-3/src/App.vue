@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h1>这是App组件</h1>
+    <h1 v-color="color">这是App组件</h1>
+    <p v-abc>App组件的内容</p>
+    <button @click="color = 'green'">改变颜色</button>
+
     <button @click="comName='Left'">展示 Left组件</button> 
     <button @click="comName='Right'">展示 Right组件</button>
     <hr>
@@ -32,10 +35,36 @@ export default {
   },
   data() {
     return {
-      comName:'Left'
+      comName:'Left',
+      color:'blue'
     }
   },
+
+  // 私有自定义指令的节点
+  directives:{
+    // color:{
+    //   // 只执行一次
+    //   bind(el,binding){
+    //     el.style.color = binding.value 
+    //   },
+    //   // 数据更新的时候执行
+    //   update(el,binding){
+    //     el.style.color = binding.value
+    //   }
+    // },
+
+    color(el,binding){
+      el.style.color = binding.value
+    },
+
+    abc:{
+      bind(el){
+        el.style.backgroundColor = 'pink'
+      }
+    }
+  }
   
+
 }
 </script>
 
