@@ -8,6 +8,6 @@ import './index.css'
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
-  router
+  render: (h) => h(App),
+  router,
 }).$mount('#app')

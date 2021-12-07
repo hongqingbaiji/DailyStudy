@@ -23,8 +23,8 @@
 
 <script>
 export default {
-  name: 'MyAside',
-}
+  name: "MyAside",
+};
 </script>
 
 <style lang="less" scoped>
@@ -41,8 +41,8 @@ export default {
     line-height: 50px;
     font-weight: bold;
     font-size: 14px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     &:hover {
       background-color: #efefef;
       cursor: pointer;
@@ -65,7 +65,7 @@ export default {
   position: relative;
   // 伪元素实现路由高亮效果
   &::before {
-    content: ' ';
+    content: " ";
     display: block;
     width: 4px;
     height: 100%;

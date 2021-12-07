@@ -4,9 +4,8 @@
 
 <script>
 export default {
-  name: 'MyRights',
-}
+  name: "MyRights",
+};
 </script>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
