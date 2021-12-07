@@ -8,30 +8,30 @@
 </template>
 
 <script>
-import request from "@/utils/request.js";
+import request from '@/utils/request.js'
 export default {
-  name: "Home",
+  name: 'Home',
   data() {
     return {
       page: 1,
-      limit: 10,
-    };
+      limit: 10
+    }
   },
   created() {
-    this.initArticleList();
+    this.initArticleList()
   },
   methods: {
     async initArticleList() {
-      const { data: res } = await request.get("/articles", {
+      const { data: res } = await request.get('/articles', {
         params: {
           _page: this.page,
-          _limit: this.limit,
-        },
-      });
-      console.log(res);
-    },
-  },
-};
+          _limit: this.limit
+        }
+      })
+      console.log(res)
+    }
+  }
+}
 </script>
 
 <style lang="less" scoped>
