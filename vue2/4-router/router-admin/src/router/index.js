@@ -1,16 +1,16 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
-import Login from '@/components/MyLogin.vue'
-import Home from '@/components/MyHome.vue'
-import Users from '@/components/menus/MyUsers.vue'
-import Rights from '@/components/menus/MyRights.vue'
-import Goods from '@/components/menus/MyGoods.vue'
-import Orders from '@/components/menus/MyOrders.vue'
-import Settings from '@/components/menus/MySettings.vue'
-import UserDetail from '@/components/user/MyUserDetail.vue'
+import Login from '@/components/MyLogin.vue';
+import Home from '@/components/MyHome.vue';
+import Users from '@/components/menus/MyUsers.vue';
+import Rights from '@/components/menus/MyRights.vue';
+import Goods from '@/components/menus/MyGoods.vue';
+import Orders from '@/components/menus/MyOrders.vue';
+import Settings from '@/components/menus/MySettings.vue';
+import UserDetail from '@/components/user/MyUserDetail.vue';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const router = new VueRouter({
   routes: [
@@ -30,20 +30,27 @@ const router = new VueRouter({
       ]
     }
   ]
-})
+});
 
 router.beforeEach((to, from, next) => {
-  const pathArr = ['/home', '/home/users', '/home/rights', '/home/goods', '/home/orders', '/home/settings']
+  const pathArr = [
+    '/home',
+    '/home/users',
+    '/home/rights',
+    '/home/goods',
+    '/home/orders',
+    '/home/settings'
+  ];
   if (pathArr.indexOf(to.path) !== -1) {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
     if (token) {
-      next()
+      next();
     } else {
-      next('/login')
+      next('/login');
     }
   } else {
-    next()
+    next();
   }
-})
+});
 
-export default router
+export default router;
