@@ -34,7 +34,7 @@
           <th>操作</th>
         </thead>
         <tbody>
-          <tr v-for="item in list" :key="item.id">
+          <tr v-for="(item,index) in list" :key="item.id">
             <td>{{ item.id }}</td>
             <td>{{ item.name }}</td>
             <td>
@@ -48,7 +48,7 @@
               <label :for="'cb'+item.id" v-else>已禁用</label>
             </td>
             <td>{{ item.time | dateFormat }}</td>
-            <td><a href="#" @click="remove(item.id)">删除</a></td>
+            <td><a href="#" @click="list.splice(index,1)">删除</a></td>
           </tr>
         </tbody>
       </table>
@@ -87,9 +87,9 @@
           ]
         },
         methods: {
-          remove(id) {
-            this.list = this.list.filter(item => item.id !== id)
-          },
+          // remove(id) {
+          //   this.list = this.list.filter(item => item.id !== id)
+          // },
           add() {
             if (this.brand === '') {
               alert('请输入品牌名称')

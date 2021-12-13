@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <form @submit.prevent="addNewTodo">
+      <label for="new-todo">Add a todo</label>
+      <input type="text" 
+        v-model="newTodoText"
+        id="new-todo"
+        placeholder="add...">
+        <button>Add</button>
+    </form>
+    <ul>
+      <li is="todo-item" 
+        v-for="(item,index) in todos"
+        :key="item.id"
+        :title="item.title"
+        @remove="todos.splice(index,1)"></li>
+    </ul>
+  </div>
+  <script src="./lib/vue-2.6.12.js"></script>
+  <script>
+    Vue.component('todo-item', {
+      template: '\
+        <li>\
+          {{ title }}\
+          <button v-on:click="$emit(\'remove\')">Remove</button>\
+        </li>\
+      ',
+      props: ['title']
+    })
+
+    new Vue({
+      el:"#app",
+      data:{
+        newTodoText:'',
+        todos:[
+          {
+            id:1,
+            title:'one'
+          },
+          {
+            id:2,
+            title:'two '
+          },
+          {
+            id:3,
+            title:'three'
+          }
+        ],
+        nextId:4
+      },
+      methods:{
+        addNewTodo(){
+          this.todos.push({
+            id : this.nextId,
+            title : this.newTodoText
+          })
+          this.nextId++;
+          this.newTodoText = ''
+        }
+      }
+    })
+  </script>
+</body>
+</html>
