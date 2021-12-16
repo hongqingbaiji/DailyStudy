@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="msg" />
+      <button @click="add">添加</button>
+      <br />
+      <ol>
+        <li v-for="(item,index) in lists">
+          {{item}}---<button @click="lists.splice(index,1)">删除本条</button>
+        </li>
+      </ol>
+      <br />
+      <span>总数量：{{lists.length}}</span>
+      <br />
+      <button @click="delAll">删除所有</button>
+    </div>
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          lists: ['第一条', '第二条默认'],
+          msg: ''
+        },
+        methods: {
+          add() {
+            if (this.msg === '') return
+            this.lists.push(this.msg)
+            this.msg = ''
+          },
+          delAll() {
+            this.lists = []
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
