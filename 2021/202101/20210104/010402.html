@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1、可以给引用类型值添加属性和方法
+        // var a = new Object();
+        // a.name = "wenhe";
+        // alert(a.name);
+
+        // 2、不能给基本类型值添加属性和方法；
+        // var b = "wenhe";
+        // b.age = 20;
+        // alert(b.age); //undefined
+
+        // function addTen(num) {
+        //     num += 10;
+        //     return num;
+        // }
+        // var a = 20;
+        // var b = addTen(a);
+        // alert(a);
+        // alert(b);
+
+        // function setName(obj) {
+        //     obj.name = "wenhe";
+        //     obj = new Object();
+        //     obj.name = "123";
+        // }
+        // var a = new Object();
+        // setName(a);
+        // alert(a.name);
+
+        function a() {
+            a.name = "wenhe";
+            // alert(a.name instanceof Object);
+        }
+        alert(a instanceof Object);
+        alert(typeof(a))
+    </script>
+</body>
+
+</html>

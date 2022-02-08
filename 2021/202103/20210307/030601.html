@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        table {
+            border-collapse: collapse;
+            margin: 100px auto;
+        }
+        
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .num .decrement,
+        .num .increment {
+            padding: 0 5px;
+            text-align: center;
+            line-height: 20px;
+            border: 1px solid #ccc;
+        }
+        
+        .num .itxt {
+            width: 40px;
+            height: 25px;
+            text-align: center;
+            line-height: 20px;
+            outline: none;
+        }
+        
+        .numAll,
+        .zjAll {
+            color: red;
+            font-weight: 700;
+        }
+        
+        .bgChange {
+            background-color: #fff4e8;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr class="itemA">
+            <th><input type="checkbox" class="checkAll">全选</th>
+            <th>商品</th>
+            <th>单价</th>
+            <th>数量</th>
+            <th>小计</th>
+            <th>操作</th>
+        </tr>
+        <tr class="items">
+            <td><input type="checkbox" class="check"></td>
+            <td>商品1</td>
+            <td><span class="dj">￥12.60</span></td>
+            <td>
+                <div class="num">
+                    <a href="#" class="decrement">-</a>
+                    <input type="text" class="itxt" value="1">
+                    <a href="#" class="increment">+</a>
+                </div>
+            </td>
+            <td><span class="zj">￥12.60</span></td>
+            <td><a href="#" class="del">删除</a></td>
+        </tr>
+        <tr class="items">
+            <td><input type="checkbox" class="check"></td>
+            <td>商品2</td>
+            <td><span class="dj">￥22.85</span></td>
+            <td>
+                <div class="num">
+                    <a href="#" class="decrement">-</a>
+                    <input type="text" class="itxt" value="1">
+                    <a href="#" class="increment">+</a>
+                </div>
+            </td>
+            <td><span class="zj">￥22.85</span></td>
+            <td><a href="#" class="del">删除</a></td>
+        </tr>
+        <tr class="items">
+            <td><input type="checkbox" class="check"></td>
+            <td>商品3</td>
+            <td><span class="dj">￥34.50</span></td>
+            <td>
+                <div class="num">
+                    <a href="#" class="decrement">-</a>
+                    <input type="text" class="itxt" value="1">
+                    <a href="#" class="increment">+</a>
+                </div>
+
+            </td>
+            <td><span class="zj">￥34.50</span></td>
+            <td><a href="#" class="del">删除</a></td>
+        </tr>
+        <tr class="itemA">
+            <th>
+                <input type="checkbox" class="checkAll">全选
+            </th>
+            <td>
+                <a href="#" class="delAll">删除选中的商品</a>
+                <a href="#" class="clear">清理购物车</a>
+            </td>
+            <td></td>
+            <td>
+                已选择 <span class="numAll">0</span> 件商品
+            </td>
+            <td>总价：<span class="zjAll">￥0.00</span></td>
+            <td><button>去结算</button></td>
+        </tr>
+    </table>
+    <script>
+        $(function() {
+            //全选
+            $('.checkAll').change(function() {
+                if ($(this).prop('checked')) {
+                    $('.items').addClass('bgChange');
+                    $('.numAll').text($('.check').length);
+
+                } else {
+                    $('.items').removeClass('bgChange');
+                    $('.numAll').text(0);
+
+                }
+                $(this).parents('.itemA').siblings('.items').find('.check').prop('checked', $(this).prop('checked'));
+                $(this).parents('.itemA').siblings('.itemA').find('.checkAll').prop('checked', $(this).prop('checked'));
+
+            });
+            $('.check').change(function() {
+                if ($('.check:checked').length === $('.check').length) {
+                    $(this).parents('.items').siblings('.itemA').find('.checkAll').prop('checked', true);
+                } else {
+                    $(this).parents('.items').siblings('.itemA').find('.checkAll').prop('checked', false);
+                }
+                if ($(this).prop('checked')) {
+                    $(this).parents('.items').addClass('bgChange');
+                } else {
+                    $(this).parents('.items').removeClass('bgChange');
+                }
+            });
+            //计算 +-商品数量
+            $('.decrement').click(function() {
+                var n = $(this).siblings('.itxt').val();
+                if (n == 1) {
+                    return false;
+                }
+                n--;
+                $(this).siblings('.itxt').val(n);
+                var dj = $(this).parents('.items').find('.dj').text().substr(1);
+                var zj = '￥' + (dj * n).toFixed(2);
+                $(this).parents('.items').find('.zj').text(zj);
+                getSum();
+            });
+            $('.increment').click(function() {
+                var n = $(this).siblings('.itxt').val();
+                n++;
+                $(this).siblings('.itxt').val(n);
+                var dj = $(this).parents('.items').find('.dj').text().substr(1);
+                var zj = '￥' + (dj * n).toFixed(2);
+                $(this).parents('.items').find('.zj').text(zj);
+                getSum();
+            });
+            $('.itxt').change(function() {
+                var n = $(this).val();
+                var dj = $(this).parents('.items').find('.dj').text().substr(1);
+                var zj = '￥' + (dj * n).toFixed(2);
+                $(this).parents('.items').find('.zj').text(zj);
+                getSum();
+            });
+
+            //删除商品
+            $('.del').click(function() {
+                $(this).parents('.items').remove();
+                getSum();
+            });
+            //删除选中的商品
+            $('.delAll').click(function() {
+                $('.check:checked').parents('.items').remove();
+                getSum();
+            });
+            //清理购物车
+            $('.clear').click(function() {
+                $('.items').remove();
+                getSum();
+            });
+
+            //计算商品总件数+商品总价格
+            getSum();
+
+            function getSum() {
+                var count = 0;
+                var money = 0;
+                $('.itxt').each(function(i, ele) {
+                    count += parseInt($(ele).val());
+                });
+                $('.numAll').text(count);
+                $('.zj').each(function(i, ele) {
+                    money += parseFloat($(ele).text().substr(1));
+                });
+                $('.zjAll').text('￥' + money.toFixed(2));
+            }
+        })
+    </script>
+
+</body>
+
+</html>

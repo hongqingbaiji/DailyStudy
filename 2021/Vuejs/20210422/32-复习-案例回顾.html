@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .color {
+      color: red
+    }
+    
+    table {
+      margin: 50px 50px 0;
+    }
+    
+    table,
+    th,
+    td {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+    }
+    
+    th,
+    td {
+      padding: 5px 20px;
+    }
+    
+    td {
+      text-align: center;
+    }
+    
+    th {
+      background-color: #eee;
+    }
+    
+    h3 {
+      margin: 10px 50px;
+    }
+  </style>
+</head>
+
+<!-- <body>
+  <div id='app'>
+    <ul>
+      <li v-for="(item,index) in movies" :class="{color:currentIndex===index}" @click="liClick(index)" :style="{fontSize:'30px',cursor:'pointer'}">{{item}}</li>
+    </ul>
+  </div>
+  <script src='../js/vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        movies: ['aaa', 'bbb', 'ccc', 'ddd'],
+        currentIndex: 0
+      },
+      methods: {
+        liClick(index) {
+          this.currentIndex = index;
+        }
+      }
+    });
+  </script>
+</body> -->
+
+<!-- <body>
+  <div id='app'>
+    <div v-if="books.length">
+      <table>
+        <thead>
+          <tr>
+            <th> </th>
+            <th>书籍名称</th>
+            <th>出版日期</th>
+            <th>价格</th>
+            <th>购买数量</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item,index) in books">
+            <td>{{item.id}}</td>
+            <td>{{item.bName}}</td>
+            <td>{{item.date}}</td>
+            <td>{{getFinalPrice(item.price * item.counter)}}</td>
+            <td>
+              <button @click="decrement(index)" :disabled="item.counter<=1">-</button> {{item.counter}}
+              <button @click="increment(index)">+</button>
+            </td>
+            <td><button @click="delClick(index)">移除</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <h3> 总价格： {{ getFinalPrice(prices)}}</h3>
+    </div>
+  </div>
+  <h3 v-else>购物车为空</h3>
+  <script src='../js/vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        books: [{
+          id: 1,
+          bName: '《算法导论》',
+          date: '2006-9',
+          price: 85.5,
+          counter: 1
+        }, {
+          id: 2,
+          bName: '《UNIX编程艺术》',
+          date: '2006-2',
+          price: 59.99,
+          counter: 1
+        }, {
+          id: 3,
+          bName: '《编程珠玑》',
+          date: '2008-9',
+          price: 39.99,
+          counter: 1
+        }, {
+          id: 4,
+          bName: '《代码大全》',
+          date: '2006-3',
+          price: 128.88,
+          counter: 1
+        }]
+      },
+      methods: {
+        decrement(index) {
+          this.books[index].counter--
+        },
+        increment(index) {
+          this.books[index].counter++
+        },
+        getFinalPrice(price) {
+          return '￥' + price.toFixed(2);
+        },
+        delClick(index) {
+          this.books.splice(index, 1);
+        }
+      },
+      computed: {
+        prices() {
+          return this.books.reduce((total, b) => {
+            return total + b.price * b.counter
+          }, 0)
+        }
+      },
+    });
+  </script>
+
+</body> -->
+
+<!-- <body>
+  <div id='app'>
+    <input type="text" v-model.lazy="message">
+    <h3>{{ message }}</h3>
+
+  </div>
+  <script src='../js/vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello'
+      },
+      methods: {
+        inputChange() {
+          this.message = event.target.value;
+        }
+      }
+    });
+  </script>
+</body> -->
+
+<!-- <body>
+  <div id='app'>
+    <cpn :c-message="message"></cpn>
+  </div>
+  <template id="cpnC">
+    <div>
+      <h3>{{ cMessage }}</h3>
+    </div>
+  </template>
+  <script src='../js/vue.js'></script>
+
+  <script>
+    const cpn = {
+      template: "#cpnC",
+      props: {
+        cMessage: {
+          type: String
+        }
+      }
+
+    };
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello'
+      },
+      components: {
+        cpn
+      }
+    });
+  </script>
+
+  <body> -->
+
+<body>
+  <div id='app'>
+    <div>
+      <cpn @info="cpnInfo"></cpn>
+      <input type="text" :value="name" v-on:input="uname">
+    </div>
+  </div>
+  <template id="cpn">
+    <div>
+      <button v-for="item in infos" @click="btnClick(item)">{{item.name}}--{{item.age}}--{{item.sex}}</button>
+    </div>
+  </template>
+  <script src='../js/vue.js'></script>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      data() {
+        return {
+          infos: [{
+            name: 'wenhe',
+            age: 18,
+            sex: '男'
+          }, {
+            name: 'shaonian',
+            age: 15,
+            sex: '男'
+          }, {
+            name: 'muqing',
+            age: 20,
+            sex: '女'
+          }]
+        }
+      },
+      methods: {
+        btnClick(item) {
+          this.$emit('info', item);
+        }
+      }
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        name: this.name,
+      },
+      methods: {
+        uname(event) {
+          this.name = event.target.value;
+        },
+        cpnInfo(item) {
+          this.name = item.name;
+          console.log(this.name);
+        },
+      },
+      components: {
+        cpn
+      }
+    });
+  </script>
+</body>
+
+</html>

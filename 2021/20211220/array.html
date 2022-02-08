@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // var arr = new Array(2)
+      // var arr = new Array(3, 4)
+      // console.log(arr)
+
+      // var arr = []
+      // var obj = {}
+      // var fun = function () {}
+      // console.log(arr instanceof Array)
+      // console.log(obj instanceof Object)
+      // console.log(arr instanceof Object)
+      // console.log(arr instanceof Boolean)
+
+      // var arr = [3, 24, 4, 2, 42, 2, 1]
+      // // 冒泡排序
+      // // arr.sort(function (a, b) {
+      // //   return a - b
+      // // })
+      // // console.log(arr)
+      // console.log(arr.indexOf(2)) // 只返回第一个找到的元素
+      // console.log(arr.lastIndexOf(2)) //找到元素后返回它的索引值
+      // console.log(arr.indexOf('pink')) // 没有找到相关数组就返回 -1
+      // console.log(arr.lastIndexOf('pink'))
+
+      // 数组去重
+      // var arr = ['c', 'a', 'z', 'a', 'x', 'a', 'x', 'c', 'b']
+      // var newArr = []
+      // for (var i = 0; i < arr.length; i++) {
+      //   if (newArr.indexOf(arr[i]) === -1) {
+      //     newArr.push(arr[i])
+      //   }
+      // }
+      // console.log(newArr)
+
+      // var str = '改革春风吹满地，春天也就来了'
+      // console.log(str.indexOf('春', 3)) // 8
+      // console.log(str.lastIndexOf('春', 7)) //2
+
+      // var str = 'abcacesgcabgab' //返回a出现的位置以及出现的次数
+      // var num = 0
+      // for (var i = 0; i < str.length; i++) {
+      //   if (str.indexOf('a', i) !== -1) {
+      //     console.log(str.indexOf('a', i))
+      //     num++
+      //     i = str.indexOf('a', i)
+      //   }
+      // }
+      // console.log(num)
+
+      // 第二种方法
+      // var str = 'abcacesgcabgab'
+      // var num = 0
+      // var arr = []
+      // var index = str.indexOf('a')
+      // while (index !== -1) {
+      //   arr.push(index)
+      //   index = str.indexOf('a', index + 1)
+      //   num++
+      // }
+      // console.log('a 出现的位置：' + arr + '，出现了' + num + ' 次')
+
+      // var arr = ['c', 'a', 'z', 'a', 'x', 'a', 'x', 'c', 'b']
+      // var num = 0
+      // var newArr = []
+      // var index = arr.indexOf('a')
+      // while (index !== -1) {
+      //   newArr.push(index)
+      //   index = arr.indexOf('a', index + 1)
+      //   num++
+      // }
+      // console.log('a 出现的位置：' + newArr + '，出现了' + num + ' 次')
+
+      // var str = 'wenhe'
+      // console.log(str.charAt(2)) // n
+      // console.log(str.charCodeAt(0)) // 0对应的是w，对应的ASCII码是 119
+      // console.log(str[2]) // n
+
+      // var str = 'abcacesgcabgab'
+      // var obj = {}
+      // for (var i = 0; i < str.length; i++) {
+      //   if (obj[str.charAt(i)]) {
+      //     obj[str.charAt(i)]++
+      //   } else {
+      //     obj[str.charAt(i)] = 1
+      //   }
+      // }
+      // var max = 0
+      // var ch = ''
+      // for (var key in obj) {
+      //   if (max < obj[key]) {
+      //     max = obj[key]
+      //     ch = key
+      //   }
+      // }
+      // console.log(max, ch)
+
+      // var str = 'abcacesgcabgabasdfwergcadb324323'
+      // console.log(str.length)
+      // console.log(str.charAt(5)) //取索引值为 5 的位置对应的字符
+      // console.log(str.indexOf('c'))
+
+      // while (str.indexOf('g') !== -1) {
+      //   str = str.replace('g', '22')
+      // }
+      // console.log(str)
+
+      // console.log(str.substr(1, 5))
+
+      // var o = {}
+      // for (var i = 0; i < str.length; i++) {
+      //   var chars = str.charAt(i)
+      //   if (o[chars]) {
+      //     o[chars]++
+      //   } else {
+      //     o[chars] = 1
+      //   }
+      // }
+      // console.log(o)
+      // var max = 0
+      // var ch = ''
+      // for (k in o) {
+      //   if (max < o[k]) {
+      //     max = o[k]
+      //     ch = k
+      //   }
+      // }
+      // console.log('字符出现次数最多的是：' + ch + '，共出现了：' + max + '次')
+
+      // 求字符串中字符出现次数最多的是哪个，以及共出现了多少次
+      var str = 'abcacesgcabgabasdfwergcadb324323'
+      var o = {}
+      for (var i = 0; i < str.length; i++) {
+        var chars = str.charAt(i)
+        if (o[chars]) {
+          o[chars]++
+        } else {
+          o[chars] = 1
+        }
+      }
+      console.log(o)
+      var max = 0
+      var ch = ''
+      for (var k in o) {
+        if (max < o[k]) {
+          max = o[k]
+          ch = k
+        }
+      }
+      console.log(ch, max)
+    </script>
+  </body>
+</html>

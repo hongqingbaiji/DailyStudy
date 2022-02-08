@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- <body>
+    <div></div>
+    <p>
+        123
+        <span>456</span>
+    </p>
+
+    <script>
+        var div = document.querySelector('div');
+        div.innerText = '<strong>今天是：</strong> 2021';
+        div.innerHTML = '<strong>今天是：</strong> 2021';
+        var p = document.querySelector('p');
+        console.log(p.innerText);
+        console.log(p.innerHTML);
+    </script>
+</body> -->
+
+<!-- <body>
+    <button id="ldh">刘德华</button>
+    <button id="zxy">张学友</button> <br>
+    <img src="ldh.jpg" alt="ldh" title="LDH">
+
+    <script>
+        //获取事件源
+        var ldh = document.getElementById('ldh');
+        var zxy = document.getElementById('zxy');
+        var img = document.querySelector('img');
+        //绑定事件 点击事件
+        ldh.onclick = function() {
+            //改变属性值
+            img.src = 'ldh.jpg';
+            img.alt = 'ldh';
+            img.title = 'LDH';
+        }
+        zxy.onclick = function() {
+            img.src = 'zxy.jpg';
+            img.alt = 'zxy';
+            img.title = 'ZXY';
+        }
+    </script>
+</body> -->
+
+<!-- <body>
+    <p>上午好</p>
+    <img src="sw.jpg" alt="sw">
+
+    <script>
+        var date = new Date();
+        var h = date.getHours();
+        var p = document.querySelector('p');
+        var img = document.querySelector('img');
+        if (h < 12 && h >= 6) {
+            p.innerHTML = '上午好';
+            img.src = 'sw.jpg';
+            img.alt = 'sw';
+
+        } else if (h < 18) {
+            p.innerHTML = '下午好';
+            img.src = 'xw.jpg';
+            img.alt = 'xw';
+
+        } else {
+            p.innerHTML = '晚上好';
+            img.src = 'ws.jpg';
+            img.alt = 'ws';
+
+        }
+    </script>
+</body> -->
+
+<!-- <body>
+    <button>按钮</button>
+    <input type="text" value="输入内容">
+
+
+
+    <script>
+        var btn = document.querySelector('button');
+        var input = document.querySelector('input');
+        btn.onclick = function() {
+            input.value = '点击了按钮';
+            // btn.disabled = true; //disabled 表示被禁用了
+            this.disabled = true; //this 指向事件函数的调用者
+        }
+    </script>
+</body> -->
+
+<body>
+    <input type="password" name="" id="">
+    <button>显示密码</button>
+    <script>
+        var flag = 0;
+        var input = document.querySelector('input');
+        var btn = document.querySelector('button');
+        btn.onclick = function() {
+            if (flag == 0) {
+                this.innerHTML = '隐藏密码';
+                input.type = 'text';
+                flag = 1;
+            } else {
+                flag = 0;
+                this.innerHTML = '显示密码';
+                input.type = 'password';
+            }
+        }
+    </script>
+</body>
+
+</html>

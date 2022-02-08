@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- <script>
+    new Promise((resolve, reject) => {
+      // 第一次请求的代码
+      setTimeout(() => {
+        resolve();
+      }, 2000)
+    }).then(() => {
+      // 第一次处理的代码
+      console.log('Hello World');
+      return new Promise((resolve, reject) => {
+        // 第二次请求的代码
+        setTimeout(() => {
+          resolve();
+        }, 2000)
+      })
+    }).then(() => {
+      // 第二次处理的代码
+      console.log('Hello Vuejs');
+    }).catch(err => console.log(err))
+  </script> -->
+
+  <!-- <script>
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject('err message');
+        resolve('suc message');
+      }, 2000);
+    }).then(() => {
+      console.log('suc');
+    }).catch(err => {
+      console.log(err);
+    })
+  </script> -->
+
+  <script>
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('aaa');
+      }, 2000)
+    }).then(res => {
+      console.log(res, '第一层');
+      return res + '111';
+    }).then((res, reject) => {
+      console.log(res, '第二层');
+      return Promise.reject('err');
+    }).then(res => {
+      console.log(res, '第三层');
+      return res + '333';
+    }).catch(err => console.log(err));
+  </script>
+</body>
+
+</html>

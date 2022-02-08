@@ -1,0 +1,7 @@
+<!--继承模板-->
+{{extend './common/gujia.art'}}
+<!-- 填充位置 -->
+{{block 'content'}}
+<p>{{ msg }}</p>
+{{/block}} {{block 'link'}}
+<link href="./main.css"> {{/block}}

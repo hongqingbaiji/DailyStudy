@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <script>
+        function fn(num) {
+            if (num <= 1) {
+                return 1;
+            } else {
+                return num * arguments.callee(num - 1);
+            }
+        }
+        var fun = fn;
+        fn = null;
+        console.log(fun(5));
+    </script> -->
+    <!-- <div>'?name=wenhe&age=20'</div> -->
+    <!-- <script>
+        window.open('http://www.baidu.com');
+        window.addEventListener('resize', function() {
+            var x = window.innerWidth;
+            var y = window.innerHeight;
+            var a = window.outerWidth;
+            var b = window.outerHeight;
+            console.log(x, y);
+            console.log(a, b);
+            console.log('-------------');
+        })
+    </script> -->
+
+    <!-- <script>
+        // if (confirm('你点击了什么？')) {
+        //     alert('你点了确认');
+        // } else {
+        //     alert('你点了取消');
+        // }
+
+        var arr = [];
+        var div = '?name=wenhe&age=20';
+        var str = div.substr(1);
+        arr = str.split('&');
+        var items = [];
+        for (var i = 0; i < arr.length; i++) {
+            items.push(arr[i].split('='));
+        }
+        console.log(items[0][1]);
+
+        // var items = {};
+        // var name = null;
+        // var value = null;
+        // var item = null;
+        // for (var i = 0; i < arr.length; i++) {
+        //     item = arr[i].split('=');
+        //     name = item[0];
+        //     value = item[1];
+        //     if (name.length) {
+        //         items[name] = value;
+        //     }
+        // }
+        // console.log(items['age']);
+    </script> -->
+
+    <script>
+        function hasPlugin(name) {
+            var name = name.toLowerCase();
+            for (var i = 0; i < navigator.plugins.length; i++) {
+                if (navigator.plugins[i].name.toLowerCase().indexOf(name) > -1) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        console.log(hasPlugin('flash'));
+    </script>
+
+</body>
+
+</html>

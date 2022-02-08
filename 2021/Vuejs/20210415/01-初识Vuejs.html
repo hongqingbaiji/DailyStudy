@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<!-- <body>
+    初识Vuejs 
+    <div class="app">{{message}}</div>
+    <script>
+        const app = new Vue({
+            el: '.app', // 用于挂载要管理的元素
+            data: { // 定义数据
+                message: 'hello, wenhe!'
+            }
+        });
+    </script>
+</body> -->
+
+<!-- <body>
+    -- 数据列表展示 --
+    <div id="app">
+        <ul>
+            <li v-for="item in movies">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                movies: ['全职猎人', '海贼王', '火影忍者', '黑子的篮球']
+            }
+        })
+    </script>
+</body> -->
+
+<!-- <body>
+    <div id="app">
+        <h2>当前计数：{{counter}}</h2>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+        <script>
+            const app = new Vue({
+                el: '#app',
+                data: {
+                    counter: 0
+                },
+                methods: {
+                    increment() {
+                        this.counter++;
+                    },
+                    decrement() {
+                        this.counter--;
+                    }
+                }
+            });
+        </script>
+    </div>
+
+    -- <div id="app2">
+        <h2>当前计数：{{counter}}</h2>
+        <button v-on:click="counter++">+</button>
+        <button v-on:click="counter--">-</button>
+        <script>
+            const app2 = new Vue({
+                el: '#app2',
+                data: {
+                    counter: 0
+                }
+            });
+        </script>
+    </div> --
+</body> -->
+
+
+<body>
+    <div id="app">
+        <span v-bind:title="message">鼠标停留</span>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '页面加载于' + new Date().toLocaleString()
+            }
+        });
+    </script>
+
+    <div id="app2">
+        <p v-if="seen">你看我是怎么隐身的</p>
+    </div>
+    <script>
+        const app2 = new Vue({
+            el: '#app2',
+            data: {
+                seen: true
+            }
+        });
+    </script>
+
+    <div id="app3">
+        <p>{{message}}</p>
+        <button v-on:click="reverseMessage">翻转字符</button>
+    </div>
+    <script>
+        const app3 = new Vue({
+            el: '#app3',
+            data: {
+                message: 'Hello Wenhe'
+            },
+            methods: {
+                reverseMessage: function() {
+                    this.message = this.message.split('').reverse().join('')
+                }
+            }
+        });
+    </script>
+    <div id="app4">
+        <p>{{ message }}</p>
+        <input v-model="message">
+    </div>
+    <script>
+        const app4 = new Vue({
+            el: '#app4',
+            data: {
+                message: 'good job'
+            }
+        });
+    </script>
+</body>
+
+</html>

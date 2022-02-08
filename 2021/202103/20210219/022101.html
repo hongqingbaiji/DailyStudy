@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组</title>
+</head>
+
+<body>
+
+    <script>
+        // var arr = ['pink', 'red', 'green', 'blue'];
+        // var str = '' + arr[0];
+        // for (var i = 1; i < arr.length; i++) {
+        //     str += '|' + arr[i];
+        // }
+        // console.log(str);
+
+        // var arr = [2, 0, 23, 3, 34, 10];
+        // var arr1 = [];
+        // for (var i = 0; i < arr.length; i++) {
+        //     if (arr[i] >= 10) {
+        //         arr1[arr1.length] = arr[i];
+        //     }
+        // }
+        // console.log(arr1);
+
+        // var arr = [2, 0, 23, 3, 34, 10];
+        // var arr1 = [];
+        // for (var i = 0; i < arr.length; i++) {
+        //     if (arr[i] != 0) {
+        //         arr1[arr1.length] = arr[i];
+        //     }
+        // }
+        // console.log(arr1);
+
+        // var arr = [2, 0, 23, 3, 34, 10];
+        // var arr1 = [];
+        // for (var i = arr.length - 1; i >= 0; i--) {
+        //     arr1[arr1.length] = arr[i];
+        // }
+        // console.log(arr1);
+
+
+        var arr = [1, 12, 2, 75, 4, 23, 1, 43, 4];
+        for (var i = 0; i < arr.length - 1; i++) {
+            for (var j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    var temp = arr[j + 1];
+                    arr[j + 1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        console.log(arr);
+    </script>
+</body>
+
+</html>

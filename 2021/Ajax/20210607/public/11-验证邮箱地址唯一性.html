@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>验证邮箱地址唯一性</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    
+    div {
+      margin: 50px;
+    }
+    
+    h3 {
+      margin-bottom: 10px;
+    }
+    
+    #email {
+      width: 200px;
+      height: 30px;
+      padding-left: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .bg-danger {
+      width: 200px;
+      padding: 10px;
+      background-color: brown;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h3>邮箱地址</h3>
+    <input type="email" id="email">
+    <p id="info">123</p>
+  </div>
+  <script>
+    const emailInp = document.querySelector('#email');
+    const info = document.querySelector('#info');
+    // 给文本框添加离开焦点事件
+    emailInp.addEventListener('blur', function() {
+      // 获取用户输入的邮箱地址
+      const email = this.value;
+      // 验证邮箱地址的正则表达式
+      const reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4})$/;
+      // 如果用户输入的邮箱地址不符合规则
+      if (!reg.test(email)) {
+        info.innerHTML = '请输入符合规则的邮箱地址';
+        info.className = 'bg-danger';
+        return;w
+      }
+    });
+  </script>
+
+</body>
+
+</html>

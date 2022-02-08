@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            /* box-sizing: border-box; */
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .ul1 {
+            margin: 10px;
+        }
+        
+        .ul1>li {
+            float: left;
+            width: 80px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid #ccc;
+            margin-left: -1px;
+            cursor: pointer;
+        }
+        
+        .ul1 ul {
+            display: none;
+        }
+        
+        .ul1 ul li {
+            border: 1px solid #ccc;
+            border-top: 0;
+            margin-left: -1px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="ul1">
+        <li>
+            微博
+            <ul class="ul2">
+                <li><a href="#">私信</a></li>
+                <li><a href="#">评论</a></li>
+                <li><a href="#">@我</a></li>
+            </ul>
+        </li>
+        <li>
+            空间
+            <ul class="ul2">
+                <li><a href="#">私信</a></li>
+                <li><a href="#">评论</a></li>
+                <li><a href="#">@我</a></li>
+            </ul>
+        </li>
+        <li>
+            主页
+            <ul class="ul2">
+                <li><a href="#">私信</a></li>
+                <li><a href="#">评论</a></li>
+                <li><a href="#">@我</a></li>
+            </ul>
+        </li>
+        <li>
+            看点
+            <ul class="ul2">
+                <li><a href="#">私信</a></li>
+                <li><a href="#">评论</a></li>
+                <li><a href="#">@我</a></li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        $(function() {
+            //方法1：用show（）和hide（）
+            //方法2：用slideDown()和sliderup（）
+            // $('.ul1>li').mouseover(function() {
+            //     // $(this).children('ul').show();
+            //     $(this).children('ul').slideDown(200);
+            // });
+            // $('.ul1>li').mouseout(function() {
+            //     // $(this).children('ul').hide();
+            //     $(this).children('ul').slideUp(200);
+            // });
+
+            //方法3：用事件切换hover； 就是鼠标经过和离开的复合写法
+            // $('.ul1>li').hover(function() {
+            //     $(this).children('ul').slideDown(200);
+            // }, function() {
+            //     $(this).children('ul').slideUp(200);
+            // });
+
+            //方法4：用切换滑动 slideToggle()
+            $('.ul1>li').hover(function() {
+                $(this).children('ul').stop().slideToggle();
+            });
+        })
+    </script>
+</body>
+
+</html>

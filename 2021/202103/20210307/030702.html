@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <style>
+        ol,
+        li {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        li {
+            border-bottom: 1px dotted #ccc;
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            display: none;
+        }
+        
+        li a {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+
+    <textarea cols="30" rows="10"></textarea>
+    <button>发布</button>
+    <ol>
+
+    </ol>
+    <script>
+        $('button').on('click', function() {
+            var val = $('textarea').val();
+            var li = $('<li>' + val + '<a href="#">删除</a></li>');
+            $('ol').prepend(li);
+            li.slideDown(500); //下拉效果
+            val = $('textarea').val('');
+        });
+        $('ol').on('click', 'a', function() {
+            $(this).parent().slideUp(500, function() {
+                $(this).remove();
+            });
+
+        });
+    </script>
+</body>
+
+</html>

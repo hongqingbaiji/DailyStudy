@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script>
+        // 遍历数组
+        function arr() {
+            for (var i = 0; i < arguments.length; i++) {
+                arr1[arr1.length] = arguments[i];
+            }
+            return arr1;
+        }
+        // console.log(arr(1, 2, 3, 4, 5, 6));
+        var arr1 = [];
+        arr(1, 2, 3, 4, 5, 6, 7);
+        alert(arr1);
+    </script> -->
+    <!-- <script>
+        // 求数组里的最大值
+        function getMax() {
+            var max = arguments[0];
+            for (var i = 1; i < arguments.length; i++) {
+                if (max < arguments[i]) {
+                    max = arguments[i];
+                }
+            }
+            return max;
+        }
+
+        console.log(getMax(2, 24, 5, 3, 12, 54, 7));
+        console.log(getMax(2, 24, 5, 3, 12, 34, 7));
+        console.log(getMax(2, 24, 55, 3, 12, 54, 7));
+    </script> -->
+
+    <!-- <script>
+        // 翻转数组
+        function reverse(arr) {
+            var newArr = [];
+            for (var i = arr.length - 1; i >= 0; i--) {
+                newArr[newArr.length] = arr[i];
+            }
+            return newArr;
+        }
+        var arr1 = reverse([3, 5, 7, 'wenhe', true, 23]);
+        console.log(arr1);
+    </script> -->
+
+    <!-- <script>
+        // 冒泡排序
+        function sort(arr) {
+            var temp;
+            for (var i = 0; i < arr.length - 1; i++) {
+                for (var j = 0; j < arr.length - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+        var arr1 = sort([2, 4, 64, 12, 7, 43, 23])
+        console.log(arr1);
+    </script> -->
+
+    <!-- <script>
+        // 判断闰年
+        function year(num) {
+            var flag = false;
+            if (num % 4 == 0 && num % 100 != 0 || num % 400 == 0) {
+                flag = true;
+            }
+            return flag;
+        }
+        console.log(year(2021));
+        console.log(year(2000));
+    </script> -->
+
+    <!-- <script>
+        function year(num) {
+            var flag = false;
+            if (num % 4 == 0 && num % 100 != 0 || num % 400 == 0) {
+                flag = true;
+            }
+            return flag;
+        }
+
+        function backDay() {
+            var num = prompt('请输入年份：');
+            if (year(num)) {
+                alert('当前年份二月份有29天');
+            } else {
+                alert('当前年份二月份有28天');
+            }
+        }
+        backDay();
+    </script> -->
+
+    <!-- <script>
+        var num = 10;
+        fun();
+
+        function fun() {
+            console.log(num); //undefined
+            var num = 20;
+        }
+    </script> -->
+    <!-- 以上代码经过预解析后变成了下面的样子 -->
+    <!-- <script>
+        var num;
+
+        function fun() { //函数提升
+            var num; //变量提升，只声明未赋值
+            console.log(num); //undefined （就近原则）
+            num = 20;
+        }
+        num = 10;
+        fun();
+    </script> -->
+
+    <script>
+        f1();
+        console.log(c);
+        console.log(b);
+        console.log(a);
+
+        function f1() {
+            var a = b = c = 9;
+            console.log(a);
+            console.log(b);
+            console.log(c);
+        }
+
+        // 输出结果是： 9  9  9  9  9  报错
+    </script>
+    <!-- 预解析后变成一下代码 -->
+    <script>
+        function f1() {
+            var a;
+            a = 9;
+            b = 9;
+            c = 9; // b和c 是全局变量
+            console.log(a);
+            console.log(b);
+            console.log(c); //注意是先执行的函数里，因为函数提升了
+        }
+        f1();
+        console.log(c);
+        console.log(b);
+        console.log(a); //全局作用域里没有声明a，所以报错；
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

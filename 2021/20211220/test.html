@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // var result = prompt('请输入你要购买的水果：')
+      // switch (result) {
+      //   case 'apple':
+      //     alert('8块/斤')
+      //     break
+      //   case 'banana':
+      //     alert('4块/斤')
+      //     break
+      //   default:
+      //     alert('不卖其他的水果')
+      //     break
+      // }
+      // result的值和case的值是全等的，值和数据类型一致才可以匹配
+
+      // var num = parseInt(prompt('请输入总人数：'))
+      // var sum = 0
+      // var result = 0
+      // for (var i = 1; i <= num; i++) {
+      //   var cj = parseFloat(prompt('请输入第' + i + '个学生成绩'))
+      //   sum += cj
+      // }
+      // result = sum / num
+      // alert('班级的平局分数是：' + result)
+      // var num = parseInt(prompt('请输入第一行打印的星星数'))
+      // var result = ''
+      // for (var i = 1; i <= num; i++) {
+      //   for (var j = i; j <= num; j++) {
+      //     result += '❤'
+      //   }
+      //   result += '\n'
+      // }
+      // alert(result)
+
+      // var num = parseInt(prompt('99乘法表'))
+      // var result = ''
+      // for (var i = 1; i <= num; i++) {
+      //   for (var j = 1; j <= i; j++) {
+      //     result += j + '*' + i + '=' + i * j + '\t'
+      //   }
+      //   result += '\n'
+      // }
+      // console.log(result)
+
+      // var sum = 0
+      // for (var i = 1; i <= 100; i++) {
+      //   if (i % 7 == 0) {
+      //     continue
+
+      //   }
+      //   sum += i
+      // }
+      // console.log(sum)
+
+      // do {
+      //   var username = prompt('请输入用户名')
+      //   var password = prompt('请输入密码')
+      // } while (username !== 'admin' || password !== '123456')
+
+      // for (var i = 1; i <= 20; i++) {
+      //   if (i % 10 == 3) {
+      //     continue
+      //   }
+      //   console.log(i)
+      // }
+
+      // var arr = [2, 6, 1, 7, 4]
+      // var sum = 0
+      // for (var i = 0; i < arr.length; i++) {
+      //   sum += arr[i]
+      // }
+      // console.log(sum)
+
+      // 比大小
+      // var arr = [2, 6, 1, 77, 152, 25, 7]
+      // var max = arr[0]
+      // for (var i = 1; i < arr.length; i++) {
+      //   if (max < arr[i]) {
+      //     max = arr[i]
+      //   }
+      // }
+      // console.log(max)
+
+      // 将数组转换为分隔字符串
+      // var arr = ['a', 'b', 'c']
+      // var str = ''
+      // for (var i = 0; i < arr.length; i++) {
+      //   str += arr[i] + '|'
+      // }
+      // console.log(str)
+
+      // var arr = [2, 6, 1, 77, 0, 1, 152, 25, 7]
+      // var newArr = []
+      // for (var i = 0; i < arr.length; i++) {
+      //   if (arr[i] >= 10) {
+      //     newArr[newArr.length] = arr[i]
+      //   }
+      // }
+      // console.log(newArr)
+
+      // var arr = [2, 6, 1, 77, 0, 1, 152, 1, 25, 7]
+      // var newArr = []
+      // for (var i = 0; i < arr.length; i++) {
+      //   if (arr[i] === 1) {
+      //     continue
+      //   }
+      //   newArr[newArr.length] = arr[i]
+      // }
+      // console.log(newArr)
+
+      // var arr = [2, 6, 1, 77, 0, 1, 152, 1, 25, 7]
+      // var newArr = []
+      // for (var i = arr.length - 1; i >= 0; i--) {
+      //   newArr[newArr.length] = arr[i]
+      // }
+      // console.log(newArr)
+
+      var arr = [2, 6, 1, 77, 0, 1, 152, 1, 25, 7]
+      var temp
+      for (var i = 0; i < arr.length; i++) {
+        for (var j = 0; j < arr.length - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+            temp = arr[j + 1]
+            arr[j + 1] = arr[j]
+            arr[j] = temp
+          }
+        }
+      }
+      console.log(arr)
+    </script>
+  </body>
+</html>

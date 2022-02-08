@@ -1,0 +1,19 @@
+{
+    "name": "description",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "nodemon test.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "formidable": "^1.2.2",
+        "mime": "^2.5.2"
+    },
+    "devDependencies": {
+        "gulp": "^4.0.2"
+    }
+}

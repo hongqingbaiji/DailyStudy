@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            list-style: none;
+        }
+        
+        .tab_list {
+            border-bottom: 1px solid #ccc;
+            height: 40px;
+        }
+        
+        .tab_list li {
+            float: left;
+            line-height: 20px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        .change {
+            background-color: red;
+            color: #fff;
+        }
+        
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+
+<!-- <body>
+    <div id="demo" index='1'></div>
+    <script>
+        var div = document.querySelector('div');
+        console.log(div.id);
+        console.log(div.getAttribute('id'));
+        console.log(div.index); //undefined
+        console.log(div.getAttribute('index'));
+        div.setAttribute('index', '2');
+        div.removeAttribute('index');
+    </script>
+</body> -->
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li>商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display:block;">商品介绍内容</div>
+            <div class="item">规格与包装内容</div>
+            <div class="item">售后保障内容</div>
+            <div class="item">商品评价内容</div>
+            <div class="item">手机社区内容</div>
+        </div>
+    </div>
+
+    <!-- <script>
+        var tabList = document.querySelector('.tab_list');
+        var lis = tabList.querySelectorAll('li');
+        var tabCon = document.querySelector('.tab_con');
+        var items = tabCon.querySelectorAll('.item');
+
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].setAttribute('index', i);
+            lis[0].className = 'change';
+            lis[i].onclick = function() {
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = '';
+                }
+                this.className = 'change';
+                var index = this.getAttribute('index');
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = 'none';
+                }
+                items[index].style.display = 'block';
+
+            }
+        }
+    </script> -->
+
+    <script>
+        var tabList = document.querySelector('.tab_list');
+        var lis = tabList.querySelectorAll('li');
+        var tabCon = document.querySelector('.tab_con');
+        var items = tabCon.querySelectorAll('.item');
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].setAttribute('index', i);
+            lis[0].className = 'change';
+            lis[i].onclick = function() {
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = '';
+                }
+                this.className = 'change';
+                var index = this.getAttribute('index');
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = 'none';
+                }
+                items[index].style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>

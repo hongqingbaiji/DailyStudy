@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='app'>
+    <cpn :pnum1="num1" :pnum2="num2" @num1change="num1Change" 
+    @num2change="num2Change"></cpn>
+  </div>
+  <template id="cpnC">
+    <div>
+      <h3>props:{{ pnum1 }}</h3>
+      <h3>data:{{ dnum1 }}</h3>
+      <!-- <input type="text" v-model="dnum1">  -->
+      <input type="text" :value="dnum1" @input="num1Input">
+      <h3>props:{{ pnum2 }}</h3>
+      <h3>data:{{ dnum2 }}</h3>
+      <!-- <input type="text" v-model="dnum2"> -->
+      <input type="text" :value="dnum2" @input="num2Input">
+    </div>
+  </template>
+  <script src='../js/vue.js'></script>
+  <script>
+    const cpn = {
+      template: '#cpnC',
+      props: {
+        pnum1: Number,
+        pnum2: Number
+      },
+      data() {
+        return {
+          dnum1: this.pnum1,
+          dnum2: this.pnum2
+        }
+      },
+      methods: {
+        num1Input(event) {
+          this.dnum1 = event.target.value;
+          this.$emit('num1change', this.dnum1);
+          this.dnum2 = this.dnum1 * 100;
+          this.$emit('num2change', this.dnum2);
+
+        },
+        num2Input(event) {
+          this.dnum2 = event.target.value;
+          this.$emit('num2change', this.dnum2);
+          this.dnum1 = this.dnum2 / 100;
+          this.$emit('num1change', this.dnum1);
+        }
+      }
+    };
+    const app = new Vue({
+      el: '#app',
+      data: {
+        num1: 1,
+        num2: 0
+      },
+      methods: {
+        num1Change(value) {
+          this.num1 = parseFloat(value);
+        },
+        num2Change(value) {
+          this.num2 = parseFloat(value);
+        }
+      },
+      components: {
+        cpn
+      }
+    });
+  </script>
+</body>
+
+
+<!-- <body>
+  <div id='app'>
+    <cpn :pnum1="num1" :pnum2="num2" @num1change="num1Input" @num2change="num2Input"></cpn>
+  </div>
+  <template id="cpnC">
+    <div>
+      <h3>props:{{ pnum1 }}</h3>
+      <h3>data:{{ dnum1 }}</h3>
+      <input type="text" :value="dnum1" @input="num1Change">
+      <h3>props:{{ pnum2 }}</h3>
+      <h3>data:{{ dnum2 }}</h3>
+      <input type="text" :value="dnum2" @input="num2Change">
+    </div>
+  </template>
+  <script src='../js/vue.js'></script>
+  <script>
+    const cpn = {
+      template: "#cpnC",
+      props: {
+        pnum1: Number,
+        pnum2: Number
+      },
+      data() {
+        return {
+          dnum1: this.pnum1,
+          dnum2: this.pnum2
+        }
+      },
+      methods: {
+        num1Change(event) {
+          this.dnum1 = event.target.value
+          this.$emit('num1change', this.dnum1)
+          this.dnum2 = this.dnum1 * 100
+          this.$emit('num2change', this.dnum2)
+        },
+        num2Change(event) {
+          this.dnum2 = event.target.value
+          this.$emit('num2change', this.dnum2)
+          this.dnum1 = this.dnum2 / 100
+          this.$emit('num1change', this.dnum1)
+        }
+      }
+    };
+    const app = new Vue({
+      el: '#app',
+      components: {
+        cpn
+      },
+      data: {
+        num1: 1,
+        num2: 0
+      },
+      methods: {
+        num1Input(dnum1) {
+          this.num1 = parseFloat(dnum1)
+        },
+        num2Input(dnum2) {
+          this.num2 = parseFloat(dnum2)
+        }
+      }
+    });
+  </script>
+</body> -->
+
+</html>

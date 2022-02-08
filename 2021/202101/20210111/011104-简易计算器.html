@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简易计算器</title>
+</head>
+
+<body>
+    <script>
+        do {
+            var num = prompt('欢迎使用简易计算器：\n1.加法运算;\n2.减法运算;\n3.乘法运算;\n4.除法运算;\n5.求摩运算;\n6.退出;\n请输入您的选项：');
+            switch (parseInt(num)) {
+                case 1:
+                    var num1 = prompt('请输入第一个值：');
+                    var num2 = prompt('请输入第二个值：');
+                    var sum = getSum(parseInt(num1), parseInt(num2));
+                    alert(num1 + ' + ' + num2 + ' = ' + sum);
+                    break;
+                case 2:
+                    var num1 = prompt('请输入第一个值：');
+                    var num2 = prompt('请输入第二个值：');
+                    var sub = getSub(parseInt(num1), parseInt(num2));
+                    alert(num1 + ' - ' + num2 + ' = ' + sub);
+                    break;
+                case 3:
+                    var num1 = prompt('请输入第一个值：');
+                    var num2 = prompt('请输入第二个值：');
+                    var mul = getMul(parseInt(num1), parseInt(num2));
+                    alert(num1 + ' * ' + num2 + ' = ' + mul);
+                    break;
+
+                case 4:
+                    var num1 = prompt('请输入第一个值：');
+                    var num2 = prompt('请输入第二个值：');
+                    var div = getDiv(parseInt(num1), parseInt(num2));
+                    alert(num1 + ' / ' + num2 + ' = ' + div);
+                    break;
+                case 5:
+                    var num1 = prompt('请输入第一个值：');
+                    var num2 = prompt('请输入第二个值：');
+                    var rem = getRem(parseInt(num1), parseInt(num2));
+                    alert(num1 + ' % ' + num2 + ' = ' + rem);
+                    break;
+
+                case 6:
+                    alert('退出成功');
+                    break;
+
+                default:
+                    alert('输入错误');
+                    break;
+
+            }
+        } while (parseInt(num) != 6);
+
+
+        function getSum(num1, num2) {
+            var sum = num1 + num2;
+            return sum;
+        }
+
+        function getSub(num1, num2) {
+            var sub = num1 - num2;
+            return sub;
+        }
+
+        function getMul(num1, num2) {
+            var mul = num1 * num2;
+            return mul;
+        }
+
+        function getDiv(num1, num2) {
+            var div = num1 / num2;
+            return div;
+        }
+
+        function getRem(num1, num2) {
+            var rem = num1 % num2;
+            return rem;
+        }
+    </script>
+
+
+</body>
+
+</html>

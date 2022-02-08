@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      margin: 50px 50px 0;
+    }
+    
+    table,
+    th,
+    td {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+    }
+    
+    th,
+    td {
+      padding: 5px 20px;
+    }
+    
+    td {
+      text-align: center;
+    }
+    
+    th {
+      background-color: #eee;
+    }
+    
+    h3 {
+      margin: 10px 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='app'>
+    <div v-if="books.length">
+      <table>
+        <thead>
+          <tr>
+            <th> </th>
+            <th>书籍名称</th>
+            <th>出版日期</th>
+            <th>价格</th>
+            <th>购买数量</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item,index) in books">
+            <td>{{item.id}}</td>
+            <td>{{item.bName}}</td>
+            <td>{{item.date}}</td>
+            <td>{{getFinalPrice(item.price*item.counter)}}</td>
+            <td>
+              <button @click="decrement(index)" :disabled="item.counter <=1">-</button> {{item.counter}}
+              <button @click="increment(index)">+</button>
+            </td>
+            <td><button @click="delClick(index)">删除</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>总价格：{{ getFinalPrice(prices) }}</h3>
+    </div>
+    <h3 v-else>购物车为空</h3>
+  </div>
+  <script src='../js/vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        books: [{
+          id: 1,
+          bName: '《算法导论》',
+          date: '2006-9',
+          price: 85.5,
+          counter: 1
+        }, {
+          id: 2,
+          bName: '《UNIX编程艺术》',
+          date: '2006-2',
+          price: 59.99,
+          counter: 1
+        }, {
+          id: 3,
+          bName: '《编程珠玑》',
+          date: '2008-9',
+          price: 39.99,
+          counter: 1
+        }, {
+          id: 4,
+          bName: '《代码大全》',
+          date: '2006-3',
+          price: 128.88,
+          counter: 1
+        }]
+      },
+      computed: {
+        prices() {
+          return this.books.reduce((total, b) => {
+            return total + b.price * b.counter;
+          }, 0);
+        }
+      },
+      methods: {
+        increment(index) {
+          this.books[index].counter++;
+        },
+        decrement(index) {
+          this.books[index].counter--;
+        },
+        getFinalPrice(price) {
+          return '￥' + price.toFixed(2);
+        },
+        delClick(index) {
+          this.books.splice(index, 1);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

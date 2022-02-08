@@ -1,0 +1,69 @@
+fieldset {
+    width: 385px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+
+legend {
+    font-weight: 700;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+label {
+    display: block;
+    margin: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.aihao {
+    font-size: 14px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.lab {
+    display: inline;
+    margin: 0;
+}
+
+.normal {
+    display: block;
+    margin-top: 5px;
+    padding-left: 10px;
+    width: 345px;
+    height: 30px;
+}
+
+.normal:focus {
+    outline: none;
+    border: 2px solid skyblue;
+}
+
+.select {
+    margin-top: 5px;
+    width: 360px;
+    height: 35px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.select:focus {
+    outline: none;
+    border: 2px solid skyblue;
+}
+
+.btn {
+    margin-top: 5px;
+    padding: 10px 167px;
+    border: 0;
+    background-color: green;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn:hover {
+    box-shadow: 0px 0px 15px rgba(0, 255, 0, .5);
+}

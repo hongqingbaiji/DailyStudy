@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- <body>
+    <button id="btn">唐伯虎</button>
+    <div>123</div>
+
+    <script>
+        var btn = document.getElementById('btn'); //获取事件源:btn
+        //btn.onclick  事件类型:点击按钮
+        btn.onclick = function() {
+            //事件处理程序:创建了一个函数，点击按钮会执行函数内部代码
+            alert('点秋香');
+        }
+
+        var div1 = document.querySelector('div');
+        div1.onclick = function() {
+            console.log('我被选中了');
+        }
+    </script>
+</body> -->
+
+<body>
+    <button>显示当前系统时间</button>
+    <div>某个时间</div>
+    <p></p>
+
+    <script>
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        btn.onclick = function() {
+            div.innerText = getDate();
+        }
+
+        function getDate() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth();
+            var dates = date.getDate();
+            var weeks = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六', ];
+            var days = date.getDay();
+            var h = date.getHours();
+            h = h < 10 ? '0' + h : h;
+            var m = date.getMinutes();
+            m = m < 10 ? '0' + m : m;
+            var s = date.getSeconds();
+            s = s < 10 ? '0' + s : s;
+            return year + '年' + (month + 1) + '月' + dates + '日 ' + weeks[days] + ' ' + h + ':' + m + ':' + s;
+        }
+
+        var p = document.querySelector('p');
+        p.innerText = getDate();
+    </script>
+</body>
+
+</html>

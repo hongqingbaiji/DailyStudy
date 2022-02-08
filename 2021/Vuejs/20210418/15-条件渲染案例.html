@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 案例需求：用户登录时可以切换使用用户账号登录还是邮箱地址登录 -->
+  <div id='app'>
+    <span v-if="isShow">
+      <!-- 使用key值可以解决切换类型时input里的内容不清空 -->
+      用户登录：<input type="text" key="uname" placeholder="用户账号">
+    </span>
+    <span v-else>
+      用户邮箱：<input type="text" key="email" placeholder="用户邮箱">
+    </span>
+    <button @click="btnClick">切换类型</button>
+  </div>
+  <script src='../js/vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        isShow: true //给isShow一个默认值
+      },
+      methods: {
+        btnClick() {
+          //点击按钮，把isShow的值取反
+          this.isShow = !this.isShow;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

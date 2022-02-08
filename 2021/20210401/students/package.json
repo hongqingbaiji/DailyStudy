@@ -1,0 +1,24 @@
+{
+    "name": "students",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "app.js": "主界面",
+        "model/stu.js": "创建集合",
+        "model/index.js": "连接数据库"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "art-template": "^4.13.2",
+        "dateformat": "^4.5.1",
+        "mongoose": "^5.12.3",
+        "route": "^0.2.5",
+        "router": "^1.3.5",
+        "serve-static": "^1.14.1",
+        "template": "^0.17.5",
+        "url": "^0.11.0"
+    }
+}

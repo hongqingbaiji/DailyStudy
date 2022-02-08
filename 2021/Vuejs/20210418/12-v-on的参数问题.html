@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='app'>
+    <!-- 如果该方法不需要传递参数，则可以省略掉小括号 -->
+    <!-- 如果该方法需要传递参数，监听事件后的小括号也省略了，
+          那会将原生的event事件传递进去 -->
+    <!-- 如果加上小括号但是不传递参数，则会返回undefined -->
+    <!-- 如果既需要传递参数，也需要获取原生的event事件，
+          则需要把参数传递进去并且加上第二个参数 $event -->
+    <button @click="btn1Click">按钮1</button>
+    <button @click="btn1Click('abc')">按钮2</button>
+    <button @click="btn1Click()">按钮3</button>
+    <button @click="btn1Click('abc',$event)">按钮4</button>
+  </div>
+  <script src='../js/vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        ac: 123
+      },
+      methods: {
+        btn1Click(a, event) {
+          console.log(a, event);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

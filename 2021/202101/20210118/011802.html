@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 100px;
+            border-collapse: collapse;
+            width: 500px;
+        }
+        
+        th {
+            border: 1px solid #ccc;
+            height: 30px;
+            background-color: #bbb;
+        }
+        
+        td {
+            border: 1px solid #ccc;
+            text-align: center;
+            height: 25px;
+        }
+    </style>
+</head>
+
+<!-- <body>
+    <ul>
+        <li><a href="javascript:;">1</a></li>
+        <li>3</li>
+        <li>2</li>
+    </ul>
+    <script>
+        // 复制节点
+        var ul = document.querySelector('ul');
+        var lili = ul.children[0].cloneNode(true);
+        ul.appendChild(lili);
+    </script>
+</body> -->
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var datas = [{
+            uname: 'wenhe',
+            subject: 'js',
+            scout: 80
+        }, {
+            uname: 'muzhi',
+            subject: 'js',
+            scout: 90
+        }, {
+            uname: 'lingyan',
+            subject: 'js',
+            scout: 88
+        }, {
+            uname: 'maqi',
+            subject: 'js',
+            scout: 100
+        }];
+        var tbody = document.querySelector('tbody');
+        for (var i = 0; i < datas.length; i++) {
+            // 创建行
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            //创建列
+            for (var k in datas[i]) {
+                var td = document.createElement('td');
+                td.innerHTML = datas[i][k];
+                tr.appendChild(td);
+            }
+            // 创建删除列
+            var td = document.createElement('td');
+            td.innerHTML = "<a href='javascript:;'>删除</a>";
+            tr.appendChild(td);
+        }
+        // 删除行
+        var as = document.querySelectorAll('a');
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function() {
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+    </script>
+    <!-- <script>
+        var datas = [{
+            uname: 'wenhe',
+            subject: 'js',
+            scout: 80
+        }, {
+            uname: 'muzhi',
+            subject: 'js',
+            scout: 90
+        }, {
+            uname: 'lingyan',
+            subject: 'js',
+            scout: 88
+        }, {
+            uname: 'maqi',
+            subject: 'js',
+            scout: 100
+        }];
+        var thead = document.querySelector('thead');
+        var tbody = document.querySelector('tbody');
+        for (var i = 0; i < datas.length; i++) {
+            // 创建tr行
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            // 创建td列
+            for (var k in datas[i]) {
+                var td = document.createElement('td');
+                // 把对象里的属性值给td
+                td.innerHTML = datas[i][k];
+                tr.appendChild(td);
+            }
+            // 创建带删除的单元格
+            var td = document.createElement('td');
+            td.innerHTML = "<a href='javascript:;'>删除</a>";
+            tr.appendChild(td);
+        }
+        // 删除行
+        var as = document.querySelectorAll('a');
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function() {
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+    </script> -->
+</body>
+
+</html>

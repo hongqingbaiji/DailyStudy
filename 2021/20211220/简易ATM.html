@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var money = 100
+      var res
+      do {
+        var num = parseInt(prompt('请输入您要的操作：\n1.存钱\n2.取钱\n3.显示余额\n4.退出'))
+        switch (num) {
+          case 1:
+            do {
+              res = parseInt(prompt('您选择了存钱，请输入要存储的金钱数量：'))
+              if (res < 0) {
+                alert('请输入正确的数字')
+              }
+            } while (res < 0)
+            money += res
+            alert('您存入了' + res + '元,您卡内余额为：' + money)
+            break
+          case 2:
+            do {
+              res = parseInt(prompt('您选择了取钱，请输入要取走的金钱数量：'))
+              if (res < 0) {
+                alert('请输入正确的数字')
+              } else if (res > money) {
+                alert('您没有这么多钱！')
+              }
+            } while (res < 0 || res > money)
+            money -= res
+            alert('您取走了' + res + '元,您卡内余额为：' + money)
+            break
+          case 3:
+            alert('您卡内余额：' + money + '元')
+            break
+          case 4:
+            alert('退出')
+            break
+          default:
+            console.log('输入错误')
+            break
+        }
+      } while (num !== 4)
+    </script>
+  </body>
+</html>

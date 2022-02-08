@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function Sum(num1, num2) {
+      //   var sum = 0
+      //   for (var i = num1; i <= num2; i++) {
+      //     sum += i
+      //   }
+      //   return sum
+      // }
+      // console.log(Sum(1, 5))
+
+      // function getMax(arr) {
+      //   var max = arr[0]
+      //   for (var i = 1; i < arr.length; i++) {
+      //     if (max < arr[i]) {
+      //       max = arr[i]
+      //     }
+      //   }
+      //   return max
+      // }
+      // console.log(getMax([4, 3, 6, 2, 10, 0, -3, 55, 3]))
+
+      // function getNum(num1, num2) {
+      //   num1 + num2
+      // }
+      // console.log(getNum(1, 2))
+
+      // function getSum() {
+      //   var sum = 0
+      //   for (var i = 1; i <= 100; i++) {
+      //     sum += i
+      //     console.log(sum)
+      //     return // 中断循环也中断函数
+      //   }
+      //   console.log(sum)
+      // }
+      // getSum()
+
+      // function reverse(arr) {
+      //   var newArr = []
+      //   for (var i = arr.length - 1; i >= 0; i--) {
+      //     newArr[newArr.length] = arr[i]
+      //   }
+      //   return newArr
+      // }
+      // var arr = [1, 2, 3, 4, 5, 6, 0]
+      // console.log(reverse(arr))
+
+      // function maopao(arr) {
+      //   for (var i = 0; i < arr.length; i++) {
+      //     for (var j = 0; j < arr.length - i; j++) {
+      //       if (arr[j] > arr[j + 1]) {
+      //         var result = arr[j]
+      //         arr[j] = arr[j + 1]
+      //         arr[j + 1] = result
+      //       }
+      //     }
+      //   }
+      //   return arr
+      // }
+      // var arr1 = maopao([5, 2, 5, 7, 0, 12, 63, 34, 2])
+      // console.log(arr1)
+
+      // function fn1() {
+      //   fn2()
+      //   console.log(11)
+      // }
+      // fn1()
+      // function fn2() {
+      //   console.log(22)
+      // }
+
+      // function isRunYear(year) {
+      //   var flag = false
+      //   if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+      //     flag = true
+      //   }
+      //   return flag
+      // }
+      // function backDay() {
+      //   var year = prompt('请输入一个年份：')
+      //   return isRunYear(year) ? alert(year + '年二月有29天') : alert(year + '年二月有28天')
+      // }
+      // backDay()
+
+      // if (true) {
+      //   let num = 10 // let 有块级作用域
+      // }
+      // console.log(num) //num is not defined
+
+      // var num = 10
+      // fun()
+      // function fun() {
+      //   console.log(num)
+      //   var num = 20
+      // }
+
+      // var num
+      // function fun() {
+      //   var num
+      //   console.log(num) // 这个num是输出的函数内部声明的num，执行时还没有赋值，所以是undefined
+      //   num = 20
+      // }
+      // num = 10
+      // fun()
+
+      // function getRandom(min, max) {
+      //   return Math.floor(Math.random() * (max - min + 1)) + min
+      // }
+      // var arr = ['wenhe', 'shaonian', 'muzhi', 'yunqian', 'kehan']
+      // console.log(arr[getRandom(0, arr.length - 1)])
+
+      var num = Math.floor(Math.random() * 101)
+      var res = prompt('您有5次机会，请猜吧')
+      var flag = 5
+      while (res != num) {
+        if (res > num) {
+          alert('您猜大了')
+        } else {
+          alert('您猜小了')
+        }
+        flag--
+        if (flag == 0) {
+          break
+        }
+        res = prompt('您还剩' + flag + '次机会，请继续猜一下')
+      }
+      if (res == num) {
+        alert('恭喜你猜对了，正确答案是：' + num)
+      } else {
+        alert('很遗憾，机会用完了,你没有猜对,正确答案是：' + num)
+      }
+    </script>
+  </body>
+</html>

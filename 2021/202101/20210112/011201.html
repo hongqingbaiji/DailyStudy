@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组</title>
+</head>
+
+<body>
+    <!-- <script>
+        var arr = [1500, 1200, 2000, 2100, 1800];
+        var newArr = [];
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] < 2000) {
+                newArr.push(arr[i]);
+            }
+        }
+        console.log(newArr);
+    </script> -->
+    <!-- <script>
+        // 翻转数组
+        var arr = ['pink', 'red', 'blue'];
+        arr.reverse();
+        console.log(arr);
+
+        //数组排序
+        var arr1 = [12, 34, 23, 1, 6, 7, 43];
+        arr1.sort(function(a, b) {
+            return a - b; //升序排列；b-a是降序排列
+        });
+        console.log(arr1);
+    </script> -->
+
+    <!-- <script>
+        // 数组去重
+        function unique(arr) {
+            var newArr = ['a', 'b', 'c'];
+            for (var i = 0; i < arr.length; i++) { //遍历旧数组
+                if (newArr.indexOf(arr[i]) === -1) { // 如果新数组里没有旧数组的该元素，就会返回 -1
+                    newArr.push(arr[i]); //如果返回-1，就把该元素添加进新数组
+                }
+            }
+            return newArr;
+        }
+        var arr = unique(['c', 'a', 'x', 'g', 'x', 'r', 'b', 'a']);
+        arr.forEach(function(item, index, array) {
+            console.log(item, index);
+        });
+    </script> -->
+
+    <!-- <script>
+        function unique(arr) {
+            var newArr = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (newArr.indexOf(arr[i]) === -1) {
+                    newArr.push(arr[i]);
+                }
+            }
+            return newArr;
+        }
+        var arr = unique(['c', 'a', 'x', 'g', 'x', 'r', 'b', 'a']);
+        console.log(arr);
+    </script> -->
+
+    <script>
+        var arr = [1, 2, 3, 'wenhe'];
+        console.log(arr.toString()); //数组转成字符串
+        console.log(arr);
+        console.log(arr.join('--'));
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<!-- <body>
+  <div id='app'>
+    <cpn @item-click="itemClick"></cpn>
+  </div>
+
+  <template id="cpnC">
+    <div>
+      <button v-for="item in infos"
+              @click="btnClick(item)">
+        {{item.name}}
+      </button>
+    </div>
+  </template>
+
+  <script src='../js/vue.js'></script>
+  <script>
+    const cpn = {
+      template: '#cpnC',
+      data() {
+        return {
+          infos: [{
+            id: 1,
+            name: 'wenhe'
+          }, {
+            id: 2,
+            name: 'shaonian'
+          }, {
+            id: 3,
+            name: 'ziyan'
+          }, {
+            id: 4,
+            name: 'maqi'
+          }, ]
+        }
+      },
+      methods: {
+        btnClick(item) {
+          this.$emit('item-click', item)
+        }
+      }
+    };
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello'
+      },
+      components: {
+        cpn
+      },
+      methods: {
+        itemClick(item) {
+          console.log(item.name);
+        }
+      }
+    });
+  </script>
+</body> -->
+
+<body>
+  <div id='app'>
+    <cpn @decrement="changeCount" @increment="changeCount"></cpn>
+    <h3>{{ total }}</h3>
+  </div>
+  <template id="cpnC">  
+    <div>
+      <button @click="decrement" :disabled="count<=1">-</button>
+      <button @click="increment">+</button>
+    </div>
+  </template>
+  <script src='../js/vue.js'></script>
+  <script>
+    const cpn = {
+      template: '#cpnC',
+      data() {
+        return {
+          count: 1
+        }
+      },
+      methods: {
+        decrement() {
+          this.count--;
+          this.$emit('decrement', this.count);
+        },
+        increment() {
+          this.count++;
+          this.$emit('increment', this.count);
+        },
+
+      }
+    };
+    const app = new Vue({
+      el: '#app',
+      data: {
+        total: 1
+      },
+      methods: {
+        changeCount(count) {
+          this.total = count;
+        }
+      },
+      components: {
+        cpn
+      }
+    });
+  </script>
+</body>
+
+</html>

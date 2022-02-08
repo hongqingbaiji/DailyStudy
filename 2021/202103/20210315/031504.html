@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj = {
+            id: 1,
+            name: 'wenhe',
+            msg: {
+                age: 18
+            },
+            color: ['pink', 'red']
+        }
+        var o = {};
+        // 封装函数
+        function deepCopy(newobj, oldobj) {
+            for (var k in oldobj) {
+                var item = oldobj[k];
+                if (oldobj[k] instanceof Array) {
+                    //判断这个值是否是数组
+                    newobj[k] = [];
+                    deepCopy(newobj[k], item);
+                } else if (oldobj[k] instanceof Object) {
+                    //判断这个值是否是对象
+                    newobj[k] = {};
+                    deepCopy(newobj[k], item);
+                } else {
+                    //判断这个值是否属于简单数据类型
+                    newobj[k] = item;
+                }
+            }
+        }
+        deepCopy(o, obj);
+        console.log(o);
+    </script>
+</body>
+
+</html>

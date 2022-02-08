@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: relative;
+            width: 150px;
+            height: 300px;
+            background-color: pink;
+        }
+        
+        span {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            color: #fff;
+            background-color: purple;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<!-- <body>
+    <script>
+        window.addEventListener('load', function() {
+            var btn = document.querySelector('button');
+            btn.addEventListener('click', function() {
+                alert(123);
+            })
+        })
+    </script>
+
+    <button>按钮</button>
+</body> -->
+
+<!-- <body>
+    <button>停止</button>
+    <div>广告
+        <span>X</span>
+    </div>
+    <script>
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        var span = document.querySelector('span');
+        span.addEventListener('click', function() {
+            div.style.display = 'none';
+        })
+        var stopAd = setTimeout(callback, 5000);
+
+        function callback() {
+            div.style.display = 'none';
+        }
+        btn.addEventListener('click', function() {
+            clearTimeout(stopAd);
+        })
+    </script>
+</body> -->
+
+<body>
+    <button>停止</button>
+    <div>5s后关闭
+        <span>X</span>
+    </div>
+    <script>
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        var span = document.querySelector('span');
+        span.addEventListener('click', function() {
+            div.style.display = 'none';
+        })
+        var stopAd = setInterval(callback, 1000);
+        var flag = 5;
+
+        function callback() {
+
+            if (flag == 0) {
+                div.style.display = 'none';
+            } else {
+                div.innerHTML = flag + 's后关闭 <span>X</span>';
+                flag--;
+            }
+        }
+        btn.addEventListener('click', function() {
+            clearInterval(stopAd);
+            div.innerHTML = '已停止<span>X</span>';
+        })
+    </script>
+</body>
+
+</html>

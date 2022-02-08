@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <button>发送</button>
+    <script>
+        var btn = document.querySelector('button');
+        var time = 3;
+        btn.addEventListener('click', function() {
+            btn.disabled = true; //禁用按钮
+            callback();
+            var s = setInterval(callback, 1000);
+
+            function callback() {
+                btn.innerHTML = '还剩' + time + '秒可再次发送';
+                time--;
+                if (time < 0) {
+                    clearInterval(s) //停止计时器
+                    btn.innerHTML = '发送';
+                    btn.disabled = false;
+                    time = 3; //时间复原
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

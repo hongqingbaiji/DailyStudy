@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <button>按钮</button>
+    <script>
+        var btns = document.querySelectorAll('button');
+        btns[0].addEventListener('click', function() {
+            alert('22');
+        });
+        btns[0].addEventListener('click', function() {
+            alert('33');
+        });
+    </script> -->
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+
+    <script>
+        var divs = document.querySelectorAll('div');
+        // 1、传统方法
+        divs[0].onclick = function() {
+                alert(11);
+                this.onclick = null;
+            }
+            // 2、方法监听注册事件 removeEventListener()
+        divs[1].addEventListener('click', fn);
+
+        function fn() {
+            alert(22);
+            divs[1].removeEventListener('click', fn);
+        }
+        // 3、适配ie9以下
+        divs[2].attachEvent('onclick', fn1);
+
+        function fn1() {
+            alert(33);
+            divs[2].detachEvent('onclick', fn1);
+        }
+    </script>
+</body>
+
+</html>

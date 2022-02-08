@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="tab.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .tabsbox {
+            margin: 100px auto;
+            width: 800px;
+            height: 500px;
+            border: 1px solid lightsalmon;
+            position: relative;
+        }
+        
+        .firstnav {
+            width: 100%;
+            height: 50px;
+        }
+        
+        .firstnav li {
+            position: relative;
+            float: left;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-right: 1px solid #ccc;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .firstnav li span textarea {
+            width: 80px;
+            height: 30px;
+            outline: none;
+            padding: 6px;
+            margin: 10px;
+        }
+        
+        .close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 12px;
+            height: 12px;
+            font-size: 12px;
+            line-height: 10px;
+            background-color: #333;
+            color: #fff;
+        }
+        
+        .tabadd {
+            height: 50px;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        .tabadd span {
+            display: block;
+            padding: 1px 5px;
+            border: 1px solid #ccc;
+            float: right;
+            margin: 12px;
+            cursor: pointer;
+        }
+        
+        .tabscon {
+            position: absolute;
+            top: 50px;
+            left: 0px;
+            width: 100%;
+            height: 450px;
+            padding: 30px;
+            overflow: auto;
+        }
+        
+        .tabscon section textarea {
+            width: 500px;
+            height: 300px;
+            outline: none;
+            padding: 6px;
+        }
+        
+        .tabsbox .liactive {
+            border-bottom: 1px solid #fff;
+            z-index: 9;
+        }
+        
+        .tabscon section,
+        .tabscon .conactive {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .tabscon .conactive {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tabsbox" id="tab">
+        <!-- tab标签 -->
+        <nav class="firstnav">
+            <ul>
+                <li class="liactive"><span>测试1</span><span class="close">x</span></li>
+                <li><span>测试2</span><span class="close">x</span></li>
+                <li><span>测试3</span><span class="close">x</span></li>
+            </ul>
+            <div class="tabadd">
+                <span>+</span>
+            </div>
+        </nav>
+        <!-- tab内容 -->
+        <div class="tabscon">
+            <section class="conactive">测试内容1</section>
+            <section>测试内容2</section>
+            <section>测试内容3</section>
+        </div>
+    </div>
+</body>
+
+</html>
