@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid #000;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 5px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <input type="checkbox" class="iptAll" />
+          </th>
+          <th>商品</th>
+          <th>价格</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" class="ipt" /></td>
+          <td>iPhone8</td>
+          <td>8000</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="ipt" /></td>
+          <td>iPid Pro</td>
+          <td>5000</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="ipt" /></td>
+          <td>iPid Air</td>
+          <td>2000</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="ipt" /></td>
+          <td>Apple Watch</td>
+          <td>3000</td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      var iptAll = document.querySelector('.iptAll')
+      var ipts = document.querySelectorAll('.ipt')
+      iptAll.onclick = function () {
+        for (var i = 0; i < ipts.length; i++) {
+          ipts[i].checked = iptAll.checked
+        }
+      }
+      for (var i = 0; i < ipts.length; i++) {
+        ipts[i].onclick = function () {
+          var flag = true
+          for (var i = 0; i < ipts.length; i++) {
+            if (!ipts[i].checked) {
+              flag = false
+              break
+            }
+          }
+          iptAll.checked = flag
+        }
+      }
+    </script>
+  </body>
+</html>

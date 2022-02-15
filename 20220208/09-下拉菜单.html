@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      a {
+        text-decoration: none;
+      }
+      li {
+        list-style: none;
+      }
+      .nav {
+        position: relative;
+        margin: 100px;
+        width: 400px;
+        height: 30px;
+        line-height: 30px;
+      }
+      .nav > li {
+        float: left;
+        padding: 0 20px;
+      }
+      .item {
+        display: none;
+        position: absolute;
+        top: 30px;
+        width: 72px;
+        text-align: center;
+        border-left: 1px solid #fecc5b;
+        border-right: 1px solid #fecc5b;
+      }
+      .item li {
+        border-bottom: 1px solid #fecc5b;
+      }
+      .nav li:nth-child(1) ul {
+        left: 0;
+      }
+      .nav li:nth-child(2) ul {
+        left: 72px;
+      }
+      .nav li:nth-child(3) ul {
+        left: 144px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="nav">
+      <li>
+        <a href="#">微博</a>
+        <ul class="item">
+          <li>私信</li>
+          <li>评论</li>
+          <li>@我</li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">博客</a>
+        <ul class="item">
+          <li>私信</li>
+          <li>评论</li>
+          <li>@我</li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">邮箱</a>
+        <ul class="item">
+          <li>私信</li>
+          <li>评论</li>
+          <li>@我</li>
+        </ul>
+      </li>
+    </ul>
+
+    <script>
+      var nav = document.querySelector('.nav')
+      var lis = nav.children
+      for (var i = 0; i < lis.length; i++) {
+        lis[i].onmouseenter = function () {
+          this.children[1].style.display = 'block'
+        }
+        lis[i].onmouseleave = function () {
+          this.children[1].style.display = 'none'
+        }
+      }
+    </script>
+  </body>
+</html>

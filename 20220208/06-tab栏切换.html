@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      li {
+        list-style: none;
+      }
+      .tab {
+        margin: 100px;
+      }
+      .tab_list {
+        background-color: #ccc;
+        height: 40px;
+        line-height: 40px;
+        width: 600px;
+      }
+      .tab_list ul li {
+        float: left;
+        padding: 0 20px;
+        cursor: pointer;
+      }
+      .current {
+        background-color: red;
+        color: #fff;
+      }
+      .tab_con {
+        margin: 20px;
+      }
+      .item {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tab">
+      <div class="tab_list">
+        <ul>
+          <li class="current">商品介绍</li>
+          <li>规格与包装</li>
+          <li>售后保障</li>
+          <li>商品评价</li>
+          <li>手机社区</li>
+        </ul>
+      </div>
+      <div class="tab_con">
+        <div class="item" style="display: block">商品介绍模块</div>
+        <div class="item">规格与包装模块</div>
+        <div class="item">售后保障模块</div>
+        <div class="item">商品评价模块</div>
+        <div class="item">手机社区模块</div>
+      </div>
+    </div>
+
+    <script>
+      var lis = document.querySelector('.tab_list').querySelectorAll('li')
+      var items = document.querySelectorAll('.item')
+      for (var i = 0; i < lis.length; i++) {
+        // 给所有的li加上一个自定义属性 index
+        lis[i].setAttribute('index', i)
+        lis[i].onclick = function () {
+          for (var i = 0; i < lis.length; i++) {
+            lis[i].className = ''
+          }
+          this.className = 'current'
+          // 获取点击项的index
+          var index = this.getAttribute('index')
+          for (var i = 0; i < items.length; i++) {
+            items[i].style.display = 'none'
+          }
+          // 把对应点击项的item给展示出来
+          items[index].style.display = 'block'
+        }
+      }
+    </script>
+  </body>
+</html>

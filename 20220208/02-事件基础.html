@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input {
+        color: #999;
+      }
+      .text {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+      .change {
+        background-color: purple;
+        font-size: 30px;
+        color: #fff;
+      }
+      .span1 {
+        color: green;
+      }
+      .span2 {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <button id="btn">唐伯虎</button>
+    <script>
+      // 事件三要素：事件源 事件类型 事件处理程序
+      // var btn = document.querySelector('#btn')
+      // btn.onclick = function () {
+      //   alert('点秋香')
+      // }
+    </script> -->
+
+    <!-- <button id="btn">展示系统时间</button>
+    <div id="div">时间</div>
+    <p></p>
+    <script>
+      var btn = document.querySelector('#btn')
+      var div = document.querySelector('#div')
+      var p = document.querySelector('p')
+      p.innerText = getData()
+      btn.onclick = function () {
+        div.innerHTML = getData()
+      }
+
+      function getData() {
+        var date = new Date()
+        var y = date.getFullYear()
+        var m = date.getMonth() + 1
+        var d = date.getDate()
+        return '<B>今天是：</B>' + y + '-' + m + '-' + d
+      }
+    </script> -->
+
+    <!-- <button>按钮</button>
+    <input type="text" value="请输入..." />
+    <script>
+      var btn = document.querySelector('button')
+      var ipt = document.querySelector('input')
+      btn.onclick = function () {
+        ipt.value = '被点击了'
+        this.disabled = true
+      }
+    </script> -->
+
+    <!-- <input type="password" />
+    <button>显示密码</button>
+    <script>
+      var ipt = document.querySelector('input')
+      var btn = document.querySelector('button')
+      var flag = 0 //默认隐藏密码
+      btn.onclick = function () {
+        if (flag == 0) {
+          ipt.type = 'text'
+          btn.innerHTML = '隐藏密码'
+          flag = 1
+        } else {
+          ipt.type = 'password'
+          btn.innerHTML = '显示密码'
+          flag = 0
+        }
+      }
+    </script> -->
+
+    <!-- 
+    <input type="text" value="手机" />
+    <script>
+      var ipt = document.querySelector('input')
+      ipt.onfocus = function () {
+        if (this.value == '手机') {
+          this.value = ''
+        }
+        this.style.color = '#333'
+      }
+      ipt.onblur = function () {
+        if (this.value == '') {
+          this.value = '手机'
+        }
+        this.style.color = '#999'
+      }
+    </script> -->
+
+    <!-- <div class="text">文本</div>
+    <script>
+      var text = document.querySelector('.text')
+      text.onclick = function () {
+        this.className = 'text change'
+      }
+    </script> -->
+
+    <!-- <label for="pwd">设置密码：</label>
+    <input type="password" id="pwd" />
+    <span></span>
+    <script>
+      var ipt = document.getElementById('pwd')
+      var span = document.querySelector('span')
+      ipt.onfocus = function () {
+        span.innerHTML = '请输入6-12个字符'
+        span.className = 'span1'
+      }
+      ipt.onblur = function () {
+        if (ipt.value.length < 6 || ipt.value.length > 12) {
+          span.innerHTML = '输入的字符长度不对，请重新输入'
+          span.className = 'span2'
+        } else {
+          span.innerHTML = '输入正确'
+          span.className = 'span1'
+        }
+      }
+    </script> -->
+
+    <button>开关灯</button>
+    <script>
+      var btn = document.querySelector('button')
+      var body1 = document.body
+      var flag = 0 // 0代表开灯
+      btn.onclick = function () {
+        if (flag == 0) {
+          body1.style.backgroundColor = '#000'
+          flag = 1
+        } else {
+          body1.style.backgroundColor = '#fff'
+          flag = 0
+        }
+      }
+    </script>
+  </body>
+</html>

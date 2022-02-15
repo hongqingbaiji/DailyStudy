@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function maopao(arr) {
+        for (var i = 0; i < arr.length; i++) {
+          for (var j = 0; j < arr.length - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+              var item = arr[j]
+              arr[j] = arr[j + 1]
+              arr[j + 1] = item
+            }
+          }
+        }
+        return arr
+      }
+
+      var arr1 = [2, 4, 1, 77, 42, 3, 6]
+      console.log(maopao(arr1))
+    </script>
+  </body>
+</html>

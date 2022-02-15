@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        background: url(images/1.jpg) no-repeat center top;
+      }
+      li {
+        list-style: none;
+      }
+      .baidu {
+        display: flex;
+        width: 400px;
+        border: 5px solid #fff;
+        margin: 100px auto;
+      }
+      .baidu li {
+        flex: 1;
+      }
+      .baidu img {
+        width: 100px;
+        height: 70px;
+      }
+    </style> -->
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid #000;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 5px 20px;
+      }
+      thead tr {
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <!-- <body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+    <script>
+      var btns = document.getElementsByTagName('button')
+      for (var i = 0; i < btns.length; i++) {
+        btns[0].style.backgroundColor = 'pink'
+        btns[i].onclick = function () {
+          for (var i = 0; i < btns.length; i++) {
+            btns[i].style.backgroundColor = ''
+          }
+          this.style.backgroundColor = 'pink'
+        }
+      }
+    </script>
+  </body> -->
+  <!-- <body>
+    <ul class="baidu">
+      <li><img src="images/1.jpg" /></li>
+      <li><img src="images/2.jpg" /></li>
+      <li><img src="images/3.jpg" /></li>
+      <li><img src="images/4.jpg" /></li>
+    </ul>
+    <script>
+      var imgs = document.querySelector('.baidu').querySelectorAll('img')
+      for (var i = 0; i < imgs.length; i++) {
+        imgs[i].onclick = function () {
+          document.body.style.backgroundImage = 'url(' + this.src + ')'
+        }
+      }
+    </script>
+  </body> -->
+
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>学号</th>
+          <th>姓名</th>
+          <th>年龄</th>
+        </tr>
+      </thead>
+      <tbody class="tbody">
+        <tr>
+          <td>1</td>
+          <td>zs</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>zs</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>zs</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>zs</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>zs</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>zs</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>zs</td>
+          <td>18</td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      var trs = document.querySelector('.tbody').querySelectorAll('tr')
+      for (var i = 0; i < trs.length; i++) {
+        trs[i].onmouseenter = function () {
+          for (var i = 0; i < trs.length; i++) {
+            trs[i].style.backgroundColor = ''
+          }
+          this.style.backgroundColor = 'pink'
+        }
+      }
+    </script>
+  </body>
+</html>

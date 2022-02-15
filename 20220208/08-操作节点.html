@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="demo"></div>
+    <div class="div">
+      <span class="span">x</span>
+    </div>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+    <ol class="nav">
+      <li>123</li>
+    </ol>
+    <script>
+      // var span = document.querySelector('.span')
+      // console.log(span.parentNode)
+      var div = document.querySelector('.div')
+      console.log(div.children)
+
+      var ul = document.querySelector('ul')
+      // ul.firstElementChild 有兼容问题 兼容 ie9 以上
+      console.log(ul.firstElementChild)
+      console.log(ul.lastElementChild)
+      // 子节点 常用方法是 ul.children[0]
+      console.log(ul.children[0])
+      console.log(ul.children[ul.children.length - 1])
+      // 兄弟节点
+      console.log(div.previousElementSibling)
+      console.log(div.nextElementSibling)
+
+      var nav = document.querySelector('.nav')
+      var li = document.createElement('li')
+      li.innerHTML = '1234'
+      nav.appendChild(li)
+    </script>
+  </body>
+</html>

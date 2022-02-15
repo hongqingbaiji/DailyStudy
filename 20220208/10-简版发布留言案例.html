@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        margin: 100px;
+      }
+      ul {
+        margin: 30px;
+      }
+      li {
+        background-color: pink;
+        width: 300px;
+        line-height: 30px;
+        padding-left: 10px;
+        margin-bottom: 5px;
+      }
+      li a {
+        float: right;
+        padding-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea cols="30" rows="10"></textarea>
+    <button>发布留言</button>
+    <ul></ul>
+    <script>
+      var btn = document.querySelector('button')
+      var text = btn.previousElementSibling
+      var ul = btn.nextElementSibling
+      btn.onclick = function () {
+        if (text.value == '') {
+          alert('您没有输入内容！')
+          return false
+        } else {
+          // 创建节点
+          var li = document.createElement('li')
+          li.innerHTML = text.value + "<a href='javascript:;'>删除留言</a>"
+          text.value = ''
+          // 新增节点
+          ul.insertBefore(li, ul.children[0])
+          // 删除留言
+          var as = ul.querySelectorAll('a')
+          for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function () {
+              ul.removeChild(this.parentNode)
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
