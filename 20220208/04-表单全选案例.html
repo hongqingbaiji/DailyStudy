@@ -52,6 +52,27 @@
         </tr>
       </tbody>
     </table>
+    <!-- <script>
+      var iptAll = document.querySelector('.iptAll')
+      var ipts = document.querySelectorAll('.ipt')
+      iptAll.onclick = function () {
+        for (var i = 0; i < ipts.length; i++) {
+          ipts[i].checked = iptAll.checked
+        }
+      }
+      for (var i = 0; i < ipts.length; i++) {
+        ipts[i].onclick = function () {
+          var flag = true
+          for (var i = 0; i < ipts.length; i++) {
+            if (!ipts[i].checked) {
+              flag = false
+              break
+            }
+          }
+          iptAll.checked = flag
+        }
+      }
+    </script> -->
     <script>
       var iptAll = document.querySelector('.iptAll')
       var ipts = document.querySelectorAll('.ipt')

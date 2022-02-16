@@ -41,7 +41,7 @@
       <tbody></tbody>
     </table>
 
-    <script>
+    <!-- <script>
       var datas = [
         {
           id: 1,
@@ -98,6 +98,65 @@
           // 删除的语法是  node.removeChild(child)
           // 特别注意，这里容易搞错，要删除的是tr，tr的父节点是tbody,所以node是tbody
           // 然后点击的是 a链接，tr 是 a的父节点的父节点
+          tbody.removeChild(this.parentNode.parentNode)
+        }
+      }
+    </script> -->
+
+    <script>
+      var datas = [
+        {
+          id: 1,
+          name: '张三',
+          subject: 'javascript',
+          score: 100
+        },
+        {
+          id: 2,
+          name: '李四',
+          subject: 'javascript',
+          score: 99
+        },
+        {
+          id: 3,
+          name: '王五',
+          subject: 'javascript',
+          score: 68
+        },
+        {
+          id: 4,
+          name: '赵六',
+          subject: 'javascript',
+          score: 87
+        },
+        {
+          id: 5,
+          name: '燕七',
+          subject: 'javascript',
+          score: 98
+        }
+      ]
+      var tbody = document.querySelector('tbody')
+      // 生成行 tr
+      for (var i = 0; i < datas.length; i++) {
+        var tr = document.createElement('tr')
+        tbody.appendChild(tr)
+        // 生成列 td
+        for (var k in datas[i]) {
+          var td = document.createElement('td')
+          // 在生成列之前把数据增加进来
+          td.innerHTML = datas[i][k]
+          tr.appendChild(td)
+        }
+        // 生成操作列
+        var td = document.createElement('td')
+        td.innerHTML = '<a href="javascript:;">删除</a>'
+        tr.appendChild(td)
+      }
+      // 执行删除操作
+      var as = document.querySelectorAll('a')
+      for (var i = 0; i < as.length; i++) {
+        as[i].onclick = function () {
           tbody.removeChild(this.parentNode.parentNode)
         }
       }

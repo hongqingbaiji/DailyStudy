@@ -37,19 +37,40 @@
       var btn = document.querySelector('button')
       var text = btn.previousElementSibling
       var ul = btn.nextElementSibling
+      // btn.onclick = function () {
+      //   if (text.value == '') {
+      //     alert('您没有输入内容！')
+      //     return false
+      //   } else {
+      //     // 创建节点
+      //     var li = document.createElement('li')
+      //     li.innerHTML = text.value + "<a href='javascript:;'>删除留言</a>"
+      //     text.value = ''
+      //     // 新增节点
+      //     ul.insertBefore(li, ul.children[0])
+      //     // 删除留言
+      //     var as = ul.querySelectorAll('a')
+      //     for (var i = 0; i < as.length; i++) {
+      //       as[i].onclick = function () {
+      //         ul.removeChild(this.parentNode)
+      //       }
+      //     }
+      //   }
+      // }
+
       btn.onclick = function () {
         if (text.value == '') {
           alert('您没有输入内容！')
           return false
         } else {
-          // 创建节点
+          // 生成li
           var li = document.createElement('li')
-          li.innerHTML = text.value + "<a href='javascript:;'>删除留言</a>"
+          li.innerHTML = text.value + '<a href="javascript:;">删除</a>'
           text.value = ''
-          // 新增节点
+          // 记住insertBefore有两个参数，第二个参数是生成到那个位置的前面
           ul.insertBefore(li, ul.children[0])
-          // 删除留言
-          var as = ul.querySelectorAll('a')
+          // 执行删除操作
+          var as = document.querySelectorAll('a')
           for (var i = 0; i < as.length; i++) {
             as[i].onclick = function () {
               ul.removeChild(this.parentNode)

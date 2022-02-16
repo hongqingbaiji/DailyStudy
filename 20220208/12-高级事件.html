@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+      body {
+        height: 3000px;
+      }
+    </style>
+  </head>
+  <body>
+    禁止右键菜单
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+      // var divs = document.querySelectorAll('div')
+      // divs[0].addEventListener('click', fn)
+      // function fn() {
+      //   alert(11)
+      //   divs[0].removeEventListener('click', fn)
+      // }
+      // // 禁止右键菜单
+      // document.addEventListener('contextmenu', function (e) {
+      //   e.preventDefault()
+      // })
+      // // 禁止鼠标选中
+      // document.addEventListener('selectstart', function (e) {
+      //   e.preventDefault()
+      // })
+
+      // MouseEvent 鼠标事件
+      document.addEventListener('click', function (e) {
+        // 鼠标在可视区域x和y坐标
+        console.log(e.clientX)
+        console.log(e.clientY)
+        console.log('-------------------')
+        // 鼠标在文档区域的x和y坐标
+        console.log(e.pageX)
+        console.log(e.pageY)
+        console.log('-------------------')
+        console.log(e.screenX)
+        console.log(e.screenY)
+      })
+    </script>
+  </body>
+</html>

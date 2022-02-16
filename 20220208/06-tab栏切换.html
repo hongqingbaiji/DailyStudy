@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <script>
+    <!-- <script>
       var lis = document.querySelector('.tab_list').querySelectorAll('li')
       var items = document.querySelectorAll('.item')
       for (var i = 0; i < lis.length; i++) {
@@ -76,6 +76,25 @@
             items[i].style.display = 'none'
           }
           // 把对应点击项的item给展示出来
+          items[index].style.display = 'block'
+        }
+      }
+    </script> -->
+    <script>
+      var lis = document.querySelector('.tab_list').querySelectorAll('li')
+      var items = document.querySelectorAll('.item')
+      for (var i = 0; i < lis.length; i++) {
+        lis[i].setAttribute('index', i)
+        // 排他思想实现tab栏切换
+        lis[i].onclick = function () {
+          for (var i = 0; i < lis.length; i++) {
+            lis[i].className = ''
+          }
+          this.className = 'current'
+          var index = this.getAttribute('index')
+          for (var i = 0; i < items.length; i++) {
+            items[i].style.display = 'none'
+          }
           items[index].style.display = 'block'
         }
       }
