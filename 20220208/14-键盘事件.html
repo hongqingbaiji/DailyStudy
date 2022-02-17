@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      p {
+        position: absolute;
+        top: 60px;
+        left: 100px;
+        display: none;
+        border: 1px solid #ccc;
+        height: 30px;
+        width: 200px;
+        font-size: 20px;
+        padding-left: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+      p::before {
+        content: '';
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 30px;
+        left: 10px;
+        border: 8px solid #000;
+        border-color: #fff transparent transparent;
+      }
+      input {
+        margin: 100px;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <p></p>
+    <input type="text" />
+    <script>
+      var ipt = document.querySelector('input')
+      var p = document.querySelector('p')
+      // document.addEventListener('keyup', function (e) {
+      //   if (e.keyCode === 83) {
+      //     ipt.focus() //focus() 使表单获得焦点
+      //   }
+      // })
+      ipt.addEventListener('keyup', function () {
+        if (this.value != '') {
+          p.style.display = 'block'
+          p.innerHTML = ipt.value
+        } else {
+          p.style.display = 'none'
+        }
+      })
+      ipt.addEventListener('blur', function () {
+        p.style.display = 'none'
+      })
+      ipt.addEventListener('focus', function () {
+        if (this.value != '') {
+          p.style.display = 'block'
+        }
+      })
+    </script>
+  </body>
+</html>

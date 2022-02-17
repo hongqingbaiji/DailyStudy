@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // //setTimeout
+      // setTimeout(() => {
+      //   console.log('时间到了')
+      // }, 2000)
+      window.addEventListener('DOMContentLoaded', function () {
+        var img = document.querySelector('img')
+        var btn = document.querySelector('button')
+        var timer1 = setTimeout(function () {
+          img.style.display = 'none'
+        }, 3000)
+        btn.addEventListener('click', function () {
+          clearTimeout(timer1)
+        })
+      })
+    </script>
+    <button>点击停止定时器</button>
+    <img src="images/ad.jpg" />
+  </body>
+</html>
