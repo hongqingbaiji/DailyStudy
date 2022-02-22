@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .div {
+        position: relative;
+        height: 100px;
+      }
+      .login-header {
+        position: absolute;
+        left: 50%;
+        top: 20px;
+        font-size: 20px;
+        font-weight: 700;
+        transform: translateX(-50%);
+        cursor: pointer;
+      }
+      .login-content {
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 200px;
+        border-radius: 7px;
+        background-color: #fff;
+      }
+      .title {
+        width: 100%;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        font-weight: 700;
+        border-bottom: 1px solid #ccc;
+        cursor: move;
+      }
+      .view {
+        margin-top: 10px;
+      }
+      label {
+        display: inline-block;
+        text-align: right;
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+      }
+      input {
+        width: 200px;
+        height: 30px;
+        padding-left: 5px;
+        margin-left: 5px;
+        outline: none;
+        border: 1px solid #ccc;
+      }
+      .btn {
+        width: 140px;
+        height: 30px;
+        margin: 15px 130px;
+        cursor: pointer;
+        outline: none;
+      }
+      .close {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        background-color: #fff;
+        font-size: 18px;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div">
+      <div class="login-header">点击，弹出登录框</div>
+    </div>
+    <div class="login-content">
+      <div class="title">登录会员</div>
+      <div class="view">
+        <label for="uname">用户名：</label>
+        <input type="text" placeholder="请输入用户名" name="uname" id="uname" />
+        <br />
+        <label for="pwd">密 码：</label>
+        <input type="password" placeholder="请输入密码" name="pwd" id="pwd" />
+        <br />
+        <button class="btn">登录</button>
+      </div>
+      <div class="close">×</div>
+    </div>
+    <script>
+      var loginH = document.querySelector('.login-header')
+      var loginC = document.querySelector('.login-content')
+      var title = document.querySelector('.title')
+      var close = document.querySelector('.close')
+      var btn = document.querySelector('.btn')
+      loginH.addEventListener('click', function () {
+        document.body.style.backgroundColor = '#999'
+        loginC.style.display = 'block'
+      })
+      close.addEventListener('click', function () {
+        loginC.style.display = 'none'
+        document.body.style.backgroundColor = '#fff'
+      })
+      btn.addEventListener('click', function () {
+        loginC.style.display = 'none'
+        document.body.style.backgroundColor = '#fff'
+      })
+      title.addEventListener('mousedown', function (e) {
+        this.addEventListener('contextmenu', function (e) {
+          e.preventDefault()
+        })
+        this.addEventListener('selectstart', function (e) {
+          e.preventDefault()
+        })
+        // 鼠标按下就获取 按下位置到登录框左侧和上侧的距离
+        var x = e.pageX - loginC.offsetLeft
+        var y = e.pageY - loginC.offsetTop
+        this.addEventListener('mousemove', move)
+        function move(e) {
+          // 鼠标移动的时候 用移动后鼠标的文档距离 减去 鼠标距离登录框的距离，
+          // 得到的是登录框到文档的距离,再把这个距离给 left和 top,记得带单位。
+          loginC.style.left = e.pageX - x + 'px'
+          loginC.style.top = e.pageY - y + 'px'
+        }
+        this.addEventListener('mouseup', function () {
+          // 鼠标弹起后 把移动事件移除掉
+          this.removeEventListener('mousemove', move)
+        })
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .imgS {
+        position: relative;
+        margin: 100px;
+        width: 398px;
+        height: 398px;
+        border: 1px solid #ccc;
+      }
+      .mask {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 300px;
+        height: 300px;
+        background-color: pink;
+        opacity: 0.5;
+        cursor: move;
+      }
+      .big {
+        display: none;
+        position: absolute;
+        left: 410px;
+        top: 0;
+        width: 500px;
+        height: 500px;
+        border: 1px solid #ccc;
+        overflow: hidden;
+      }
+      .bigImg {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="imgS">
+      <img src="images/s3.png" />
+      <div class="mask"></div>
+      <div class="big">
+        <img src="images/big.jpg" class="bigImg" />
+      </div>
+    </div>
+    <script>
+      var imgS = document.querySelector('.imgS')
+      var mask = document.querySelector('.mask')
+      var big = document.querySelector('.big')
+      // 鼠标经过小图片，让遮挡层和大图片都展示出来
+      imgS.addEventListener('mouseover', function () {
+        mask.style.display = 'block'
+        big.style.display = 'block'
+      })
+      // 鼠标离开小图片，让遮挡层和大图片也隐藏
+      imgS.addEventListener('mouseout', function () {
+        mask.style.display = 'none'
+        big.style.display = 'none'
+      })
+      // 添加移动事件
+      imgS.addEventListener('mousemove', function (e) {
+        // x 和 y 指的是鼠标相对于小图片左/上侧的距离
+        // 要注意小图片 imgS 的父级不能有定位，不然获取的offsetLeft会有问题
+        var x = e.pageX - this.offsetLeft
+        var y = e.pageY - this.offsetTop
+        // maskX 和 maskY 是 让鼠标的位置在遮挡层的中间
+        var maskX = x - mask.offsetWidth / 2
+        var maskY = y - mask.offsetWidth / 2
+        // maskMax 指的是 遮挡层的最大移动距离
+        var maskMax = imgS.offsetWidth - mask.offsetWidth
+        // 限制遮挡层的位置，不让其出框
+        if (maskX < 0) {
+          maskX = 0
+        } else if (maskX > maskMax) {
+          maskX = maskMax
+        }
+        if (maskY < 0) {
+          maskY = 0
+        } else if (maskY > maskMax) {
+          maskY = maskMax
+        }
+
+        mask.style.left = maskX + 'px'
+        mask.style.top = maskY + 'px'
+        // 大图片的移动距离 = 遮挡层的移动距离 * 大图片的最大移动距离 / 遮挡层的最大移动距离
+        var bigImg = document.querySelector('.bigImg')
+        var bigMax = bigImg.offsetWidth - big.offsetWidth
+        var bigX = (maskX * bigMax) / maskMax
+        var bigY = (maskY * bigMax) / maskMax
+        bigImg.style.left = -bigX + 'px'
+        bigImg.style.top = -bigY + 'px'
+      })
+    </script>
+  </body>
+</html>
