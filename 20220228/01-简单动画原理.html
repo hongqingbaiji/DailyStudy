@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .div1 {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+      span {
+        position: absolute;
+        top: 200px;
+        left: 0;
+        display: block;
+        width: 50px;
+        height: 50px;
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div1">div</div>
+    <span>span</span>
+    <button class="btn">按钮</button>
+    <script>
+      // 动画原理
+      // 1、获得盒子当前的位置  offsetLeft
+      // 2、让盒子在当前位置+1  div1.style.left
+      // 3、利用定时器不断重复这个操作 setInterval
+      // 4、加一个结束定时器的条件 clearInterval
+      // 5、注意此元素需要添加定位
+      var div1 = document.querySelector('.div1')
+      var btn = document.querySelector('.btn')
+      var span = document.querySelector('span')
+      btn.addEventListener('click', function () {
+        animate(div1, 500, 30)
+        animate(span, 500, 10)
+      })
+      function animate(obj, target, speed) {
+        clearInterval(obj.timer)
+        obj.timer = setInterval(function () {
+          var divWidth = obj.offsetLeft
+          if (divWidth >= target) {
+            clearInterval(obj.timer)
+          }
+          obj.style.left = divWidth + 1 + 'px'
+        }, speed)
+      }
+    </script>
+  </body>
+</html>

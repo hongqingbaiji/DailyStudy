@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .w {
+        width: 100%;
+      }
+      .header {
+        height: 200px;
+        background-color: pink;
+        margin-bottom: 10px;
+      }
+      .banner {
+        height: 400px;
+        background-color: purple;
+        margin-bottom: 10px;
+      }
+      .main {
+        height: 1000px;
+        background-color: yellowgreen;
+        margin-bottom: 10px;
+      }
+      .sidebar {
+        position: absolute;
+        top: 300px;
+        right: 0;
+        width: 50px;
+        height: 150px;
+        background-color: #ccc;
+        font-size: 12px;
+        text-align: center;
+      }
+      .backtop {
+        display: none;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        margin-top: 100px;
+        font-size: 12px;
+        background-color: #333;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header w">header</div>
+    <div class="banner w">banner</div>
+    <div class="main w">main</div>
+    <div class="sidebar">
+      侧边栏
+      <div class="backtop">返回顶部</div>
+    </div>
+    <script>
+      var banner = document.querySelector('.banner')
+      var main = document.querySelector('.main')
+      var sidebar = document.querySelector('.sidebar')
+      var backtop = document.querySelector('.backtop')
+      var bannerTop = banner.offsetTop
+      var mainTop = main.offsetTop
+      var sidebarTop = sidebar.offsetTop - bannerTop
+      document.addEventListener('scroll', function () {
+        console.log(bannerTop)
+        console.log(window.pageYOffset)
+        if (window.pageYOffset >= bannerTop) {
+          sidebar.style.position = 'fixed'
+          sidebar.style.top = sidebarTop + 'px'
+        } else {
+          sidebar.style.position = 'absolute'
+          sidebar.style.top = '300px'
+        }
+        if (window.pageYOffset >= mainTop) {
+          backtop.style.display = 'block'
+        } else {
+          backtop.style.display = 'none'
+        }
+      })
+    </script>
+  </body>
+</html>

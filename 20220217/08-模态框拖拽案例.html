@@ -100,7 +100,38 @@
       </div>
       <div class="close">×</div>
     </div>
+
     <script>
+      var loginH = document.querySelector('.login-header')
+      var loginC = document.querySelector('.login-content')
+      var close = document.querySelector('.close')
+      var title = document.querySelector('.title')
+      loginH.addEventListener('click', function () {
+        document.body.style.backgroundColor = '#999'
+        loginC.style.display = 'block'
+      })
+      close.addEventListener('click', function () {
+        document.body.style.backgroundColor = '#fff'
+        loginC.style.display = 'none'
+      })
+      title.addEventListener('mousedown', function (e) {
+        this.addEventListener('selectstart', function (e) {
+          e.preventDefault()
+        })
+        var x = e.pageX - loginC.offsetLeft
+        var y = e.pageY - loginC.offsetTop
+        title.addEventListener('mousemove', move)
+        function move(e) {
+          loginC.style.left = e.pageX - x + 'px'
+          loginC.style.top = e.pageY - y + 'px'
+        }
+        title.addEventListener('mouseup', function () {
+          title.removeEventListener('mousemove', move)
+        })
+      })
+    </script>
+
+    <!-- <script>
       var loginH = document.querySelector('.login-header')
       var loginC = document.querySelector('.login-content')
       var title = document.querySelector('.title')
@@ -128,6 +159,7 @@
         // 鼠标按下就获取 按下位置到登录框左侧和上侧的距离
         var x = e.pageX - loginC.offsetLeft
         var y = e.pageY - loginC.offsetTop
+        console.log(x, y)
         this.addEventListener('mousemove', move)
         function move(e) {
           // 鼠标移动的时候 用移动后鼠标的文档距离 减去 鼠标距离登录框的距离，
@@ -140,6 +172,6 @@
           this.removeEventListener('mousemove', move)
         })
       })
-    </script>
+    </script> -->
   </body>
 </html>
