@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./animate.js"></script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .slidebar {
+        position: relative;
+        margin-top: 100px;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        background-color: pink;
+        cursor: pointer;
+      }
+      .con {
+        position: absolute;
+        left: -150px;
+        top: 0;
+        width: 150px;
+        height: 40px;
+        color: #fff;
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slidebar">
+      <span>→</span>
+      <div class="con">查看更多</div>
+    </div>
+    <script>
+      var slidebar = document.querySelector('.slidebar')
+      var con = document.querySelector('.con')
+      var span = document.querySelector('span')
+      slidebar.addEventListener('mouseenter', function () {
+        animate(con, 40, function () {
+          span.innerHTML = '←'
+          slidebar.style.backgroundColor = 'purple'
+          slidebar.style.color = '#fff'
+        })
+      })
+      slidebar.addEventListener('mouseleave', function () {
+        animate(con, -150, function () {
+          span.innerHTML = '→'
+          slidebar.style.backgroundColor = 'pink'
+          slidebar.style.color = ''
+        })
+      })
+    </script>
+  </body>
+</html>

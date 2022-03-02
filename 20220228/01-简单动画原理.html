@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="./animate.js"></script>
     <style>
       .div1 {
         position: absolute;
@@ -28,7 +29,8 @@
   <body>
     <div class="div1">div</div>
     <span>span</span>
-    <button class="btn">按钮</button>
+    <button class="btn500">btn500</button>
+    <button class="btn800">btn800</button>
     <script>
       // 动画原理
       // 1、获得盒子当前的位置  offsetLeft
@@ -37,22 +39,21 @@
       // 4、加一个结束定时器的条件 clearInterval
       // 5、注意此元素需要添加定位
       var div1 = document.querySelector('.div1')
-      var btn = document.querySelector('.btn')
+      var btn500 = document.querySelector('.btn500')
+      var btn800 = document.querySelector('.btn800')
       var span = document.querySelector('span')
-      btn.addEventListener('click', function () {
-        animate(div1, 500, 30)
-        animate(span, 500, 10)
+      btn500.addEventListener('click', function () {
+        animate(div1, 500, function () {
+          div1.style.backgroundColor = 'pink'
+        })
+        animate(span, 500)
       })
-      function animate(obj, target, speed) {
-        clearInterval(obj.timer)
-        obj.timer = setInterval(function () {
-          var divWidth = obj.offsetLeft
-          if (divWidth >= target) {
-            clearInterval(obj.timer)
-          }
-          obj.style.left = divWidth + 1 + 'px'
-        }, speed)
-      }
+      btn800.addEventListener('click', function () {
+        animate(div1, 800, function () {
+          div1.style.backgroundColor = 'red'
+        })
+        animate(span, 800)
+      })
     </script>
   </body>
 </html>

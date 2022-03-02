@@ -63,10 +63,11 @@
         big.style.display = 'none'
       })
       imgS.addEventListener('mousemove', function (e) {
+        console.log(e)
         var x = e.pageX - this.offsetLeft
         var y = e.pageY - this.offsetTop
         var maskX = x - mask.offsetWidth / 2
-        var maskY = y - mask.offsetHeight / 2
+        var maskY = y - mask.offsetWidth / 2
         var maskMax = imgS.offsetWidth - mask.offsetWidth
         if (maskX < 0) {
           maskX = 0
@@ -80,12 +81,12 @@
         }
         mask.style.left = maskX + 'px'
         mask.style.top = maskY + 'px'
-        // 大图片的移动距离 = mask的移动距离 * bigImgMax / maskMax
+        // bigx = maskX * bigImgMax / maskMax
         var bigImgMax = bigImg.offsetWidth - big.offsetWidth
-        var bigImgX = (maskX * bigImgMax) / maskMax
-        var bigImgY = (maskY * bigImgMax) / maskMax
-        bigImg.style.left = -bigImgX + 'px'
-        bigImg.style.top = -bigImgY + 'px'
+        var bigX = (maskX * bigImgMax) / maskMax
+        var bigY = (maskY * bigImgMax) / maskMax
+        bigImg.style.left = -bigX + 'px'
+        bigImg.style.top = -bigY + 'px'
       })
     </script>
 
