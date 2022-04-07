@@ -44,6 +44,7 @@
         font-size: 12px;
         background-color: #333;
         color: #fff;
+        cursor: pointer;
       }
     </style>
   </head>
@@ -64,8 +65,6 @@
       var mainTop = main.offsetTop
       var sidebarTop = sidebar.offsetTop - bannerTop
       document.addEventListener('scroll', function () {
-        console.log(bannerTop)
-        console.log(window.pageYOffset)
         if (window.pageYOffset >= bannerTop) {
           sidebar.style.position = 'fixed'
           sidebar.style.top = sidebarTop + 'px'
@@ -79,6 +78,23 @@
           backtop.style.display = 'none'
         }
       })
+      // 点击返回顶部按钮，增加滚动动画
+      backtop.addEventListener('click', function () {
+        animate(window, 0)
+      })
+      function animate(obj, target, callback) {
+        clearInterval(obj.timer)
+        obj.timer = setInterval(function () {
+          // 步长值
+          var step = (target - obj.pageYOffset) / 10
+          step = step > 0 ? Math.ceil(step) : Math.floor(step)
+          if (obj.pageYOffset == target) {
+            clearInterval(obj.timer)
+            callback && callback()
+          }
+          window.scroll(0, window.pageYOffset + step)
+        }, 15)
+      }
     </script>
   </body>
 </html>

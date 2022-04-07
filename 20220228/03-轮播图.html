@@ -5,6 +5,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="./animate.js"></script>
+    <!-- <script src="./03-轮播图.js"></script> -->
+    <!-- <script src="./03-轮播图复习.js"></script> -->
+    <script src="./03-还是轮播图.js"></script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      li {
+        list-style: none;
+      }
+      .focus {
+        position: relative;
+        width: 721px;
+        height: 455px;
+        margin: 100px;
+        overflow: hidden;
+      }
+      ul {
+        position: relative;
+        width: 600%;
+      }
+      ul li {
+        float: left;
+      }
+      .arrow-l,
+      .arrow-r {
+        display: none;
+        position: absolute;
+        top: 50%;
+        width: 30px;
+        height: 45px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.4);
+        transform: translateY(-50%);
+        cursor: pointer;
+        /* z-index: 2; */
+      }
+      .arrow-l {
+        left: 0;
+      }
+      .arrow-r {
+        right: 0;
+      }
+      .arrow-l img,
+      .arrow-r img {
+        margin-top: 6px;
+      }
+      ol {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0 5px;
+        border-radius: 10px;
+        background-color: #fff;
+      }
+      ol li {
+        float: left;
+        width: 15px;
+        height: 15px;
+        margin: 2px 3px;
+        text-align: center;
+        border-radius: 50%;
+        border: 1px solid #666;
+        cursor: pointer;
+      }
+      .circle {
+        background-color: red;
+        border: 1px solid red;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div class="focus">
+      <ul>
+        <li>
+          <a href="javascript:;"><img src="./images/focus.jpg" /></a>
+        </li>
+        <li>
+          <a href="javascript:;"><img src="./images/focus1.jpg" /></a>
+        </li>
+        <li>
+          <a href="javascript:;"><img src="./images/focus2.jpg" /></a>
+        </li>
+        <li>
+          <a href="javascript:;"><img src="./images/focus3.jpg" /></a>
+        </li>
+      </ul>
+      <ol></ol>
+      <a href="javascript:;" class="arrow-l"><img src="./images/arrow-prev.png" /></a
+      ><a href="javascript:;" class="arrow-r"><img src="./images/arrow-next.png" /></a>
+    </div>
+  </body>
 </html>

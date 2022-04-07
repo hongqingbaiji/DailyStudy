@@ -1,10 +1,12 @@
 window.addEventListener('load', function () {
-  var focus = document.querySelector('.focus')
-  var ul = document.querySelector('ul')
-  var ol = document.querySelector('ol')
-  var arrow_l = document.querySelector('.arrow-l')
-  var arrow_r = document.querySelector('.arrow-r')
-  // 1、鼠标经过/离开focus，显示/隐藏左右箭头
+  // 获取元素
+  var focus = this.document.querySelector('.focus')
+  var ul = focus.querySelector('ul')
+  var ol = focus.querySelector('ol')
+  var arrow_l = this.document.querySelector('.arrow-l')
+  var arrow_r = this.document.querySelector('.arrow-r')
+  var focusWidth = focus.offsetWidth
+  // 实现鼠标经过，把左右按钮展示出来；鼠标离开，左右按钮隐藏
   focus.addEventListener('mouseenter', function () {
     arrow_l.style.display = 'block'
     arrow_r.style.display = 'block'
@@ -14,39 +16,38 @@ window.addEventListener('load', function () {
   focus.addEventListener('mouseleave', function () {
     arrow_l.style.display = 'none'
     arrow_r.style.display = 'none'
-    // clearInterval(timer)
+    // 使用定时器，自动播放轮播图
+    clearInterval(timer)
     timer = setInterval(function () {
       arrow_r.click()
     }, 2000)
   })
-  // 2、动态生成小圆圈
+  // 动态生成小圆点
   for (var i = 0; i < ul.children.length; i++) {
-    var li = document.createElement('li')
+    var li = this.document.createElement('li')
     ol.appendChild(li)
-    ol.children[i].setAttribute('index', i)
-  }
-  // 利用排他思想，点击哪个小圆圈，就给他加上className
-  for (var i = 0; i < ol.children.length; i++) {
     ol.children[0].className = 'circle'
+    ol.children[i].setAttribute('index', i)
+
+    // 排他思想点击切换小圆点,并移动轮播图
     ol.children[i].addEventListener('click', function () {
       for (var i = 0; i < ol.children.length; i++) {
         ol.children[i].className = ''
       }
       this.className = 'circle'
-      // 3、点击小圆圈后，移动轮播图，本质是调用animate函数,特别注意动画函数需要有定位
       var index = this.getAttribute('index')
       num = index
       circle = index
-      animate(ul, -index * focus.offsetWidth)
+      animate(ul, -index * focusWidth)
     })
   }
+  // 克隆第一张图片，放到最后
+  var first = ul.children[0].cloneNode(true)
+  ul.appendChild(first)
+  var flag = true // 节流阀
+  // 点击左右按钮，移动轮播图
   var num = 0
   var circle = 0
-  var flag = true //添加节流阀
-  // 克隆第一张图片，加到最后面
-  var clonefirst = ul.children[0].cloneNode(true)
-  ul.appendChild(clonefirst)
-  // 4、点击右侧按钮，滚动轮播图
   arrow_r.addEventListener('click', function () {
     if (flag) {
       flag = false
@@ -55,10 +56,10 @@ window.addEventListener('load', function () {
         ul.style.left = 0
       }
       num++
-      animate(ul, -num * focus.offsetWidth, function () {
+      circle++
+      animate(ul, -num * focusWidth, function () {
         flag = true
       })
-      circle++
       if (circle == ol.children.length) {
         circle = 0
       }
@@ -68,30 +69,30 @@ window.addEventListener('load', function () {
       ol.children[circle].className = 'circle'
     }
   })
-  // 5、点击左侧按钮，滚动轮播图
   arrow_l.addEventListener('click', function () {
     if (flag) {
       flag = false
       if (num == 0) {
         num = ul.children.length - 1
-        ul.style.left = -num * focus.offsetWidth + 'px'
+        ul.style.left = -num * focusWidth + 'px'
       }
-      num--
-      animate(ul, -num * focus.offsetWidth, function () {
-        flag = true
-      })
       if (circle == 0) {
         circle = ol.children.length
       }
+      num--
       circle--
+      animate(ul, -num * focusWidth, function () {
+        flag = true
+      })
+
       for (var i = 0; i < ol.children.length; i++) {
         ol.children[i].className = ''
       }
       ol.children[circle].className = 'circle'
     }
   })
-  //6、自动播放功能
-  var timer = setInterval(function () {
+  // 使用定时器，自动播放轮播图
+  var timer = this.setInterval(function () {
     arrow_r.click()
   }, 2000)
 })
