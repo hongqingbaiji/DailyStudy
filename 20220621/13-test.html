@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        /* font-size: 12px; */
+        text-align: center;
+        line-height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="color: #fff; width: 100px; height: 100px; background-color: pink">123</div>
+    <script>
+      var div = document.querySelector('div')
+      var sheet = document.styleSheets[0]
+      sheet.insertRule('div{font-size:30px}', 0)
+      var rules = sheet.cssRules || sheet.rules
+      console.log(rules[0])
+      var computedStyle = document.defaultView.getComputedStyle(div, null)
+      // var computedStyle = div.currentStyle
+      console.log(computedStyle.fontSize)
+      var prop, value
+      div.style.removeProperty('color')
+      console.log(div.style.cssText)
+      for (var i = 0; i < div.style.length; i++) {
+        prop = div.style.item(i)
+        value = div.style.getPropertyValue(prop)
+        console.log(prop + ':' + value)
+      }
+    </script>
+  </body>
+</html>

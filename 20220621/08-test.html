@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="btn1">跳转到07-test</button>
+    <script>
+      // let定义的i有块级作用域，每个i是独立的，
+      // for (var i = 0; i < 5; i++) {
+      //   setTimeout(function () {
+      //     console.log(i)
+      //   })
+      // }
+      // for (let i = 0; i < 5; i++) {
+      //   setTimeout(function () {
+      //     console.log(i)
+      //   })
+      // }
+
+      // if (!'a' in window) {
+      //   var a = 1
+      // }
+      // console.log(a)
+      // if (!'b' in window) {
+      //   let b = 1
+      // }
+      // console.log(b)
+
+      function fun() {
+        var i = 0
+        return function () {
+          console.log(i++)
+        }
+      }
+      var f1 = fun()
+      var f2 = fun()
+      f1()
+      f1()
+      f2()
+
+      // var foo = function bar() {
+      //   return 123
+      // }
+      // console.log(typeof foo) // function
+      // console.log(typeof foo()) //number
+      // console.log(typeof bar()) //error
+
+      // var a = 2
+      // var obj = {
+      //   a: 1,
+      //   foo: function () {
+      //     return this.a
+      //   }
+      // }
+      // var fun = obj.foo
+      // console.log(obj.foo()) //1
+      // console.log(fun()) //2
+
+      function A(x) {
+        this.x = x
+      }
+      function B(x) {
+        this.x = x
+      }
+      A.prototype.x = 1
+      B.prototype = new A()
+
+      var a = new A(2)
+      var b = new B(3)
+      delete b.x
+
+      console.log(B.prototype.x)
+
+      // console.log(a.x) //2
+      // console.log(b.x) //undefined
+
+      // const obj = { flag: false }
+      // function A() {
+      //   this.flag = true
+      //   return obj
+      // }
+      // const a = new A()
+      // console.log(a.flag) //false
+
+      // var a = 10
+      // function a() {}
+      // console.log(typeof a) //number
+
+      var obj = {
+        a: 1
+      }
+
+      ;(function (obj) {
+        obj.a = 3
+        var obj = {
+          a: 2
+        }
+      })(obj)
+
+      console.log(obj.a)
+
+      var btn1 = document.querySelector('.btn1')
+      btn1.addEventListener('click', function () {
+        location.assign('./07-test.html')
+      })
+    </script>
+  </body>
+</html>

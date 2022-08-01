@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function User(uname, pwd) {
+      //   this.uname = uname
+      //   this.pwd = pwd
+      //   // this.login = function () {
+      //   //   console.log('登录')
+      //   // }
+      // }
+      // function Admin() {
+      //   this.deleteUser = function () {
+      //     console.log('删除')
+      //   }
+      // }
+      // Object.prototype.login = function () {
+      //   console.log('登录')
+      // }
+      // Admin.prototype = new User()
+      // var admin = new Admin()
+      // admin.login()
+
+      // es6 的写法
+      // class User {
+      //   constructor(uname, pwd) {
+      //     this.uname = uname
+      //     this.pwd = pwd
+      //   }
+      //   login() {
+      //     console.log('登录')
+      //   }
+      // }
+      // class Admin extends User {
+      //   deleteUser() {
+      //     console.log('删除')
+      //   }
+      // }
+
+      // var admin = new Admin('wenhe', 123)
+      // console.log(admin.uname)
+      // console.log(admin.pwd)
+      // admin.login()
+
+      // function User(uname, pwd) {
+      //   this.uname = uname
+      //   this.pwd = pwd
+      //   this.login = function () {
+      //     console.log('登录')
+      //   }
+      // }
+      // function Admin() {
+      //   User.call(this, 'wenhe', 123)
+      //   this.deleteUser = function () {
+      //     console.log('删除')
+      //   }
+      // }
+      // var admin = new Admin()
+      // console.log(admin.uname)
+      // console.log(admin.pwd)
+      // admin.login()
+
+      // function SuperType(name) {
+      //   this.name = name
+      //   this.colors = ['red', 'blue']
+      // }
+      // SuperType.prototype.sayName = function () {
+      //   console.log(this.name)
+      // }
+      // function SubType(name, age) {
+      //   SuperType.call(this, name)
+      //   this.age = age
+      // }
+      // SubType.prototype = new SuperType()
+      // SubType.prototype.sayAge = function () {
+      //   console.log(this.age)
+      // }
+      // var ins1 = new SubType('wenhe', 29)
+      // ins1.colors.push('black')
+      // console.log(ins1.colors, ins1.name, ins1.age)
+      // ins1.sayName()
+      // ins1.sayAge()
+
+      // var ins2 = new SubType('shaonian', 27)
+      // console.log(ins2.colors, ins2.name, ins2.age)
+      // ins2.sayName()
+      // ins2.sayAge()
+
+      function object(o) {
+        function F() {}
+        F.prototype = o
+        return new F()
+      }
+      var person = {
+        name: 'Nic',
+        friends: ['a', 'b']
+      }
+      var p1 = object(person)
+      p1.name = 'wenhe'
+      p1.friends.push('c')
+      console.log(p1)
+      console.log(p1.name)
+      console.log(p1.friends)
+
+      var p2 = object(person)
+      p2.name = 'shaonian'
+      p2.friends.push('d')
+      console.log(p2)
+      console.log(p2.name)
+      console.log(p2.friends)
+    </script>
+  </body>
+</html>

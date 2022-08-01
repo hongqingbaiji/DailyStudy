@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="./16-test.html" method="get" class="form" name="form2">
+      <input type="text" name="uname" value="请输入姓名" />
+      <input type="password" name="pwd" />
+      <input type="text" name="tel" class="tel" />
+      <!-- <input type="image" src="./video/123.jpg" alt="提交" /> -->
+      <input type="submit" value="登录" />
+      <input type="reset" name="reset1" value="重置" />
+    </form>
+    <form action="./15-test.html" method="post" class="form1" name="fm2">
+      <input type="radio" name="color" value="red" checked />red
+      <input type="radio" name="color" value="blue" />blue
+      <input type="radio" name="color" value="green" />green
+
+      <select name="location" id="selLocation" data-live-search="true" multiple>
+        <option value="wenhe">wenhe1</option>
+        <option value="shaonian">shaonian1</option>
+        <option value="ziyan">ziyan1</option>
+        <option value="" selected>muzhi</option>
+        <option selected>manman</option>
+      </select>
+    </form>
+    <script>
+      console.log(document.forms[0])
+      console.log(document.forms.form2)
+      var fm = document.querySelector('.form')
+      console.log(fm.elements)
+      fm.elements.uname.focus()
+      fm.elements.uname.select()
+      fm.elements.reset1.disabled = true
+
+      var fm2 = document.querySelector('.form1')
+      console.log(fm2[0])
+      console.log(fm2.elements[0])
+      console.log(fm2.elements['color'][0])
+      console.log(fm2.color[0])
+
+      var tel = document.querySelector('.tel')
+      tel.addEventListener('afterpaste', function (event) {
+        console.log(event.clipboardData.getData(tel.value))
+      })
+
+      // var sele = document.querySelector('#selLocation')
+      var sele = document.forms[1].elements['location']
+      // console.log(sele.options[0].text)
+      // console.log(sele.options[0].value)
+      sele.addEventListener('change', function (event) {
+        console.log(sele.selectedIndex)
+        console.log(sele.options[sele.selectedIndex])
+      })
+    </script>
+  </body>
+</html>

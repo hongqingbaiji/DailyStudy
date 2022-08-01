@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="div1" class="div2" name="div3">123</div>
+    <script>
+      var div = document.querySelector('.div2')
+      // div.myColor = 'red'
+      div.setAttribute('myColor', 'blue')
+      var value1 = div.getAttribute('myColor')
+      // console.log(value1)
+      console.log(div.attributes['id'].nodeValue)
+
+      var span = document.createElement('span')
+      span.id = 'span1'
+      span.innerHTML = '456'
+      span.style.display = 'block'
+      span.style.width = '100px'
+      span.style.height = '100px'
+      span.style.background = 'pink'
+
+      div.appendChild(span)
+    </script>
+  </body>
+</html>

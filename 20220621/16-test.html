@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        margin: 100px auto;
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+      p {
+        width: 50px;
+        height: 50px;
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      123
+      <p>456</p>
+    </div>
+    <a href="./15-test.html">123456</a>
+    <script>
+      var div = document.querySelector('div')
+      var p = document.querySelector('p')
+      // div.addEventListener('mouseover', function (event) {
+      //   console.log(event.relatedTarget)
+      // })
+      p.addEventListener('mousedown', function (event) {
+        console.log(event.relatedTarget)
+        console.log(event.button)
+      })
+      document.addEventListener('mousewheel', function (event) {
+        console.log(event.wheelDelta)
+      })
+      // document.addEventListener('contextmenu', function (event) {
+      //   event.preventDefault() //禁止默认行为， contextmenu右键菜单
+      // })
+      window.addEventListener('beforeunload', function (event) {
+        event.returnValue = 'hello123'
+      })
+      // window.addEventListener('DOMMouseScroll', function (event) {
+      //   console.log(event.detail)
+      // })
+    </script>
+  </body>
+</html>

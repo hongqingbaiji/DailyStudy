@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div1">
+      <button class="btn">旧节点</button>
+    </div>
+    <script>
+      var btn = document.querySelector('.btn')
+      btn.addEventListener('click', function () {
+        var newNode = document.createElement('a')
+        var href = document.createAttribute('href')
+        newNode.setAttributeNode(href)
+        href.value = './09-test.html'
+        newNode.innerHTML = '新节点'
+        btn.parentNode.appendChild(newNode)
+        btn.parentNode.replaceChild(newNode, btn)
+      })
+    </script>
+  </body>
+</html>

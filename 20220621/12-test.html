@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <input type="text" /> -->
+    <div id="div" data-appid="123" data-myname="wenhe"></div>
+    <script>
+      var div = document.querySelector('div')
+      console.log(div.dataset)
+      // var appid = div.dataset.addid
+      // var myname = div.dataset.myname
+
+      div.dataset.appid = 234
+      div.dataset.myname = 'wenhewenhe'
+      if (div.dataset.myname) {
+        console.log('hello,' + div.dataset.myname)
+      }
+
+      // var input = document.querySelector('input')
+      // input.addEventListener('click', function () {
+      //   if (document.activeElement === input && document.hasFocus()) {
+      //     console.log(1)
+      //   } else {
+      //     console.log(0)
+      //   }
+      // })
+    </script>
+  </body>
+</html>

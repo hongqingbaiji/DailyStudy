@@ -1,104 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        .ms {
-            position: relative;
-            margin: 20px;
-            width: 150px;
-            height: 200px;
-            background-color: red;
-        }
-        
-        .p1 {
-            text-align: center;
-            font-size: 28px;
-            color: #fff;
-            padding-top: 40px;
-        }
-        
-        .p2 {
-            font-size: 14px;
-            color: #fff;
-            text-align: center;
-            padding-top: 10px;
-        }
-        
-        span {
-            width: 25px;
-            height: 25px;
-            background-color: #000;
-            color: #fff;
-            line-height: 25px;
-            text-align: center;
-        }
-        
-        .hour {
-            position: absolute;
-            bottom: 20px;
-            left: 35px;
-        }
-        
-        .minute {
-            position: absolute;
-            bottom: 20px;
-            left: 63px;
-        }
-        
-        .second {
-            position: absolute;
-            bottom: 20px;
-            left: 91px;
-        }
-    </style>
-</head>
+      .ms {
+        position: relative;
+        margin: 20px;
+        width: 150px;
+        height: 200px;
+        background-color: red;
+      }
 
-<body>
+      .p1 {
+        text-align: center;
+        font-size: 28px;
+        color: #fff;
+        padding-top: 40px;
+      }
+
+      .p2 {
+        font-size: 14px;
+        color: #fff;
+        text-align: center;
+        padding-top: 10px;
+      }
+
+      span {
+        width: 25px;
+        height: 25px;
+        background-color: #000;
+        color: #fff;
+        line-height: 25px;
+        text-align: center;
+      }
+
+      .hour {
+        position: absolute;
+        bottom: 20px;
+        left: 35px;
+      }
+
+      .minute {
+        position: absolute;
+        bottom: 20px;
+        left: 63px;
+      }
+
+      .second {
+        position: absolute;
+        bottom: 20px;
+        left: 91px;
+      }
+    </style>
+  </head>
+
+  <body>
     <button class="start">开启定时器</button>
     <button class="stop">关闭定时器</button>
     <div class="ms">
-        <p class="p1">京东秒杀</p>
-        <p class="p2">本场距离结束还剩</p>
-        <span class="hour"></span>
-        <span class="minute"></span>
-        <span class='second'></span>
+      <p class="p1">京东秒杀</p>
+      <p class="p2">本场距离结束还剩</p>
+      <span class="hour"></span>
+      <span class="minute"></span>
+      <span class="second"></span>
     </div>
     <script>
-        var hour = document.querySelector('.hour');
-        var minute = document.querySelector('.minute');
-        var second = document.querySelector('.second');
-        var endDate = +new Date('2021 / 01 / 21');
-        var start = document.querySelector('.start');
-        var stop = document.querySelector('.stop');
-        var T1 = null;
-        countDown(); //先调用一次这个函数，防止刷新时出现空白
-        start.addEventListener('click', function() {
-            T1 = setInterval(countDown, 1000); //打开定时器
-        })
-        stop.addEventListener('click', function() {
-            clearInterval(T1); //暂停定时器
-        })
+      var hour = document.querySelector('.hour')
+      var minute = document.querySelector('.minute')
+      var second = document.querySelector('.second')
+      var endDate = +new Date('2022 / 07 / 20')
+      var start = document.querySelector('.start')
+      var stop = document.querySelector('.stop')
+      var T1 = null
+      countDown() //先调用一次这个函数，防止刷新时出现空白
+      start.addEventListener('click', function () {
+        T1 = setInterval(countDown, 1000) //打开定时器
+      })
+      stop.addEventListener('click', function () {
+        clearInterval(T1) //暂停定时器
+      })
 
-        function countDown() {
-            var nowDate = +new Date();
-            var overTime = (endDate - nowDate) / 1000;
-            h = parseInt(overTime / 60 / 60 % 60);
-            h = h < 10 ? '0' + h : h;
-            m = parseInt(overTime / 60 % 60);
-            m = m < 10 ? '0' + m : m;
-            s = parseInt(overTime % 60);
-            s = s < 10 ? '0' + s : s;
-            hour.innerHTML = h;
-            minute.innerHTML = m;
-            second.innerHTML = s;
-        }
+      function countDown() {
+        var nowDate = +new Date()
+        var overTime = (endDate - nowDate) / 1000
+        h = parseInt((overTime / 60 / 60) % 60)
+        h = h < 10 ? '0' + h : h
+        m = parseInt((overTime / 60) % 60)
+        m = m < 10 ? '0' + m : m
+        s = parseInt(overTime % 60)
+        s = s < 10 ? '0' + s : s
+        hour.innerHTML = h
+        minute.innerHTML = m
+        second.innerHTML = s
+      }
     </script>
-
-
-</body>
-
+  </body>
 </html>

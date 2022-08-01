@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #drawing {
+        background-color: rgba(0, 0, 0, 0.05);
+        margin: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="drawing" width="500" height="400">123</canvas>
+    <script>
+      var drawing = document.querySelector('#drawing')
+      if (drawing.getContext) {
+        var context = drawing.getContext('2d')
+        context.lineWidth = 2
+        // context.lineCap = 'round'
+        // context.lineJoin = 'round'
+
+        context.beginPath()
+        context.arc(100, 100, 99, 0, 2 * Math.PI)
+        context.moveTo(194, 100)
+        context.arc(100, 100, 95, 0, 2 * Math.PI, true)
+
+        context.translate(100, 100)
+        // context.scale(0.5, 0.5) //缩放的是线条
+        context.rotate(1)
+        context.moveTo(0, 0)
+        context.lineTo(0, -60)
+        context.moveTo(0, 0)
+        context.lineTo(-40, 0)
+        context.moveTo(0, 0)
+
+        // context.moveTo(100, 100)
+        // context.lineTo(100, 30)
+        // context.moveTo(100, 100)
+        // context.lineTo(50, 100)
+        // context.moveTo(100, 100)
+
+        context.font = '700 16px Arial'
+        context.textAlign = 'center'
+        context.textBaseline = 'middle'
+        context.rotate(-1)
+        context.fillText('12', 0, -80)
+        // context.fillText('12', 100, 20)
+        // context.fillText('3', 180, 100)
+        // context.fillText('6', 100, 180)
+        // context.fillText('9', 20, 100)
+        context.fillStyle = 'rgba(0,0,0,0.1)'
+        context.font = 'bold 50px Arial'
+        context.fillText('TIME', 100, 100, 200)
+
+        context.stroke()
+      }
+    </script>
+  </body>
+</html>

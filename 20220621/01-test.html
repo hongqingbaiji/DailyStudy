@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // var now = new Date()
+      // console.log(now.getFullYear()) // 年
+      // console.log(now.getMonth()) // 月
+      // console.log(now.getDate()) // 日
+      // console.log(now.getHours()) // 时
+      // console.log(now.getMinutes()) // 分
+      // console.log(now.getSeconds()) // 秒
+      // console.log(now.getDay()) // 星期
+
+      // var data = new Date()
+      // var year = data.getFullYear()
+      // var month = data.getMonth() + 1
+      // var day = data.getDate()
+      // var h = data.getHours()
+      // h = h < 10 ? '0' + h : h
+      // var m = data.getMinutes()
+      // m = m < 10 ? '0' + m : m
+      // var s = data.getSeconds()
+      // s = s < 10 ? '0' + s : s
+      // var weeks = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']
+      // var d = data.getDay()
+      // console.log(
+      //   '今天是： ' +
+      //     year +
+      //     '年' +
+      //     month +
+      //     '月' +
+      //     day +
+      //     '日 ' +
+      //     h +
+      //     ' ：' +
+      //     m +
+      //     ' ：' +
+      //     s +
+      //     ' ' +
+      //     weeks[d - 1]
+      // )
+
+      // function Animal() {
+      //   this.eat = function () {
+      //     console.log('吃东西')
+      //     console.log(this)
+      //   }
+      //   console.log(this)
+      // }
+      // function Cat() {
+      //   Animal.call(this)
+      //   console.log(this)
+      // }
+      // let cat = new Cat()
+      // cat.eat()
+
+      // var person = {
+      //   age: 20
+      // }
+      // Object.defineProperty(person, 'name', {
+      //   configurable: false, // 能否通过delete删除属性
+      //   enumerable: true, // 能否通过 for-in 循环返回属性
+      //   writable: true, // 能否修改属性的值
+      //   value: 'wenhe' // 属性的值，默认是 undefined
+      // })
+      // console.log(person.name)
+      // console.log(person.age)
+      // person.name = 'yunqian'
+      // person.age = 29
+      // console.log(person.name)
+      // console.log(person.age)
+      // delete person.name
+      // delete person.age
+      // console.log(person.name)
+      // console.log(person.age)
+      // var arr = []
+      // for (var o in person) {
+      //   arr.push(person[o])
+      //   console.log(person.name)
+      // }
+      // console.log(arr)
+
+      // function Person(name, age, job) {
+      //   this.name = name
+      //   this.age = age
+      //   this.job = job
+      //   this.sayName = sayName
+      // }
+      // function sayName() {
+      //   return this.name
+      // }
+      // var p1 = new Person('wenhe', 29, 'QA')
+      // console.log(p1)
+
+      function Person() {}
+      Person.prototype.name = 'N'
+      Person.prototype.age = 20
+      Person.prototype.job = 'huahua'
+      Person.prototype.sayName = function () {
+        return this.name
+      }
+
+      var p1 = new Person()
+      console.log(p1)
+      var p2 = new Person()
+      p2.name = 'wenhe'
+      // p2 = {
+      //   name: 'wenhe',
+      //   age: 29,
+      //   job: 'qa',
+      //   sayName: function () {
+      //     return this.name
+      //   }
+      // }
+
+      console.log(p2)
+    </script>
+  </body>
+</html>

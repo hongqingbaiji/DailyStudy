@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="a b c"></div>
+    <!-- <script>
+      var div = document.querySelector('div')
+      console.log(div.className)
+      var arr = div.className.split(' ')
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] == 'c') {
+          arr.splice(i, 1)
+          break
+        }
+      }
+      div.className = arr.join(' ')
+      console.log(div.className)
+    </script> -->
+    <script>
+      var div = document.querySelector('div')
+      console.log(div.classList)
+      div.classList.remove('c')
+      console.log(div.classList.toggle('d'))
+      div.classList.toggle('d')
+      console.log(div.classList)
+    </script>
+  </body>
+</html>

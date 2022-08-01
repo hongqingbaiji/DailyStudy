@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Parent(name) {
+        this.name = name
+        this.arr = ['a']
+      }
+      var p = new Parent('wenhe')
+
+      function Son() {}
+      Son.prototype = new Parent()
+      var s1 = new Son()
+      s1.arr.push('b')
+      console.log(s1.arr)
+      var s2 = new Son()
+      s2.arr.push('c')
+      console.log(s2.arr)
+      console.log(s1.arr)
+    </script>
+  </body>
+</html>

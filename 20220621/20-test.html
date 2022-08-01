@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var books = {
+        title: 'javascript',
+        user: function () {
+          console.log('students')
+        },
+        authors: ['wenhe', 'Nicholas'],
+        edition: null,
+        year: 2011,
+        color: undefined,
+        bgc: true,
+        toJSON: function () {
+          return this.bgc
+        }
+      }
+      // var jsonText = JSON.stringify(books)
+      // var jsonText = JSON.stringify(books, ['title', 'edition'])
+      var jsonText = JSON.stringify(
+        books,
+        function (key, value) {
+          switch (key) {
+            case 'authors':
+              return value.join(',')
+
+            case 'year':
+              return 5000
+
+            case 'edition':
+              return undefined
+
+            default:
+              return value
+          }
+        },
+        '\t' //直接写数字4 和 写 "\t"制表符  效果一样
+      )
+      console.log(jsonText)
+    </script>
+  </body>
+</html>

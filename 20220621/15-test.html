@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .div1 {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+      .div2 {
+        width: 100px;
+        height: 100px;
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div>
+      <button>按钮</button>
+    </div>
+    <script>
+      var btn = document.querySelector('button')
+      btn.onclick = function () {
+        console.log(event)
+      }
+    </script> -->
+    <!-- <script>
+      document.body.addEventListener('load', function () {
+        var image = new Image()
+        image.addEventListener('load', function (event) {
+          console.log('loaded')
+        })
+        image.src = 'smile.gif'
+      })
+    </script> -->
+    <!-- <input type="text" />
+    <script>
+      var ipt = document.querySelector('input')
+      ipt.addEventListener('focus', function () {
+        console.log(document.activeElement)
+      })
+      ipt.addEventListener('blur', function () {
+        console.log(document.activeElement)
+      })
+    </script> -->
+    <div class="div1">
+      <div class="div2">123</div>
+    </div>
+    <script>
+      var div1 = document.querySelector('.div1')
+      var div2 = document.querySelector('.div2')
+      // div2.addEventListener('mouseover', function () {
+      //   console.log('mouseover')
+      // })
+      // div2.addEventListener('mouseout', function () {
+      //   console.log('mouseout')
+      // })
+      // div2.addEventListener('mouseenter', function (event) {
+      //   console.log('mouseenter')
+      // })
+      // div2.addEventListener('mouseleave', function (event) {
+      //   console.log('mouseleave')
+      // })
+
+      div1.addEventListener('mouseover', function () {
+        console.log('mouseover')
+      })
+      div1.addEventListener('mouseout', function () {
+        console.log('mouseout')
+      })
+      // div1.addEventListener('mouseenter', function () {
+      //   console.log('mouseenter')
+      // })
+      // div1.addEventListener('mouseleave', function () {
+      //   console.log('mouseleave')
+      // })
+    </script>
+  </body>
+</html>

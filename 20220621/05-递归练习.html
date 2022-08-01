@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // // 1,1,2,3,5,8,13,21,34......斐波那切数列，求第n个数是几？
+      // function tuzi(n) {
+      //   if (n === 1 || n === 2) return 1
+      //   return tuzi(n - 1) + tuzi(n - 2)
+      // }
+      // tuzi(5)
+
+      // 第二题：一元钱可以买一瓶水，两个空瓶可以换一瓶水，
+      // 三个瓶盖可以换一瓶水，N块钱可以换多少瓶水
+
+      // 第三题：一元钱可以买一瓶水，两个空瓶可以换一瓶水，
+      // 三个瓶盖可以换一瓶水，N块钱可以换多少瓶水
+
+      // function water(n) {
+      //   if (n === 1) {
+      //     return 1
+      //   } else if (n === 2) {
+      //     return 5
+      //   }
+      //   return water(n - 1) + 6
+      // }
+
+      // function water(shui, pz, pg) {
+      //   pz = pz % 2 //剩0|1个瓶子
+      //   pz += shui
+      //   pg = pg % 3 //剩 0|1|2个瓶盖
+      //   pg += shui
+      //   if (pz < 2 && pg < 3) {
+      //     return shui
+      //   } else {
+      //     return shui + water(pz / 2 + pg / 3, pz, pg)
+      //   }
+      // }
+      // var result = water(2, 0, 0)
+      // console.log(result)
+
+      function convertWaterByB(tempB) {
+        var tempA = parseInt(tempB / 2)
+        //b = tempB - tempA * 2 + tempA
+        return [tempA, tempB - tempA, tempA]
+      }
+      function convertWaterByC(tempC) {
+        var tempA = parseInt(tempC / 3)
+        //b = tempC - tempA * 3 + tempA
+        return [tempA, tempA, tempC - tempA * 2]
+      }
+      function exchangeWater(tempA, tempB, tempC) {
+        if (tempB < 2 && tempC < 3) {
+          return [tempA, tempB, tempC]
+        }
+        var temp1 = convertWaterByB(tempB)
+        var temp2 = convertWaterByC(tempC)
+
+        return exchangeWater(tempA + temp1[0] + temp2[0], temp1[1] + temp2[1], temp2[2] + temp1[2])
+      }
+      function exchange(money) {
+        var temp = exchangeWater(money, money, money)
+        console.log(temp)
+        return temp[0]
+      }
+    </script>
+  </body>
+</html>
