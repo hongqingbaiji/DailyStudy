@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      <input type="text" id="uname" />
+    </p>
+    <p>
+      <input type="text" id="age" />
+    </p>
+    <p>
+      <input type="button" value="提交" id="btn" />
+    </p>
+    <script>
+      var btn = document.getElementById('btn')
+      var uname = document.getElementById('uname')
+      var age = document.getElementById('age')
+
+      btn.addEventListener('click', function () {
+        var nameValue = uname.value
+        var ageValue = age.value
+        var params = 'uname=' + nameValue + '&age=' + ageValue
+        var xhr = new XMLHttpRequest()
+        xhr.open('post', 'http://localhost:3000/post')
+
+        // post 必须要设置的，请求参数格式的类型
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        xhr.send(params)
+        xhr.onload = function () {
+          console.log(xhr.responseText)
+        }
+      })
+    </script>
+  </body>
+</html>
