@@ -45,6 +45,21 @@ app.get('/first', (req, res) => {
   res.send('Hello Ajax!')
 })
 
+// 对应 08-
+app.get('/verifyEmailAdress', (req, res) => {
+  const email = req.query.email
+  var list = ['admin@163.com']
+  if (email == 'admin@163.com') {
+    res.status(400).send({
+      message: '邮箱地址已注册，请更换邮箱地址'
+    })
+  } else {
+    res.send({
+      message: '邮箱地址可用'
+    })
+  }
+})
+
 // 监听端口
 app.listen(3000)
 

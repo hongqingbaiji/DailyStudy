@@ -76,7 +76,7 @@
           'Content-Type': 'application/json'
         },
         success: function (data, xhr) {
-          console.log('success: ' + data)
+          console.log('success: ', data)
           console.log(xhr)
         },
         error: function (data, xhr) {
@@ -93,6 +93,21 @@
         success: function (data, xhr) {
           console.log('success: ' + data)
           console.log(xhr)
+        }
+      })
+      ajax({
+        type: 'get',
+        url: 'http://localhost:3000/verifyEmailAdress',
+        data: { email: email },
+        success: function (result) {
+          console.log(result)
+          info.innerHTML = result.message
+          info.className = 'info success'
+        },
+        error: function (result) {
+          console.log(result)
+          info.innerHTML = result.message
+          info.className = 'info error'
         }
       })
     </script>
