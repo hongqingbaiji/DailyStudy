@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        margin: 50px;
+      }
+      .form-sel {
+        padding: 0 10px;
+        height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <select class="form-sel" id="province">
+        <option>请输入省份</option>
+      </select>
+      <select class="form-sel" id="city">
+        <option>请输入城市</option>
+      </select>
+      <select class="form-sel" id="area">
+        <option>请输入县城</option>
+      </select>
+    </div>
+    <script src="./js/ajax.js"></script>
+    <script src="./js/template-web.js"></script>
+    <script type="text/html" id="provinceTpl">
+      <option value="000">请输入省份</option>
+      {{each province}}
+      <option value="{{$value.id}}">{{$value.name}}</option>
+      {{/each}}
+    </script>
+    <script type="text/html" id="cityTpl">
+      <option>请输入城市</option>
+      {{each city}}
+      <option value="{{$value.id}}">{{$value.name}}</option>
+      {{/each}}
+    </script>
+    <script type="text/html" id="areaTpl">
+      <option>请输入县城</option>
+      {{each area}}
+      <option value="{{$value.id}}">{{$value.name}}</option>
+      {{/each}}
+    </script>
+    <script>
+      var province = document.getElementById('province')
+      var city = document.getElementById('city')
+      var area = document.getElementById('area')
+      ajax({
+        url: 'http://localhost:3000/province',
+        success: function (data) {
+          console.log(data)
+          var html = template('provinceTpl', { province: data })
+          province.innerHTML = html
+        }
+      })
+      province.onchange = function () {
+        var pid = this.value
+        var html = template('areaTpl', { area: [] })
+        area.innerHTML = html
+        ajax({
+          url: 'http://localhost:3000/cities',
+          data: { id: pid },
+          success: function (data) {
+            console.log(data)
+            var html = template('cityTpl', { city: data })
+            city.innerHTML = html
+          }
+        })
+      }
+      city.onchange = function () {
+        var cid = this.value
+        ajax({
+          url: 'http://localhost:3000/areas',
+          data: { id: cid },
+          success: function (data) {
+            var html = template('areaTpl', { area: data })
+            area.innerHTML = html
+          }
+        })
+      }
+    </script>
+  </body>
+</html>

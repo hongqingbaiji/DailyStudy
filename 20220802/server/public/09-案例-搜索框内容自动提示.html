@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      li {
+        list-style: none;
+      }
+      .container {
+        margin: 50px;
+      }
+      .search {
+        width: 300px;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 10px;
+        outline: none;
+      }
+      .list-box {
+        display: none;
+      }
+      .list-box li {
+        width: 302px;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 10px;
+        border: 1px solid #ccc;
+        border-top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" class="search" placeholder="请输入内容" />
+      <ul class="list-box"></ul>
+    </div>
+    <script src="./js/ajax.js"></script>
+    <script src="./js/template-web.js"></script>
+    <script type="text/html" id="tpl">
+      {{each result}}
+      <li>{{$value}}</li>
+      {{/each}}
+    </script>
+    <script>
+      var search = document.querySelector('.search')
+      var listBox = document.querySelector('.list-box')
+      var timer = null
+      search.oninput = function () {
+        var key = this.value
+        clearTimeout(timer)
+        // 输入框内容为空则把ul隐藏,记得return，不让发送请求
+        if (key.trim().length == 0) {
+          listBox.style.display = 'none'
+          return
+        }
+        // 防止发送请求过于频繁，设置一个定时器
+        timer = setTimeout(function () {
+          ajax({
+            type: 'get',
+            url: 'http://localhost:3000/search',
+            data: { key: key },
+            success: function (result) {
+              console.log(result)
+              var html = template('tpl', { result: result })
+              listBox.innerHTML = html
+              listBox.style.display = 'block'
+            }
+          })
+        }, 1000)
+      }
+    </script>
+  </body>
+</html>

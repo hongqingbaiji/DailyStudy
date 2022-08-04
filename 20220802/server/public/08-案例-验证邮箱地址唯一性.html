@@ -52,13 +52,14 @@
       emailInput.onblur = function () {
         var email = this.value
         var reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/
+
         if (!reg.test(email)) {
           info.innerHTML = '请输入符合规则的邮箱地址'
           info.className = 'info error'
-          return
+          return //验证不通过直接return，不发送请求了
         }
-        // 向服务器端发送请求
 
+        // 向服务器端发送请求
         ajax({
           type: 'get',
           url: 'http://localhost:3000/verifyEmailAdress',
