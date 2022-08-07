@@ -2,6 +2,7 @@
 const express = require('express')
 // 引入路径处理模块
 const path = require('path')
+const template = require('art-template')
 const bodyParser = require('body-parser')
 const fs = require('fs')
 // 创建web服务器

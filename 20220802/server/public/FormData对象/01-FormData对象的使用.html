@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form id="form">
+    <input type="text" name="uname">
+    <input type="text" name="age">
+    <input type="button" id="btn" value="提交">
+  </form>
+  <script>
+    var form = document.querySelector('#form')
+    var btn = document.querySelector('#btn')
+
+    btn.onclick = function(){
+      var formData = new FormData(form)
+      formData.get('uname')
+      formData.set('sex','男')
+      for(var k of formData.entries()){
+        console.log(k[0]+':'+k[1]);
+      }
+      formData.delete('sex')
+      formData.append('password',123)
+      formData.append('password',1234)
+      formData.append('password',123456)
+      console.log(formData.getAll('password')[1])
+      var xhr = new XMLHttpRequest()
+      xhr.open('post','http://localhost:3000/formData')
+      xhr.send(formData)
+      xhr.onload = function(){
+        if(xhr.status == 200){
+          console.log(xhr.responseText);
+        }
+      } 
+    }
+    
+  </script>
+</body>
+</html>
