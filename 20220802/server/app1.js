@@ -7,6 +7,7 @@ const app = express()
 
 app.use(express.static(path.join(__dirname, 'public')))
 
+// 对应01-
 app.post('/formData', (req, res) => {
   // 创建formidable表单解析对象
   const form = new formidable.IncomingForm()
@@ -16,13 +17,13 @@ app.post('/formData', (req, res) => {
   })
 })
 
+// 对应02-
 app.post('/upload', (req, res) => {
   const form = new formidable.IncomingForm({
     multiples: true,
     uploadDir: path.join(__dirname, 'public', 'uploads'),
     keepExtensions: true
   })
-
   form.parse(req, (err, fields, files) => {
     res.send({
       path: files.attrName.filepath.split('public')[1]

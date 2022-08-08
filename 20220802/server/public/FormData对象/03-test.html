@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <h2>这是 s1的 03-test.html 页面</h2>
+  <button id="btn1">发送请求1</button>
+  <button id="btn2">发送请求2</button>
+  <script src="../js/ajax.js"></script>
+  <script>
+    var btn1 = document.getElementById('btn1')
+    var btn2 = document.getElementById('btn2')
+
+    // 封装jsonp方法
+    function jsonp(options){
+      var script = document.createElement('script')
+      var params = ''
+      // 循环对象，拼接要传到服务器的对象
+      for(var attr in options.data){
+        params += '&' + attr +'='+ options.data[attr]
+      }
+      //随机函数名字
+      var fnName = 'myJsonp'+ Math.random().toString().replace('.','')
+      // 把success 变成全局函数
+      window[fnName] = options.success
+      script.src = options.url+'?callback=' + fnName + params
+      document.body.appendChild(script)
+      // 等script加载完成后，把script标签删除，以免重复创建
+      script.onload = function(){
+        document.body.removeChild(script)
+      }
+    };
+    btn1.onclick = function(){
+      jsonp({
+        url:'http://localhost:3001/test',
+        data:{
+          name:'wenhe',
+          age:30
+        },
+        success:function(data){
+          console.log(123);
+          console.log(data);
+        }
+      })
+    }
+    btn2.onclick = function(){
+      jsonp({
+        url:'http://localhost:3001/test',
+        success:function(data){
+          console.log(456);
+          console.log(data);
+        }
+      })
+    }
+
+  </script>
+  <!-- 第一种方法 使用script来引用 -->
+  <!-- <script src="http://localhost:3001/test"></script> -->
+
+  <!-- 第二种方法，是动态创建script元素 -->
+  <!-- <script>
+      var script = document.createElement('script')
+      script.src = 'http://localhost:3001/test'
+      document.body.appendChild(script)
+  </script> -->
+
+</body>
+</html>
