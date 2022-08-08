@@ -1,31 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <div>
-    <label>请选择文件</label>
-    <input type="file" id="file">
-  </div>
-  <script>
-    var file = document.querySelector('#file')
-    
-    file.onchange = function(){
-      var xhr = new XMLHttpRequest()
-      var formData = new FormData()
-      formData.append('attrName',this.files[0])
-      xhr.open('post','http://localhost:3000/upload')
-      xhr.send(formData)
-      xhr.onload = function(){
-        if(xhr.status == 200){
-          console.log(xhr.responseText);
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #progress {
+        margin-top: 20px;
+        width: 500px;
+        height: 20px;
+        border: 2px solid #ccc;
+        text-align: center;
+        background-color: #eee;
+      }
+      #bar {
+        width: 0%;
+        background-color: blue;
+        color: #fff;
+      }
+      #box {
+        margin-top: 10px;
+        width: 500px;
+        height: 400px;
+        border: 1px solid #ccc;
+      }
+      #box img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <label>请选择文件</label>
+      <input type="file" id="file" />
+    </div>
+    <div id="box"></div>
+    <div id="progress">
+      <div id="bar">0%</div>
+    </div>
+    <script>
+      var file = document.querySelector('#file')
+      var bar = document.querySelector('#bar')
+      var box = document.querySelector('#box')
+
+      file.onchange = function () {
+        var xhr = new XMLHttpRequest()
+        var formData = new FormData()
+        formData.append('attrName', this.files[0])
+        xhr.open('post', 'http://localhost:3000/upload')
+        xhr.upload.onprogress = function (ev) {
+          var result = (ev.loaded / ev.total) * 100 + '%'
+          bar.style.width = result
+          bar.innerHTML = result
+        }
+        xhr.send(formData)
+        xhr.onload = function () {
+          if (xhr.status == 200) {
+            var result = JSON.parse(xhr.responseText)
+            var img = document.createElement('img')
+            img.src = result.path
+
+            img.onload = function () {
+              box.appendChild(img)
+            }
+          }
         }
       }
-    }
-  </script>
-</body>
+    </script>
+  </body>
 </html>

@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const formidable = require('formidable')
-const fs = require('fs')
+// const fs = require('fs')
 
 const app = express()
 
@@ -20,11 +20,13 @@ app.post('/upload', (req, res) => {
   const form = new formidable.IncomingForm({
     multiples: true,
     uploadDir: path.join(__dirname, 'public', 'uploads'),
-    Extensions: true
+    keepExtensions: true
   })
 
   form.parse(req, (err, fields, files) => {
-    res.send('ok')
+    res.send({
+      path: files.attrName.filepath.split('public')[1]
+    })
   })
 })
 
