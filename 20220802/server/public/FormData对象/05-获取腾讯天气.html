@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 10px 30px;
+        text-align: center;
+      }
+      th {
+        background-color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="table"></table>
+    <script src="../js/jsonp.js"></script>
+    <script src="../js/template-web.js"></script>
+    <script id="tpl" type="text/html">
+      <tr>
+        <th>时间</th>
+        <th>温度</th>
+        <th>天气</th>
+        <th>风向</th>
+        <th>风力</th>
+      </tr>
+      {{each info}}
+      <tr>
+        <td>{{dateFormat($value.update_time)}}</td>
+        <td>{{$value.degree}}</td>
+        <td>{{$value.weather}}</td>
+        <td>{{$value.wind_direction}}</td>
+        <td>{{$value.wind_power}}</td>
+      </tr>
+      {{/each}}
+    </script>
+    <script>
+      var table = document.getElementById('table')
+
+      function dateFormat(date) {
+        var year = date.substr(0, 4)
+        var month = date.substr(4, 2)
+        var day = date.substr(6, 2)
+        var h = date.substr(8, 2)
+        var m = date.substr(10, 2)
+        var s = date.substr(12, 2)
+        var result = year + '/' + month + '/' + day + ' ' + h + ':' + m + ':' + s
+        return result
+      }
+
+      //向模板中开发外部变量，该变量必须是函数
+      template.defaults.imports.dateFormat = dateFormat
+
+      jsonp({
+        url: 'https://wis.qq.com/weather/common',
+        data: {
+          source: 'pc',
+          weather_type: 'forecast_1h',
+          province: '北京市',
+          city: '北京市'
+        },
+        success: function (data) {
+          console.log(data)
+          var html = template('tpl', { info: data.data.forecast_1h })
+          table.innerHTML = html
+        }
+      })
+    </script>
+  </body>
+</html>
