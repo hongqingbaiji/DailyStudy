@@ -1,7 +1,8 @@
 const express = require('express')
 const path = require('path')
 const formidable = require('formidable')
-// const fs = require('fs')
+// 向其他服务器端请求数据的模块
+const request = require('request')
 
 const app = express()
 
@@ -28,6 +29,16 @@ app.post('/upload', (req, res) => {
     res.send({
       path: files.attrName.filepath.split('public')[1]
     })
+  })
+})
+
+// 对应 07-
+app.get('/sever', (req, res) => {
+  request('http://localhost:3001/cross', (err, response, body) => {
+    // console.log('error: ', err)
+    // console.log('response: ', response)
+    // console.log('body: ', body)
+    res.send(body)
   })
 })
 
