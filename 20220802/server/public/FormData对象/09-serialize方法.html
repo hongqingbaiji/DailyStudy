@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="form">
+      <input type="text" name="username" />
+      <input type="password" name="password" />
+      <input type="submit" value="提交" />
+    </form>
+    <button id="btn">发送jsonp请求</button>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+      $('#btn').on('click', function () {
+        $.ajax({
+          url: '/jsonp',
+          dataType: 'jsonp',
+          success: function (response) {
+            console.log(response)
+          }
+        })
+      })
+
+      $('#form').on('submit', function () {
+        // var params = $('#form').serializeArray()
+        // console.log(params)
+
+        console.log(serializeObject($(this)))
+
+        return false
+      })
+
+      function serializeObject(obj) {
+        var result = {}
+        var params = obj.serializeArray()
+        $.each(params, function (index, value) {
+          result[value.name] = value.value
+        })
+        return result
+      }
+    </script>
+  </body>
+</html>

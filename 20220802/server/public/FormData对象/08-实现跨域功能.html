@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="loginForm">
+      <input type="text" name="username" placeholder="请输入用户名" />
+      <input type="password" name="password" placeholder="请输入密码" /><br /><br />
+      <input type="button" value="登录" id="loginBtn" />
+      <input type="button" value="检测登录状态" id="checkLogin" />
+    </form>
+    <script>
+      var loginBtn = document.getElementById('loginBtn')
+      var checkLogin = document.getElementById('checkLogin')
+      var loginForm = document.getElementById('loginForm')
+      loginBtn.onclick = function () {
+        var formData = new FormData(loginForm)
+
+        var xhr = new XMLHttpRequest()
+        xhr.open('post', 'http://localhost:3001/login')
+        xhr.withCredentials = true
+        xhr.send(formData)
+        xhr.onload = function () {
+          console.log(xhr.responseText)
+        }
+      }
+
+      checkLogin.onclick = function () {
+        var xhr = new XMLHttpRequest()
+        xhr.open('get', 'http://localhost:3001/checkLogin')
+        xhr.withCredentials = true
+        xhr.send()
+        xhr.onload = function () {
+          console.log(xhr.responseText)
+        }
+      }
+    </script>
+  </body>
 </html>

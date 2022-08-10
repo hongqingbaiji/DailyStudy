@@ -42,5 +42,13 @@ app.get('/sever', (req, res) => {
   })
 })
 
+// 对应09-
+app.get('/jsonp', (req, res) => {
+  res.jsonp({
+    username: 'lisi',
+    age: 30
+  })
+})
+
 app.listen(3000)
 console.log('服务器开启成功')
