@@ -20,6 +20,7 @@ app.post('/formData', (req, res) => {
 
 // 对应02-
 app.post('/upload', (req, res) => {
+  // res.send('ok')
   const form = new formidable.IncomingForm({
     multiples: true,
     uploadDir: path.join(__dirname, 'public', 'uploads'),

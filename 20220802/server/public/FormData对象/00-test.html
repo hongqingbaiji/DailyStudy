@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      #progress {
+        margin-top: 20px;
+        width: 500px;
+        height: 20px;
+        border: 2px solid #ccc;
+        text-align: center;
+        background-color: #eee;
+      }
+      #bar {
+        width: 0%;
+        background-color: blue;
+        color: #fff;
+      }
+  </style>
+</head>
+<body>
+  <script src="../js/template-web.js"></script>
+  <div>
+    <button id="btn">发送请求</button>
+  </div>
+  <div id="box"></div>
+  <div id="progress">
+    <div id="bar">0%</div>
+  </div>
+  <script>
+    var btn = document.getElementById('btn')
+    var box = document.getElementById('box')
+    var bar = document.getElementById('bar')
+
+    btn.onclick = function(){
+      var xhr = new XMLHttpRequest()
+      xhr.onprogress = function(event){
+        console.log(event);
+        if(event.lengthComputable){
+          var w = (event.loaded / event.total)*100 + '%'
+          bar.innerHTML = w 
+          bar.style.width = w
+        }
+      }
+      xhr.open('post','/upload')
+      xhr.send()
+      xhr.onload = function(){
+        if(xhr.status == 200){
+          console.log(xhr.responseText);
+        }
+      }
+    }
+  </script>
+  <script>
+    // var books = {
+    //   title:'js',
+    //   authors:['a','b'],
+    //   year:2011,
+    //   age:undefined,
+    //   getsomething:function(){
+    //     console.log(234);
+    //   }
+    // }
+    // var result = JSON.stringify(books,null,4)
+    // console.log(result);
+
+    // var xhr = new XMLHttpRequest()
+    // // console.log(xhr.readyState); // 0
+
+    // xhr.open('get','/get')
+    // xhr.timeout = 10
+    // xhr.ontimeout = function(){
+    //   console.log('请求超时');
+    // }
+    // // console.log(xhr.readyState); // 1
+    // xhr.send()
+    // // xhr.onreadystatechange = function(){
+    // //   console.log(xhr.readyState); // 2 3 4
+    // // }
+    // xhr.onload = function(){
+    //   console.log(xhr.responseText);
+    // }
+
+  </script>
+</body>
+</html>

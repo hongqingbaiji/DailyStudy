@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // 对应 01-
 app.get('/get', (req, res) => {
-  res.send(req.query)
+  res.send('ok')
 })
 
 // 对应 02-
