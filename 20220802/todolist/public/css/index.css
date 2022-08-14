@@ -1,0 +1,65 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+}
+body {
+  width: 1200px;
+  background-color: #eee;
+}
+.title {
+  margin: 50px auto 10px;
+  text-align: center;
+  font-size: 100px;
+  font-weight: 400;
+  color: rgba(255, 0, 0, 0.2);
+}
+.todoapp {
+  margin: 0px auto;
+  text-align: center;
+  width: 600px;
+  height: 400px;
+}
+.header {
+  position: relative;
+}
+.header .new-todo {
+  width: 550px;
+  height: 60px;
+  font-size: 25px;
+  padding-left: 60px;
+  border: 0px;
+  outline: none;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+.header .checkBox {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+.header .toggle-all {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 30px;
+  background-color: pink;
+}
+/* 修改input里的placeholder的颜色 */
+.new-todo::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+/* main开始 */
+#lis {
+  width: 600px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 25px;
+  box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.2);
+}
+.view {
+  display: flex;
+  justify-content: space-between;
+}

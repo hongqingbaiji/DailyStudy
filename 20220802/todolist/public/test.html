@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fn(num) {
+        if (num <= 0) {
+          console.log('不是2的整数次幂')
+          return
+        }
+        if (num == 1 || num == 2) {
+          console.log('是2的整数次幂')
+          return
+        }
+        var a = num % 2 // a是余数
+        var b = Math.floor(num / 2) // b是商
+        if (a == 1) {
+          console.log('不是2的整数次幂')
+          return
+        } else {
+          if (b == 0) {
+            console.log('是2的整数次幂')
+            return
+          } else {
+            fn(b)
+          }
+        }
+      }
+      var result = parseInt(prompt('请输入一个整数'))
+      fn(result)
+    </script>
+    <script>
+      var num = parseInt(prompt('请输入一个整数'))
+      var result = num.toString(2)
+      var add = 0
+      var index = result.indexOf('1')
+      while (index !== -1) {
+        add++
+        index = result.indexOf('1', index + 1)
+      }
+      if (add > 1) {
+        console.log('不是2的整数次幂')
+      } else {
+        console.log('是2的整数次幂')
+      }
+    </script>
+  </body>
+</html>
