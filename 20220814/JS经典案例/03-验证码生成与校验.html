@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container{
+      margin: 50px;
+    }
+    .code-con{
+      display: inline-block;
+      width: 150px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background-color: #ccc;
+      color: blue;
+      font-size: 30px;
+      font-weight: 700;
+    }
+    .yzm{
+      margin: 20px 0;
+    }
+    .yzm label{
+      font-size: 20px;
+      margin-right: 10px;
+    }
+    .yzm #code{
+      width: 100px;
+      height: 30px;
+      padding-left: 10px;
+      outline: none;
+    }
+    .span{
+      margin-left: 20px;
+    }
+    .success{
+      color: green;
+    }
+    .error{
+      color: red;
+    }
+    #btn{
+      padding: 10px 30px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="code-con"></span>
+    <a href="javascript:;" class="refresh">看不清，重新生成</a>
+    <div class="yzm">
+      <label for="code">验证码</label>
+      <input type="text" id="code">
+      <span class="span"></span>
+    </div>
+    <button id="btn">提交</button>
+  </div>
+  <script>
+    window.onload = function(){
+      var res = setCode()
+
+      function setCode(){
+        var arr = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','A','B','C','D','E','F']
+        var str = ''
+        for(var i=0;i<6;i++){
+          var index = Math.floor(Math.random()*22)
+          str += arr[index]
+        }
+        return str
+      }
+
+      var codeCon = document.querySelector('.code-con')
+      var refresh = document.querySelector('.refresh')
+      var ipt = document.querySelector('#code')
+      var btn = document.querySelector('#btn')
+      var span = document.querySelector('.span')
+
+      console.log(span);
+      codeCon.innerHTML = res
+      refresh.onclick = function(){
+        codeCon.innerHTML = setCode()
+      }
+
+      btn.onclick = function(){
+        if(ipt.value == codeCon.innerHTML){
+          span.className = 'span success'
+          span.innerHTML = '√ 验证成功'
+        } else {
+          span.className = 'span error'
+          span.innerHTML = '× 验证码错误'
+        }
+      }
+
+    }
+    
+  </script>
+</body>
+</html>

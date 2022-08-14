@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table{
+      margin: 100px;
+    }
+    table,th,td{
+      border: 1px solid #000;
+      border-collapse: collapse;
+    }
+    th,td{
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <input type="checkbox" class="checkAll">
+        </th>
+        <th>商品</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <input type="checkbox" class="checkOne">
+        </td>
+        <td>iphone 13</td>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" class="checkOne">
+        </td>
+        <td>iphone 13plus</td>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" class="checkOne">
+        </td>
+        <td>华为 P50</td>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" class="checkOne">
+        </td>
+        <td>小米 13s</td>
+      </tr>
+    </tbody>
+  </table>
+  <script>
+    var checkAll = document.querySelector('.checkAll')
+    var checkOne = document.querySelectorAll('.checkOne')
+    checkAll.addEventListener('click',function(){
+
+      for(let i=0;i<checkOne.length;i++){
+        // 让所有小复选框的选中状态和总复选框的选中状态保持一致
+        checkOne[i].checked = checkAll.checked
+      }
+      // 第二种方法，写的代码更多
+      // if(this.checked){
+      //   for(var i=0;i<checkOne.length;i++){
+      //     checkOne[i].checked = true
+      //   }
+      // }else{
+      //   for(var i=0;i<checkOne.length;i++){
+      //     checkOne[i].checked = false
+      //   }
+      // }
+    })
+
+    for(let i=0;i<checkOne.length;i++){
+      checkOne[i].addEventListener('click',function(){
+        //循环判断，只要有一个小项没选中，总选项就不选中，并退出循环
+        for(let i=0;i<checkOne.length;i++){
+          if(!checkOne[i].checked){
+            checkAll.checked = false
+            return
+          }
+        }
+        //都选中了就把总复选框改为true; 一定要注意是在循环外面，而不是else
+        checkAll.checked = true
+      
+      })
+    }
+  </script>
+</body>
+</html>

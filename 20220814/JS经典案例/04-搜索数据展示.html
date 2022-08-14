@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    .container{
+      margin: 100px;
+    }
+    li{
+      list-style: none;
+      width: 300px;
+      height: 30px;
+      line-height: 30px;
+      padding-left: 10px;
+      border: 1px solid #ccc;
+      border-top:0px ;
+    }
+    .ipt{
+      width: 300px;
+      height: 30px;
+      outline: none;
+      padding-left: 10px;
+      border: 1px solid #000;
+    }
+    .ul{
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input type="text" class="ipt" autofocus>
+    <ul class="ul"></ul>
+  </div>
+  <script>
+    var ipt = document.querySelector('.ipt')
+    var ul = document.querySelector('.ul')
+
+    var arr = ['苹果手机','苹果干','苹果手机多少钱','华为手机','华为MatePad11','华为P40','华为手机多少钱','华为和苹果手机的区别','华为华为不会飞','苹果和乔布斯','果然很贵','js自学','js全职','js全教程','js要学什么','js学完就能找工作吗','js不是很懂','js文和','js学了能干嘛','js就是没什么用的呀','js不如php','js是世界上最好的语言','js大佬','js前端','js谁发明的','js很烂能找工作吗','我学了js','js和华为','js和苹果','js工作饱和了吗','js市场调查','js别哭']
+
+    // arr.forEach(item=>{
+    //   if(item.includes('苹果')){
+    //     var li = document.createElement('li')
+    //     li.innerHTML = item
+    //     ul.appendChild(li)
+    //   }
+    // })
+    // console.log(ul);
+
+    ipt.onkeyup = function(){
+      if(ipt.value.trim().length === 0){
+        ul.style.display = 'none'
+      }else{
+        ul.style.display = 'block'
+        ul.innerHTML = ''
+        arr.forEach(item=>{
+          if(item.includes(this.value)){
+            var li = document.createElement('li')
+            li.innerHTML = item
+            if(ul.children.length <= 10){
+              ul.appendChild(li)
+            }else{
+              return
+            }
+          }
+        })
+      }
+
+    }
+    ipt.onblur = function(){
+      ul.style.display = 'none'
+    }
+    ipt.onfocus = function(){
+      if(ipt.value.trim().length === 0){
+        ul.style.display = 'none'
+      }else{
+        ul.style.display = 'block'
+      }
+    }
+  
+  </script>
+</body>
+</html>

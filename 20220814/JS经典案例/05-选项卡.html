@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    .container{
+      margin: 100px;
+    }
+    ul{
+      display: flex;
+      justify-content: space-around;
+      width: 400px;
+    }
+    li{
+      list-style: none;
+      border: 1px solid #ccc;
+      width: 100px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      cursor: pointer;
+    }
+    li:hover{
+      background-color: #eee;
+    }
+    li:nth-child(n+2){
+      border-left: 0px;
+    }
+    .con{
+      margin: 10px;
+    }
+    p{
+      display: none;
+    }
+    .sel{
+      background-color: #eee;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul>
+      <li class="sel">大橘</li>
+      <li>英短</li>
+      <li>美短</li>
+      <li>布偶</li>
+    </ul>
+    <div class="con">
+      <p  style="display:block">大橘.jpg</p>
+      <p>英短.jpg</p>
+      <p>美短.jpg</p>
+      <p>布偶.jpg</p>
+    </div>
+  </div>
+  <script>
+    var lis = document.querySelectorAll('li')
+    var ps = document.querySelectorAll('p')
+    
+    for(let i=0;i<lis.length;i++){
+      lis[i].setAttribute('data-index',i)
+      lis[i].addEventListener('click',function(){
+        
+        for(let i=0;i<lis.length;i++){
+          lis[i].className = ''
+        }  
+        this.className = 'sel'
+        var index = this.getAttribute('data-index')
+        for(let i=0;i<ps.length;i++){
+          ps[i].style.display = 'none'
+        }
+        ps[index].style.display = 'block'
+      })
+
+      
+
+    }
+  </script>
+</body>
+</html>

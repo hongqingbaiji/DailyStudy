@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    button{
+      width: 150px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .container{
+      position: relative;
+      width: 1000px;
+      height: 500px;
+    }
+    .goods{
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width: 400px;
+      height: 200px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      border-radius: 7px;
+    }
+    .goods h3{
+      text-align: center;
+    }
+    .goods ol{
+      margin: 20px 30px;
+    }
+    .box{
+      display: flex;
+      justify-content: space-evenly;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="btn1">支付</button>
+    <div class="goods">
+      <h3>订单详情</h3>
+      <ol>
+        <li>11111111</li>
+        <li>22222222</li>
+        <li>33333333</li>
+      </ol>
+      <div class="box">
+        <button class="close">取消</button>
+        <button class="btn2">确认支付</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    var btn1 = document.querySelector('.btn1')
+    var goods = document.querySelector('.goods')
+    var close = document.querySelector('.close')
+    var btn2 = document.querySelector('.btn2')
+    var timer = null
+
+    function timeStop(obj,s){
+      obj.innerHTML = s +'s后确认支付'
+      obj.disabled = 'none'
+      timer = setInterval(function(){
+        s--
+        obj.innerHTML = s+'s后确认支付'
+        if(s === 0){
+          obj.innerHTML = '确认支付'
+          obj.disabled = ''
+          clearInterval(timer)
+        }  
+      },1000)
+
+    }
+    btn1.addEventListener('click',function(){
+      btn1.disabled = 'none';
+      goods.style.display = 'block'
+      document.body.style.backgroundColor = '#eee'
+      timeStop(btn2,5)
+    })
+    close.addEventListener('click',function(){
+      btn1.disabled = '';
+      goods.style.display = 'none'
+      document.body.style.backgroundColor = '#fff'
+      clearInterval(timer)
+    })
+
+  </script>
+</body>
+</html>
