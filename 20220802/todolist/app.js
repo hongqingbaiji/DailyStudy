@@ -9,6 +9,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(bodyParser.json())
 
+// 连接数据库
 mongoose.connect('mongodb://wenhe:123@localhost:27017/todo', { useNewUrlParser: true })
 
 app.listen(3000)
