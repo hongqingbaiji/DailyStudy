@@ -17,25 +17,47 @@
     <title>Document</title>
     <base target="__blank" />
     <style>
-      /* * {
-        box-sizing: border-box;
-      } */
-      div {
-        width: 200px;
-        height: 200px;
+
+      .clearfix:before, .clearfix:after{
+        content:'';
+        display:table;
+      }
+      .clearfix:after{
+        clear:both;
+      }
+      .clearfix{
+        *zoom:1;
+      }
+
+      *{
+        padding: 0;
+        margin: 0;
+      }
+      li{
+        list-style: none;
+      }
+      
+      .father{
+        /* overflow: hidden; */
         background-color: pink;
-        margin: 0 auto;
-        text-align: center;
-        line-height: 200px;
+
       }
-      span {
-        color: red;
+      .son{
+        float: left;
+        width: 100px;
+        height: 100px;
+        background-color: purple;
       }
+      /* .clear{
+        clear:both
+      } */
+      
     </style>
   </head>
   <body>
-    <div>
-      <span>234</span>
+    <div class="father clearfix">
+      <div class="son"></div>
+      <!-- <div class="clear"></div> -->
     </div>
   </body>
 </html>
