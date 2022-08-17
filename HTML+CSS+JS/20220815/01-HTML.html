@@ -36,28 +36,35 @@
       li{
         list-style: none;
       }
-      
-      .father{
-        /* overflow: hidden; */
-        background-color: pink;
 
+      .father{
+        position: relative;
+        width: 448px;
+        height: 252px;
+        margin: 50px auto;
+        background: url('images/tudou.jpg') no-repeat center top;
+        background-position: 100% 100%;
       }
+
       .son{
-        float: left;
-        width: 100px;
-        height: 100px;
-        background-color: purple;
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .4) url('images/arr.png') no-repeat center;
       }
-      /* .clear{
-        clear:both
-      } */
-      
+      /* 鼠标经过父盒子，让子盒子展示出来 */
+      .father:hover .son {
+        display: block;
+      }
+
     </style>
   </head>
   <body>
     <div class="father clearfix">
       <div class="son"></div>
-      <!-- <div class="clear"></div> -->
     </div>
   </body>
 </html>
