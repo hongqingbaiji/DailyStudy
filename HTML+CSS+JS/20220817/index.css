@@ -1,0 +1,385 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #050505;
+}
+a:hover {
+  color: #00a4ff;
+}
+body {
+  background-color: #f3f5f7;
+  font-size: 18px;
+  font-family: 'Microsoft Yahei';
+  color: #050505;
+  height: 2000px;
+}
+/* 清除浮动的代码 */
+.clearfix:before,
+.clearfix:after {
+  content: '';
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}
+/* header */
+.head {
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+  overflow: hidden;
+}
+.header {
+  margin: 30px auto;
+  /* background-color: pink; */
+  width: 1200px;
+  height: 42px;
+  line-height: 42px;
+}
+.header .logo {
+  float: left;
+  width: 195px;
+  margin-right: 70px;
+  cursor: pointer;
+}
+.header ul li {
+  float: left;
+  padding: 0 8px;
+  margin: 0 10px;
+}
+.header .header_sel {
+  border-bottom: 2px solid #00a4ff;
+}
+.header ul li:hover {
+  border-bottom: 2px solid #00a4ff;
+}
+.header .search {
+  float: left;
+  border: 1px solid #00a4ff;
+  margin-left: 70px;
+  width: 410px;
+  height: 42px;
+}
+.header .search input {
+  float: left;
+  border: 0;
+  padding: 0 20px;
+  width: 357px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  color: #999;
+  outline: 0;
+}
+
+.header .search::after {
+  content: '';
+  float: right;
+  background: url('images/btn.png') no-repeat;
+  width: 50px;
+  height: 40px;
+}
+.header .userInfo {
+  float: left;
+  margin-left: 30px;
+}
+.header .userInfo img {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+.header .userInfo span {
+  color: #666;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+/* banner */
+.bann {
+  width: 100%;
+  height: 420px;
+  background-color: #1c036b;
+  overflow: hidden;
+}
+.banner {
+  position: relative;
+  margin: 0 auto;
+  width: 1200px;
+  height: 420px;
+  font-size: 14px;
+  background: url('images/banner2.png') no-repeat;
+}
+/* bann_left */
+.bann_left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 3px 20px;
+  width: 190px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.bann_left ul li {
+  height: 46px;
+  line-height: 46px;
+}
+.bann_left ul li a {
+  float: left;
+  color: #fff;
+}
+.bann_left ul li:hover a,
+.bann_left ul li:hover span {
+  color: #00b4ff;
+}
+.bann_left ul li span {
+  float: right;
+  color: #fff;
+}
+
+/* bann_dot */
+.bann_dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+}
+.bann_dot li {
+  float: left;
+  border: 0;
+  margin: 0 5px;
+  width: 16px;
+  height: 16px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.bann_dot .dot_sel {
+  width: 20px;
+  background-color: #fff;
+}
+
+/* bann_right */
+.bann_right {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fff;
+  width: 230px;
+  height: 300px;
+}
+.bann_right h3 {
+  height: 50px;
+  line-height: 50px;
+  background-color: #9bceea;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+}
+.bann_right ul li {
+  margin: 0 20px;
+  padding: 13px 0;
+  height: 65px;
+  border-bottom: 1px solid #eee;
+}
+.bann_right ul li h4 {
+  font: size 16px;
+  color: #333;
+  font-weight: 400;
+}
+.bann_right ul li span {
+  color: #ababab;
+  font-size: 12px;
+}
+.bann_right button {
+  display: block;
+  margin: 5px auto;
+  border: 2px solid #00a4ff;
+  background-color: #fff;
+  width: 190px;
+  height: 45px;
+  line-height: 45px;
+  font-size: 18px;
+  color: #00a4ff;
+}
+/* nav */
+.nav {
+  width: 1200px;
+  height: 60px;
+  line-height: 60px;
+  margin: 10px auto;
+  background-color: #fff;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+}
+.nav ul li {
+  float: left;
+}
+.nav ul li a {
+  padding: 0 35px;
+  border-right: 2px solid #e1e1e1;
+}
+.nav .nav_sel {
+  color: #00a4ff;
+}
+.nav ul li:last-child a {
+  border-right: 0;
+}
+.nav span {
+  float: right;
+  margin-right: 20px;
+  font-size: 14px;
+  color: #00a4ff;
+}
+
+/* 精品推荐 部分 */
+.main1 {
+  width: 1200px;
+  margin: 20px auto;
+}
+.main1 .main1_head {
+  height: 60px;
+  line-height: 60px;
+}
+.main1_head h3 {
+  float: left;
+  font-weight: 400;
+}
+.main1_head span {
+  float: right;
+  margin-right: 20px;
+  font-size: 14px;
+  color: #ababab;
+}
+.main1_con ul li {
+  float: left;
+  position: relative;
+  margin: 0 10px 10px 0;
+  width: 232px;
+  height: 270px;
+  background-color: #fff;
+}
+.main1_con ul li:hover {
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
+}
+.main1_con ul li:nth-child(5n) {
+  margin-right: 0;
+}
+.main1_con ul li img {
+  width: 232px;
+}
+.main1_con ul li h4 {
+  margin: 20px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.main1_con ul li p {
+  margin: 20px;
+  font-size: 14px;
+  color: #ababab;
+}
+.main1_con ul li p span {
+  color: red;
+}
+.main1_con ul li:nth-child(-n + 3)::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 5px;
+  background: url('images/hot.png') no-repeat;
+  width: 40px;
+  height: 24px;
+}
+
+/* 编程入门 部分 */
+.main2 {
+  width: 1200px;
+  margin: 20px auto;
+}
+.main2 .main2_head {
+  height: 60px;
+  line-height: 60px;
+}
+.main2_head h3 {
+  float: left;
+  font-weight: 400;
+}
+.main2_head ul {
+  margin-left: 300px;
+}
+.main2_head ul li {
+  float: left;
+  padding: 0 36px;
+}
+.main2_head ul li a {
+  color: #ababab;
+}
+.main2_head ul li a:hover {
+  color: #00b4ff;
+}
+.main2_head ul .main2_sel a {
+  color: #00b4ff;
+}
+.main2_head span {
+  float: right;
+  margin-right: 20px;
+  font-size: 14px;
+  color: #ababab;
+}
+.main2_con .main2_left {
+  float: left;
+}
+.main2_con .main2_left img {
+  width: 228px;
+  height: 392px;
+}
+.main2_con .main2_right {
+  float: left;
+  margin-left: 14px;
+}
+.main2_con .main2_top img {
+  width: 957px;
+  height: 100px;
+}
+.main2_con .main2_bottom {
+  margin-top: 22px;
+}
+
+.main2_bottom ul li {
+  float: left;
+  position: relative;
+  margin: 0 10px 10px 0;
+  width: 232px;
+  height: 270px;
+  background-color: #fff;
+}
+.main2_bottom ul li:hover {
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
+}
+.main2_bottom ul li:nth-child(4n) {
+  margin-right: 0;
+}
+.main2_bottom ul li img {
+  width: 232px;
+}
+.main2_bottom ul li h4 {
+  margin: 20px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.main2_bottom ul li p {
+  margin: 20px;
+  font-size: 14px;
+  color: #ababab;
+}
+.main2_bottom ul li p span {
+  color: red;
+}
