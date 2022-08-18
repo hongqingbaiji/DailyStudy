@@ -17,54 +17,69 @@
     <title>Document</title>
     <base target="__blank" />
     <style>
+      .clearfix:before,
+      .clearfix:after {
+        content: '';
+        display: table;
+      }
+      .clearfix:after {
+        clear: both;
+      }
+      .clearfix {
+        *zoom: 1;
+      }
 
-      .clearfix:before, .clearfix:after{
-        content:'';
-        display:table;
-      }
-      .clearfix:after{
-        clear:both;
-      }
-      .clearfix{
-        *zoom:1;
-      }
-
-      *{
+      * {
         padding: 0;
         margin: 0;
+        box-sizing: border-box;
       }
-      li{
+      li {
         list-style: none;
       }
-
-      .father{
-        position: relative;
-        width: 448px;
-        height: 252px;
-        margin: 50px auto;
-        background: url('images/tudou.jpg') no-repeat center top;
-        background-position: 100% 100%;
+      nav :nth-child(1) {
+        background-color: pink;
+      }
+      nav :nth-of-type(1) {
+        color: red;
       }
 
-      .son{
-        display: none;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
+      div {
+        width: 50px;
+        height: 50px;
+        background-color: pink;
+        transition: width 1s;
+      }
+      div:hover {
+        width: 200px;
+      }
+      .jdt {
+        width: 200px;
+        height: 10px;
+        background-color: #fff;
+        border: 1px solid red;
+      }
+      .jdt p {
+        width: 1%;
         height: 100%;
-        background: rgba(0, 0, 0, .4) url('images/arr.png') no-repeat center;
+        background-color: red;
+        transition: width 2s ease;
       }
-      /* 鼠标经过父盒子，让子盒子展示出来 */
-      .father:hover .son {
-        display: block;
+      .jdt:hover p {
+        width: 100%;
       }
-
     </style>
   </head>
   <body>
-    <div class="father clearfix">
-      <div class="son"></div>
-    </div>
+    <div class="sport"></div>
+    <div class="jdt"><p></p></div>
+    <nav>
+      <p>1</p>
+      <p>2</p>
+      <div>3</div>
+      <div>4</div>
+      <h4>5</h4>
+      <h4>6</h4>
+    </nav>
   </body>
 </html>
