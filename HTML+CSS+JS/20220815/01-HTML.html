@@ -22,40 +22,134 @@
         margin: 0;
         box-sizing: border-box;
       }
-      .header{
-        /* overflow: hidden; */
-        width: 200px;
-        height: 200px;
+      li {
+        list-style: none;
+      }
+      @keyframes move {
+        0% {
+          transform: translate(0, 0);
+        }
+        25% {
+          transform: translate(565px, 0);
+        }
+        50% {
+          transform: translate(565px, 565px);
+        }
+        75% {
+          transform: translate(0, 565px);
+        }
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+      .father {
+        width: 600px;
+        height: 600px;
+        border: 2px solid #000;
+        margin: 100px;
+        border-radius: 20px;
+      }
+      .son {
+        position: relative;
+        width: 540px;
+        height: 540px;
+        border: 2px solid #000;
+        border-radius: 20px;
+        margin: 28px;
+      }
+      .box1 {
+        position: absolute;
+        left: -30px;
+        top: -30px;
+        width: 30px;
+        height: 30px;
         background-color: red;
-
+        border-radius: 50%;
+        animation: move 10s linear 0s infinite;
       }
-      .one{
-        width: 200px;
-        height: 200px;
+      .box2 {
+        position: absolute;
+        left: -30px;
+        top: -30px;
+        width: 30px;
+        height: 30px;
+        background-color: yellow;
+        border-radius: 50%;
+        animation: move 10s linear 0s infinite;
+      }
+      .box3 {
+        position: absolute;
+        left: -30px;
+        top: -30px;
+        width: 30px;
+        height: 30px;
         background-color: pink;
-        transition: all 1s;
-        transform-origin: left bottom;
+        border-radius: 50%;
+        /* transition: all 5s; */
+        animation: move 10s linear 0s infinite;
       }
-      .two{
-        width: 200px;
+      .box4 {
+        position: absolute;
+        left: -30px;
+        top: -30px;
+        width: 30px;
+        height: 30px;
+        background-color: green;
+        border-radius: 50%;
+        /* transition: all 5s; */
+        animation: move 10s linear 0s infinite;
+      }
+      .btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 150px;
         height: 200px;
-        background-color: purple;
-        transition: all 1s;
-        transform-origin: left top;
       }
-      .header:hover .one,.header:hover .two{
-        transform:rotate(-90deg);
- 
+      .btn button {
+        padding: 5px 20px;
+        margin: 10px 0;
+        cursor: pointer;
+        border: 2px solid skyblue;
+        background-color: transparent;
+        transition: all 0.5s;
       }
-
+      .btn button:hover {
+        transform: scale(1.2);
+      }
     </style>
   </head>
   <body>
-    <div class="header">
-      <div class="one">1</div>
-      <div class="two">2</div>
+    <div class="father">
+      <div class="son">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+        <div class="btn">
+          <button>红色 +1s</button>
+          <button>黄色 +1s</button>
+          <button>粉色 +1s</button>
+          <button>绿色 +1s</button>
+        </div>
+      </div>
     </div>
 
-
+    <script>
+      var box1 = document.querySelector('.box1')
+      var btns = document.querySelector('.btn')
+      var time = 10
+      btns.children[0].addEventListener('click', function () {
+        time--
+        if (time === 0) {
+          box1.style.animationDuration = '0s'
+          this.innerHTML = '红色 累坏了'
+          return
+        } else {
+          box1.style.animationDuration = time + 's'
+        }
+      })
+    </script>
   </body>
 </html>
