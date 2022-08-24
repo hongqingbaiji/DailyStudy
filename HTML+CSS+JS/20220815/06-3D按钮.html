@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      perspective: 400px;
+    }
+    .box{
+      position: relative;
+      width: 200px;
+      height: 40px;
+      margin: 100px auto;
+      cursor: pointer;
+      transition: all .5s;
+      transform-style: preserve-3d;
+    }
+    .box:hover{
+      transform: rotateX(90deg);
+    }
+    .one,.two{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      font-size: 20px;
+      line-height: 40px;
+      text-align: center;
+      color:#fff;
+    }
+    .one{
+      background-color: pink;
+      z-index:1;
+      transform: translateZ(20px);
+    }
+    .two{
+      background-color: purple;
+      /* 有旋转又有位移，记得先写位移再写旋转 */
+      transform: translateY(20px) rotateX(-90deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="one">文和</div>
+    <div class="two">你真棒</div>
+  </div>
+</body>
+</html>
