@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="http://www.baidu.com" target="_blank" />
+    <title>Document</title>
+    <style>
+      @keyframes move {
+        0% {
+        }
+        70% {
+          width: 40px;
+          height: 40px;
+          opacity: 1;
+        }
+        100% {
+          width: 70px;
+          height: 70px;
+          opacity: 0;
+        }
+      }
+      .div0 {
+        position: relative;
+        margin: 50px;
+      }
+      .dotted {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background-color: red;
+      }
+      .div1,
+      .div2,
+      .div3 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        box-shadow: 0 0 10px red;
+        animation: move 1.2s linear infinite;
+      }
+      .div2 {
+        animation-delay: 0.4s;
+      }
+      .div3 {
+        animation-delay: 0.8s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div0">
+      <div class="dotted"></div>
+      <div class="div1"></div>
+      <div class="div2"></div>
+      <div class="div3"></div>
+    </div>
+  </body>
+</html>
