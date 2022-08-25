@@ -15,31 +15,41 @@
         margin: 0;
         box-sizing: border-box;
       }
-      li {
-        list-style: none;
-        float: left;
-        width: 20%;
-        height: 40px;
+      section{
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
         background-color: pink;
-        text-align: center;
+        width: 100%;
+        height: 50px;
+        max-width: 640px;
+        min-width: 320px;
         line-height: 40px;
+        text-align: center;
+      }
+      div:nth-child(1){
+        width: 40px;
+        height: 40px;
+        background-color: aqua;
+      }
+      div:nth-child(2){
+        flex:1;
+        height: 40px;
+        margin: 0 20px;
+        background-color: brown;
+      }
+      div:nth-child(3){
+        width: 40px;
+        height: 40px;
+        background-color: aqua;
       }
     </style>
   </head>
   <body>
-    <div>
-      <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-        <li>7</li>
-        <li>8</li>
-        <li>9</li>
-        <li>10</li>
-      </ul>
-    </div>
+    <section>
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+    </section>
   </body>
 </html>
