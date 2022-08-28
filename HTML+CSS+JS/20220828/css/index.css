@@ -1,0 +1,188 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+a {
+  color: #666;
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+img {
+  vertical-align: middle;
+  border: 0;
+}
+html {
+  font-size: 50px;
+}
+@media screen and (max-width: 319px) {
+  html {
+    font-size: 21.33333333px;
+  }
+}
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 21.33333333px;
+  }
+}
+@media screen and (min-width: 360px) {
+  html {
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 384px) {
+  html {
+    font-size: 25.6px;
+  }
+}
+@media screen and (min-width: 400px) {
+  html {
+    font-size: 26.66666667px;
+  }
+}
+@media screen and (min-width: 414px) {
+  html {
+    font-size: 27.6px;
+  }
+}
+@media screen and (min-width: 424px) {
+  html {
+    font-size: 28.26666667px;
+  }
+}
+@media screen and (min-width: 480px) {
+  html {
+    font-size: 32px;
+  }
+}
+@media screen and (min-width: 540px) {
+  html {
+    font-size: 36px;
+  }
+}
+@media screen and (min-width: 720px) {
+  html {
+    font-size: 48px;
+  }
+}
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 50px;
+  }
+}
+body {
+  min-width: 320px;
+  width: 15rem;
+  margin: 0 auto;
+  line-height: 1.5;
+  font-family: 'Microsoft YaHei', Arial;
+  background-color: #f2f2f2;
+}
+.ad {
+  position: relative;
+  width: 15rem;
+  height: 2rem;
+}
+.ad img {
+  width: 100%;
+}
+.ad::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0.6rem;
+  transform: translateY(-50%);
+  width: 0.6rem;
+  height: 0.6rem;
+  background: url(../images/close.png) no-repeat;
+  background-size: 100%;
+}
+.header {
+  background-color: #ffdb47;
+  padding: 0.3rem 0.6rem;
+}
+.header .header-con {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.3rem;
+}
+.header .header-con img:nth-child(1),
+.header .header-con img:nth-child(3) {
+  width: 0.72rem;
+  height: 1.2rem;
+}
+.header .header-con img:nth-child(2) {
+  width: 6.4rem;
+  height: 1.28rem;
+}
+.header .header-search {
+  position: relative;
+  width: 100%;
+  height: 1.28rem;
+  line-height: 1.28rem;
+  background-color: #fff;
+  border-radius: 0.64rem;
+  padding-left: 1.4rem;
+  color: #ccc;
+  font-size: 0.5rem;
+}
+.header .header-search::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  transform: translateY(-50%);
+  width: 0.72rem;
+  height: 0.72rem;
+  background: url(../images/fdj.png) no-repeat;
+  background-size: 100%;
+}
+.banner {
+  width: 100%;
+  height: 7.36rem;
+  background: url(../images/banner.png) no-repeat;
+  background-size: 15rem 7.36rem;
+}
+.banner img {
+  width: 95%;
+  height: 100%;
+  margin-left: 2.5%;
+  border-radius: 0.2rem;
+  overflow: hidden;
+}
+.banner2 {
+  display: flex;
+  margin: 0.2rem 0.4rem;
+  border-radius: 0.2rem;
+  overflow: hidden;
+}
+.banner2 img {
+  flex: 1;
+  width: 4.73333333rem;
+}
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  font-size: 0.44rem;
+}
+.nav li {
+  flex: 20%;
+}
+.nav li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nav li a img {
+  width: 1.68rem;
+  height: 1.68rem;
+  background-size: 1.68rem;
+}
