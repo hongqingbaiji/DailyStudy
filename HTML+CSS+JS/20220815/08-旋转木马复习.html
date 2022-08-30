@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @keyframes rotate {
+        0% {
+          transform: rotateX(-10deg) rotateY(0deg);
+        }
+        100% {
+          transform: rotateX(-10deg) rotateY(360deg);
+        }
+      }
+      body {
+        perspective: 1000px;
+      }
+      nav {
+        position: relative;
+        width: 300px;
+        height: 200px;
+        margin: 200px auto;
+        transform-style: preserve-3d;
+        transform: rotateX(-10deg);
+        animation: rotate 10s linear infinite;
+      }
+      nav:hover {
+        animation-play-state: paused;
+      }
+      nav img {
+        position: absolute;
+        width: 300px;
+        height: 200px;
+      }
+      nav img:nth-child(1) {
+        transform: translateZ(300px);
+      }
+      nav img:nth-child(2) {
+        transform: rotateY(60deg) translateZ(300px);
+      }
+      nav img:nth-child(3) {
+        transform: rotateY(120deg) translateZ(300px);
+      }
+      nav img:nth-child(4) {
+        transform: rotateY(180deg) translateZ(300px);
+      }
+      nav img:nth-child(5) {
+        transform: rotateY(240deg) translateZ(300px);
+      }
+      nav img:nth-child(6) {
+        transform: rotateY(300deg) translateZ(300px);
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <img src="./images/dog.jpg" />
+      <img src="./images/dog.jpg" />
+      <img src="./images/dog.jpg" />
+      <img src="./images/dog.jpg" />
+      <img src="./images/dog.jpg" />
+      <img src="./images/dog.jpg" />
+    </nav>
+  </body>
+</html>
