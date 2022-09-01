@@ -5,11 +5,158 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .nav {
+        margin: 50px;
+        width: 300px;
+        height: 330px;
+        border: 1px solid #aaa;
+        padding: 10px;
+      }
+      .res {
+        position: relative;
+        width: 280px;
+        height: 40px;
+        border: 1px solid #ccc;
+        padding: 0 10px;
+        line-height: 40px;
+        font-size: 20px;
+      }
+      .res .close {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
+      .pro {
+        margin-top: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+      }
+      .pro button {
+        flex: 25%;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        margin: 5px;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
+    <div class="nav">
+      <div class="res">
+        <span class="answer"></span>
+        <span class="close">X</span>
+      </div>
+      <div class="pro">
+        <button>0</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>+</button>
+        <button>-</button>
+        <button>*</button>
+        <button>/</button>
+        <button>=</button>
+      </div>
+    </div>
+
     <script>
-      var a = 070
-      console.log(a)
+      var answer = document.querySelector('.answer')
+      var pro = document.querySelector('.pro')
+      var close = document.querySelector('.close')
+      var str = ''
+      close.onclick = function () {
+        str = ''
+        answer.innerHTML = ''
+      }
+      pro.children[0].onclick = function () {
+        str += 0
+        answer.innerHTML = str
+      }
+      pro.children[1].onclick = function () {
+        str += 1
+        answer.innerHTML = str
+      }
+      pro.children[2].onclick = function () {
+        str += 2
+        answer.innerHTML = str
+      }
+      pro.children[3].onclick = function () {
+        str += 3
+        answer.innerHTML = str
+      }
+      pro.children[4].onclick = function () {
+        str += 4
+        answer.innerHTML = str
+      }
+      pro.children[5].onclick = function () {
+        str += 5
+        answer.innerHTML = str
+      }
+      pro.children[6].onclick = function () {
+        str += 6
+        answer.innerHTML = str
+      }
+      pro.children[7].onclick = function () {
+        str += 7
+        answer.innerHTML = str
+      }
+      pro.children[8].onclick = function () {
+        str += 8
+        answer.innerHTML = str
+      }
+      pro.children[9].onclick = function () {
+        str += 9
+        answer.innerHTML = str
+      }
+      pro.children[10].onclick = function () {
+        str += '+'
+        answer.innerHTML = str
+      }
+      pro.children[11].onclick = function () {
+        str += '-'
+        answer.innerHTML = str
+      }
+      pro.children[12].onclick = function () {
+        str += '*'
+        answer.innerHTML = str
+      }
+      pro.children[13].onclick = function () {
+        str += '/'
+        answer.innerHTML = str
+      }
+      pro.children[14].onclick = function () {
+        str += '='
+        answer.innerHTML = str
+      }
+
+      function add(num1, num2) {
+        return num1 + num2
+      }
+      function sub(num1, num2) {
+        return num1 - num2
+      }
+      function mul(num1, num2) {
+        return num1 * num2
+      }
+      function div(num1, num2) {
+        return num1 / num2
+      }
     </script>
   </body>
 </html>
