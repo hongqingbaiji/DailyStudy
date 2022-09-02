@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // var obj = {
+      //   a: 10,
+      //   b: function () {
+      //     console.log(20)
+      //   }
+      // }
+      function Object() {}
+      var obj = {}
+      obj.prototype = new Object()
+      obj.a = 10
+
+      // console.log(obj.hasOwnProperty('a'))
+      console.log(obj)
+      console.log(obj.isPrototypeOf(Object))
+    </script>
+  </body>
+</html>
