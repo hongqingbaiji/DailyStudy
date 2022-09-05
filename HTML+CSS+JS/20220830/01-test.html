@@ -8,20 +8,52 @@
   </head>
   <body>
     <script>
-      // var obj = {
-      //   a: 10,
-      //   b: function () {
-      //     console.log(20)
-      //   }
+      // var year = parseInt(prompt('输入年份'))
+      // if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+      //   alert(year + '是闰年')
+      // } else {
+      //   alert(year + '是平年')
       // }
-      function Object() {}
-      var obj = {}
-      obj.prototype = new Object()
-      obj.a = 10
 
-      // console.log(obj.hasOwnProperty('a'))
-      console.log(obj)
-      console.log(obj.isPrototypeOf(Object))
+      // var num = parseInt(prompt('输入数字'))
+      // switch (num) {
+      //   case 1:
+      //     console.log(1)
+      //     break
+      //   case 2:
+      //     console.log(2)
+      //     break
+      //   default:
+      //     console.log('匹配失败')
+      // }
+
+      // var num = parseInt(prompt('请输入班级人数'))
+      // var sum = 0
+      // var average = 0
+      // for (var i = 1; i <= num; i++) {
+      //   var score = parseFloat(prompt('请输入第' + i + '个学生的成绩'))
+      //   sum += score
+      // }
+      // average = sum / num
+      // alert('班级平均成绩是：' + average)
+
+      // var str = ''
+      // for (var i = 1; i <= 9; i++) {
+      //   for (var j = 9; j >= i; j--) {
+      //     str += i + '*' + j + '=' + i * j + '\t'
+      //   }
+      //   str += '\n'
+      // }
+      // console.log(str)
+
+      function setName(obj) {
+        obj.name = 'wenhe'
+        obj = new Object()
+        obj.name = 'shaonian'
+      }
+      var p = new Object()
+      setName(p)
+      console.log(p.name)
     </script>
   </body>
 </html>
