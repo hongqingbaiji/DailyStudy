@@ -129,25 +129,100 @@
       // }
       // console.log(newArr)
 
+      // var arr = [2, 0, 6, 1, 77, 0, 52, 1, 0, 25, 77, 2, 1]
+      // var obj = {}
+      // for (var i = 0; i < arr.length; i++) {
+      //   if (obj[arr[i]] == undefined) {
+      //     obj[arr[i]] = 1
+      //   } else {
+      //     obj[arr[i]]++
+      //   }
+      // }
+      // var maxValue = 0
+      // var maxKey = []
+      // for (var k in obj) {
+      //   if (obj[k] >= maxValue) {
+      //     maxValue = obj[k]
+      //     maxKey.push(k)
+      //   }
+      // }
+      // console.log(obj)
+      // console.log('出现次数最多的是：' + maxKey.join('和') + '，出现了：' + maxValue + '次')
+
+      // var arr = [1, 2, 3, 4, 5]
+      // console.log(arr.splice(3, 3))
+      // console.log(arr)
+      // console.log(arr.splice(1, 0, 'a', 'b'))
+      // console.log(arr)
+      // console.log(arr.splice(1, 1, 'c', 'd'))
+      // console.log(arr)
+
+      // var arr = [1, 2, 3, 4, 5]
+      // var res = arr.every(item => {
+      //   return item < 3
+      // })
+      // console.log(arr)
+      // console.log(res)
+
+      // var arr1 = [1, 2, 3, 4, 5]
+      // var res = arr1.filter(item => item < 3)
+      // console.log(arr1) //[1,2,3,4,5]
+      // console.log(res) //[1,2]
+
+      // var arr2 = [1, 2, 3, 4, 5]
+      // var res = arr2.forEach(item => {
+      //   console.log(item)
+      // })
+      // console.log(arr2) //[1,2,3,4,5]
+      // console.log(res) //undefined
+
+      // map()
+      // var arr3 = [1, 2, 3, 4, 5]
+      // var res = arr3.map(item => item < 3)
+      // console.log(arr3) //[1,2,3,4,5]
+      // console.log(res) //[true,true,false,false,false]
+
+      // // some()
+      // var arr4 = [1, 2, 3, 4, 5]
+      // var res = arr4.some(item => item > 5)
+      // console.log(arr4) //[1,2,3,4,5]
+      // console.log(res) // false
+      // // map()
+      // var arr3 = [1, 2, 3, 4, 5]
+      // var res = arr3.map(item => (item += 3))
+      // console.log(arr3) //[1,2,3,4,5]
+      // console.log(res) //[4,5,6,7,8]
+
+      // forEach()
+      // var arr2 = [
+      //   { name: 'wenhe', age: 29 },
+      //   { name: 'zs', age: 20 }
+      // ]
+      // var res = arr2.forEach((item, index) => {
+      //   if (item.name == 'wenhe') {
+      //     item.age = 18
+      //     item.name = 'lc'
+      //   }
+      // })
+      // console.log(arr2) //[{name:'lc',age:18},{name:'zs',age:20}]
+      // console.log(res) //undefined 没有返回值
+
+      // var arr = [1, 2, 3, 4, 5]
+      // var sum = arr.reduce((prev, cur, index, arr) => {
+      //   return prev + cur
+      // }, 0)
+      // console.log(sum)
+
       var arr = [2, 0, 6, 1, 77, 0, 52, 1, 0, 25, 77, 2, 1]
-      var obj = {}
-      for (var i = 0; i < arr.length; i++) {
-        if (obj[arr[i]] == undefined) {
-          obj[arr[i]] = 1
+      var res = arr.reduce((prev, cur) => {
+        if (cur in prev) {
+          prev[cur]++
         } else {
-          obj[arr[i]]++
+          prev[cur] = 1
         }
-      }
-      var maxValue = 0
-      var maxKey = []
-      for (var k in obj) {
-        if (obj[k] >= maxValue) {
-          maxValue = obj[k]
-          maxKey.push(k)
-        }
-      }
-      console.log(obj)
-      console.log('出现次数最多的是：' + maxKey.join('和') + '，出现了：' + maxValue + '次')
+        return prev
+      }, {})
+      console.log(res)
     </script>
   </body>
 </html>
