@@ -55,14 +55,99 @@
       // setName(p)
       // console.log(p.name)
 
-      var arr = [2, 6, 1, 7, 4]
-      var max = arr[0]
-      for (var i = 1; i < arr.length; i++) {
-        if (max < arr[i]) {
-          max = arr[i]
+      // var arr = [2, 6, 1, 7, 4]
+      // var max = arr[0]
+      // for (var i = 1; i < arr.length; i++) {
+      //   if (max < arr[i]) {
+      //     max = arr[i]
+      //   }
+      // }
+      // console.log(max)
+
+      // var arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7]
+      // var newArr = []
+      // for (var i = 0; i < arr.length; i++) {
+      //   if (arr[i] >= 10) {
+      //     newArr[newArr.length] = arr[i]
+      //     // newArr.push(arr[i])
+      //   }
+      // }
+      // console.log(newArr)
+
+      // var arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7]
+      // var newArr = []
+      // for (var i = 0; i < arr.length; i++) {
+      //   if (arr[i] != 0) {
+      //     newArr[newArr.length] = arr[i]
+      //   }
+      // }
+      // console.log(newArr)
+
+      // var arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7]
+      // var newArr = []
+      // for (var i = arr.length - 1; i >= 0; i--) {
+      //   newArr[newArr.length] = arr[i]
+      // }
+      // console.log(newArr)
+
+      // var arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7]
+      // for (var i = 0; i < arr.length - 1; i++) {
+      //   for (var j = 0; j < arr.length - i - 1; j++) {
+      //     if (arr[j] > arr[j + 1]) {
+      //       var temp = arr[j]
+      //       arr[j] = arr[j + 1]
+      //       arr[j + 1] = temp
+      //     }
+      //   }
+      // }
+      // console.log(arr)
+
+      // var arr = [2, 0, 6, 1, 77, null, undefined, 0, 52, 0, 25, 7]
+      // console.log(arr.toString())
+      // console.log(arr.toLocaleString())
+      // console.log(arr.valueOf())
+      // console.log(arr.join())
+
+      // var arr = [4, 22, 2, 35, 201, 2]
+      // function compare(num1, num2) {
+      //   if (num1 > num2) {
+      //     return 1
+      //   } else if (num1 < num2) {
+      //     return -1
+      //   } else {
+      //     return 0
+      //   }
+      // }
+      // console.log(arr.sort(compare))
+
+      // var arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 77, 2, 1]
+      // var newArr = []
+      // for (var i = 0; i < arr.length; i++) {
+      //   if (newArr.indexOf(arr[i]) === -1) {
+      //     newArr.push(arr[i])
+      //   }
+      // }
+      // console.log(newArr)
+
+      var arr = [2, 0, 6, 1, 77, 0, 52, 1, 0, 25, 77, 2, 1]
+      var obj = {}
+      for (var i = 0; i < arr.length; i++) {
+        if (obj[arr[i]] == undefined) {
+          obj[arr[i]] = 1
+        } else {
+          obj[arr[i]]++
         }
       }
-      console.log(max)
+      var maxValue = 0
+      var maxKey = []
+      for (var k in obj) {
+        if (obj[k] >= maxValue) {
+          maxValue = obj[k]
+          maxKey.push(k)
+        }
+      }
+      console.log(obj)
+      console.log('出现次数最多的是：' + maxKey.join('和') + '，出现了：' + maxValue + '次')
     </script>
   </body>
 </html>
