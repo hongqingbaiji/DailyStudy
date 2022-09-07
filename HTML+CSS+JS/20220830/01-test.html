@@ -291,15 +291,117 @@
       // }
       // backDay()
 
-      function slide(arr) {
-        arr[0] = arr[2]
+      // function slide(arr) {
+      //   arr[0] = arr[2]
+      // }
+      // function fn(a, b, c = 3) {
+      //   // 'use strict'
+      //   c = 10
+      //   slide(arguments)
+      //   return a + b + c
+      // }
+      // console.log(fn(1, 1, 1))
+
+      // function fn(a, b) {
+      //   'use strict'
+      //   a = 10
+      //   arguments[1] = 20
+      //   console.log(arguments[0], arguments[1])
+      //   console.log(a, b)
+      // }
+      // fn(1, 2)
+
+      // function getSum() {
+      //   return function (n) {
+      //     if (n <= 1) {
+      //       return 1
+      //     } else {
+      //       return n * arguments.callee(n - 1)
+      //     }
+      //   }
+      // }
+      // console.log(getSum()(5))
+
+      // function getSum(n) {
+      //   if (n <= 1) {
+      //     return 1
+      //   } else {
+      //     return n * arguments.callee(n - 1)
+      //   }
+      // }
+      // console.log(getSum(5))
+
+      // function fn(a, b, c) {
+      //   var arr = Array.from(arguments)
+      //   console.log(arr)
+      // }
+      // fn(1, 2, 3, 4)
+
+      // console.log(Array.from('hello'))
+
+      // var length = 1
+      // function fn() {
+      //   console.log(this.length)
+      // }
+      // var obj = {
+      //   length: 100,
+      //   action: function (callback) {
+      //     callback() //this->window -> 1
+      //     arguments[0]() // this->arguments -> 5
+      //     var foo = arguments[0]
+      //     foo() // this-> window -> 1
+      //     this.foo2 = arguments[0]
+      //     this.foo2() //this-> obj -> 100
+      //   }
+      // }
+      // var arr1 = [1, 2, 3, 4]
+      // obj.action(fn, ...arr1)
+
+      // var a = 1
+      // var fn = function () {
+      //   var a = 10
+      //   console.log(this.a)
+      // }
+      // fn()
+
+      // var o = {
+      //   a: 100,
+      //   b: function () {
+      //     console.log(this.a)
+      //   }
+      // }
+      // o.b()
+
+      // function fn() {
+      //   var a = 1
+      //   console.log(a)
+      // }
+      // fn()
+
+      // var b = 1
+      // var obj = {
+      //   b: 10,
+      //   fn1: function () {
+      //     console.log(this.b) //this -> obj -> 10
+      //   },
+      //   c: {
+      //     b: 20,
+      //     fn2: function () {
+      //       console.log(this.b)
+      //     }
+      //   }
+      // }
+      // obj.fn1()
+      // obj.c.fn2()
+
+      function fn() {
+        this.a = '111'
+        return {
+          a: 222
+        }
       }
-      function fn(a, b, c) {
-        c = 10
-        slide(arguments)
-        return a + b + c
-      }
-      console.log(fn(1, 1, 1))
+      var fn1 = new fn()
+      console.log(fn1.a)
     </script>
   </body>
 </html>
