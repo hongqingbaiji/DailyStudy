@@ -530,25 +530,46 @@
       // obj1.fn4().call(obj2) //'1'
       // obj1.fn4.call(obj2)() // '2'
 
-      var _name = 'global'
-      var obj = {
-        func() {
-          const innerFunc = () => {
-            console.log(this._name)
-          }
-          return innerFunc
-        },
-        _name: 'local'
-      }
-      obj.func()() //'local'
-      var func = obj.func
-      func()() //global
+      // var _name = 'global'
+      // var obj = {
+      //   func() {
+      //     const innerFunc = () => {
+      //       console.log(this._name)
+      //     }
+      //     return innerFunc
+      //   },
+      //   _name: 'local'
+      // }
+      // obj.func()() //'local'
+      // var func = obj.func
+      // func()() //global
 
-      obj.func.bind({ _name: 'newObj' })()() //newObj
+      // obj.func.bind({ _name: 'newObj' })()() //newObj
 
-      obj.func.bind()()() //global
+      // obj.func.bind()()() //global
 
-      obj.func.bind({ _name: 'bindObj' }).apply({ _name: 'applyObj' })() //applyObj
+      // obj.func.bind({ _name: 'bindObj' }).apply({ _name: 'applyObj' })() //applyObj
+
+      // var date = prompt('今天是星期几?')
+      // var time = prompt('上午 or 下午?')
+      // switch (date) {
+      //   case '周六':
+      //     if (time == '上午') {
+      //       alert('买菜')
+      //     } else if (time == '下午') {
+      //       alert('睡觉')
+      //     }
+      //     break
+      //   case '周日':
+      //     if (time == '上午') {
+      //       alert('游泳')
+      //     } else if (time == '下午') {
+      //       alert('骑车')
+      //     }
+      //     break
+      //   default:
+      //     alert('输入错误')
+      // }
     </script>
   </body>
 </html>
