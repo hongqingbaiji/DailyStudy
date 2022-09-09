@@ -570,6 +570,123 @@
       //   default:
       //     alert('输入错误')
       // }
+
+      // var x = 1
+      // var obj = {
+      //   x: 3,
+      //   fun: function () {
+      //     var x = 5
+      //     return this.x
+      //   }
+      // }
+      // var fun = obj.fun
+      // console.log(obj.fun(), fun()) // 3,1
+
+      // var a = 5
+      // function test() {
+      //   a = 1
+      //   console.log(this.a)
+      // }
+      // new test()
+
+      // test()里面的这个this.a 为什么是undefined?
+      // 是不是因为它指向的是空对象
+
+      // function fun() {
+      //   return () => {
+      //     return () => {
+      //       return () => {
+      //         console.log(this.name)
+      //       }
+      //     }
+      //   }
+      // }
+      // var f = fun.call({ name: 'foo' })
+      // var t0 = f()()() //foo
+      // var t1 = f.call({ name: 'bar' })()() //foo
+      // var t2 = f().call({ name: 'baz' })() //foo
+      // var t3 = f()().call({ name: 'qux' }) //foo
+
+      // let obj1 = {
+      //   a: 1,
+      //   foo: () => {
+      //     console.log(this.a)
+      //   }
+      // }
+      // obj1.foo() //undefined
+      // const obj2 = obj1.foo
+      // obj2() //undefined
+
+      // const Person = (name = 'li', age = 10) => {
+      //   this.name = name
+      //   this.age = age
+      //   return this.name + 'is' + this.age + 'years old'
+      // }
+      // let result = new Person('zs', 11)
+      // console.log(result) //报错
+
+      // var person = {
+      //   age: 20,
+      //   getAge: function () {
+      //     return this.age
+      //   }
+      // }
+      // var getAge = person.getAge
+      // console.log(getAge()) //undefined
+
+      // var name = 'global'
+      // var obj = {
+      //   name: 'local',
+      //   foo: function () {
+      //     console.log(this)
+      //     this.name = 'foo'
+      //   }.bind(window)
+      // }
+      // var bar = new obj.foo() // 这是个对象
+      // // setTimeout(function () {
+      // //   console.log(window.name) //global
+      // // }, 0)
+      // // console.log(bar.name) //foo
+
+      // var bar3 = (bar2 = bar) // 这三个都是指针，指向new obj.foo()对象
+      // console.log(bar3)
+      // bar2.name = 'foo2'
+      // console.log(bar3)
+      // console.log(bar3.name)
+
+      // var obj = {
+      //   name: 'zs',
+      //   sayName: function () {
+      //     console.log(this.name)
+      //   }
+      // }
+      // var fun = obj.sayName
+      // obj.sayName() //zs
+      // fun() //undefined  答错了，答案是lisi
+      // var name = 'lisi'
+      // obj.sayName() //zs
+      // fun() //lisi
+
+      // var name = 'zs' //如果有这行，输出的是zs
+      // function fun() {
+      //   console.log(this.name)
+      // }
+      // fun() //lisi
+      // var name = 'lisi'
+
+      // 不定义 zs 的话，输出的就是lisi,为什么能输出lisi?
+      // 调用函数的时候，var声明提权也只是声明了name 还没赋值吧？
+      // 既然能输出lisi,为什么两个都定义的情况下 输出的zs,为什么没有覆盖掉呢
+
+      // var name = 'test'
+      // var a = {
+      //   name: 'ass',
+      //   getName: function () {
+      //     return this.name
+      //   }
+      // }
+      // var b = a.getName
+      // console.log(b())
     </script>
   </body>
 </html>
