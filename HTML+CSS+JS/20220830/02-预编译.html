@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 打印100以内的质数(质数是只能被1或者自身整除的数，1不是质数)
+      // var count = 0
+      // for (var i = 2; i <= 100; i++) {
+      //   for (var j = 1; j <= i; j++) {
+      //     if (i % j == 0) {
+      //       count++
+      //     }
+      //   }
+      //   if (count == 2) {
+      //     console.log(i)
+      //   }
+      //   count = 0
+      // }
+
+      // 输入一个整数，判断它是不是质数
+      // var num = parseInt(prompt('输入一个数'))
+      // var count = 0
+      // for (var i = 1; i <= num; i++) {
+      //   if (num % i == 0) {
+      //     count++
+      //   }
+      // }
+      // if (count == 2) {
+      //   alert(num + '是质数')
+      // } else {
+      //   alert(num + '不是质数')
+      // }
+
+      // 输入一个整数，判断它是不是质数
+      // var num = parseInt(prompt('输入一个数'))
+      // var flag = true
+      // if (num <= 1) {
+      //   alert(num + '不是质数')
+      // } else if (num == 2) {
+      //   alert(num + '是质数')
+      // } else {
+      //   for (var i = 2; i < num; i++) {
+      //     if (num % i == 0) {
+      //       flag = false
+      //       break
+      //     }
+      //   }
+      //   flag ? alert(num + '是质数') : alert(num + '不是质数')
+      // }
+
+      // //斐波那切数列;输入一个数字n,打印第n位的斐波那切数列是几
+      // // 1 1 2 3 5 8···
+      // var n = parseInt(prompt('输入一个数字：'))
+      // var n1 = 1,
+      //   n2 = 1,
+      //   sum
+      // for (var i = 2; i < n; i++) {
+      //   sum = n1 + n2
+      //   n1 = n2
+      //   n2 = sum
+      // }
+      // console.log(sum)
+
+      // function test(a, b) {
+      //   b = 2
+      //   arguments[1] = 3
+      //   console.log(a, b)
+      //   console.log(arguments[0], arguments[1])
+      //   console.log(a === arguments[0])
+      // }
+      // test(1)
+
+      // function test(name) {
+      //   return name || '您没有传值'
+      //   // return !name ? '您没有传值' : name
+      // }
+      // console.log(test())
+
+      //定义一个函数，输入一个饮料的名称，函数返回对应的价格
+      // function drink() {
+      //   do {
+      //     var result = prompt('请输入饮料名，已有：\n1. 冰红茶\n2. 阿萨姆\n3. 脉动\n4. 退出')
+      //     switch (result) {
+      //       case '冰红茶':
+      //       case '1':
+      //         alert('冰红茶 3元/瓶')
+      //         break
+      //       case '阿萨姆':
+      //       case '2':
+      //         alert('阿萨姆 4元/瓶')
+      //         break
+      //       case '脉动':
+      //       case '3':
+      //         alert('脉动 5元/瓶')
+      //         break
+      //       case '退出':
+      //       case '4':
+      //         break
+      //       default:
+      //         alert('没有这款饮料哦')
+      //     }
+      //   } while (result !== '退出' && result !== '4')
+      // }
+      // console.log(drink())
+
+      //定义一个函数，接收一个n,算出n的阶乘，不用for
+      // var num = parseInt(prompt('请输入一个数字'))
+      // function fav(n) {
+      //   if (n == 1) {
+      //     return 1
+      //   }
+      //   return n * fav(n - 1)
+      // }
+      // alert(fav(num))
+
+      //定义一个函数，接收一个数n,算出斐波那切数列的第N位，不能用for
+      // var num = parseInt(prompt('请输入一个数字'))
+      // function fav(n) {
+      //   if (n == 1 || n == 2) {
+      //     return 1
+      //   }
+      //   return fav(n - 1) + fav(n - 2)
+      // }
+      // alert(fav(num))
+
+      // function test(a) {
+      //   console.log(a)
+      //   var a = 1
+      //   console.log(a)
+      //   function a() {}
+      //   console.log(a)
+      //   var a = function () {}
+      //   console.log(a)
+      // }
+      // test(2)
+
+      // var b = 3
+      // console.log(a)
+      // function a(a) {
+      //   console.log(a)
+      //   var a = 2
+      //   console.log(a)
+      //   function a() {}
+      //   var b = 5
+      //   console.log(b)
+      // }
+      // a(1)
+      /*
+               GO = {
+                 b:3
+                 a:function a(a){ XXX }  //第一个a
+               }
+               AO1 = {
+                 a:undefined ->1 ->function a(){ xxx } //第二个a
+                   -> 值覆盖：a =2 //第三个a
+                 b:5
+               }
+             */
+
+      // var a = 1
+      // function test() {
+      //   console.log(a)
+      //   a = 2
+      //   console.log(a)
+      //   a = 3
+      //   console.log(a)
+      // }
+      // test()
+      /*
+            GO={
+             a:1
+             test: function test(){}
+            }
+            AO={
+             a:undefined
+             ->2
+             ->3
+            }
+            */
+
+      // function test() {
+      //   return a
+      //   a = 1
+      //   function a() {}
+      //   var a = 2
+      // }
+      // console.log(test())
+      /*
+            AO = {
+              a:undefined -> function a(){}
+            }
+            */
+
+      // function test() {
+      //   a = 1
+      //   function a() {}
+      //   var a = 2
+      //   return a
+      // }
+      // console.log(test())
+      /*
+              AO={
+                a : undefined -> function a(){}
+                -> 执行： a =1 -> a= 2
+              }
+            */
+
+      // a = 1
+      // function test(e) {
+      //   function e() {}
+      //   arguments[0] = 2
+      //   console.log(e)
+      //   if (a) {
+      //     var b = 3
+      //   }
+      //   var c
+      //   a = 4
+      //   var a
+      //   console.log(b)
+      //   f = 5
+      //   console.log(c)
+      //   console.log(a)
+      // }
+      // var a
+      // test(1)
+      /*
+            GO = {
+              a: undefined ->1
+              test: function test(e){ XXX }
+              f:5
+            }
+            AO = {
+              e:undefined ->1 ->function e(){} -> 2 //e=2
+              b:undefined // b=undefined
+              c:undefined //c=undefined
+              a:undefined ->4 //a=4
+            }
+            */
+
+      // window.a || window.a = '1'
+      // console.log(window.a)
+
+      // var a = !!'' + !!' ' - !!false + '1' || '123'
+      // console.log(a)
+
+      // var fn = (function fn1() {
+      //   return 1
+      // },
+      // function fn2() {
+      //   return 2
+      // })()
+      // console.log(fn)
+
+      // var a = 10
+      // if (function b() {}) {
+      //   a += typeof b
+      // }
+      // console.log(a)
+
+      // function fn() {
+      //   var marty = {
+      //     name: 'marty',
+      //     printName: function () {
+      //       console.log(this.name)
+      //     }
+      //   }
+      //   var test1 = { name: 'test1' }
+      //   var test2 = { name: 'test2' }
+      //   var test3 = { name: 'test3' }
+
+      //   test3.printName = marty.printName
+      //   marty.printName.call(test1) //test1
+      //   marty.printName.apply(test2) // test2
+      //   marty.printName() // marty
+      //   test3.printName() // test3
+      // }
+      // fn()
+
+      // var bar = {
+      //   a: '1'
+      // }
+      // function fn() {
+      //   bar.a = 'a'
+      //   Object.prototype.b = 'b'
+      //   return function () {
+      //     console.log(bar.a)
+      //     console.log(bar.b)
+      //   }
+      // }
+      // fn()() //a  b
+
+      // function test(a, b) {}
+      // console.log(test.name)
+    </script>
+  </body>
+</html>

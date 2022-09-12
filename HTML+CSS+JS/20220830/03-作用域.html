@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 面试题1
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul> -->
+    <script>
+      // 面试题1
+      // var lis = document.querySelectorAll('li')
+      // for (var i = 0; i < lis.length; i++) {
+      //   ;(function (j) {
+      //     lis[j].onclick = function () {
+      //       console.log(j)
+      //     }
+      //   })(i)
+      // }
+
+      // function sunSched() {
+      //   var sunSched = ''
+      //   var obj = {
+      //     setSched: function (thing) {
+      //       sunSched = thing
+      //     },
+      //     showSched: function () {
+      //       console.log('周六我要' + sunSched)
+      //     }
+      //   }
+      //   return obj
+      // }
+      // var sunSched = sunSched()
+      // sunSched.setSched('睡觉')
+      // sunSched.showSched()
+      // sunSched.showSched()
+      // sunSched.setSched('打游戏')
+      // sunSched.showSched()
+      // sunSched.showSched()
+
+      // function test(a, b) {
+      //   arguments[0] = 1
+      //   arguments[1] = 2
+      //   return a + b
+      // }
+      // console.log(test()) //
+
+      // var num = (function (a, b) {
+      //   return a + b
+      // })(1, 2)
+      // console.log(num)
+
+      // function test() {
+      //   for (var i = 0; i < 10; i++) {
+      //     ;(function (j) {
+      //       document.write(j + ' ')
+      //     })(i)
+      //   }
+      // }
+      // test()
+
+      // function test() {
+      //   for (var i = 0; i < 10; i++) {
+      //     ;(function () {
+      //       document.write(i + ' ')
+      //     })()
+      //   }
+      // }
+      // test()
+
+      // var fn = (function test1() {
+      //   return 1
+      // },
+      // function test2() {
+      //   return '2'
+      // })()
+      // console.log(typeof fn)
+
+      //作业1.累加器，起始值为0，每执行一次函数，就+1
+      // function sum() {
+      //   var n = 0
+      //   function add() {
+      //     return ++n
+      //   }
+      //   function dir() {
+      //     return --n
+      //   }
+      //   return [add, dir]
+      // }
+      // var fn = sum()
+      // console.log(fn[0]())
+      // console.log(fn[0]())
+      // console.log(fn[0]())
+      // console.log(fn[0]())
+      // console.log(fn[0]())
+      // console.log(fn[1]())
+      // console.log(fn[1]())
+      // console.log(fn[1]())
+
+      // 作业2 一个班级，学生名字保存在一个数组里，函数中有一个对象，
+      // 包含两个方法，加入班级和离开班级
+      // 每次加入或者离开，都需要打印新的学生名单
+      // function sNum() {
+      //   var arr = ['zs', 'ls', 'ww', 'zl']
+      //   var sObj = {
+      //     add: function (n) {
+      //       arr.push(n)
+      //       console.log(arr)
+      //     },
+      //     dir: function (n) {
+      //       var arr1 = arr.filter(item => item !== n)
+      //       console.log(arr1)
+      //     }
+      //   }
+      //   return sObj
+      // }
+      // var fn = sNum()
+      // fn.add('wenhe')
+      // fn.add('shaonian')
+      // fn.dir('zs')
+      // fn.dir('wenhe')
+
+      /*
+      作业3：写一个构造函数，接收数字类型的参数，参数数量不定，完成参数相加和相乘的功能
+      */
+      // function Number(arr) {
+      //   this.arr = arr
+      //   this.add = function () {
+      //     var sum = 0
+      //     for (var i = 0; i < this.arr.length; i++) {
+      //       sum += this.arr[i]
+      //     }
+      //     return sum
+      //   }
+      //   this.mul = function () {
+      //     var mul1 = 1
+      //     for (var i = 0; i < this.arr.length; i++) {
+      //       mul1 *= this.arr[i]
+      //     }
+      //     return mul1
+      //   }
+      // }
+      // var num1 = new Number([1, 2, 3, 4])
+      // console.log(num1.add())
+      // console.log(num1.mul())
+      /*
+      作业4：写一个构造车的函数，可设置车的品牌，颜色和排量
+      再写一个构造消费者的函数，设置用户的名字，年龄，收入，
+      通过选择汽车的方法实例化该用户喜欢的车，在设置车的属性
+      */
+      function Cat(opt1) {
+        this.name = opt1.name
+        this.color = opt1.color
+        this.pl = opt1.pl
+      }
+      function Person(opt) {
+        this.pName = opt.pName
+        this.age = opt.age
+        this.money = opt.money
+        this.like = function () {
+          var cat = new Cat(opt.like)
+          console.log(this.pName + '选择了' + cat.name)
+        }
+      }
+      var p1 = new Person({
+        pName: 'zs',
+        age: 20,
+        money: 20000,
+        like: {
+          name: '奔驰',
+          color: 'white',
+          pl: '2.5'
+        }
+      })
+      p1.like()
+    </script>
+  </body>
+</html>
