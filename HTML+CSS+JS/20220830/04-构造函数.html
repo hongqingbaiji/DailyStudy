@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>构造函数</title>
+  </head>
+  <body>
+    <script>
+      // function Car(color, brand) {
+      //   this.color = color
+      //   this.brand = brand
+      //   return
+      // }
+      // var car = new Car('black', 'Benz')
+      // console.log(car)
+
+      // var a = new Number(1)
+      // a.length = 3
+      // console.log(a.length) //3
+
+      // var str = 'abc'
+      // console.log((str.length = 4))
+      // console.log(str.length)
+
+      // var name = 'wenhe'
+      // name += 10
+      // var type = new String(typeof name)
+      // // var type = typeof name  //最后输出undefined
+      // if (type.length === 6) {
+      //   type.text = 'string'
+      // }
+      // console.log(type.text) //string
+
+      // function Car(brand, color) {
+      //   this.brand = 'brand'
+      //   this.color = 'color'
+      // }
+      // var car = new Car('banz', 'red')
+      // console.log(car)
+
+      //作业1.写一个函数，接收任意一个字符串，算出这个字符串的总字节数
+      // var str = '我是wenhe'
+      // console.log(str.charCodeAt(2))
+      // ASCII码前255位的都是只占一个字节，256位以后占2个字节
+      // function asc(str) {
+      //   var sum = 0
+      //   for (var i = 0; i < str.length; i++) {
+      //     var item = str.charCodeAt(i)
+      //     if (item <= 255) {
+      //       sum++
+      //     } else {
+      //       sum += 2
+      //     }
+      //   }
+      //   return sum
+      // }
+      // console.log(asc('我是wenhe,请多指教123'))
+
+      // function Compute() {
+      //   var res = 0
+      //   this.plus = function () {
+      //     loop(arguments, 'add', res)
+      //   }
+      //   this.times = function () {
+      //     res = 1
+      //     loop(arguments, 'mul', res)
+      //   }
+
+      //   function loop(argus, methods, res) {
+      //     for (var i = 0; i < argus.length; i++) {
+      //       var item = argus[i]
+      //       if (methods === 'add') {
+      //         res += item
+      //       } else if (methods === 'mul') {
+      //         res *= item
+      //       }
+      //     }
+      //     console.log(res)
+      //   }
+      // }
+      // var compute = new Compute()
+      // compute.plus(1, 2, 3, 4, 5)
+      // compute.times(1, 2, 3, 4, 5)
+
+      // function Test() {}
+      // Test.prototype.name = 'prototype'
+      // var test = new Test()
+      // // test.prototype.num = 1//报错
+      // console.log(test)
+
+      // 作业：写一个插件，任意传两个数字，调用插件内部的方法可以进行加减乘除功能
+      ;(function () {
+        function Compute() {
+          this.num1 = num1
+          this.num2 = num2
+        }
+        Compute.prototype = {
+          plus: function (opt) {
+            console.log(opt.num1 + opt.num2)
+          },
+          mints: function () {},
+          mul: function () {},
+          div: function () {}
+        }
+        window.Compute = Compute
+      })()
+      var compute = new Compute()
+      compute.plus({
+        num1: 6,
+        num2: 3
+      })
+    </script>
+  </body>
+</html>
