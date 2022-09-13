@@ -44,6 +44,7 @@
       // var str = '我是wenhe'
       // console.log(str.charCodeAt(2))
       // ASCII码前255位的都是只占一个字节，256位以后占2个字节
+      // 方法一：
       // function asc(str) {
       //   var sum = 0
       //   for (var i = 0; i < str.length; i++) {
@@ -52,6 +53,19 @@
       //       sum++
       //     } else {
       //       sum += 2
+      //     }
+      //   }
+      //   return sum
+      // }
+      // console.log(asc('我是wenhe,请多指教123'))
+
+      // 方法二：
+      // function asc(str) {
+      //   var sum = str.length
+      //   for (var i = 0; i < str.length; i++) {
+      //     var item = str.charCodeAt(i)
+      //     if (item > 255) {
+      //       sum++
       //     }
       //   }
       //   return sum
@@ -91,26 +105,87 @@
       // console.log(test)
 
       // 作业：写一个插件，任意传两个数字，调用插件内部的方法可以进行加减乘除功能
-      ;(function () {
-        function Compute() {
-          this.num1 = num1
-          this.num2 = num2
+      // 方法一
+      // ;(function () {
+      //   function Compute() {}
+      //   Compute.prototype = {
+      //     plus: function (opt) {
+      //       console.log(opt.num1 + opt.num2)
+      //     },
+      //     mints: function (opt) {
+      //       console.log(opt.num1 - opt.num2)
+      //     },
+      //     mul: function (opt) {
+      //       console.log(opt.num1 * opt.num2)
+      //     },
+      //     div: function (opt) {
+      //       console.log(opt.num1 / opt.num2)
+      //     }
+      //   }
+      //   window.Compute = Compute
+      // })()
+      // var compute = new Compute()
+      // compute.plus({
+      //   num1: 6,
+      //   num2: 3
+      // })
+      // compute.mints({
+      //   num1: 6,
+      //   num2: 3
+      // })
+      // compute.mul({
+      //   num1: 6,
+      //   num2: 3
+      // })
+      // compute.div({
+      //   num1: 6,
+      //   num2: 3
+      // })
+
+      // 方法二
+      // ;(function () {
+      //   function Compute(opt) {
+      //     this.num1 = opt.num1
+      //     this.num2 = opt.num2
+      //   }
+      //   Compute.prototype = {
+      //     plus: function () {
+      //       console.log(this.num1 + this.num2)
+      //     },
+      //     mints: function () {
+      //       console.log(this.num1 - this.num2)
+      //     },
+      //     mul: function () {
+      //       console.log(this.num1 * this.num2)
+      //     },
+      //     div: function () {
+      //       console.log(this.num1 / this.num2)
+      //     }
+      //   }
+      //   window.Compute = Compute
+      // })()
+      // var compute = new Compute({
+      //   num1: 2,
+      //   num2: 4
+      // })
+      // compute.plus()
+      // compute.mints()
+      // compute.mul()
+      // compute.div()
+
+      function Car() {
+        this.brand = 'Benz'
+      }
+      Car.prototype = {
+        brand: 'Mazda',
+        intro: function () {
+          console.log('my car is ' + this.brand)
         }
-        Compute.prototype = {
-          plus: function (opt) {
-            console.log(opt.num1 + opt.num2)
-          },
-          mints: function () {},
-          mul: function () {},
-          div: function () {}
-        }
-        window.Compute = Compute
-      })()
-      var compute = new Compute()
-      compute.plus({
-        num1: 6,
-        num2: 3
-      })
+      }
+      var car = new Car()
+      car.intro()
+      car.__proto__.intro()
+      Car.prototype.intro()
     </script>
   </body>
 </html>
