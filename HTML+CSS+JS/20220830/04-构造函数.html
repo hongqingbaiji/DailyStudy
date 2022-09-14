@@ -173,19 +173,75 @@
       // compute.mul()
       // compute.div()
 
-      function Car() {
-        this.brand = 'Benz'
+      // function Car() {
+      //   this.brand = 'Benz'
+      // }
+      // Car.prototype = {
+      //   brand: 'Mazda',
+      //   intro: function () {
+      //     console.log('my car is ' + this.brand)
+      //   }
+      // }
+      // var car = new Car()
+      // car.intro()
+      // car.__proto__.intro()
+      // Car.prototype.intro()
+      // console.log(Object.prototype.__proto__) //null
+
+      // var test = {
+      //   num: 2
+      //   // __proto__:Object.prototype
+      // }
+      // console.log(test.__proto__)
+      // function Obj() {}
+      // Obj.prototype.num = 1
+      // var obj1 = Object.create(test)
+      // console.log(obj1.__proto__ == test) //true
+      // console.log(test.__proto__ == Object.prototype) //true
+      // var obj2 = new Obj()
+      // console.log(obj1)
+      // console.log(obj2)
+      // var obj3 = Object.create(null)
+      // console.log(obj3)
+
+      // function Test(brand, color) {
+      //   this.color = color
+      //   this.brand = brand
+      // }
+      // function NewTest() {}
+      // var newTest = new NewTest()
+
+      // Test.call(newTest, 'Benz', 'red')
+      // console.log(newTest)
+
+      // // 作业 两个构造函数， Car() 和 Person(),使用call或者 apply 打印出下面这句话
+      // // 年龄为多少岁，姓名为XX 买了一辆排量为XX 颜色为XX XX牌子 的车
+      function Car(pl, color, brand) {
+        this.pl = pl
+        this.color = color
+        this.brand = brand
       }
-      Car.prototype = {
-        brand: 'Mazda',
-        intro: function () {
-          console.log('my car is ' + this.brand)
+      function Person(name, age) {
+        this.name = name
+        this.age = age
+        this.buy = function () {
+          console.log(
+            this.age +
+              '岁的' +
+              this.name +
+              '买了一辆' +
+              this.pl +
+              '排量' +
+              this.color +
+              '的' +
+              this.brand +
+              '车'
+          )
         }
       }
-      var car = new Car()
-      car.intro()
-      car.__proto__.intro()
-      Car.prototype.intro()
+      var person = new Person('张三', '26')
+      Car.call(person, 2.5, 'red', 'Benz')
+      person.buy()
     </script>
   </body>
 </html>
