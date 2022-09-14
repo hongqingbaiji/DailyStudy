@@ -145,8 +145,8 @@
       // 方法二
       // ;(function () {
       //   function Compute(opt) {
-      //     this.num1 = opt.num1
-      //     this.num2 = opt.num2
+      //     this.num1 = opt.num1 || 0
+      //     this.num2 = opt.num2 || 0
       //   }
       //   Compute.prototype = {
       //     plus: function () {
@@ -216,32 +216,139 @@
 
       // // 作业 两个构造函数， Car() 和 Person(),使用call或者 apply 打印出下面这句话
       // // 年龄为多少岁，姓名为XX 买了一辆排量为XX 颜色为XX XX牌子 的车
-      function Car(pl, color, brand) {
-        this.pl = pl
-        this.color = color
-        this.brand = brand
-      }
-      function Person(name, age) {
-        this.name = name
-        this.age = age
-        this.buy = function () {
-          console.log(
-            this.age +
-              '岁的' +
-              this.name +
-              '买了一辆' +
-              this.pl +
-              '排量' +
-              this.color +
-              '的' +
-              this.brand +
-              '车'
-          )
+      // function Car(pl, color, brand) {
+      //   this.pl = pl
+      //   this.color = color
+      //   this.brand = brand
+      // }
+      // function Person(name, age) {
+      //   this.name = name
+      //   this.age = age
+      //   this.buy = function () {
+      //     console.log(
+      //       this.age +
+      //         '岁的' +
+      //         this.name +
+      //         '买了一辆' +
+      //         this.pl +
+      //         '排量' +
+      //         this.color +
+      //         '的' +
+      //         this.brand +
+      //         '车'
+      //     )
+      //   }
+      // }
+      // var person = new Person('张三', '26')
+      // Car.call(person, 2.5, 'red', 'Benz')
+      // person.buy()
+
+      // 创建中间构造函数Buffer() 来过渡继承
+      // function Teacher() {
+      //   this.name = 'zhang'
+      //   this.wife = 'zl'
+      // }
+      // Teacher.prototype = {
+      //   tSkill: 'Java'
+      // }
+      // var t = new Teacher()
+
+      // function Student() {
+      //   this.name = 'liu'
+      // }
+      // function Buffer() {}
+      // Buffer.prototype = Teacher.prototype
+      // var buffer = new Buffer()
+
+      // Student.prototype = buffer
+      // var s = new Student()
+      // Student.prototype.age = 30
+      // console.log(t)
+      // console.log(s)
+      // console.log(s.wife) //undefined
+
+      // 封装下Buffer
+      // function inherit(Target, Origin) {
+      //   function Buffer() {}
+      //   Buffer.prototype = Origin.prototype
+      //   Target.prototype = new Buffer()
+      //   Target.prototype.constructor = Target
+      //   Target.prototype.super_class = Origin
+      // }
+      // 企业级写法
+      // var inherit = (function () {
+      //   var Buffer = function () {}
+      //   return function (Target, Origin) {
+      //     Buffer.prototype = Origin.prototype
+      //     Target.prototype = new Buffer()
+      //     Target.prototype.constructor = Target
+      //     Target.prototype.super_class = Origin
+      //   }
+      // })()
+      // Teacher.prototype = {
+      //   TSkill: 'Java'
+      // }
+      // function Teacher() {
+      //   this.name = 'ZS'
+      // }
+      // function Student() {
+      //   this.name = 'LS'
+      // }
+      // inherit(Student, Teacher)
+      // var t = new Teacher()
+      // var s = new Student()
+      // Student.prototype.age = 18
+
+      // console.log(s)
+      // console.log(t)
+
+      /*
+      作业：模块化开发，实现以下功能：
+        功能1：打印一个参数值以内能被3或5或7整除的数
+        功能2：打印斐波那契数列的第N位
+        功能3：打印从0-N的累加和
+      */
+
+      var initCompute = (function () {
+        function fn1(n1) {
+          var str = ''
+          for (var i = 1; i < n1; i++) {
+            if (i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
+              str += i + ','
+            }
+          }
+          console.log(str)
         }
-      }
-      var person = new Person('张三', '26')
-      Car.call(person, 2.5, 'red', 'Benz')
-      person.buy()
+
+        function fn2(n2) {
+          var num1 = 1,
+            num2 = 1,
+            num3 = 0
+          if (n2 == 1 || n2 == 2) {
+            console.log(1)
+          }
+          for (var i = 3; i <= n2; i++) {
+            num3 = num1 + num2
+            num1 = num2
+            num2 = num3
+          }
+          console.log(num3)
+        }
+
+        function fn3(n3) {
+          var sum = 0
+          for (var i = 0; i <= n3; i++) {
+            sum += i
+          }
+          console.log(sum)
+        }
+        return function (n1, n2, n3) {
+          fn1(n1)
+          fn2(n2)
+          fn3(n3)
+        }
+      })()
+      initCompute(10, 7, 10)
     </script>
   </body>
 </html>
