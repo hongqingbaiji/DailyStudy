@@ -214,34 +214,32 @@
       // Test.call(newTest, 'Benz', 'red')
       // console.log(newTest)
 
-      // // 作业 两个构造函数， Car() 和 Person(),使用call或者 apply 打印出下面这句话
-      // // 年龄为多少岁，姓名为XX 买了一辆排量为XX 颜色为XX XX牌子 的车
-      // function Car(pl, color, brand) {
-      //   this.pl = pl
-      //   this.color = color
+      // 作业11 两个构造函数， Car() 和 Person(),使用call或者 apply 打印出下面这句话
+      // 年龄为多少岁，姓名为XX 买了一辆排量为XX 颜色为XX XX牌子 的车
+      // function Car(brand, color, displacement) {
       //   this.brand = brand
-      // }
-      // function Person(name, age) {
-      //   this.name = name
-      //   this.age = age
-      //   this.buy = function () {
-      //     console.log(
-      //       this.age +
-      //         '岁的' +
-      //         this.name +
-      //         '买了一辆' +
-      //         this.pl +
-      //         '排量' +
-      //         this.color +
-      //         '的' +
-      //         this.brand +
-      //         '车'
-      //     )
+      //   this.color = color
+      //   this.displacement = displacement
+      //   this.info = function () {
+      //     return '排量为' + this.displacement + '的' + this.color + this.brand
       //   }
       // }
-      // var person = new Person('张三', '26')
-      // Car.call(person, 2.5, 'red', 'Benz')
-      // person.buy()
+      // function Person(opt) {
+      //   Car.apply(this, [opt.brand, opt.color, opt.displacement])
+      //   this.name = opt.name
+      //   this.age = opt.age
+      //   this.say = function () {
+      //     console.log(this.age + '岁的' + this.name + '买了一辆' + this.info())
+      //   }
+      // }
+      // var p = new Person({
+      //   name: 'zs',
+      //   age: '29',
+      //   brand: 'Benz',
+      //   color: 'pink',
+      //   displacement: '3.0'
+      // })
+      // p.say()
 
       // 创建中间构造函数Buffer() 来过渡继承
       // function Teacher() {
@@ -303,52 +301,125 @@
       // console.log(t)
 
       /*
-      作业：模块化开发，实现以下功能：
-        功能1：打印一个参数值以内能被3或5或7整除的数
-        功能2：打印斐波那契数列的第N位
-        功能3：打印从0-N的累加和
-      */
+                  作业：模块化开发，实现以下功能：
+                    功能1：打印一个参数值以内能被3或5或7整除的数
+                    功能2：打印斐波那契数列的第N位
+                    功能3：打印从0-N的累加和
+                  */
 
-      var initCompute = (function () {
-        function fn1(n1) {
-          var str = ''
-          for (var i = 1; i < n1; i++) {
-            if (i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
-              str += i + ','
-            }
-          }
-          console.log(str)
-        }
+      // var initCompute = (function () {
+      //   function fn1(n1) {
+      //     var str = ''
+      //     for (var i = 1; i < n1; i++) {
+      //       if (i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
+      //         str += i + ','
+      //       }
+      //     }
+      //     console.log(str)
+      //   }
 
-        function fn2(n2) {
-          var num1 = 1,
-            num2 = 1,
-            num3 = 0
-          if (n2 == 1 || n2 == 2) {
-            console.log(1)
-          }
-          for (var i = 3; i <= n2; i++) {
-            num3 = num1 + num2
-            num1 = num2
-            num2 = num3
-          }
-          console.log(num3)
-        }
+      //   function fn2(n2) {
+      //     var num1 = 1,
+      //       num2 = 1,
+      //       num3 = 0
+      //     if (n2 == 1 || n2 == 2) {
+      //       console.log(1)
+      //     }
+      //     for (var i = 3; i <= n2; i++) {
+      //       num3 = num1 + num2
+      //       num1 = num2
+      //       num2 = num3
+      //     }
+      //     console.log(num3)
+      //   }
 
-        function fn3(n3) {
-          var sum = 0
-          for (var i = 0; i <= n3; i++) {
-            sum += i
-          }
-          console.log(sum)
-        }
-        return function (n1, n2, n3) {
-          fn1(n1)
-          fn2(n2)
-          fn3(n3)
-        }
-      })()
-      initCompute(10, 7, 10)
+      //   function fn3(n3) {
+      //     var sum = 0
+      //     for (var i = 0; i <= n3; i++) {
+      //       sum += i
+      //     }
+      //     console.log(sum)
+      //   }
+      //   return function (n1, n2, n3) {
+      //     fn1(n1)
+      //     fn2(n2)
+      //     fn3(n3)
+      //   }
+      // })()
+      // initCompute(10, 7, 10)
+
+      // var obj = {
+      //   morning: function () {
+      //     console.log('running')
+      //     return this
+      //   },
+      //   afternoon: function () {
+      //     console.log('eatting')
+      //     return this
+      //   }
+      // }
+      // obj.morning().afternoon()
+
+      // var obj = {
+      //   No1: 'HTML',
+      //   No2: 'CSS',
+      //   myObj: function (num) {
+      //     console.log(this['No' + num])
+      //   }
+      // }
+      // obj.myObj(1)
+      // obj.myObj(2)
+
+      // var arr = [1, 2, 3, 4, 5]
+      // for (var i in arr) {
+      //   console.log(i, arr[i])
+      // }
+
+      // function Car() {
+      //   this.brand = 'Benz'
+      //   this.color = 'pink'
+      // }
+      // var car = new Car()
+      // Car.prototype.width = 6
+      // Object.prototype.name = 'zs'
+      // Car.prototype.say = function () {
+      //   console.log(123)
+      // }
+
+      // for (var key in car) {
+      //   // console.log(key + '---' + car[key])
+      //   if (car.hasOwnProperty(key)) {
+      //     console.log(key + ':' + car[key])
+      //   }
+      // }
+      // var a = []
+      // console.log(a instanceof Array) //true
+      // console.log(Object.prototype.toString.call(a) === '[object Array]') //true
+      // console.log(a.constructor === Array) //true
+      // console.log(Array.isArray(a)) // true
+      // console.log(a.__proto__ === Array.prototype) // true
+      // console.log(Object.getPrototypeOf(a) === Array.prototype) // true
+      // console.log(Array.prototype.isPrototypeOf(a)) // true
+
+      // var getSum = (function (n) {
+      //   if (n <= 1) {
+      //     return 1
+      //   }
+      //   return n * arguments.callee(n - 1)
+      // })(5)
+      // console.log(getSum) //120
+
+      // function fn1() {
+      //   fn2()
+      // }
+      // function fn2() {
+      //   console.log(fn2.caller) // function fn1(){ ... }
+      // }
+      // fn1()
+
+      var obj1 = {}
+      var obj2 = {}
+      console.log(obj1 == obj2)
     </script>
   </body>
 </html>
