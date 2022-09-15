@@ -300,54 +300,6 @@
       // console.log(s)
       // console.log(t)
 
-      /*
-                  作业：模块化开发，实现以下功能：
-                    功能1：打印一个参数值以内能被3或5或7整除的数
-                    功能2：打印斐波那契数列的第N位
-                    功能3：打印从0-N的累加和
-                  */
-
-      // var initCompute = (function () {
-      //   function fn1(n1) {
-      //     var str = ''
-      //     for (var i = 1; i < n1; i++) {
-      //       if (i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
-      //         str += i + ','
-      //       }
-      //     }
-      //     console.log(str)
-      //   }
-
-      //   function fn2(n2) {
-      //     var num1 = 1,
-      //       num2 = 1,
-      //       num3 = 0
-      //     if (n2 == 1 || n2 == 2) {
-      //       console.log(1)
-      //     }
-      //     for (var i = 3; i <= n2; i++) {
-      //       num3 = num1 + num2
-      //       num1 = num2
-      //       num2 = num3
-      //     }
-      //     console.log(num3)
-      //   }
-
-      //   function fn3(n3) {
-      //     var sum = 0
-      //     for (var i = 0; i <= n3; i++) {
-      //       sum += i
-      //     }
-      //     console.log(sum)
-      //   }
-      //   return function (n1, n2, n3) {
-      //     fn1(n1)
-      //     fn2(n2)
-      //     fn3(n3)
-      //   }
-      // })()
-      // initCompute(10, 7, 10)
-
       // var obj = {
       //   morning: function () {
       //     console.log('running')
@@ -417,9 +369,80 @@
       // }
       // fn1()
 
-      var obj1 = {}
-      var obj2 = {}
-      console.log(obj1 == obj2)
+      // 'use strict'
+      // function test() {
+      //   this.a = 1
+      //   console.log(this.a) //报错
+      // }
+      // test()
+
+      /*
+      作业：模块化开发，实现以下功能：
+      功能1：打印一个参数值以内能被3或5或7整除的数
+      功能2：打印斐波那契数列的第N位
+      功能3：打印从0-N的累加和
+      */
+
+      // window.onload = function () {
+      //   init()
+      // }
+      // function init() {
+      //   console.log(initFb(8))
+      //   console.log(initDiv(100))
+      //   console.log(initSum(100))
+      // }
+      // var initFb = (function () {
+      //   function getFb(n) {
+      //     var num1 = 1,
+      //       num2 = 1,
+      //       num3 = 0
+      //     if (n <= 2) {
+      //       return 1
+      //     }
+      //     for (var i = 3; i <= n; i++) {
+      //       num3 = num1 + num2
+      //       num1 = num2
+      //       num2 = num3
+      //     }
+      //     return num3
+      //   }
+      //   return getFb
+      // })()
+
+      // var initDiv = (function () {
+      //   function getDiv(n) {
+      //     var arr = []
+      //     for (var i = 1; i < n; i++) {
+      //       if (i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
+      //         arr.push(i)
+      //       }
+      //     }
+      //     return arr
+      //   }
+      //   return getDiv
+      // })()
+
+      // var initSum = (function () {
+      //   function getSum(n) {
+      //     var sum = 0
+      //     for (var i = 0; i <= n; i++) {
+      //       sum += i
+      //     }
+      //     return sum
+      //   }
+      //   return getSum
+      // })()
+
+      var obj = {
+        name: 'zs',
+        age: 18
+      }
+      var newObj = {}
+      for (var key in obj) {
+        newObj[key] = obj[key]
+      }
+      obj.age = 20
+      console.log(obj, newObj)
     </script>
   </body>
 </html>
