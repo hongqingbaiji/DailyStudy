@@ -433,16 +433,124 @@
       //   return getSum
       // })()
 
-      var obj = {
-        name: 'zs',
-        age: 18
+      // var obj = {
+      //   name: 'zs',
+      //   age: 18
+      // }
+      // var newObj = {}
+      // for (var key in obj) {
+      //   newObj[key] = obj[key]
+      // }
+      // obj.age = 20
+      // console.log(obj, newObj)
+
+      // 浅拷贝和深拷贝
+      // Object.prototype.num = 1
+      // var obj = {
+      //   name: 'zs',
+      //   age: 38,
+      //   chindren: {
+      //     first: {
+      //       name: 'one',
+      //       age: 10,
+      //       like: function () {
+      //         var likes = 3
+      //         console.log('read', likes)
+      //       }
+      //     },
+      //     second: {
+      //       name: 'two',
+      //       age: 7,
+      //       like: function () {
+      //         var likes = 4
+      //         console.log('sleep', likes)
+      //       }
+      //     },
+      //     third: {
+      //       name: 'three',
+      //       age: 3,
+      //       like: function () {
+      //         var likes = 2
+      //         console.log('talk', likes)
+      //       }
+      //     }
+      //   },
+      //   car: ['Benz', 'Mazda']
+      // }
+      // // var newObj = clone(obj, newObj)
+      // var newObj = deepClone(obj, newObj)
+      // obj.age = 36
+      // newObj.age = 34
+      // obj.chindren.first.age = 13
+      // newObj.chindren.fourth = {
+      //   name: 'four',
+      //   age: 1,
+      //   like: function () {
+      //     var likes = 5
+      //     console.log('bot')
+      //   }
+      // }
+      // console.log(obj, newObj)
+
+      // 浅拷贝
+      // origin是被拷贝的对象, target是拷贝的对象
+      // function clone(origin, target) {
+      //   var target = target || {}
+      //   for (var key in origin) {
+      //     if (origin.hasOwnProperty(key)) {
+      //       target[key] = origin[key]
+      //     }
+      //   }
+      //   return target
+      // }
+
+      // 深拷贝
+      // 其实就是判断键值是不是引用值，是的话就调用自己把引用值再拷贝一遍
+      // function deepClone(origin, target) {
+      //   var target = target || {}
+      //   var toStr = Object.prototype.toString
+      //   for (var key in origin) {
+      //     if (origin.hasOwnProperty(key)) {
+      //       if (typeof origin[key] === 'object' && origin[key] !== null) {
+      //         if (toStr.call() === '[object Array]') {
+      //           target[key] = []
+      //         } else {
+      //           target[key] = {}
+      //         }
+      //         deepClone(origin[key], target[key])
+      //       } else {
+      //         target[key] = origin[key]
+      //       }
+      //     }
+      //   }
+      //   return target
+      // }
+
+      function Foo() {
+        getName = function () {
+          console.log(1)
+        }
+        return this
       }
-      var newObj = {}
-      for (var key in obj) {
-        newObj[key] = obj[key]
+      Foo.getName = function () {
+        console.log(2)
       }
-      obj.age = 20
-      console.log(obj, newObj)
+
+      Foo.prototype.getName = function () {
+        console.log(3)
+      }
+      var getName = function () {
+        console.log(4)
+      }
+      function getName() {
+        console.log(5)
+      }
+      Foo.getName() //2
+      getName() //4
+      Foo().getName() //4  X  =1
+      new Foo.getName() //2
+      new Foo().getName() //3
+      new new Foo().getName() //3
     </script>
   </body>
 </html>
