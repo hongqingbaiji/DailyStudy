@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 手写push
+      // var arr = [1, 2, 3]
+      // Array.prototype.myPush = function () {
+      //   for (var i = 0; i < arguments.length; i++) {
+      //     this[this.length] = arguments[i]
+      //   }
+      //   return this.length
+      // }
+      // arr.myPush(4, 5, 6)
+      // console.log(arr)
+
+      // // 手写unshift
+      // var arr = [1, 2, 3]
+      // Array.prototype.myUnshift = function () {
+      //   for (var i = arguments.length - 1; i >= 0; i--) {
+      //     for (var j = this.length - 1; j >= 0; j--) {
+      //       this[j + 1] = this[j]
+      //     }
+      //     this[0] = arguments[i]
+      //   }
+      //   return this.length
+      // }
+      // arr.myUnshift(4, 5, 6)
+      // console.log(arr)
+
+      // // 手写pop
+      // var arr = [1, 2, 3, 4, 5]
+      // Array.prototype.myPop = function () {
+      //   var res = this[this.length - 1]
+      //   this.length--
+      //   return res
+      // }
+      // arr.myPop() //5
+      // arr.myPop() //4
+      // console.log(arr) //[1,2,3]
+
+      // // 手写shift
+      // var arr = [1, 2, 3, 4, 5]
+      // Array.prototype.myShift = function () {
+      //   var res = this.splice(0, 1).toString()
+      //   return res
+      // }
+      // console.log(arr.myShift())
+      // console.log(arr)
+      // console.log(arr.myShift())
+      // console.log(arr)
+      // console.log(arr.myShift())
+      // console.log(arr)
+
+      // 洗牌算法
+      // var arr = [1, 2, 3, 4, 5, 6]
+      // function foo(arr) {
+      //   for (var i = 0; i < arr.length; i++) {
+      //     var index = Math.floor(Math.random() * arr.length)
+      //     var temp = arr[index]
+      //     arr[index] = arr[i]
+      //     arr[i] = temp
+      //   }
+      //   return arr
+      // }
+      // console.log(foo(arr))
+
+      // var arr = [1, 2, 3, 4, 5, 6]
+      // arr.sort(function (a, b) {
+      //   return Math.random() - 0.5
+      // })
+      // console.log(arr)
+
+      // var arr = [
+      //   {
+      //     son: 'able',
+      //     age: 17
+      //   },
+      //   {
+      //     son: 'cidy',
+      //     age: 25
+      //   },
+      //   {
+      //     son: 'lucy',
+      //     age: 22
+      //   },
+      //   {
+      //     son: 'mark',
+      //     age: 3
+      //   }
+      // ]
+      // arr.sort(function (a, b) {
+      //   return a.son - b.son
+      // })
+      // console.log(arr)
+
+      // var arr = ['3245', '23423636', '2435623362', '2344', '2']
+      // arr.sort(function (a, b) {
+      //   return a.length - b.length
+      // })
+      // console.log(arr)
+
+      // 利用splice()手写unshift
+      // var arr = [1, 2, 3]
+      // Array.prototype.myUnshift = function () {
+      //   this.splice(0, 0, ...arguments)
+      // }
+      // arr.myUnshift(4, 5, 3, 3, 4, 6)
+      // console.log(arr)
+
+      // 利用splice()手写unshift
+      // var arr = [1, 2, 3]
+      // Array.prototype.myUnshift = function () {
+      //   for (var i = arguments.length - 1; i >= 0; i--) {
+      //     this.splice(0, 0, arguments[i])
+      //   }
+      // }
+      // arr.myUnshift(4, 5, 3, 3, 4, 6)
+      // console.log(arr)
+
+      // 请按照字节数排列下列数组
+      // function getBytes(str) {
+      //   var sum = str.length
+      //   for (var i = 0; i < str.length; i++) {
+      //     if (str.charCodeAt(i) > 255) {
+      //       sum++
+      //     }
+      //   }
+      //   return sum
+      // }
+      // var arr = ['我爱你', 'OK', 'Hello', '你说什么呢', '可以爱我吗？', '12345', 'abc']
+      // arr.sort(function (a, b) {
+      //   return getBytes(a) - getBytes(b)
+      // })
+      // console.log(arr)
+    </script>
+  </body>
+</html>

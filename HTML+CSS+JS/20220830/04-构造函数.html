@@ -526,31 +526,57 @@
       //   return target
       // }
 
-      function Foo() {
-        getName = function () {
-          console.log(1)
-        }
-        return this
-      }
-      Foo.getName = function () {
-        console.log(2)
-      }
+      // function Foo() {
+      //   getName = function () {
+      //     console.log(1)
+      //   }
+      //   return this
+      // }
+      // Foo.getName = function () {
+      //   console.log(2)
+      // }
 
-      Foo.prototype.getName = function () {
-        console.log(3)
-      }
-      var getName = function () {
-        console.log(4)
-      }
-      function getName() {
-        console.log(5)
-      }
-      Foo.getName() //2
-      getName() //4
-      Foo().getName() //4  X  =1
-      new Foo.getName() //2
-      new Foo().getName() //3
-      new new Foo().getName() //3
+      // Foo.prototype.getName = function () {
+      //   console.log(3)
+      // }
+      // var getName = function () {
+      //   console.log(4)
+      // }
+      // function getName() {
+      //   console.log(5)
+      // }
+      // Foo.getName() //2
+      // getName() //4
+      // Foo().getName() //4  X  =1
+      // new Foo.getName() //2
+      // new Foo().getName() //3
+      // new new Foo().getName() //3
+
+      // 浅拷贝之 concat() / slice()
+      // var arr = [1, 2, { uname: 'wenhe' }]
+      // var arr2 = arr.concat() //数组拼接，不传参就是浅拷贝
+      // var arr3 = arr.slice() //数组截取，不传参或者传0，就是浅拷贝
+      // arr2[1] = 3
+      // arr3[2].uname = 'zs'
+      // console.log(arr)
+      // console.log(arr2)
+      // console.log(arr3)
+
+      // 浅拷贝之 Object.assign()
+      // var obj = { uname: 'wenhe', like: ['eat', 'sleep'] }
+      // var obj2 = Object.assign({}, obj)
+      // obj2.uname = 'zs'
+      // obj2.like[1] = 'play'
+      // console.log(obj) //{ uname: 'wenhe', like: ['eat', 'play'] }
+      // console.log(obj2) //{ uname: 'zs', like: ['eat', 'play'] }
+
+      //深拷贝之 JSON.parse(JSON.stringify())
+      // var obj = { uname: 'wenhe', like: ['eat', 'sleep'] }
+      // var obj2 = JSON.parse(JSON.stringify(obj))
+      // obj2.uname = 'zs'
+      // obj2.like[1] = 'play'
+      // console.log(obj) //{ uname: 'wenhe', like: ['eat', 'sleep'] }
+      // console.log(obj2) //{ uname: 'zs', like: ['eat', 'play'] }
     </script>
   </body>
 </html>
