@@ -33,6 +33,11 @@
       // arr.myUnshift(4, 5, 6)
       // console.log(arr)
 
+      // var arr1 = [1, 2, 3]
+      // var arr2 = [4, 5, 6]
+      // var arr = arr2.concat(arr1)
+      // console.log(arr)
+
       // // 手写pop
       // var arr = [1, 2, 3, 4, 5]
       // Array.prototype.myPop = function () {
@@ -44,17 +49,48 @@
       // arr.myPop() //4
       // console.log(arr) //[1,2,3]
 
+      // var arr = [1, 2, 3, 4, 5]
+      // Array.prototype.myPop = function () {
+      //   var res = this[this.length - 1]
+      //   this.splice(this.length - 1, 1)
+      //   return res
+      // }
+      // console.log(arr.myPop()) //5
+      // console.log(arr.myPop()) //4
+      // console.log(arr) //[1,2,3]
+
       // // 手写shift
       // var arr = [1, 2, 3, 4, 5]
       // Array.prototype.myShift = function () {
-      //   var res = this.splice(0, 1).toString()
+      //   var res = arr[0]
+      //   this.splice(0, 1)
       //   return res
       // }
+      // 第二种方法
+      // Array.prototype.myShift = function () {
+      //   var res = this[0]
+      //   for (var i = 0; i < this.length; i++) {
+      //     this[i] = this[i + 1] // 把后一个值赋值给前一个值
+      //   }
+      //   this.length-- // 数组元素减一
+      //   return res
+      // }
+
       // console.log(arr.myShift())
       // console.log(arr)
       // console.log(arr.myShift())
       // console.log(arr)
       // console.log(arr.myShift())
+      // console.log(arr)
+
+      // var arr = [1, 2, 3]
+      // arr[arr.length] = 4 // 往数组末尾新增一项 [1,2,3,4]
+      // console.log(arr)
+      // arr.length++ //往数组末尾新增一项empty，值为undefined  [1,2,3,4,empty]
+      // console.log(arr)
+      // arr[4] = 5 //修改数组下标为4的数组元素的值 [1,2,3,4,5]
+      // console.log(arr)
+      // arr.length-- //删除数组末尾一项 [1,2,3,4]
       // console.log(arr)
 
       // 洗牌算法
@@ -69,6 +105,24 @@
       //   return arr
       // }
       // console.log(foo(arr))
+
+      // 重写reverse
+      // var arr = [1, 2, 3, 4, 5, 6, 7]
+      // Array.prototype.myReverse = function () {
+      //   var temp = null
+      //   for (var i = 0; i < this.length; i++) {
+      //     var later = this.length - i - 1
+      //     temp = this[i]
+      //     this[i] = this[later]
+      //     this[later] = temp
+      //     if (i === later || later - i === 1) {
+      //       break
+      //     }
+      //   }
+      //   return this
+      // }
+      // console.log(arr.myReverse())
+      // console.log(arr)
 
       // var arr = [1, 2, 3, 4, 5, 6]
       // arr.sort(function (a, b) {
@@ -138,6 +192,124 @@
       //   return getBytes(a) - getBytes(b)
       // })
       // console.log(arr)
+
+      // var arr = [1, 2, 34567]
+      // var str = arr.toString() //'1,2,3'
+      // var str1 = arr.toLocaleString() // '1,2,3'
+      // var str2 = arr.join('-') //'1-2-3'
+      // console.log(str, str1, str2)
+      // console.log(str1.split(','))
+
+      // // concat()
+      // var arr1 = [1, 2, 3]
+      // var arr2 = [4, 5, 6]
+      // var arr3 = arr1.concat(arr2) //不改变原数组
+      // console.log(arr1, arr2, arr3)
+
+      // var arr = [1, 2, 3, 4]
+      // var str = arr.join()
+      // var str1 = arr.toString()
+      // var str2 = arr.toLocaleString()
+      // console.log(str, str1, str2)
+      // console.log(str.split(''))
+      // console.log(str.split(',', 2))
+      // console.log(arr)
+
+      // var obj = {
+      //   0: 1,
+      //   1: 2,
+      //   2: 3,
+      //   name: 'zs',
+      //   age: 19,
+      //   length: 3
+      //   // splice: Array.prototype.splice,
+      //   // push: Array.prototype.push
+      // }
+      // obj.__proto__ = Array.prototype
+      // console.log(obj)
+      // console.log(obj['age'])
+      // console.log(obj.length)
+
+      // var obj = {
+      //   2: 3,
+      //   3: 4,
+      //   length: 2,
+      //   splice: Array.prototype.splice, //把对象以数组形式展示
+      //   push: Array.prototype.push //给obj添加数组的push方法
+      // }
+      // console.log(obj) // [emtyp*2,3,4,length:4]
+      // obj.push(1)
+      // obj.push(2)
+      // console.log(obj) // [empty*2,4,5,length:4]
+
+      // var arr = new Array(3, 4)
+      // var arr = new Array([1])
+      // var arr1 = Array([1])
+      // console.log(arr)
+      // console.log(arr1)
+
+      //  数组去重
+      // var arr = [1, 2, 2, 1, 'a', 1, 'a']
+      // Array.prototype.myUnique = function () {
+      //   var newArr = []
+      //   for (var i = 0; i < arr.length; i++) {
+      //     if (newArr.indexOf(arr[i]) === -1) {
+      //       newArr.push(arr[i])
+      //     }
+      //   }
+      //   return newArr
+      // }
+      // console.log(arr.myUnique())
+
+      // 打印数组中出现最多的元素,以及出现了几次
+      // var arr = [1, 2, 2, 1, '1a', 3, 'a', , 'a', 1, 'a']
+      // Array.prototype.myUnique = function () {
+      //   var obj = {}
+      //   var max = 0
+      //   var maxKey = []
+      //   for (var i = 0; i < arr.length; i++) {
+      //     if (!obj[arr[i]]) {
+      //       obj[arr[i]] = 1
+      //     } else {
+      //       obj[arr[i]]++
+      //     }
+      //     if (obj[arr[i]] > max) {
+      //       max = obj[arr[i]]
+      //     }
+      //   }
+      //   for (var key in obj) {
+      //     if (max == obj[key]) {
+      //       maxKey.push(key)
+      //     }
+      //   }
+      //   var res = '最多的元素是：' + maxKey + '，出现了：' + max + '次'
+      //   return res
+      // }
+      // console.log(arr.myUnique())
+
+      /*
+        作业二：封装typeof  myTypeof
+          要求：是什么类型就返回什么类型，
+          undefined,number,string,boolean,function,null,object,array,
+          [object Number],[object Boolean],[object String]
+          其中object要返回其真实类型
+          比如：[object Array]->array，null->null，[object Object]->object;
+      */
+      // function myTypeof() {
+      //   var type = typeof arguments[0]
+      //   if (type === 'object') {
+      //     var type = Object.prototype.toString.call(arguments[0])
+      //     if (type === '[object Null]') {
+      //       type = 'null'
+      //     } else if (type === '[object Array]') {
+      //       type = 'array'
+      //     } else if (type === '[object Object]') {
+      //       type = 'object'
+      //     }
+      //   }
+      //   return type
+      // }
+      // console.log(myTypeof([]))
     </script>
   </body>
 </html>
