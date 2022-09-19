@@ -310,6 +310,29 @@
       //   return type
       // }
       // console.log(myTypeof([]))
+
+      // function myTypeof(target) {
+      //   var type = typeof target
+      //   var toStr = Object.prototype.toString
+      //   var template = {
+      //     '[object Array]': 'array',
+      //     '[object Object]': 'object',
+      //     '[object Number]': 'object number',
+      //     '[object String]': 'object string',
+      //     '[object Boolean]': 'object boolean',
+      //     '[object Date]': 'object date',
+      //     '[object RegExp]': 'object regExp'
+      //   }
+      //   if (type === 'null') {
+      //     return 'null'
+      //   } else if (type === 'object') {
+      //     var res = toStr.call(target)
+      //     return template[res]
+      //   } else {
+      //     return type
+      //   }
+      // }
+      // console.log(myTypeof(new String()))
     </script>
   </body>
 </html>
