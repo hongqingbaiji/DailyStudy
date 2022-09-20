@@ -333,6 +333,166 @@
       //   }
       // }
       // console.log(myTypeof(new String()))
+
+      // 字符串去重,并打印出现最多的字符，出现了几次。
+      // var str = 'fasfqwegwefsdqwdfafaaa'
+      // String.prototype.myUnique = function () {
+      //   var temp = {},
+      //     newStr = '',
+      //     maxNum = 0,
+      //     maxValue = []
+      //   for (var i = 0; i < this.length; i++) {
+      //     if (!temp.hasOwnProperty(this[i])) {
+      //       temp[this[i]] = 1
+      //       newStr += this[i]
+      //     } else {
+      //       temp[this[i]]++
+      //     }
+      //     if (temp[this[i]] > maxNum) {
+      //       maxNum = temp[this[i]]
+      //     }
+      //   }
+      //   for (var key in temp) {
+      //     if (temp[key] === maxNum) {
+      //       maxValue.push(key)
+      //     }
+      //   }
+      //   return (
+      //     '去重后的字符串是：' +
+      //     newStr +
+      //     '，出现最多的字符是：' +
+      //     maxValue +
+      //     '，出现了：' +
+      //     maxNum +
+      //     '次'
+      //   )
+      // }
+      // console.log(str.myUnique())
+
+      // function test() {
+      //   console.log(arguments)
+      // }
+      // test()
+
+      // var temp = function a() {}
+      // temp()
+      // console.log(a.name)
+      // function test(day) {
+      //   var weekday = [, 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      //   weekday[day] !== undefined ? console.log(weekday[day]) : console.log("I don't know")
+      // }
+      // test(0)
+      // try {
+      //   console.log(a)
+      // } catch (e) {
+      //   console.log(e)
+      // }
+
+      // function UserException(message) {
+      //   this.message = message
+      //   this.name = 'UserException'
+      // }
+      // function getMonthName(mo) {
+      //   mo = mo - 1 // 调整月份数字到数组索引 (1=Jan, 12=Dec)
+      //   var months = [
+      //     'Jan',
+      //     'Feb',
+      //     'Mar',
+      //     'Apr',
+      //     'May',
+      //     'Jun',
+      //     'Jul',
+      //     'Aug',
+      //     'Sep',
+      //     'Oct',
+      //     'Nov',
+      //     'Dec'
+      //   ]
+      //   if (months[mo] !== undefined) {
+      //     return months[mo]
+      //   } else {
+      //     throw new UserException('InvalidMonthNo')
+      //   }
+      // }
+      // try {
+      //   var myMonth = 15 // 15 超出边界并引发异常
+      //   var monthName = getMonthName(myMonth)
+      //   console.log(monthName)
+      // } catch (e) {
+      //   var monthName = 'unknown'
+      //   console.log(e.message, e.name) // 传递异常对象到错误处理
+      // }
+
+      // var fn = (...args) => {
+      //   console.log(args) //[1,2,3]
+      //   console.log(arguments)//报错
+      // }
+      // fn(1, 2, 3)
+
+      // function fn() {
+      //   console.log(arguments)
+      //   var toArr1 = [].slice.call(arguments)
+      //   console.log(toArr1)
+      //   var toArr2 = Array.from(arguments)
+      //   console.log(toArr2)
+      //   var toArr3 =
+      //     arguments.length === 1 ? console.log(argument[0]) : Array.apply(null, arguments)
+      //   console.log(toArr3)
+      // }
+      // fn(1, 2, 3)
+
+      // function fn(a = 2) {
+      //   a = 3
+      //   console.log(arguments[0])
+      //   console.log(a)
+      // }
+      // fn(1)
+
+      // console.log(a) //undefined
+      // a = 0
+      // console.log(a) //0
+      // if (true) {
+      //   console.log(a) //f a(){}
+      //   a = 1
+      //   console.log(a) //1
+      //   function a() {}
+      //   console.log(a) //1
+      //   a = 2
+      //   console.log(a) //2
+      // }
+      // console.log(a) //1
+
+      // var a = 0
+      // var obj = {
+      //   a: 1,
+      //   test: function (callback) {
+      //     callback()
+      //   }
+      // }
+      // obj.test(function () {
+      //   console.log(this) //window
+      // })
+
+      // var obj = {
+      //   test: function () {
+      //     this.test1 = function () {
+      //       console.log(this)
+      //     }
+      //     this.test1()
+      //   }
+      // }
+      // obj.test()
+
+      var obj = {
+        test: () => {
+          console.log(this)
+        },
+        test1: function () {
+          console.log(this)
+        }
+      }
+      obj.test()
+      obj.test1()
     </script>
   </body>
 </html>
