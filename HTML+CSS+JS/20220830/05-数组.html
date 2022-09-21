@@ -494,8 +494,89 @@
       // obj.test()
       // obj.test1()
 
-      var years = [1, 2, 3, '02', 4]
-      console.log()
+      // var arr = [
+      //   1,
+      //   2,
+      //   3,
+      //   {
+      //     id: 1,
+      //     name: 'zs'
+      //   },
+      //   {
+      //     id: 2,
+      //     name: 'ls'
+      //   }
+      // ]
+      // function fn() {
+      //   console.log(Object.keys(arguments))
+      //   console.log(Object.values(arguments))
+      //   console.log(Object.entries(arguments))
+      // }
+      // fn(1, 2, 3)
+      // var arr2 = arr
+      // arr2[0] = 4
+      // console.log(Object.keys(arr))
+      // console.log(Object.values(arr))
+      // console.log(Object.entries(arr))
+      // console.log(Object.keys(arr2))
+      // console.log(Object.values(arr2))
+      // console.log(Object.entries(arr2))
+
+      // var obj = { undefined: '', '': null, null: undefined }
+      // console.log(obj)
+      // console.log(Object.keys(obj))
+      // console.log(Object.values(obj))
+      // var arr = [, 1, 2, , , NaN, null, undefined, 3]
+      // console.log(arr)
+      // console.log(Object.keys(arr))
+      // console.log(Object.values(arr))
+      // console.log(Object.entries(arr))
+
+      // var obj = { name: 'zs', age: 18 }
+      // console.log(Object.keys(obj)) //['name','age']
+      // console.log(Object.values(obj)) // ['zs',18]
+      // console.log(Object.entries(obj)) //
+      // var arr = [, 1, 2]
+      // console.log(Object.keys(arr))
+      // console.log(Object.values(arr))
+      // console.log(Object.entries(arr))
+      // var str = ' h i '
+      // console.log(Object.keys(str))
+      // console.log(Object.values(str))
+      // console.log(Object.entries(str))
+
+      // function fn() {
+      //   console.log(arguments)
+      //   console.log(Array.from(arguments))
+      // }
+      // fn(1, null, undefined, 'a', { name: 'zs' }, [1, 23])
+      // var str = ' h i '
+      // console.log(Array.from(str))
+
+      // var obj = {
+      //   3: 1,
+      //   2: 2,
+      //   name: 'zs',
+      //   length: 3
+      // }
+
+      // console.log(obj)
+      // console.log(Array.from(obj))
+      // var arr = [1, 2, 'a', 1, 2, 3]
+      // var set = new Set(arr)
+      // console.log(set)
+
+      // const map = new Map([
+      //   [1, 2],
+      //   [2, 4],
+      //   [4, 8]
+      // ])
+      // console.log(map)
+
+      var obj = {
+        length: 5
+      }
+      console.log(Array.from(obj, (item, i) => i))
     </script>
   </body>
 </html>
