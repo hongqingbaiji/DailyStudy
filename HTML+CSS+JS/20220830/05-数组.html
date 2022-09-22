@@ -588,21 +588,85 @@
       // console.log(Array.of(3.5)) //[3.5]
       // console.log(Array.of(-3)) // [-3]
 
-      var arr = [1, 2, 3, 4, 5]
-      var newArr = arr.copyWithin(0, 3, 4) // [4,2,3,4,5]
-      // a. 解释过程：复制数组下标 [3,4) 之间的值，从0开始粘贴，并返回粘贴后的数组；
-      console.log(arr) //[4,2,3,4,5]   a. 会改变原数组
-      console.log(arr.copyWithin(5, 1, 3)) //[4,2,3,4,5]
-      // b. 当target大于数组元素时，不改变数组
-      console.log(arr.copyWithin(0, 3, 1)) // [4,2,3,4,5]
-      console.log(arr.copyWithin(0, 5, 7)) // [4,2,3,4,5]
-      //c. 当start大于数组元素或者大于end时，不会改变数组；
-      console.log(arr.copyWithin()) // [4,2,3,4,5]
-      console.log(arr.copyWithin(0)) // [4,2,3,4,5]
-      console.log(arr.copyWithin(1)) // [4,4,2,3,4]
-      console.log(arr.copyWithin(-1)) // [4,4,2,3,4]
-      console.log(arr.copyWithin(0, 1)) //[4,2,3,4,4]
-      console.log(arr.copyWithin(4, -4, -3)) //[4,2,3,4,2]
+      // var arr = [1, 2, 3, 4, 5]
+      // var newArr = arr.copyWithin(0, 3, 4) // [4,2,3,4,5]
+      // // a. 解释过程：复制数组下标 [3,4) 之间的值，从0开始粘贴，并返回粘贴后的数组；
+      // console.log(arr) //[4,2,3,4,5]   a. 会改变原数组
+      // console.log(arr.copyWithin(5, 1, 3)) //[4,2,3,4,5]
+      // // b. 当target大于数组元素时，不改变数组
+      // console.log(arr.copyWithin(0, 3, 1)) // [4,2,3,4,5]
+      // console.log(arr.copyWithin(0, 5, 7)) // [4,2,3,4,5]
+      // //c. 当start大于数组元素或者大于end时，不会改变数组；
+      // console.log(arr.copyWithin()) // [4,2,3,4,5]
+      // console.log(arr.copyWithin(0)) // [4,2,3,4,5]
+      // console.log(arr.copyWithin(1)) // [4,4,2,3,4]
+      // console.log(arr.copyWithin(-1)) // [4,4,2,3,4]
+      // console.log(arr.copyWithin(0, 1)) //[4,2,3,4,4]
+      // console.log(arr.copyWithin(4, -4, -3)) //[4,2,3,4,2]
+
+      //生成器和迭代器
+      // function* generator() {
+      //   yield 'name: wenhe'
+      //   yield 'age: 18'
+      //   return
+      // }
+
+      // var arr = ['版本1', '版本2', '版本3']
+      // function generator(arr) {
+      //   var nextIndex = 0
+      //   return {
+      //     next: function () {
+      //       return nextIndex < arr.length
+      //         ? { value: arr[nextIndex++], done: false }
+      //         : { value: arr[nextIndex++], done: true }
+      //     }
+      //   }
+      // }
+      // const iterator = generator(arr)
+      // console.log(iterator.next()) //{value:'版本1',done:false}
+      // console.log(iterator.next()) //{value:'版本2',done:false}
+      // console.log(iterator.next()) //{value:'版本3',done:false}
+      // console.log(iterator.next()) //{value:undefined,done:true}
+
+      // var fn = function test(a, b) {
+      //   console.log(test.length)
+      //   return 123
+      // }
+
+      // console.log(typeof fn)
+      // console.log(typeof test)
+      // console.log(typeof fn())
+      // console.log(typeof test())
+
+      // function fn(n) {
+      //   if (n <= 1) {
+      //     return 1
+      //   }
+      //   return n * fn(n - 1)
+      // }
+      // console.log(fn(5))
+
+      // function fn(n) {
+      //   if (n <= 2) {
+      //     return 1
+      //   }
+      //   return fn(n - 1) + fn(n - 2)
+      // }
+      // // 1 1 2 3 5 8 13 21
+      // console.log(fn(8))
+
+      // function fn(a = 1, b) {
+      //   console.log(a)
+      //   console.log(b)
+      // }
+      // fn(null, 2)
+
+      // console.log(a) //报错
+      // console.log(b) //报错
+      // let a = 1
+      // const b = 2
+      // console.log(window.a) //undefined
+      // console.log(window.b) //undefined
     </script>
   </body>
 </html>
