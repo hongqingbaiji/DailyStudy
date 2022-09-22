@@ -5,15 +5,152 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      li {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+      }
+      .contain {
+        width: 580px;
+        height: 274px;
+        margin: 100px auto;
+        border: 2px solid red;
+      }
+      .left,
+      .right {
+        float: left;
+      }
+      .left ul {
+        overflow: hidden;
+        width: 480px;
+        height: 270px;
+      }
+
+      .left-item {
+        display: none;
+        width: 480px;
+        height: 270px;
+      }
+      .left-item.active {
+        display: block;
+      }
+      .left-item img {
+        width: 100%;
+      }
+      .right-item {
+        opacity: 0.5;
+        width: 96px;
+        height: 54px;
+      }
+      .right-item.current {
+        opacity: 1;
+      }
+      .right-item img {
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
-    <div>
-      <div class="left"></div>
+    <div class="contain">
+      <div class="left">
+        <ul>
+          <li class="left-item active">
+            <a href="javascript:;"><img src="./images/1.webp" alt="" /></a>
+          </li>
+          <li class="left-item">
+            <a href="javascript:;"><img src="./images/2.webp" alt="" /></a>
+          </li>
+          <li class="left-item">
+            <a href="javascript:;"><img src="./images/3.webp" alt="" /></a>
+          </li>
+          <li class="left-item">
+            <a href="javascript:;"><img src="./images/4.webp" alt="" /></a>
+          </li>
+          <li class="left-item">
+            <a href="javascript:;"><img src="./images/5.webp" alt="" /></a>
+          </li>
+        </ul>
+      </div>
       <div class="right">
-        <button>红色</button>
-        <button>绿色</button>
-        <button>蓝色</button>
+        <ul>
+          <li class="right-item current">
+            <a href="javascript:;"><img src="./images/1.webp" alt="" /></a>
+          </li>
+          <li class="right-item">
+            <a href="javascript:;"><img src="./images/2.webp" alt="" /></a>
+          </li>
+          <li class="right-item">
+            <a href="javascript:;"><img src="./images/3.webp" alt="" /></a>
+          </li>
+          <li class="right-item">
+            <a href="javascript:;"><img src="./images/4.webp" alt="" /></a>
+          </li>
+          <li class="right-item">
+            <a href="javascript:;"><img src="./images/5.webp" alt="" /></a>
+          </li>
+        </ul>
       </div>
     </div>
+    <script>
+      // 企业写法
+      ;(function () {
+        var Slider = function (opt) {
+          this.leftItem = document.getElementsByClassName(opt.lClassName)
+          this.rightItem = document.getElementsByClassName(opt.rClassName)
+          this.lClassName = opt.lClassName
+          this.rClassName = opt.rClassName
+          this.bindClick()
+        }
+        Slider.prototype = {
+          bindClick: function () {
+            var leftItem = this.leftItem
+            var rightItem = this.rightItem
+            var lClassName = this.lClassName
+            var rClassName = this.rClassName
+            console.log(this.lClassName)
+            for (var i = 0; i < rightItem.length; i++) {
+              ;(function (j) {
+                rightItem[j].onclick = function () {
+                  for (var k = 0; k < rightItem.length; k++) {
+                    rightItem[k].className = rClassName
+                    leftItem[k].className = lClassName
+                  }
+                  this.className += ' current'
+                  leftItem[j].className += ' active'
+                }
+              })(i)
+            }
+          }
+        }
+        window.Slider = Slider
+      })()
+
+      var slider = new Slider({
+        lClassName: 'left-item',
+        rClassName: 'right-item'
+      })
+
+      // var leftItem = document.getElementsByClassName('left-item')
+      // var rightItem = document.getElementsByClassName('right-item')
+      // for (var i = 0; i < rightItem.length; i++) {
+      //   ;(function (j) {
+      //     rightItem[j].onclick = function () {
+      //       for (var k = 0; k < rightItem.length; k++) {
+      //         rightItem[k].className = 'right-item'
+      //         leftItem[k].className = 'left-item'
+      //       }
+      //       this.className += ' current'
+      //       leftItem[j].className += ' active'
+      //     }
+      //   })(i)
+      // }
+    </script>
   </body>
 </html>
