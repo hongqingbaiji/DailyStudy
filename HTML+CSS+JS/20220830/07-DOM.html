@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="div">
+      文本类型
+      <!-- 注释类型 -->
+      <h1>标题</h1>
+      <p>段落</p>
+      <a href="#"><img src="" alt="" /></a>
+    </div>
+
+    <script>
+      // //querySelect 缺点：1、性能慢，/2、不实时
+      // var divs1 = document.getElementsByTagName('div')
+      // var divs2 = document.querySelectorAll('div')
+      // console.log(divs1)
+      // console.log(divs2)
+      // divs1[0].remove()
+      // divs2[0].remove()
+      // console.log(divs1)
+      // console.log(divs2)
+      var div = document.getElementsByTagName('div')[0]
+      function eleChildren(node) {
+        var children = node.childNodes,
+          arr = []
+        for (var i = 0; i < children.length; i++) {
+          var childItem = children[i]
+          if (childItem.nodeType === 1) {
+            arr.push(childItem)
+          }
+        }
+        return arr
+      }
+      console.log(eleChildren(div))
+    </script>
+  </body>
+</html>
