@@ -7,13 +7,75 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="div">
+    <div class="task1">
       文本类型
       <!-- 注释类型 -->
       <h1>标题</h1>
       <p>段落</p>
       <a href="#"><img src="" alt="" /></a>
     </div>
+    <div>
+      <ul>
+        <li>
+          <p id="p1">
+            <a href="#" class="task2"></a>
+          </p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="task3">
+      123
+      <!-- 注释 -->
+      <a href=""></a>
+    </div>
+    为了task4
+    <!-- 兄弟节点注释 -->
+    <div class="task4">
+      <p>段落1</p>
+      <p>段落2</p>
+      <p>段落3</p>
+    </div>
+
+    <div class="task6">
+      <ul>
+        <li>
+          <a href=""><img src="" alt="" />1</a>
+        </li>
+        <li>
+          <a href=""><img src="" alt="" />2</a>
+        </li>
+        <li>
+          <a href=""><img src="" alt="" />3</a>
+        </li>
+      </ul>
+      <div>
+        <h1>标题1</h1>
+        <p>段落1</p>
+        <p><span>段落2</span></p>
+      </div>
+    </div>
+
+    <div class="task7">
+      <a href="#">task7的链接</a>
+      <p>task7的段落</p>
+    </div>
+
+    <div class="task8">
+      <p>task8的段落</p>
+      <a href="#">task8的链接</a>
+      <h3>task8的标题</h3>
+    </div>
+
+    <div class="test1">
+      <a href="#" class="a1">链接</a>
+    </div>
+    <div class="test2" data-name="wenhe">
+      <h3>标题</h3>
+      <p>段落</p>
+      <a href="#">链接</a>
+    </div>
+    <ul class="list"></ul>
 
     <script>
       // //querySelect 缺点：1、性能慢，/2、不实时
@@ -26,7 +88,7 @@
       // console.log(divs1)
       // console.log(divs2)
 
-      // 封装 chindren
+      // 封装 chindren 1
       // function elemChildren(node) {
       //   var children = node.childNodes,
       //     arr = []
@@ -39,26 +101,285 @@
       //   return arr
       // }
 
-      function elemChildren(node) {
-        var temp = {
-            length: 0,
-            push: Array.prototype.push,
-            splice: Array.prototype.splice
-          },
-          len = node.childNodes.length
-        for (var i = 0; i < len; i++) {
-          var childItem = node.childNodes[i]
+      // 封装 chindren 2
+      // function elemChildren(node) {
+      //   var temp = {
+      //       length: 0,
+      //       push: Array.prototype.push,
+      //       splice: Array.prototype.splice
+      //     },
+      //     len = node.childNodes.length
+      //   for (var i = 0; i < len; i++) {
+      //     var childItem = node.childNodes[i]
+      //     if (childItem.nodeType === 1) {
+      //       // temp[temp['length']] = childItem
+      //       // temp['length']++
+      //       temp.push(childItem)
+      //     }
+      //   }
+      //   return temp
+      // }
+
+      // var div = document.getElementsByTagName('div')[0]
+      // console.log(elemChildren(div))
+
+      // var li = document.getElementsByTagName('li')[0]
+      // console.log(li)
+      // var p1 = li.getElementsByTagName('p')[0]
+      // console.log(p1)
+      // var p2 = document.getElementById('p1')
+      // console.log(p2) //报错
+
+      // var test1 = document.getElementsByClassName('test1')[0]
+      // var a1 = test1.getElementsByClassName('a1')[0]
+      // var div1 = document.createElement('div')
+      // div1.innerHTML = '<p>p标签</p>'
+      // // test1.appendChild(div1) //添加到末尾
+      // // div1.appendChild(a1) // 剪切到末尾
+      // // var a11 = a1.cloneNode(true) // 克隆
+      // // div1.appendChild(a11)
+      // // test1.insertBefore(div1, a1) //把div1添加到a1 前面
+      // // test1.replaceChild(div1, a1) // 替换节点
+      // // console.log(test1.removeChild(a1)) //移除节点
+      // console.log(test1)
+
+      // var test2 = document.getElementsByClassName('test2')[0]
+      // console.log(test2.dataset)
+      // console.log(test2.dataset.name)
+      // test2.setAttribute('data-age', 18)
+      // console.log(test2.dataset)
+      // console.log(test2.dataset.age)
+
+      // var oUl = document.getElementsByClassName('list')[0]
+      // var oFrag = document.createDocumentFragment()
+      // for (var i = 0; i < 1000; i++) {
+      //   var li = document.createElement('li')
+      //   li.innerHTML = '这是第' + (i + 1) + '个li'
+      //   oFrag.appendChild(li)
+      // }
+      // oUl.appendChild(oFrag)
+
+      // var oUl = document.getElementsByClassName('list')[0],
+      //   str = ''
+      // for (var i = 0; i < 1000; i++) {
+      //   var li = document.createElement('li')
+      //   str += '<li>这是第' + (i + 1) + '个li</li>'
+      // }
+      // oUl.innerHTML = str
+
+      /*
+      作业一：在原型上编程，遍历一个父元素，找到他的子元素节点，
+      有数字参数的 -> 某一个对应的子元素
+      没有数字参数的 -> 子元素节点的集合
+      */
+
+      // HTMLElement.prototype.elemChilds = function (n) {
+      //   var elemChildren = this.childNodes
+      //   if (arguments[0]) {
+      //     return elemChildren[n - 1]
+      //   } else {
+      //     return elemChildren
+      //   }
+      // }
+      // var task1 = document.getElementsByClassName('task1')[0]
+      // console.log(task1.elemChilds(2))
+
+      /*
+      作业二：在原型上编程，找出一个元素的第N层父级元素
+      */
+      // HTMLElement.prototype.elemParents = function (n) {
+      //   var eP = this.parentNode
+      //   if (n <= 0) {
+      //     return this
+      //   } else if (n == 1) {
+      //     return eP
+      //   } else {
+      //     for (var i = 2; i <= n; i++) {
+      //       eP = eP.parentNode
+      //     }
+      //     return eP
+      //   }
+      // }
+      // var task2 = document.getElementsByClassName('task2')[0]
+      // console.log(task2.elemParents(4))
+
+      /*
+      作业三：在原型上编程，重写hasChildNodes()，判断父元素上有没有子元素节点
+      只判断元素节点
+      */
+      // Node.prototype.hasChildren = function () {
+      //   var children = this.childNodes
+      //   for (var i = 0; i < children.length; i++) {
+      //     var childItem = children[i].nodeType
+      //     if (childItem === 1) {
+      //       return true
+      //     }
+      //   }
+      //   return false
+      // }
+      // var task3 = document.getElementsByClassName('task3')[0]
+      // console.log(task3.hasChildren())
+      /*
+      作业四：在原型上编程，寻找兄弟元素节点；
+       参数N为正，找之后的第N个,没有返回null
+       参数N为负，找之前的第N个,没有返回null
+       参数N为零，找到自己
+      */
+      // Element.prototype.FindSiblingElementNode = function (n) {
+      //   console.log(document.body)
+      //   if (n == 0) {
+      //     return this
+      //   } else if (n > 0) {
+      //     var nextElemNode = this.nextElementSibling
+      //     if (n == 1) {
+      //       return nextElemNode
+      //     } else {
+      //       for (var i = 2; i <= n; i++) {
+      //         nextElemNode = nextElemNode.nextElementSibling
+      //         if (nextElemNode === null) {
+      //           return null
+      //         }
+      //       }
+      //       return nextElemNode
+      //     }
+      //   } else {
+      //     var previousElemNode = this.previousElementSibling
+      //     if (n == -1) {
+      //       return previousElemNode
+      //     } else {
+      //       for (var i = -2; i >= n; i--) {
+      //         previousElemNode = previousElemNode.previousElementSibling
+      //         if (previousElemNode === null) {
+      //           return null
+      //         }
+      //       }
+      //       return previousElemNode
+      //     }
+      //   }
+      // }
+      // var task4 = document.getElementsByClassName('task4')[0]
+      // console.log(task4.FindSiblingElementNode(0))
+
+      /*
+      作业五：使用JS，动态创建下面这个结构
+      <div id="box">
+        <ul class="list">
+          <li class="list-item">1</li>
+          <li class="list-item">2</li>
+          <li class="list-item">3</li>
+          <li class="list-item">4</li>
+          <li class="list-item">5</li>
+        </ul>
+      </div>
+      */
+      // var oBody = document.body,
+      //   script = document.getElementsByTagName('script')[0],
+      //   oDiv = document.createElement('div'),
+      //   oUl = document.createElement('ul'),
+      //   oPrag = document.createDocumentFragment(),
+      //   oLi
+      // oDiv.setAttribute('id', 'box')
+      // oUl.className = 'list'
+      // oBody.insertBefore(oDiv, script)
+      // oDiv.appendChild(oUl)
+      // for (var i = 0; i < 5; i++) {
+      //   oLi = document.createElement('li')
+      //   oLi.className = 'list-item'
+      //   oLi.innerHTML = i + 1
+      //   oPrag.appendChild(oLi)
+      // }
+      // oUl.appendChild(oPrag)
+
+      /*
+      作业六：遍历一个父级元素下面所有的子元素节点
+      */
+
+      // // 判断一个元素是否还有子元素
+      // Node.prototype.hasChildren = function () {
+      //   var children = this.childNodes
+      //   for (var i = 0; i < children.length; i++) {
+      //     var childItem = children[i].nodeType
+      //     if (childItem === 1) {
+      //       return true
+      //     }
+      //   }
+      //   return false
+      // }
+      // //查找父元素内部的子元素节点
+      // HTMLElement.prototype.childrens = function () {
+      //   var children = this.childNodes,
+      //     arr = []
+      //   for (var i = 0; i < children.length; i++) {
+      //     var childItem = children[i]
+      //     if (childItem.nodeType === 1) {
+      //       arr.push(childItem)
+      //     }
+      //   }
+      //   return arr
+      // }
+      // // 循环遍历父元素里面的子元素
+      // function traverse(node, newArr) {
+      //   if (!node.hasChildren()) {
+      //     return newArr
+      //   }
+      //   var arr = node.childrens()
+      //   for (var i = 0; i < arr.length; i++) {
+      //     var arrItem = arr[i]
+      //     newArr.push(arrItem)
+      //     arguments.callee(arrItem, newArr)
+      //   }
+      //   return newArr
+      // }
+      // var task6 = document.getElementsByClassName('task6')[0],
+      //   list = document.getElementsByClassName('list')[0]
+      // console.log(traverse(task6, []))
+      // console.log(traverse(list, []))
+
+      /*
+      作业七：原型上封装 insertAfter() 方法，
+      将一个元素插入到选定元素的后面
+      */
+      // Node.prototype.insertAfter = function (target, origin) {
+      //   var nextElemNode = origin.nextElementSibling
+      //   var pNode = origin.parentNode
+      //   if (!nextElemNode) {
+      //     return pNode.appendChild(target)
+      //   } else {
+      //     return pNode.insertBefore(target, nextElemNode)
+      //   }
+      // }
+      // var task7 = document.getElementsByClassName('task7')[0]
+      // var oA = task7.getElementsByTagName('a')[0]
+      // var oSpan = document.createElement('span')
+      // task7.insertAfter(oSpan, oA)
+      // console.log(task7)
+
+      /*
+      作业八：子元素逆序
+      */
+      //查找父元素内部的子元素节点
+      HTMLElement.prototype.childrens = function () {
+        var children = this.childNodes,
+          arr = []
+        for (var i = 0; i < children.length; i++) {
+          var childItem = children[i]
           if (childItem.nodeType === 1) {
-            // temp[temp['length']] = childItem
-            // temp['length']++
-            temp.push(childItem)
+            arr.push(childItem)
           }
         }
-        return temp
+        return arr
       }
-
-      var div = document.getElementsByTagName('div')[0]
-      console.log(elemChildren(div))
+      var task8 = document.getElementsByClassName('task8')[0],
+        arr = task8.childrens(),
+        newArr = arr.reverse(),
+        oDiv = document.createElement('div')
+      for (var i = 0; i < newArr.length; i++) {
+        oDiv.appendChild(newArr[i])
+      }
+      document.body.insertBefore(oDiv, task8)
+      task8.remove()
+      oDiv.className = 'task8'
+      console.log(document.body)
     </script>
   </body>
 </html>
