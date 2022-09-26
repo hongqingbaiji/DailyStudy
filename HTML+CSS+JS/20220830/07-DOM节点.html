@@ -341,11 +341,10 @@
       */
       // Node.prototype.insertAfter = function (target, origin) {
       //   var nextElemNode = origin.nextElementSibling
-      //   var pNode = origin.parentNode
-      //   if (!nextElemNode) {
-      //     return pNode.appendChild(target)
+      //   if (nextElemNode) {
+      //     return this.insertBefore(target, nextElemNode)
       //   } else {
-      //     return pNode.insertBefore(target, nextElemNode)
+      //     return this.appendChild(target)
       //   }
       // }
       // var task7 = document.getElementsByClassName('task7')[0]
@@ -358,28 +357,28 @@
       作业八：子元素逆序
       */
       //查找父元素内部的子元素节点
-      HTMLElement.prototype.childrens = function () {
-        var children = this.childNodes,
-          arr = []
-        for (var i = 0; i < children.length; i++) {
-          var childItem = children[i]
-          if (childItem.nodeType === 1) {
-            arr.push(childItem)
-          }
-        }
-        return arr
-      }
-      var task8 = document.getElementsByClassName('task8')[0],
-        arr = task8.childrens(),
-        newArr = arr.reverse(),
-        oDiv = document.createElement('div')
-      for (var i = 0; i < newArr.length; i++) {
-        oDiv.appendChild(newArr[i])
-      }
-      document.body.insertBefore(oDiv, task8)
-      task8.remove()
-      oDiv.className = 'task8'
-      console.log(document.body)
+      // HTMLElement.prototype.childrens = function () {
+      //   var children = this.childNodes,
+      //     arr = []
+      //   for (var i = 0; i < children.length; i++) {
+      //     var childItem = children[i]
+      //     if (childItem.nodeType === 1) {
+      //       arr.push(childItem)
+      //     }
+      //   }
+      //   return arr
+      // }
+      // var task8 = document.getElementsByClassName('task8')[0],
+      //   arr = task8.childrens(),
+      //   newArr = arr.reverse(),
+      //   oDiv = document.createElement('div')
+      // for (var i = 0; i < newArr.length; i++) {
+      //   oDiv.appendChild(newArr[i])
+      // }
+      // document.body.insertBefore(oDiv, task8)
+      // task8.remove()
+      // oDiv.className = 'task8'
+      // console.log(document.body)
     </script>
   </body>
 </html>

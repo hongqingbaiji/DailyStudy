@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <button>获取更多数据</button> -->
+    <p>数字时钟：<span class="span1"></span></p>
+    <p>倒计时：<span class="span2"></span></p>
+    <script>
+      // var timer = setTimeout(function () {}, 1000)
+      // var timer1 = setInterval(function () {}, 1000)
+      // var timer2 = setTimeout(function () {}, 1000)
+      // var timer3 = setInterval(function () {}, 1000)
+      // console.log(timer) //1
+      // console.log(timer1) //2
+      // console.log(timer2) //3
+      // console.log(timer3) //4
+
+      // var oBtn = document.getElementsByTagName('button')[0]
+      // oBtn.onclick = function () {
+      //   this.innerHTML = '加载中...'
+      //   var _self = this
+      //   setTimeout(function () {
+      //     _self.innerHTML = '获取更多数据'
+      //   }, 2000)
+      // }
+
+      /*
+        作业一： 原型上编程，写一个数字时钟
+      */
+      // Date.prototype.digitalClock = function () {
+      //   var year = this.getFullYear(),
+      //     month = this.getMonth() + 1,
+      //     day = this.getDate(),
+      //     h = this.getHours(),
+      //     m = this.getMinutes(),
+      //     s = this.getSeconds()
+      //   month = month < 10 ? '0' + month : month
+      //   day = day < 10 ? '0' + day : day
+      //   h = h < 10 ? '0' + h : h
+      //   m = m < 10 ? '0' + m : m
+      //   s = s < 10 ? '0' + s : s
+      //   return year + '-' + month + '-' + day + ' ' + h + ':' + m + ':' + s
+      // }
+      // var oSpan1 = document.getElementsByClassName('span1')[0]
+      // var date = new Date()
+      // oSpan1.innerHTML = date.digitalClock()
+      // setInterval(function () {
+      //   var date = new Date()
+      //   oSpan1.innerHTML = date.digitalClock()
+      // }, 1000)
+
+      /*
+        作业二：原型上编程，写一个倒计时
+      */
+      Date.prototype.countDown = function () {
+        var newTime = this.getTime(),
+          oldTime = new Date('2022-9-30 00:00:00'),
+          dateTime = (oldTime - newTime) / 1000,
+          day = Math.floor((dateTime / 60 / 60 / 24) % 24),
+          h = Math.floor((dateTime / 60 / 60) % 24),
+          m = Math.floor((dateTime / 60) % 60),
+          s = Math.floor(dateTime % 60)
+        day = day < 10 ? '0' + day : day
+        h = h < 10 ? '0' + h : h
+        m = m < 10 ? '0' + m : m
+        s = s < 10 ? '0' + s : s
+        return day + ' 天 ' + h + ' 小时 ' + m + ' 分 ' + s + ' 秒'
+      }
+      var oSpan2 = document.getElementsByClassName('span2')[0]
+      var date = new Date()
+      oSpan2.innerHTML = date.countDown()
+
+      setInterval(function () {
+        var date = new Date()
+        oSpan2.innerHTML = date.countDown()
+      }, 1000)
+    </script>
+  </body>
+</html>

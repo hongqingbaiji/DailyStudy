@@ -621,6 +621,51 @@
       //   type.text = 'string'
       // }
       // console.log(type.text) // undefined
+
+      // Date()日期对象
+      // var date1 = Date()
+      // var date2 = new Date()
+      // var date3 = +new Date()
+
+      // console.log(date2.getDate())
+      // console.log(date2.getDay())
+
+      // Date.prototype.getWeekDay = function (lang) {
+      //   var day = this.getDay()
+      //   switch (day) {
+      //     case 0:
+      //       return lang === 'chs' ? '星期日' : 'Sunday'
+      //       break
+      //     case 1:
+      //       return lang === 'chs' ? '星期一' : 'Monday'
+      //       break
+      //     case 2:
+      //       return lang === 'chs' ? '星期二' : 'Tuesday'
+      //       break
+      //     case 3:
+      //       return lang === 'chs' ? '星期三' : 'Wednesday'
+      //       break
+      //     case 4:
+      //       return lang === 'chs' ? '星期四' : 'Thursday'
+      //       break
+      //     case 5:
+      //       return lang === 'chs' ? '星期五' : 'Friday'
+      //       break
+      //     case 6:
+      //       return lang === 'chs' ? '星期六' : 'Saturday'
+      //       break
+      //     default:
+      //       return 'error'
+      //   }
+      // }
+      // Date.prototype.getWeekDay = function (lang) {
+      //   var day = this.getDay(),
+      //     cArr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+      //     eArr = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+      //   return lang === 'chs' ? cArr[day] : eArr[day]
+      // }
+      // var date = new Date()
+      // console.log(date.getWeekDay())
     </script>
   </body>
 </html>
