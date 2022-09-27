@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <button>获取更多数据</button> -->
+    <p>数字时钟：<span class="span1"></span></p>
+    <p>倒计时：<span class="span2"></span></p>
+    <script>
+      // var timer = setTimeout(function () {}, 1000)
+      // var timer1 = setInterval(function () {}, 1000)
+      // var timer2 = setTimeout(function () {}, 1000)
+      // var timer3 = setInterval(function () {}, 1000)
+      // console.log(timer) //1
+      // console.log(timer1) //2
+      // console.log(timer2) //3
+      // console.log(timer3) //4
+
+      // var oBtn = document.getElementsByTagName('button')[0]
+      // oBtn.onclick = function () {
+      //   this.innerHTML = '加载中...'
+      //   var _self = this
+      //   setTimeout(function () {
+      //     _self.innerHTML = '获取更多数据'
+      //   }, 2000)
+      // }
+
+      /*
+        作业一： 原型上编程，写一个数字时钟
+      */
+      // Date.prototype.digitalClock = function () {
+      //   var year = this.getFullYear(),
+      //     month = this.getMonth() + 1,
+      //     day = this.getDate(),
+      //     h = this.getHours(),
+      //     m = this.getMinutes(),
+      //     s = this.getSeconds()
+
+      //   function getZero(num) {
+      //     return num < 10 ? '0' + num : num
+      //   }
+      //   return (
+      //     year +
+      //     '-' +
+      //     getZero(month) +
+      //     '-' +
+      //     getZero(day) +
+      //     ' ' +
+      //     getZero(h) +
+      //     ':' +
+      //     getZero(m) +
+      //     ':' +
+      //     getZero(s)
+      //   )
+      // }
+      // var oSpan1 = document.getElementsByClassName('span1')[0]
+      // oSpan1.innerHTML = new Date().digitalClock()
+      // setInterval(function () {
+      //   oSpan1.innerHTML = new Date().digitalClock()
+      // }, 1000)
+
+      /*
+        作业二：原型上编程，写一个倒计时
+      */
+      // Date.prototype.countDown = function (endTime, timer) {
+      //   var nowTime = this.getTime(),
+      //     leftTime = (endTime - nowTime) / 1000,
+      //     day,
+      //     h,
+      //     m,
+      //     s
+      //   if (leftTime >= 0) {
+      //     day = Math.floor(leftTime / 60 / 60 / 24)
+      //     h = Math.floor((leftTime / 60 / 60) % 24)
+      //     m = Math.floor((leftTime / 60) % 60)
+      //     s = Math.floor(leftTime % 60)
+      //   } else {
+      //     clearInterval(timer)
+      //     return '0 天 00 小时 00 分 00 秒'
+      //   }
+
+      //   function getZero(num) {
+      //     return num < 10 ? '0' + num : num
+      //   }
+      //   return day + ' 天 ' + getZero(h) + ' 小时 ' + getZero(m) + ' 分 ' + getZero(s) + ' 秒'
+      // }
+      // var oSpan2 = document.getElementsByClassName('span2')[0],
+      //   endTime = new Date('2022-9-27 12:55:00')
+
+      // oSpan2.innerHTML = new Date().countDown(endTime, timer)
+      // var timer = setInterval(function () {
+      //   oSpan2.innerHTML = new Date().countDown(endTime, timer)
+      // }, 1000)
+    </script>
+  </body>
+</html>
