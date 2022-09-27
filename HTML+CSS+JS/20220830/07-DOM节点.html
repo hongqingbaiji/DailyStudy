@@ -32,8 +32,9 @@
 
     <div class="task3">
       123
-      <!-- 注释 -->
-      <a href=""></a>
+      <p>
+        <!--注释-->
+      </p>
     </div>
     为了task4
     <!-- 兄弟节点注释 -->
@@ -68,9 +69,11 @@
     </div>
 
     <div class="task8">
+      <!--注释-->
       <p>task8---111111</p>
       <a href="#">task8---222222</a>
       <h3>task8---333333</h3>
+      文本节点
       <span>task8---444444</span>
     </div>
 
@@ -175,10 +178,10 @@
       // oUl.innerHTML = str
 
       /*
-      作业一：在原型上编程，遍历一个父元素，找到他的子元素节点，
-      有数字参数的 -> 某一个对应的子元素
-      没有数字参数的 -> 子元素节点的集合
-      */
+         作业一：在原型上编程，遍历一个父元素，找到他的子元素节点，
+         有数字参数的 -> 某一个对应的子元素
+         没有数字参数的 -> 子元素节点的集合
+         */
 
       // HTMLElement.prototype.elemChilds = function (n) {
       //   var elemChildren = this.childNodes
@@ -221,8 +224,8 @@
       // console.log(task1.elemChildren(0))
 
       /*
-      作业二：在原型上编程，找出一个元素的第N层父级元素,不传参或者参数等于0返回本身，参数不符合规则返回undefined
-      */
+         作业二：在原型上编程，找出一个元素的第N层父级元素,不传参或者参数等于0返回本身，参数不符合规则返回undefined
+         */
       // HTMLElement.prototype.elemParents = function (n) {
       //   var elem = this,
       //     type = typeof n
@@ -247,9 +250,9 @@
       // console.log(task2.elemParents(8))
 
       /*
-      作业三：在原型上编程，重写hasChildNodes()，判断父元素上有没有子元素节点
-      只判断元素节点
-      */
+         作业三：在原型上编程，重写hasChildNodes()，判断父元素上有没有子元素节点
+         只判断元素节点
+         */
       // Node.prototype.hasChildren = function () {
       //   var children = this.childNodes,
       //     len = children.length,
@@ -265,11 +268,11 @@
       // var task3 = document.getElementsByClassName('task3')[0]
       // console.log(task3.hasChildren())
       /*
-      作业四：在原型上编程，寻找兄弟元素节点；
-       参数N为正，找之后的第N个,没有返回null
-       参数N为负，找之前的第N个,没有返回null
-       参数N为零，找到自己
-      */
+         作业四：在原型上编程，寻找兄弟元素节点；
+          参数N为正，找之后的第N个,没有返回null
+          参数N为负，找之前的第N个,没有返回null
+          参数N为零，找到自己
+         */
       // Element.prototype.FindSiblingElementNode = function (n) {
       //   console.log(document.body)
       //   if (n == 0) {
@@ -342,17 +345,17 @@
       // console.log(task4.FindSiblingElementNode(1))
 
       /*
-      作业五：使用JS，动态创建下面这个结构
-      <div id="box">
-        <ul class="list">
-          <li class="list-item">1</li>
-          <li class="list-item">2</li>
-          <li class="list-item">3</li>
-          <li class="list-item">4</li>
-          <li class="list-item">5</li>
-        </ul>
-      </div>
-      */
+         作业五：使用JS，动态创建下面这个结构
+         <div id="box">
+           <ul class="list">
+             <li class="list-item">1</li>
+             <li class="list-item">2</li>
+             <li class="list-item">3</li>
+             <li class="list-item">4</li>
+             <li class="list-item">5</li>
+           </ul>
+         </div>
+         */
       // var oBody = document.body,
       //   script = document.getElementsByTagName('script')[0],
       //   oDiv = document.createElement('div'),
@@ -372,8 +375,8 @@
       // oUl.appendChild(oPrag)
 
       /*
-      作业六：遍历一个父级元素下面所有的子元素节点
-      */
+         作业六：遍历一个父级元素下面所有的子元素节点
+         */
 
       // // 判断一个元素是否还有子元素
       // Node.prototype.hasChildren = function () {
@@ -435,9 +438,9 @@
       // getFullChildren(task6)
 
       /*
-      作业七：原型上封装 insertAfter() 方法，
-      将一个元素插入到选定元素的后面
-      */
+         作业七：原型上封装 insertAfter() 方法，
+         将一个元素插入到选定元素的后面
+         */
       // Node.prototype.insertAfter = function (target, origin) {
       //   var nextElemNode = origin.nextElementSibling
       //   if (nextElemNode) {
@@ -453,8 +456,8 @@
       // console.log(task7)
 
       /*
-      作业八：子元素逆序
-      // */
+         作业八：子元素逆序
+         // */
       // function elemReverse(node) {
       //   var children = node.childNodes,
       //     len = children.length
@@ -464,6 +467,167 @@
       // }
       // var task8 = document.getElementsByClassName('task8')[0],
       // elemReverse(task8)
+
+      /*练习
+         1. 在原型上编程，遍历一个父元素，找到他的子元素节点；
+         有数字参数的 -> 某一个对应的子元素；没有数字参数的 -> 子元素节点的集合
+         */
+      // HTMLElement.prototype.findChildren = function (index) {
+      //   var children = this.childNodes,
+      //     len = children.length,
+      //     item,
+      //     type = typeof index,
+      //     temp = {
+      //       length: 0,
+      //       push: Array.prototype.push,
+      //       splice: Array.prototype.splice
+      //     }
+      //   for (var i = 0; i < len; i++) {
+      //     item = children[i]
+      //     if (item.nodeType === 1) {
+      //       temp.push(item)
+      //     }
+      //   }
+
+      //   if (index !== undefined && type !== 'number') {
+      //     return undefined
+      //   }
+      //   return index === undefined ? temp : temp[index]
+      // }
+      // var task1 = document.getElementsByClassName('task1')[0]
+      // console.log(task1.findChildren())
+      // console.log(task1.findChildren(0))
+
+      /*
+        2. 在原型上编程，找出一个元素的第N层父级元素,
+        不传参或者参数等于0返回本身，参数不符合规则返回undefined
+        */
+      // HTMLElement.prototype.elemParent = function (n) {
+      //   var elem = this,
+      //     type = typeof n
+      //   if (n === undefined || n === 0) {
+      //     return elem
+      //   } else if (type !== 'number' || n < 0) {
+      //     return undefined
+      //   }
+      //   while (n) {
+      //     if (elem.nodeName === 'HTML') {
+      //       elem = null
+      //       return elem
+      //     }
+      //     elem = elem.parentNode
+      //     n--
+      //   }
+      //   return elem
+      // }
+      // var task2 = document.getElementsByClassName('task2')[0]
+      // console.log(task2.elemParent())
+      // console.log(task2.elemParent(1))
+      /*
+       3. 在原型上编程，重写hasChildNodes()，
+       判断父元素上有没有子元素节点，只判断元素节点
+       */
+      // Node.prototype.hasChildren = function () {
+      //   var children = this.childNodes,
+      //     len = children.length,
+      //     item
+      //   for (var i = 0; i < len; i++) {
+      //     item = children[i]
+      //     if (item.nodeType === 1) {
+      //       return true
+      //     }
+      //   }
+      //   return false
+      // }
+      // var task3 = document.getElementsByClassName('task3')[0],
+      //   oP = task3.getElementsByTagName('p')[0]
+      // console.log(task3.hasChildren())
+      // console.log(oP.hasChildren())
+
+      /*
+       4. 在原型上编程，寻找兄弟元素节点；参数N为正，找到之后的第N个,没有返回null；
+       参数N为负，找到之前的第N个,没有返回null；参数N为零，找到自己。
+       */
+      // Element.prototype.findSiblingElem = function (n) {
+      //   var elem = this,
+      //     type = typeof n
+      //   if (n === undefined || n === 0) {
+      //     return elem
+      //   } else if (type !== 'number') {
+      //     return undefined
+      //   }
+      //   while (n) {
+      //     if (n > 0) {
+      //       elem = elem.nextSibling
+      //       while (elem && elem.nodeType !== 1) {
+      //         elem = elem.nextSibling
+      //       }
+      //       n--
+      //     } else if (n < 0) {
+      //       for (
+      //         elem = elem.previousSibling;
+      //         elem && elem.nodeType !== 1;
+      //         elem = elem.previousSibling
+      //       );
+      //       n++
+      //     }
+      //   }
+      //   return elem
+      // }
+      // var task4 = document.getElementsByClassName('task4')[0]
+      // console.log(task4.findSiblingElem(-1))
+      // console.log(task4.findSiblingElem(1))
+
+      /*
+      5. 遍历一个父级元素下面所有的子元素节点
+      */
+      // function getFullChildren(node) {
+      //   var children = node.childNodes,
+      //     len = children.length,
+      //     item
+
+      //   if (node && node.nodeType === 1) {
+      //     console.log(node)
+      //   }
+
+      //   for (var i = 0; i < len; i++) {
+      //     item = children[i]
+      //     if (item.nodeType === 1) {
+      //       arguments.callee(item)
+      //     }
+      //   }
+      // }
+      // var task6 = document.getElementsByClassName('task6')[0]
+      // getFullChildren(task6)
+      /*
+      6. 原型上封装 insertAfter() 方法，和insertBefore()相反，
+      要将一个元素插入到选定元素的后面
+      */
+      // Node.prototype.insertAfter = function (target, origin) {
+      //   var nextElem = origin.nextElementSibling
+      //   return nextElem ? this.insertBefore(target, nextElem) : this.appendChild(target)
+      // }
+      // var task7 = document.getElementsByClassName('task7')[0],
+      //   oA = task7.getElementsByTagName('a')[0],
+      //   oP = task7.getElementsByTagName('p')[0],
+      //   oSpan = document.createElement('span')
+      // // task7.insertAfter(oSpan, oA)
+      // task7.insertAfter(oSpan, oP)
+      // console.log(task7)
+      /*
+      7. 子元素逆序
+      */
+      // function elemReverse(node) {
+      //   var children = node.childNodes,
+      //     len = children.length
+      //   while (len--) {
+      //     node.appendChild(children[len])
+      //   }
+      // }
+
+      // var task8 = document.getElementsByClassName('task8')[0]
+      // elemReverse(task8)
+      // console.log(task8)
     </script>
   </body>
 </html>
