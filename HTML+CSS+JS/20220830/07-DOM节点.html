@@ -12,8 +12,14 @@
       <!-- 注释类型 -->
       <h1>标题</h1>
       <p>段落</p>
+      <p>
+        段落2
+        <span>span1</span>
+      </p>
+      <span></span>
       <a href="#"><img src="" alt="" /></a>
     </div>
+
     <div>
       <ul>
         <li>
@@ -62,9 +68,10 @@
     </div>
 
     <div class="task8">
-      <p>task8的段落</p>
-      <a href="#">task8的链接</a>
-      <h3>task8的标题</h3>
+      <p>task8---111111</p>
+      <a href="#">task8---222222</a>
+      <h3>task8---333333</h3>
+      <span>task8---444444</span>
     </div>
 
     <div class="test1">
@@ -175,6 +182,8 @@
 
       // HTMLElement.prototype.elemChilds = function (n) {
       //   var elemChildren = this.childNodes
+      // 1.没有过滤其他子节点；
+      // 2. 不能直接判断参数存在就行，还得判断参数是否合理
       //   if (arguments[0]) {
       //     return elemChildren[n - 1]
       //   } else {
@@ -182,36 +191,72 @@
       //   }
       // }
       // var task1 = document.getElementsByClassName('task1')[0]
-      // console.log(task1.elemChilds(2))
+      // console.log(task1.elemChilds())
+
+      // 修改作业
+      // HTMLElement.prototype.elemChildren = function (index) {
+      //   var childNodes = this.childNodes,
+      //     len = childNodes.length,
+      //     item,
+      //     temp = {
+      //       length: 0,
+      //       push: Array.prototype.push,
+      //       splice: Array.prototype.splice
+      //     }
+
+      //   for (var i = 0; i < len; i++) {
+      //     item = childNodes[i]
+      //     if (item.nodeType === 1) {
+      //       temp.push(item)
+      //     }
+      //   }
+      //   if (index !== undefined && typeof index !== 'number') {
+      //     return undefined
+      //   }
+
+      //   return index === undefined ? temp : temp[index]
+      // }
+      // var task1 = document.getElementsByClassName('task1')[0]
+      // console.log(task1.elemChildren())
+      // console.log(task1.elemChildren(0))
 
       /*
-      作业二：在原型上编程，找出一个元素的第N层父级元素
+      作业二：在原型上编程，找出一个元素的第N层父级元素,不传参或者参数等于0返回本身，参数不符合规则返回undefined
       */
       // HTMLElement.prototype.elemParents = function (n) {
-      //   var eP = this.parentNode
-      //   if (n <= 0) {
+      //   var elem = this,
+      //     type = typeof n
+      //   if (type === 'undefined' || n === 0) {
       //     return this
-      //   } else if (n == 1) {
-      //     return eP
-      //   } else {
-      //     for (var i = 2; i <= n; i++) {
-      //       eP = eP.parentNode
-      //     }
-      //     return eP
+      //   } else if (type !== 'number' || n < 0) {
+      //     return undefined
       //   }
+      //   for (var i = n; i > 0; i--) {
+      //     if (elem.nodeName === 'HTML') {
+      //       elem = null
+      //       return elem
+      //     }
+      //     elem = elem.parentNode
+      //   }
+      //   return elem
       // }
       // var task2 = document.getElementsByClassName('task2')[0]
-      // console.log(task2.elemParents(4))
+      // console.log(task2.elemParents(5))
+      // console.log(task2.elemParents(6))
+      // console.log(task2.elemParents(7))
+      // console.log(task2.elemParents(8))
 
       /*
       作业三：在原型上编程，重写hasChildNodes()，判断父元素上有没有子元素节点
       只判断元素节点
       */
       // Node.prototype.hasChildren = function () {
-      //   var children = this.childNodes
-      //   for (var i = 0; i < children.length; i++) {
-      //     var childItem = children[i].nodeType
-      //     if (childItem === 1) {
+      //   var children = this.childNodes,
+      //     len = children.length,
+      //     item
+      //   for (var i = 0; i < len; i++) {
+      //     item = children[i]
+      //     if (item.nodeType === 1) {
       //       return true
       //     }
       //   }
@@ -259,6 +304,42 @@
       // }
       // var task4 = document.getElementsByClassName('task4')[0]
       // console.log(task4.FindSiblingElementNode(0))
+
+      // Element.prototype.FindSiblingElementNode = function (n) {
+      //   var elem = this,
+      //     type = typeof n
+      //   if (type === 'undefined' || n === 0) {
+      //     return elem
+      //   } else if (type !== 'undefined' && type !== 'number') {
+      //     return undefined
+      //   }
+      //   while (n) {
+      //     if (n > 0) {
+      //       // elem = elem.nextSibling
+      //       // while (elem && elem.nodeType !== 1) {
+      //       //   elem = elem.nextSibling
+      //       // }
+      //       for (elem = elem.nextSibling; elem && elem.nodeType !== 1; elem = elem.nextSibling);
+      //       n--
+      //     } else if (n < 0) {
+      //       for (
+      //         elem = elem.previousSibling;
+      //         elem && elem.nodeType !== 1;
+      //         elem = elem.previousSibling
+      //       );
+      //       n++
+      //     }
+      //   }
+      //   return elem
+      // }
+      // var task4 = document.getElementsByClassName('task4')[0]
+      // console.log(task4.FindSiblingElementNode(-1))
+      // console.log(task4.FindSiblingElementNode(-2))
+      // console.log(task4.FindSiblingElementNode(-3))
+      // console.log(task4.FindSiblingElementNode(-4))
+      // console.log(task4.FindSiblingElementNode(0))
+      // console.log(task4.FindSiblingElementNode('a'))
+      // console.log(task4.FindSiblingElementNode(1))
 
       /*
       作业五：使用JS，动态创建下面这个结构
@@ -335,6 +416,24 @@
       // console.log(traverse(task6, []))
       // console.log(traverse(list, []))
 
+      // function getFullChildren(node) {
+      //   var children = node.childNodes,
+      //     len = children.length,
+      //     item
+      //   if (node && node.nodeType === 1) {
+      //     console.log(node)
+      //   }
+
+      //   for (var i = 0; i < len; i++) {
+      //     item = children[i]
+      //     if (item.nodeType === 1) {
+      //       arguments.callee(item)
+      //     }
+      //   }
+      // }
+      // var task6 = document.getElementsByClassName('task6')[0]
+      // getFullChildren(task6)
+
       /*
       作业七：原型上封装 insertAfter() 方法，
       将一个元素插入到选定元素的后面
@@ -355,30 +454,16 @@
 
       /*
       作业八：子元素逆序
-      */
-      //查找父元素内部的子元素节点
-      // HTMLElement.prototype.childrens = function () {
-      //   var children = this.childNodes,
-      //     arr = []
-      //   for (var i = 0; i < children.length; i++) {
-      //     var childItem = children[i]
-      //     if (childItem.nodeType === 1) {
-      //       arr.push(childItem)
-      //     }
+      // */
+      // function elemReverse(node) {
+      //   var children = node.childNodes,
+      //     len = children.length
+      //   while (len--) {
+      //     node.appendChild(children[len])
       //   }
-      //   return arr
       // }
       // var task8 = document.getElementsByClassName('task8')[0],
-      //   arr = task8.childrens(),
-      //   newArr = arr.reverse(),
-      //   oDiv = document.createElement('div')
-      // for (var i = 0; i < newArr.length; i++) {
-      //   oDiv.appendChild(newArr[i])
-      // }
-      // document.body.insertBefore(oDiv, task8)
-      // task8.remove()
-      // oDiv.className = 'task8'
-      // console.log(document.body)
+      // elemReverse(task8)
     </script>
   </body>
 </html>

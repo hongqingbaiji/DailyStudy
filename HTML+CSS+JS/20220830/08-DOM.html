@@ -32,52 +32,68 @@
       /*
         作业一： 原型上编程，写一个数字时钟
       */
-      // Date.prototype.digitalClock = function () {
-      //   var year = this.getFullYear(),
-      //     month = this.getMonth() + 1,
-      //     day = this.getDate(),
-      //     h = this.getHours(),
-      //     m = this.getMinutes(),
-      //     s = this.getSeconds()
-      //   month = month < 10 ? '0' + month : month
-      //   day = day < 10 ? '0' + day : day
-      //   h = h < 10 ? '0' + h : h
-      //   m = m < 10 ? '0' + m : m
-      //   s = s < 10 ? '0' + s : s
-      //   return year + '-' + month + '-' + day + ' ' + h + ':' + m + ':' + s
-      // }
-      // var oSpan1 = document.getElementsByClassName('span1')[0]
-      // var date = new Date()
-      // oSpan1.innerHTML = date.digitalClock()
-      // setInterval(function () {
-      //   var date = new Date()
-      //   oSpan1.innerHTML = date.digitalClock()
-      // }, 1000)
+      Date.prototype.digitalClock = function () {
+        var year = this.getFullYear(),
+          month = this.getMonth() + 1,
+          day = this.getDate(),
+          h = this.getHours(),
+          m = this.getMinutes(),
+          s = this.getSeconds()
+
+        function getZero(num) {
+          return num < 10 ? '0' + num : num
+        }
+        return (
+          year +
+          '-' +
+          getZero(month) +
+          '-' +
+          getZero(day) +
+          ' ' +
+          getZero(h) +
+          ':' +
+          getZero(m) +
+          ':' +
+          getZero(s)
+        )
+      }
+      var oSpan1 = document.getElementsByClassName('span1')[0]
+      oSpan1.innerHTML = new Date().digitalClock()
+      setInterval(function () {
+        oSpan1.innerHTML = new Date().digitalClock()
+      }, 1000)
 
       /*
         作业二：原型上编程，写一个倒计时
       */
-      Date.prototype.countDown = function () {
-        var newTime = this.getTime(),
-          oldTime = new Date('2022-9-30 00:00:00'),
-          dateTime = (oldTime - newTime) / 1000,
-          day = Math.floor((dateTime / 60 / 60 / 24) % 24),
-          h = Math.floor((dateTime / 60 / 60) % 24),
-          m = Math.floor((dateTime / 60) % 60),
-          s = Math.floor(dateTime % 60)
-        day = day < 10 ? '0' + day : day
-        h = h < 10 ? '0' + h : h
-        m = m < 10 ? '0' + m : m
-        s = s < 10 ? '0' + s : s
-        return day + ' 天 ' + h + ' 小时 ' + m + ' 分 ' + s + ' 秒'
-      }
-      var oSpan2 = document.getElementsByClassName('span2')[0]
-      var date = new Date()
-      oSpan2.innerHTML = date.countDown()
+      Date.prototype.countDown = function (endTime, timer) {
+        var nowTime = this.getTime(),
+          leftTime = (endTime - nowTime) / 1000,
+          day,
+          h,
+          m,
+          s
+        if (leftTime >= 0) {
+          day = Math.floor(leftTime / 60 / 60 / 24)
+          h = Math.floor((leftTime / 60 / 60) % 24)
+          m = Math.floor((leftTime / 60) % 60)
+          s = Math.floor(leftTime % 60)
+        } else {
+          clearInterval(timer)
+          return '0 天 00 小时 00 分 00 秒'
+        }
 
-      setInterval(function () {
-        var date = new Date()
-        oSpan2.innerHTML = date.countDown()
+        function getZero(num) {
+          return num < 10 ? '0' + num : num
+        }
+        return day + ' 天 ' + getZero(h) + ' 小时 ' + getZero(m) + ' 分 ' + getZero(s) + ' 秒'
+      }
+      var oSpan2 = document.getElementsByClassName('span2')[0],
+        endTime = new Date('2022-9-27 12:55:00')
+
+      oSpan2.innerHTML = new Date().countDown(endTime, timer)
+      var timer = setInterval(function () {
+        oSpan2.innerHTML = new Date().countDown(endTime, timer)
       }, 1000)
     </script>
   </body>
