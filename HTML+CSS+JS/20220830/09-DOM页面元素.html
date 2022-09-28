@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .grandPa {
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        width: 300px;
+        height: 300px;
+        background-color: #ccc;
+      }
+      .parent {
+        position: absolute;
+        left: 50px;
+        top: 50px;
+        width: 200px;
+        height: 200px;
+        background-color: #999;
+      }
+      .son {
+        position: absolute;
+        left: 50px;
+        top: 50px;
+        width: 100px;
+        height: 100px;
+        background-color: green;
+      }
+
+      .p1 {
+        box-sizing: border-box;
+        width: 200px;
+        height: 200px;
+        margin: 500px 100px;
+        padding: 10px;
+        border: 5px solid #000;
+        overflow: auto;
+      }
+      .div2 {
+        /* box-sizing: border-box; */
+        width: 200px;
+        height: 200px;
+        margin: 100px;
+        padding: 20px;
+        border: 5px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grandPa">
+      <div class="parent">
+        <div class="son"></div>
+      </div>
+    </div>
+
+    <p class="p1">
+      这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落
+      这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落
+      这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落
+      这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落
+      这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落
+      这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落
+      这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落
+      这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落
+      这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落
+      这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落
+      这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落
+      这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落
+    </p>
+    <div style="width: 5000px; height: 3000px"></div>
+    <div class="div2"></div>
+    <script>
+      var oDiv = document.getElementsByTagName('div')[0],
+        oP = document.getElementsByClassName('p1')[0],
+        oDiv2 = document.getElementsByClassName('div2')[0],
+        son = document.getElementsByClassName('son')[0],
+        parent = document.getElementsByClassName('parent')[0],
+        grandPa = document.getElementsByClassName('grandPa')[0]
+      console.log(oDiv.clientWidth, oDiv.clientHeight)
+      console.log(getScrollOffset(oP).left, getScrollOffset(oP).top)
+      console.log(son.offsetLeft, son.offsetTop)
+      console.log(son.offsetWidth, son.offsetHeight)
+      console.log(son.offsetParent)
+
+      // 封装一下 浏览器可视窗口大小 兼容IE 标准模式和怪异模式
+      function getViewportSize() {
+        if (false && window.innerWidth) {
+          return {
+            width: window.innerWidth,
+            height: window.innerHeight
+          }
+        } else {
+          // 判断当前是什么模式，CSS1Compat是标准模式，BackCompat是怪异模式
+          if (document.compatMode === 'CSS1Compat') {
+            return {
+              width: document.documentElement.clientWidth,
+              height: document.documentElement.clientHeight
+            }
+          } else {
+            return {
+              width: document.body.clientWidth,
+              height: document.body.clientHeight
+            }
+          }
+        }
+      }
+
+      // 封装一下 页面滚动的距离 兼容IE,
+      // 如果要查的是元素的滚动距离，则把元素当参数传入进去
+      function getScrollOffset(node) {
+        if (node) {
+          return {
+            left: node.scrollLeft,
+            top: node.scrollTop
+          }
+        } else {
+          if (window.pageXOffset) {
+            return {
+              left: window.pageXOffset,
+              top: window.pageYOffset
+            }
+          } else {
+            return {
+              left: document.body.scrollLeft + document.documentElement.scrollLeft,
+              top: document.body.scrollTop + document.documentElement.scrollTop
+            }
+          }
+        }
+      }
+
+      // 封装一下 求元素到body的距离
+      function getElemDocPosition(elem) {
+        var parent = elem.offsetParent,
+          offsetLeft = elem.offsetLeft,
+          offsetTop = elem.offsetTop
+        while (parent) {
+          offsetLeft += parent.offsetLeft
+          offsetTop += parent.offsetTop
+          parent = parent.offsetParent
+        }
+        return {
+          left: offsetLeft,
+          top: offsetTop
+        }
+      }
+    </script>
+  </body>
+</html>

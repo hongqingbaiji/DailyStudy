@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+        margin-top: 40px;
+      }
+      .container {
+        position: relative;
+        width: 600px;
+        height: 800px;
+        margin: 0 auto;
+        overflow: auto;
+      }
+      .backTop {
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 700px;
+        transform: translateX(180px);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: orange;
+        color: #fff;
+        line-height: 80px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .top {
+        position: fixed;
+        top: 0;
+        width: 600px;
+        height: 40px;
+        background-color: #3f3ff3;
+        text-align: center;
+        line-height: 40px;
+      }
+      .top h3 {
+        font-weight: 400;
+        color: #fff;
+      }
+      .main {
+        width: 100%;
+      }
+      .main li {
+        display: flex;
+        border: 1px solid #ccc;
+        padding: 5px;
+        border-top: 0px;
+      }
+      .left {
+        width: 100px;
+        height: 140px;
+      }
+      .left img {
+        width: 100px;
+        height: 140px;
+      }
+      .right {
+        padding: 5px 10px;
+      }
+      .right h3 {
+        font-weight: 400;
+      }
+      .author {
+        font-size: 14px;
+        margin: 5px 0;
+        color: #666;
+      }
+      .content {
+        margin: 10px 0;
+        width: 450px;
+        font-size: 12px;
+        color: #999;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .right span {
+        font-size: 14px;
+        margin: 5px 0;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="backTop">返回顶部</div>
+      <div class="top">
+        <h3>书籍列表</h3>
+      </div>
+      <div class="main">
+        <ul>
+          <li>
+            <div class="left">
+              <img src="./images/4.webp" />
+            </div>
+            <div class="right">
+              <h3>完美世界</h3>
+              <p class="author">作者:他乡的灯火</p>
+              <p class="content">
+                《完美世界》是辰东所著的第五部小说，东方玄幻系列,主角贼牛皮，我是肝不过他，你们要是觉得自己行就直接上;
+              </p>
+              <span>更新时间：2022-9-28</span>
+            </div>
+          </li>
+          <li>
+            <div class="left">
+              <img src="./images/4.webp" />
+            </div>
+            <div class="right">
+              <h3>完美世界</h3>
+              <p class="author">作者:他乡的灯火</p>
+              <p class="content">
+                《完美世界》是辰东所著的第五部小说，东方玄幻系列,主角贼牛皮，我是肝不过他，你们要是觉得自己行就直接上;
+              </p>
+              <span>更新时间：2022-9-28</span>
+            </div>
+          </li>
+          <li>
+            <div class="left">
+              <img src="./images/4.webp" />
+            </div>
+            <div class="right">
+              <h3>完美世界</h3>
+              <p class="author">作者:他乡的灯火</p>
+              <p class="content">
+                《完美世界》是辰东所著的第五部小说，东方玄幻系列,主角贼牛皮，我是肝不过他，你们要是觉得自己行就直接上;
+              </p>
+              <span>更新时间：2022-9-28</span>
+            </div>
+          </li>
+          <li>
+            <div class="left">
+              <img src="./images/4.webp" />
+            </div>
+            <div class="right">
+              <h3>完美世界</h3>
+              <p class="author">作者:他乡的灯火</p>
+              <p class="content">
+                《完美世界》是辰东所著的第五部小说，东方玄幻系列,主角贼牛皮，我是肝不过他，你们要是觉得自己行就直接上;
+              </p>
+              <span>更新时间：2022-9-28</span>
+            </div>
+          </li>
+          <li>
+            <div class="left">
+              <img src="./images/4.webp" />
+            </div>
+            <div class="right">
+              <h3>完美世界</h3>
+              <p class="author">作者:他乡的灯火</p>
+              <p class="content">
+                《完美世界》是辰东所著的第五部小说，东方玄幻系列,主角贼牛皮，我是肝不过他，你们要是觉得自己行就直接上;
+              </p>
+              <span>更新时间：2022-9-28</span>
+            </div>
+          </li>
+          <li>
+            <div class="left">
+              <img src="./images/4.webp" />
+            </div>
+            <div class="right">
+              <h3>完美世界</h3>
+              <p class="author">作者:他乡的灯火</p>
+              <p class="content">
+                《完美世界》是辰东所著的第五部小说，东方玄幻系列,主角贼牛皮，我是肝不过他，你们要是觉得自己行就直接上;
+              </p>
+              <span>更新时间：2022-9-28</span>
+            </div>
+          </li>
+          <li>
+            <div class="left">
+              <img src="./images/4.webp" />
+            </div>
+            <div class="right">
+              <h3>完美世界</h3>
+              <p class="author">作者:他乡的灯火</p>
+              <p class="content">
+                《完美世界》是辰东所著的第五部小说，东方玄幻系列,主角贼牛皮，我是肝不过他，你们要是觉得自己行就直接上;
+              </p>
+              <span>更新时间：2022-9-28</span>
+            </div>
+          </li>
+          <li>
+            <div class="left">
+              <img src="./images/4.webp" />
+            </div>
+            <div class="right">
+              <h3>完美世界</h3>
+              <p class="author">作者:他乡的灯火</p>
+              <p class="content">
+                《完美世界》是辰东所著的第五部小说，东方玄幻系列,主角贼牛皮，我是肝不过他，你们要是觉得自己行就直接上;
+              </p>
+              <span>更新时间：2022-9-28</span>
+            </div>
+          </li>
+          <li>
+            <div class="left">
+              <img src="./images/4.webp" />
+            </div>
+            <div class="right">
+              <h3>完美世界</h3>
+              <p class="author">作者:他乡的灯火</p>
+              <p class="content">
+                《完美世界》是辰东所著的第五部小说，东方玄幻系列,主角贼牛皮，我是肝不过他，你们要是觉得自己行就直接上;
+              </p>
+              <span>更新时间：2022-9-28</span>
+            </div>
+          </li>
+          <li>
+            <div class="left">
+              <img src="./images/4.webp" />
+            </div>
+            <div class="right">
+              <h3>完美世界</h3>
+              <p class="author">作者:他乡的灯火</p>
+              <p class="content">
+                《完美世界》是辰东所著的第五部小说，东方玄幻系列,主角贼牛皮，我是肝不过他，你们要是觉得自己行就直接上;
+              </p>
+              <span>更新时间：2022-9-28</span>
+            </div>
+          </li>
+          <li>
+            <div class="left">
+              <img src="./images/4.webp" />
+            </div>
+            <div class="right">
+              <h3>完美世界</h3>
+              <p class="author">作者:他乡的灯火</p>
+              <p class="content">
+                《完美世界》是辰东所著的第五部小说，东方玄幻系列,主角贼牛皮，我是肝不过他，你们要是觉得自己行就直接上;
+              </p>
+              <span>更新时间：2022-9-28</span>
+            </div>
+          </li>
+          <li>
+            <div class="left">
+              <img src="./images/4.webp" />
+            </div>
+            <div class="right">
+              <h3>完美世界</h3>
+              <p class="author">作者:他乡的灯火</p>
+              <p class="content">
+                《完美世界》是辰东所著的第五部小说，东方玄幻系列,主角贼牛皮，我是肝不过他，你们要是觉得自己行就直接上;
+              </p>
+              <span>更新时间：2022-9-28</span>
+            </div>
+          </li>
+          <li>
+            <div class="left">
+              <img src="./images/4.webp" />
+            </div>
+            <div class="right">
+              <h3>完美世界</h3>
+              <p class="author">作者:他乡的灯火</p>
+              <p class="content">
+                《完美世界》是辰东所著的第五部小说，东方玄幻系列,主角贼牛皮，我是肝不过他，你们要是觉得自己行就直接上;
+              </p>
+              <span>更新时间：2022-9-28</span>
+            </div>
+          </li>
+          <li>
+            <div class="left">
+              <img src="./images/4.webp" />
+            </div>
+            <div class="right">
+              <h3>完美世界</h3>
+              <p class="author">作者:他乡的灯火</p>
+              <p class="content">
+                《完美世界》是辰东所著的第五部小说，东方玄幻系列,主角贼牛皮，我是肝不过他，你们要是觉得自己行就直接上;
+              </p>
+              <span>更新时间：2022-9-28</span>
+            </div>
+          </li>
+          <li>
+            <div class="left">
+              <img src="./images/4.webp" />
+            </div>
+            <div class="right">
+              <h3>完美世界</h3>
+              <p class="author">作者:他乡的灯火</p>
+              <p class="content">
+                《完美世界》是辰东所著的第五部小说，东方玄幻系列,主角贼牛皮，我是肝不过他，你们要是觉得自己行就直接上;
+              </p>
+              <span>更新时间：2022-9-28</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      var backTop = document.getElementsByClassName('backTop')[0],
+        container = document.getElementsByClassName('container')[0],
+        main = document.getElementsByClassName('main')[0],
+        oUl = main.getElementsByTagName('ul')[0],
+        oLi = oUl.getElementsByTagName('li')
+
+      container.onscroll = function () {
+        if (container.scrollTop >= 300) {
+          backTop.style.display = 'block'
+        } else {
+          backTop.style.display = 'none'
+        }
+      }
+      container.onclick = function () {
+        this.scrollTo(0, 0)
+      }
+      oLi.onclick = function () {
+        window.open('./10_1-作业页面2.html')
+      }
+    </script>
+  </body>
+</html>
