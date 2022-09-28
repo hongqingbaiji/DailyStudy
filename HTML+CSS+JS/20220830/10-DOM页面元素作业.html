@@ -12,14 +12,11 @@
       }
       ul {
         list-style: none;
-        margin-top: 40px;
       }
       .container {
         position: relative;
         width: 600px;
-        height: 800px;
         margin: 0 auto;
-        overflow: auto;
       }
       .backTop {
         display: none;
@@ -50,7 +47,10 @@
         color: #fff;
       }
       .main {
-        width: 100%;
+        margin-top: 40px;
+        width: 600px;
+        height: 800px;
+        overflow: auto;
       }
       .main li {
         display: flex;
@@ -301,23 +301,23 @@
     </div>
     <script>
       var backTop = document.getElementsByClassName('backTop')[0],
-        container = document.getElementsByClassName('container')[0],
         main = document.getElementsByClassName('main')[0],
         oUl = main.getElementsByTagName('ul')[0],
-        oLi = oUl.getElementsByTagName('li')
+        oLi = oUl.getElementsByTagName('li')[0]
 
-      container.onscroll = function () {
-        if (container.scrollTop >= 300) {
+      main.onscroll = function () {
+        if (main.scrollTop >= 300) {
           backTop.style.display = 'block'
         } else {
           backTop.style.display = 'none'
         }
       }
-      container.onclick = function () {
-        this.scrollTo(0, 0)
+      backTop.onclick = function () {
+        main.scrollTo(0, 0)
       }
+
       oLi.onclick = function () {
-        window.open('./10_1-作业页面2.html')
+        location.href = './10_1-作业页面2.html'
       }
     </script>
   </body>
