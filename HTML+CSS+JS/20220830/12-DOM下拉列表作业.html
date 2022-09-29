@@ -5,6 +5,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
+      .container {
+        width: 150px;
+        margin: 100px;
+      }
+      .list {
+        position: relative;
+        width: 100%;
+        height: 40px;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        line-height: 40px;
+      }
+      .list::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        border: 5px solid transparent;
+        border-top-color: #fff;
+        transition: all 0.5s;
+      }
+      .list.active::after {
+        transform: translateY(-80%) rotate(-180deg);
+      }
+      .list-item {
+        height: 0;
+        overflow: hidden;
+      }
+      .item {
+        width: 150px;
+        height: 40px;
+        background-color: #666;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+      }
+      .item:hover {
+        background-color: #333;
+      }
+    </style>
   </head>
   <body>
     <!-- 需求
@@ -12,5 +66,58 @@
     2. 有一个三角形，下拉和收起要改变方向；
     3. 下拉和收起有一个过渡效果，用定时器来做；
     4. 鼠标经过下拉子项，有样式变化；
-  --></body>
+    -->
+    <div class="container">
+      <div class="list">下拉列表</div>
+      <ul class="list-item">
+        <li class="item"><a href="javascript:;">下拉项1</a></li>
+        <li class="item"><a href="javascript:;">下拉项2</a></li>
+        <li class="item"><a href="javascript:;">下拉项3</a></li>
+        <li class="item"><a href="javascript:;">下拉项4</a></li>
+        <li class="item"><a href="javascript:;">下拉项5</a></li>
+      </ul>
+    </div>
+    <script>
+      var container = document.getElementsByClassName('container')[0],
+        oList = container.getElementsByClassName('list')[0],
+        oUl = container.getElementsByClassName('list-item')[0],
+        timer = null,
+        leftHeight,
+        speed = 5
+
+      container.addEventListener('mouseenter', function () {
+        clearInterval(timer)
+        timer = setInterval(function () {
+          if (leftHeight >= 200) {
+            clearInterval(timer)
+          } else {
+            leftHeight = parseInt(getStyles(oUl, 'height')) + speed
+            oUl.style.height = leftHeight + 'px'
+          }
+        }, 1)
+        oList.className += ' active'
+      })
+      container.addEventListener('mouseleave', function () {
+        clearInterval(timer)
+        timer = setInterval(function () {
+          if (leftHeight <= 0) {
+            clearInterval(timer)
+          } else {
+            leftHeight = parseInt(getStyles(oUl, 'height')) - speed
+            oUl.style.height = leftHeight + 'px'
+          }
+        }, 1)
+        oList.className = 'list'
+      })
+
+      // 封装获取属性样式
+      function getStyles(el, prop) {
+        if (window.getComputedStyle) {
+          return prop ? window.getComputedStyle(el, null)[prop] : window.getComputedStyle(el, null)
+        } else {
+          return prop ? el.currentStyle[prop] : el.currentStyle
+        }
+      }
+    </script>
+  </body>
 </html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 打印下标 
+      <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+    <script>
+      var oUl = document.getElementsByTagName('ul')[0],
+        oLi = oUl.getElementsByTagName('li'),
+        len = oLi.length,
+        item
+      for (var i = 0; i < len; i++) {
+        item = oLi[i]
+        ;(function (j) {
+          item.addEventListener(
+            'click',
+            function () {
+              console.log(j)
+            },
+            false
+          )
+        })(i)
+      }
+    </script> -->
+
+    <button>查看更多</button>
+    <script>
+      var oBtn = document.getElementsByTagName('button')[0]
+
+      // addEvent(oBtn, 'click', function () {
+      //   console.log(111)
+      // })
+
+      // // 封装一下 绑定事件处理函数
+      // function addEvent(el, type, fn) {
+      //   if (el.addEventListener) {
+      //     el.addEventListener(type, fn, false)
+      //   } else if (el.attachEvent) {
+      //     el.attachEvent('on' + type, function () {
+      //       fn.call(el)
+      //     })
+      //   } else {
+      //     el['on' + type] = fn
+      //   }
+      // }
+
+      // 解除绑定 事件处理函数
+      // oBtn.onclick = function () {
+      //   console.log(111)
+      // }
+      // oBtn.onclick = null
+
+      // oBtn.addEventListener(
+      //   'click',
+      //   function () {
+      //     console.log(111)
+      //     oBtn.removeEventListener('click', arguments.callee, false)
+      //   },
+      //   false
+      // )
+
+      // oBtn.addEventListener('click', test, false)
+      // function test() {
+      //   console.log(111)
+      //   oBtn.removeEventListener('click', test, false)
+      // }
+
+      // document.oncontextmenu = function (e) {
+      //   // e.preventDefault()
+      //   // return false
+      //   e.returnValue = false
+      // }
+      document.addEventListener(
+        'contextmenu',
+        function (e) {
+          // e.preventDefault()
+          return false
+          // e.returnValue = false
+        },
+        false
+      )
+    </script>
+  </body>
+</html>

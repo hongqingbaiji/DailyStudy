@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>轮播图</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      a {
+        text-decoration: none;
+      }
+      li {
+        list-style: none;
+      }
+      .carousel {
+        position: relative;
+        margin: 100px auto;
+        width: 640px;
+        height: 360px;
+      }
+      .Ul {
+        position: relative;
+        width: 4000px;
+      }
+      .uItem {
+        float: left;
+        width: 640px;
+        height: 360px;
+      }
+      .uItem img {
+        width: 100%;
+      }
+      .left,
+      .right {
+        display: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 40px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+      .left {
+        left: 0;
+        padding-right: 10px;
+        border-radius: 0 20px 20px 0;
+      }
+      .right {
+        right: 0;
+        padding-left: 10px;
+        border-radius: 20px 0 0 20px;
+      }
+      .Ol {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        position: absolute;
+        left: 50%;
+        bottom: 30px;
+        transform: translateX(-50%);
+        height: 30px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+      }
+      .oItem {
+        width: 0;
+        height: 0;
+        margin: 0 5px;
+        border: 10px solid #fff;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .oItem.active {
+        border-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="carousel">
+      <ul class="Ul">
+        <li class="uItem">
+          <a href="javascript:;"><img src="./images/5.webp" /></a>
+        </li>
+        <li class="uItem">
+          <a href="javascript:;"><img src="./images/2.webp" /></a>
+        </li>
+        <li class="uItem">
+          <a href="javascript:;"><img src="./images/3.webp" /></a>
+        </li>
+        <li class="uItem">
+          <a href="javascript:;"><img src="./images/4.webp" /></a>
+        </li>
+        <li class="uItem">
+          <a href="javascript:;"><img src="./images/1.webp" /></a>
+        </li>
+      </ul>
+      <div class="left">〈</div>
+      <div class="right">〉</div>
+      <ol class="Ol">
+        <!-- <li class="oItem active"></li>
+        <li class="oItem"></li>
+        <li class="oItem"></li>
+        <li class="oItem"></li>
+        <li class="oItem"></li> -->
+      </ol>
+    </div>
+    <script>
+      var carousel = document.getElementsByClassName('carousel')[0],
+        Ul = document.getElementsByClassName('Ul')[0],
+        uItems = Ul.getElementsByClassName('uItem'),
+        oLeft = document.getElementsByClassName('left')[0],
+        oRight = document.getElementsByClassName('right')[0],
+        Ol = document.getElementsByClassName('Ol')[0],
+        oItems = Ol.getElementsByClassName('oItem'),
+        len = uItems.length,
+        index
+
+      // 1. 鼠标经过 左右按钮展示，鼠标离开，左右按钮隐藏
+      carousel.addEventListener('mouseenter', function () {
+        oLeft.style.display = 'block'
+        oRight.style.display = 'block'
+      })
+      carousel.addEventListener('mouseleave', function () {
+        oLeft.style.display = 'none'
+        oRight.style.display = 'none'
+      })
+
+      // 2. 动态生成小圆圈，有几张图就生成几个小圆圈
+      for (var i = 0; i < len; i++) {
+        var li = document.createElement('li')
+        li.className = 'oItem'
+        li.setAttribute('index', i)
+        Ol.appendChild(li)
+        Ol.children[0].className += ' active'
+        li.addEventListener('click', function () {
+          for (var i = 0; i < len; i++) {
+            Ol.children[i].className = 'oItem'
+          }
+          this.className += ' active'
+          index = this.getAttribute('index')
+        })
+      }
+
+      // 封装获取属性样式
+      function getStyles(el, prop) {
+        if (window.getComputedStyle) {
+          return prop ? window.getComputedStyle(el, null)[prop] : window.getComputedStyle(el, null)
+        } else {
+          return prop ? el.currentStyle[prop] : el.currentStyle
+        }
+      }
+    </script>
+  </body>
+</html>
