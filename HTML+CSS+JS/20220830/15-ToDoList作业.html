@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      a {
+        text-decoration: none;
+        padding-left: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <input type="text" name="msg" class="ipt" />
+        <button class="oBtn">增加li</button>
+      </div>
+      <ul class="oUl"></ul>
+    </div>
+    <script>
+      /*要求
+        1. 一个输入框，一个按钮，一个展示界面
+        2. 输入框输入内容后，点击添加按钮，把内容添加到展示界面，展示后把输入框中内容清除
+        3. 展示的内容后面 会跟着 编辑按钮 和 删除按钮
+        4. 点击编辑后，会把内容放到输入框中，添加按钮变成编辑第几项；
+        5. 点击删除后，会把当前项删除；
+      */
+      var ipt = document.getElementsByClassName('ipt')[0],
+        oBtn = document.getElementsByClassName('oBtn')[0],
+        oUl = document.getElementsByClassName('oUl')[0],
+        del = document.getElementsByClassName('del'),
+        edit = document.getElementsByClassName('edit'),
+        oLi,
+        isEdit = false,
+        index
+
+      oBtn.addEventListener('click', function () {
+        if (isEdit) {
+          isEdit = false
+          oLi[index].innerHTML =
+            ipt.value +
+            '<a href="javascript:;" class="edit"> 编辑</a> <a href="javascript:;" class="del">删除</a>'
+          ipt.value = ''
+          oLi = oUl.children
+          oBtn.innerHTML = '增加li'
+        } else {
+          if (ipt.value) {
+            var li = document.createElement('li')
+            li.innerHTML =
+              ipt.value +
+              '<a href="javascript:;" class="edit"> 编辑</a> <a href="javascript:;" class="del">删除</a>'
+            oUl.appendChild(li)
+            ipt.value = ''
+            oLi = oUl.children
+          }
+        }
+      })
+      ipt.addEventListener('blur', function () {
+        console.log(ipt.value)
+        if (!ipt.value) {
+          oBtn.innerHTML = '增加li'
+        }
+      })
+
+      oUl.addEventListener('click', function (e) {
+        var e = e || window.event
+        var tar = e.target || e.srcElement
+        if (tar.className === 'del') {
+          tar.parentNode.remove()
+        } else if (tar.className === 'edit') {
+          isEdit = true
+          index = Array.prototype.indexOf.call(oLi, tar.parentNode)
+          if (isEdit) {
+            oBtn.innerHTML = '编辑第' + (index + 1) + '项'
+            var str = oLi[index].firstChild.nodeValue
+            ipt.value = str
+          } else {
+            oBtn.innerHTML = '增加li'
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

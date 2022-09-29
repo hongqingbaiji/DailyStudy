@@ -39,10 +39,30 @@
         })(i)
       }
     </script> -->
-
+    <ul class="list">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
     <button>查看更多</button>
     <script>
-      var oBtn = document.getElementsByTagName('button')[0]
+      var oBtn = document.getElementsByTagName('button')[0],
+        list = document.getElementsByClassName('list')[0],
+        oLi = document.getElementsByTagName('li')
+
+      list.onclick = function (e) {
+        var e = e || window.event
+        var tar = e.target || e.srcElement
+        var index = Array.prototype.indexOf.call(oLi, tar)
+        console.log(index)
+      }
+      oBtn.onclick = function () {
+        var li = document.createElement('li')
+        li.innerText = oLi.length + 1
+        list.appendChild(li)
+      }
 
       // addEvent(oBtn, 'click', function () {
       //   console.log(111)
@@ -87,15 +107,15 @@
       //   // return false
       //   e.returnValue = false
       // }
-      document.addEventListener(
-        'contextmenu',
-        function (e) {
-          // e.preventDefault()
-          return false
-          // e.returnValue = false
-        },
-        false
-      )
+      // document.addEventListener(
+      //   'contextmenu',
+      //   function (e) {
+      //     // e.preventDefault()
+      //     return false
+      //     // e.returnValue = false
+      //   },
+      //   false
+      // )
     </script>
   </body>
 </html>
