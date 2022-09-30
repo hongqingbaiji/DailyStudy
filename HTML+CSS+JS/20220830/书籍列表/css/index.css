@@ -1,0 +1,37 @@
+.bk-list .list-item {
+  height: 150px;
+  border-bottom: 1px solid #ccc;
+}
+.bk-list .list-item .item-lk {
+  display: block;
+}
+.bk-list .list-item .bk-pic {
+  position: absolute;
+  height: 150px;
+}
+.bk-list .list-item .bk-pic img {
+  height: 100%;
+  padding: 10px;
+}
+.bk-list .list-item .bk-info {
+  height: 100%;
+  margin-left: 123px;
+  padding: 10px;
+}
+.bk-list .bk-info .author {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+}
+.bk-list .bk-info .intro {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #999;
+}
+.bk-list .bk-info .update-time {
+  margin-top: 10px;
+  font-size: 14px;
+}

@@ -1,0 +1,23 @@
+.wrap {
+  width: 500px;
+  height: 500px;
+  margin: 50px auto;
+  box-shadow: 0 0 5px #999;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.list-hd {
+  position: relative;
+  height: 44px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  line-height: 44px;
+}
+.list-hd a {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+}
