@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        width: 3000px;
+        height: 3000px;
+      }
+      .box {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <button>增加li</button> -->
+    <!-- <ul class="list">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul> -->
+    <div class="box"></div>
+    <script>
+      // var oList = document.getElementsByClassName('list')[0],
+      //   oLis = oList.getElementsByTagName('li'),
+      //   oBtn = document.getElementsByTagName('button')[0],
+      //   Len = oLis.length,
+      //   item,
+      var box = document.getElementsByClassName('box')[0]
+
+      // oBtn.addEventListener('click', function () {
+      //   var li = document.createElement('li')
+      //   li.innerHTML = oLis.length + 1
+      //   oList.appendChild(li)
+      // })
+
+      // oList.onclick = function (e) {
+      //   var e = e || window.event,
+      //     tar = e.target || e.srcElement
+
+      //   for (var i = 0; i < Len; i++) {
+      //     item = oLis[i]
+      //     if (tar === item) {
+      //       console.log(i)
+      //     }
+      //   }
+      // }
+
+      // oList.addEventListener('click', function (e) {
+      //   var e = e || window.event,
+      //     tar = e.target || e.srcElement,
+      //   // var index = Array.prototype.indexOf.call(oLis, tar)
+      //   // console.log(index)
+      // })
+
+      elemDrag(box)
+
+      // 封装鼠标拖拽
+      function elemDrag(elem) {
+        var x, y
+
+        addEvent(elem, 'mousedown', function (e) {
+          var e = e || window.event
+          x = pagePos(e).X - getStyles(elem, 'left')
+          y = pagePos(e).Y - getStyles(elem, 'top')
+
+          console.log(x, y)
+          console.log(getStyles(elem, 'left'), getStyles(elem, 'top'))
+          addEvent(document, 'mousemove', mouseMove)
+          addEvent(document, 'mouseup', mouseUp)
+        })
+
+        function mouseMove(e) {
+          var e = e || window.event
+          elem.style.left = pagePos(e).X - x + 'px'
+          elem.style.top = pagePos(e).Y - y + 'px'
+        }
+
+        function mouseUp(e) {
+          var e = e || window.event
+          removeEvent(document, 'mousemove', mouseMove)
+          removeEvent(document, 'mouseup', mouseUp)
+          cancelBubble(e)
+          preventDefaultEvent(e)
+        }
+      }
+
+      function addEvent(elem, type, fn) {
+        if (elem.addEventListener) {
+          elem.addEventListener(type, fn, false)
+        } else if (elem.attachEvent) {
+          elem.attachEvent('on' + type, function () {
+            fn.call(elem)
+          })
+        } else {
+          elem['on' + type] = fn
+        }
+      }
+
+      function removeEvent(el, type, fn) {
+        if (el.addEventListener) {
+          el.removeEventListener(type, fn, false)
+        } else if (el.attachEvent) {
+          el.detachEvent('on' + type, fn)
+        } else {
+          el['on' + type] = null
+        }
+      }
+
+      function getStyles(elem, prop) {
+        if (window.getComputedStyle) {
+          if (prop) {
+            return parseInt(window.getComputedStyle(elem, null)[prop])
+          } else {
+            return window.getComputedStyle(elem, null)
+          }
+        } else {
+          if (prop) {
+            return parseInt(elem.currentStyle[prop])
+          } else {
+            return elem.currentStyle
+          }
+        }
+      }
+
+      // 封装 取消冒泡事件
+      function cancelBubble(e) {
+        var e = e || window.event //兼容IE8及以下
+        if (e.stopPropagation) {
+          e.stopPropagation()
+        } else {
+          e.cancelBubble = true //IE写法
+        }
+      }
+
+      // 取消默认事件
+      function preventDefaultEvent(e) {
+        var e = e || window.event
+        if (e.preventDefault) {
+          event.preventDefault()
+        } else {
+          event.returnValue = false // IE
+        }
+      }
+
+      function pagePos(e) {
+        var sLeft = getScrollOffset().left,
+          sTop = getScrollOffset().top,
+          cLeft = document.documentElement.clientLeft || 0,
+          cTop = document.documentElement.clientTop || 0
+
+        return {
+          X: e.clientX + sLeft - cLeft,
+          Y: e.clientY + sTop - cTop
+        }
+      }
+
+      function getScrollOffset() {
+        if (window.pageXOffset) {
+          return {
+            left: window.pageXOffset,
+            top: window.pageYOffset
+          }
+        } else {
+          return {
+            left: document.body.scrollLeft + document.documentElement.scrollLeft,
+            top: document.body.scrollTop + document.documentElement.scrollTop
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

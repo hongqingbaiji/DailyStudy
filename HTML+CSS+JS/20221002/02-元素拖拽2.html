@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+      .menu {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="javascript:;" class="link">百度</a>
+    <div class="menu"></div>
+    <script src="./js/utils.js"></script>
+    <script src="./js/02-1.js"></script>
+    <script>
+      var oLink = document.getElementsByClassName('link')[0],
+        menu = document.getElementsByClassName('menu')[0]
+      oLink.dragNclick(menu, function () {
+        window.open('https://www.baidu.com')
+      })
+    </script>
+  </body>
+</html>

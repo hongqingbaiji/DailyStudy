@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul {
+        list-style: none;
+      }
+      .wrap {
+        position: relative;
+        /* margin: 50px auto; */
+        width: 800px;
+        height: 500px;
+        border: 1px solid #ccc;
+      }
+      /* .drag-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 100px;
+        height: 300px;
+      } */
+      .dItem {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        cursor: pointer;
+      }
+      .dItem:nth-child(1) {
+        top: 10px;
+      }
+      .dItem:nth-child(2) {
+        top: 70px;
+      }
+      .dItem:nth-child(3) {
+        top: 130px;
+      }
+      .dItem:nth-child(4) {
+        top: 190px;
+      }
+      .active {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      .bm-wrap {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 40px;
+        border-top: 1px solid #ccc;
+      }
+      .menu {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100px;
+        height: 100px;
+        background-color: #ccc;
+      }
+      .list .lItem {
+        float: left;
+        width: 100px;
+        height: 40px;
+        border-right: 1px solid #ccc;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+      }
+      .clickDiv {
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 300px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .clickHd {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 44px;
+        background-color: #eee;
+      }
+      .clickHd h3 {
+        font-weight: 400;
+        margin-left: 10px;
+      }
+      .clickHd .close {
+        margin-right: 10px;
+        cursor: pointer;
+        width: 40px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+      }
+      .clickHd .close:hover {
+        background-color: orange;
+      }
+      .clickDiv p {
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="drag-wrap">
+        <div class="dItem active">div1</div>
+        <div class="dItem">div2</div>
+        <div class="dItem">div3</div>
+        <div class="dItem">div4</div>
+      </div>
+      <div class="bm-wrap">
+        <ul class="list">
+          <!-- <li class="lItem active">div1</li>
+          <li class="lItem">div2</li>
+          <li class="lItem">div3</li>
+          <li class="lItem">div4</li> -->
+        </ul>
+      </div>
+      <div class="menu"></div>
+      <div class="clickDiv">
+        <div class="clickHd">
+          <h3>div1</h3>
+          <span class="close">X</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/utils.js"></script>
+    <script src="./js/02-1.js"></script>
+    <script src="./js/03.js"></script>
+    <script>
+      var dragWrap = document.getElementsByClassName('drag-wrap')[0],
+        oList = document.getElementsByClassName('list')[0],
+        clickDiv = document.getElementsByClassName('clickDiv')[0],
+        menu = document.getElementsByClassName('menu')[0],
+        close = document.getElementsByClassName('close')[0],
+        oDivs = elemChildren(dragWrap),
+        oDivsLen = oDivs.length,
+        hd = elemChildren(clickDiv)[0],
+        h3Text = elemChildren(hd)[0]
+
+      for (var i = 0; i < oDivsLen; i++) {
+        ;(function (j) {
+          oDivs[j].dragNclick(menu, function () {
+            var tarText = oDivs[j].innerText
+            h3Text.innerText = tarText
+            clickDiv.style.display = 'block'
+            var li = document.createElement('li')
+            li.className = 'lItem active'
+            li.innerText = tarText
+            oList.appendChild(li)
+          })
+          addEvent(oDivs[j], 'click', function () {
+            for (var k = 0; k < oDivsLen; k++) {
+              oDivs[k].className = 'dItem'
+            }
+            oDivs[j].className += ' active'
+          })
+        })(i)
+      }
+
+      addEvent(close, 'click', function () {
+        var lItem = document.getElementsByClassName('lItem')[0]
+        lItem.remove()
+        clickDiv.style.display = 'none'
+      })
+    </script>
+  </body>
+</html>

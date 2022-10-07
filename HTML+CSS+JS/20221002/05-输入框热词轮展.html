@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div,
+      input {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      input {
+        outline: none;
+        border: none;
+      }
+      .input-wrap {
+        position: relative;
+        width: 200px;
+        height: 35px;
+        border: 1px solid #ddd;
+      }
+      .input-wrap .auto-kw {
+        position: absolute;
+        left: 10px;
+        top: 8px;
+        font-size: 14px;
+        color: #989898;
+        z-index: -1;
+      }
+      .input-wrap .auto-kw.show {
+        display: block;
+        color: #989898;
+      }
+      .input-wrap .auto-kw.hide {
+        display: none;
+        color: #666;
+      }
+      .input-wrap .search-input {
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+        color: #424242;
+        text-indent: 10px;
+        background-color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="input-wrap">
+      <div class="auto-kw" id="J_autoKw">推荐词</div>
+      <input type="text" id="J_search_kw" class="search-input" />
+    </div>
+    <div style="display: none" id="recomKw">
+      ["wenhe","shaonian","ziyan","manman","ruolan","manli"]
+    </div>
+    <script src="./js/utils.js"></script>
+    <script src="./js/05.js"></script>
+  </body>
+</html>

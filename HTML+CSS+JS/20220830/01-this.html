@@ -18,7 +18,26 @@
   <body>
     <div>按时到付款了按时到付款了按时到付款了按时到付款了按时到付款了</div>
 
+    <ul>
+      <li>11111</li>
+      <li>22222</li>
+      <li>33333</li>
+      <li>44444</li>
+      <li>55555</li>
+    </ul>
     <script>
+      var lis = document.getElementsByTagName('li'),
+        lisLen = lis.length,
+        lisItem
+      for (var i = 0; i < lisLen; i++) {
+        ;(function (j) {
+          lisItem = lis[j]
+          lis[j].onclick = function () {
+            console.log(j)
+          }
+        })(i)
+      }
+
       // var year = parseInt(prompt('输入年份'))
       // if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
       //   alert(year + '是闰年')

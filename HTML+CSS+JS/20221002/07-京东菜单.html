@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+      }
+      .menu-wrap {
+        position: relative;
+        width: 150px;
+        height: 440px;
+        background-color: #424242;
+        margin: 50px;
+      }
+      .menu-wrap .main {
+        height: 100%;
+      }
+      .main-item {
+        height: 44px;
+      }
+
+      .main-item a {
+        display: block;
+        height: 100%;
+        text-align: center;
+        line-height: 44px;
+        color: #fff;
+      }
+      .main-item.active a {
+        background-color: #666;
+        color: orange;
+      }
+      .menu-wrap .sub {
+        position: absolute;
+        left: 150px;
+        top: 0px;
+        width: 300px;
+        height: 440px;
+        background-color: #eee;
+      }
+      .menu-wrap .sub.hide {
+        display: none;
+      }
+      .menu-wrap .sub .sub-list {
+        position: relative;
+      }
+      .menu-wrap .sub .sub-item {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 440px;
+        font-size: 50px;
+      }
+      .menu-wrap .sub .sub-item.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu-wrap">
+      <div class="main">
+        <ul class="main-list">
+          <li class="main-item"><a href="javascript:;">菜单1</a></li>
+          <li class="main-item"><a href="javascript:;">菜单2</a></li>
+          <li class="main-item"><a href="javascript:;">菜单3</a></li>
+          <li class="main-item"><a href="javascript:;">菜单4</a></li>
+          <li class="main-item"><a href="javascript:;">菜单5</a></li>
+          <li class="main-item"><a href="javascript:;">菜单6</a></li>
+          <li class="main-item"><a href="javascript:;">菜单7</a></li>
+          <li class="main-item"><a href="javascript:;">菜单8</a></li>
+          <li class="main-item"><a href="javascript:;">菜单9</a></li>
+          <li class="main-item"><a href="javascript:;">菜单10</a></li>
+        </ul>
+      </div>
+      <div class="sub hide">
+        <ul class="sub-list">
+          <li class="sub-item active">子菜单1</li>
+          <li class="sub-item">子菜单2</li>
+          <li class="sub-item">子菜单3</li>
+          <li class="sub-item">子菜单4</li>
+          <li class="sub-item">子菜单5</li>
+          <li class="sub-item">子菜单6</li>
+          <li class="sub-item">子菜单7</li>
+          <li class="sub-item">子菜单8</li>
+          <li class="sub-item">子菜单9</li>
+          <li class="sub-item">子菜单10</li>
+        </ul>
+      </div>
+    </div>
+    <script src="./js/utils.js"></script>
+    <script src="./js/07.js"></script>
+  </body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body,
+      img,
+      div,
+      ul,
+      li,
+      h3,
+      a {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul {
+        list-style: none;
+      }
+      h3 {
+        font-weight: 400;
+        font-size: 14px;
+      }
+      a {
+        font-size: 14px;
+        color: #424242;
+        text-decoration: none;
+      }
+      a:hover {
+        color: red;
+      }
+      .wrap {
+        width: 900px;
+        height: 130px;
+        margin: 100px auto;
+      }
+      .wrap .list {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+      }
+      .wrap .list-item {
+        flex: 1;
+        padding: 10px;
+        height: 100%;
+      }
+      .wrap .list-item:hover .card {
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+      }
+      .wrap .list-item.active {
+        flex: 1.6;
+        height: 100%;
+      }
+      .wrap .list-item .card-left {
+        padding: 5px;
+      }
+
+      .wrap .list-item .card {
+        position: relative;
+        height: 100%;
+        border-bottom: 1px solid #ccc;
+      }
+      .wrap .list-item.active .card {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        border: 1px solid #ccc;
+      }
+      .wrap .list-item .card .price {
+        color: red;
+        margin: 15px 0;
+      }
+      .wrap .list-item .card-right {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 60px;
+        height: 60px;
+      }
+      .wrap .list-item.active .card-left {
+        flex: 1.5;
+      }
+      .wrap .list-item.active .card-right {
+        flex: 1;
+        position: static;
+        width: 100px;
+        height: 100px;
+      }
+      .wrap .list-item .card-right img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <ul class="list">
+        <li class="list-item active">
+          <a href="javascript:;">
+            <div class="card">
+              <div class="card-left">
+                <h3 class="title">小米Mix2 全面屏手机6GB+128GB 黑色 全网通</h3>
+                <div class="price">￥2000.00</div>
+              </div>
+              <div class="card-right">
+                <img src="./images/iph1.webp" />
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="list-item">
+          <a href="javascript:;">
+            <div class="card">
+              <div class="card-left">
+                <h3 class="title">小米Mix2 全面屏手机6GB+128GB 黑色 全网通</h3>
+                <div class="price">￥2000.00</div>
+              </div>
+              <div class="card-right">
+                <img src="./images/iph1.webp" />
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="list-item">
+          <a href="javascript:;">
+            <div class="card">
+              <div class="card-left">
+                <h3 class="title">小米Mix2 全面屏手机6GB+128GB 黑色 全网通</h3>
+                <div class="price">￥2000.00</div>
+              </div>
+              <div class="card-right">
+                <img src="./images/iph1.webp" />
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="list-item">
+          <a href="javascript:;">
+            <div class="card">
+              <div class="card-left">
+                <h3 class="title">小米Mix2 全面屏手机6GB+128GB 黑色 全网通</h3>
+                <div class="price">￥2000.00</div>
+              </div>
+              <div class="card-right">
+                <img src="./images/iph1.webp" />
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="list-item">
+          <a href="javascript:;">
+            <div class="card">
+              <div class="card-left">
+                <h3 class="title">小米Mix2 全面屏手机6GB+128GB 黑色 全网通</h3>
+                <div class="price">￥2000.00</div>
+              </div>
+              <div class="card-right">
+                <img src="./images/iph1.webp" />
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <script src="./js/utils.js"></script>
+    <script src="./js/06.js"></script>
+  </body>
+</html>
