@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div,
+      a,
+      img {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .img-wrap {
+        position: relative;
+        width: 400px;
+        height: 640px;
+        margin: 100px;
+      }
+      .img-wrap .mag-wrap {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 150px;
+        height: 150px;
+        box-shadow: 0 0 3px #ccc;
+        overflow: hidden;
+        cursor: move;
+      }
+      .img-wrap .mag-wrap.show {
+        display: block;
+        transform: scale(1.5);
+      }
+      .img-wrap .mag-wrap .mag-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 400px;
+        height: 640px;
+      }
+
+      .img-wrap .img-lk {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .img-wrap .img-lk .static-img {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="img-wrap">
+      <div class="mag-wrap">
+        <img src="./images/op.jpg" class="mag-img" />
+      </div>
+      <a href="javascript:;" class="img-lk">
+        <img src="./images/op.jpg" class="static-img" />
+      </a>
+    </div>
+    <script src="./js/utils.js"></script>
+    <script src="./js/08.js"></script>
+  </body>
+</html>

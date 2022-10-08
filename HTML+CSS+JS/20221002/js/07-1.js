@@ -11,18 +11,18 @@ var initMenu = function () {
     oMainItems = oMenu.getElementsByClassName('main-item'),
     oSub = oMenu.getElementsByClassName('sub')[0],
     oSubItems = oSub.getElementsByClassName('sub-item'),
-    menuLen = oMainItems.length,
-    menuItem,
+    mainLen = oMainItems.length,
+    mainItem,
     subLen = oSubItems.length,
     subItem,
-    isInSub = false,
-    timer = null,
     mousePoses = [],
+    timer = null,
+    isInSub = false,
     isFirst = true
 
-  for (var i = 0; i < menuLen; i++) {
-    menuItem = oMainItems[i]
-    addEvent(menuItem, 'mouseenter', menuItemMouseEnter)
+  for (var i = 0; i < mainLen; i++) {
+    mainItem = oMainItems[i]
+    addEvent(mainItem, 'mouseenter', menuItemMouseEnter)
   }
   addEvent(oSub, 'mouseenter', function () {
     isInSub = true
@@ -33,15 +33,15 @@ var initMenu = function () {
   addEvent(oMenu, 'mouseenter', function () {
     addEvent(document, 'mousemove', mouseMove)
   })
-  addEvent(oMenu, 'mouseleave', menuMouseLeave)
+  addEvent(oMenu, 'mouseleave', mouseLeave)
 
   function menuItemMouseEnter(e) {
     var e = e || window.event,
       tar = e.target || e.srcElement,
       thisIdx = Array.prototype.indexOf.call(oMainItems, tar),
-      lastPos = mousePoses[mousePoses.length - 2] || { x: 0, y: 0 },
-      curPos = mousePoses[mousePoses.length - 1] || { x: 0, y: 0 },
-      toDelay = doTimeOut(lastPos, curPos)
+      curPos = mousePoses[mousePoses.length - 2] || { x: 0, y: 0 },
+      lastPos = mousePoses[mousePoses.length - 1] || { x: 0, y: 0 },
+      toDelay = doTimeOut(curPos, lastPos)
 
     oSub.className = 'sub'
 
@@ -57,7 +57,7 @@ var initMenu = function () {
           }
           addActive(thisIdx)
           timer = null
-        }, 300)
+        }, 500)
       } else {
         timer = setTimeout(function () {
           if (isInSub) {
@@ -86,9 +86,9 @@ var initMenu = function () {
     }
   }
 
-  function menuMouseLeave() {
-    oSub.className += ' hide'
+  function mouseLeave() {
     removeAllActive()
+    oSub.className += ' hide'
     removeEvent(document, 'mousemove', mouseMove)
   }
 
@@ -101,9 +101,9 @@ var initMenu = function () {
 
   // 移除所有项的active类的 函数
   function removeAllActive() {
-    for (var i = 0; i < menuLen; i++) {
-      menuItem = oMainItems[i]
-      menuItem.className = 'main-item'
+    for (var i = 0; i < mainLen; i++) {
+      mainItem = oMainItems[i]
+      mainItem.className = 'main-item'
     }
     for (var i = 0; i < subLen; i++) {
       subItem = oSubItems[i]
@@ -112,16 +112,21 @@ var initMenu = function () {
   }
 
   // 获取三角形中的 b 和 c点，p和a点直接传进来，
-  function doTimeOut(lastPos, curPos) {
-    var topLeft = {
+  function doTimeOut(curPos, lastPos) {
+    var TL = {
       x: getStyles(oMenu, 'width') + getStyles(oMenu, 'margin-left'),
       y: getStyles(oMenu, 'margin-top')
     }
-    var bottomLeft = {
-      x: getStyles(oMenu, 'width') + getStyles(oMenu, 'left'),
+    var BL = {
+      x: getStyles(oMenu, 'width') + getStyles(oMenu, 'margin-left'),
       y: getStyles(oMenu, 'margin-top') + getStyles(oSub, 'height')
     }
 
-    return pointInTriangle(curPos, lastPos, topLeft, bottomLeft)
+    return pointInTriangle({
+      lastPos: lastPos,
+      curPos: curPos,
+      topLeft: TL,
+      bottomLeft: BL
+    })
   }
 }

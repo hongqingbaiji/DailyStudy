@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+      <button>增加li</button>
+    </div>
+    <script src="js/utils.js"></script>
+    <script>
+      var oUl = document.getElementsByTagName('ul')[0],
+        oBtn = document.getElementsByTagName('button')[0],
+        oLi = document.getElementsByTagName('li')
+
+      addEvent(oUl, 'click', function () {
+        var e = e || window.event,
+          tar = e.target || e.srcElement
+        console.log(tar.innerHTML)
+      })
+      addEvent(oBtn, 'click', function (e) {
+        var li = document.createElement('li')
+        li.innerHTML = oLi.length + 1
+        oUl.appendChild(li)
+      })
+
+      // window.onload = function () {
+      //   init()
+      // }
+      // function init() {
+      //   console.log(initMenu)
+      //   initMenu
+      // }
+      // var initMenu = (function () {
+      //   return function () {
+      //     console.log(1)
+      //   }
+      // })()
+    </script>
+  </body>
+</html>
