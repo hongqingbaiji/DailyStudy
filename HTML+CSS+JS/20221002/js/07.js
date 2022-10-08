@@ -113,15 +113,20 @@ var initMenu = function () {
 
   // 获取三角形中的 b 和 c点，p和a点直接传进来，
   function doTimeOut(lastPos, curPos) {
-    var topLeft = {
+    var TL = {
       x: getStyles(oMenu, 'width') + getStyles(oMenu, 'margin-left'),
       y: getStyles(oMenu, 'margin-top')
     }
-    var bottomLeft = {
+    var BL = {
       x: getStyles(oMenu, 'width') + getStyles(oMenu, 'left'),
       y: getStyles(oMenu, 'margin-top') + getStyles(oSub, 'height')
     }
 
-    return pointInTriangle(curPos, lastPos, topLeft, bottomLeft)
+    return pointInTriangle({
+      curPos: curPos,
+      lastPos: lastPos,
+      topLeft: TL,
+      bottomLeft: BL
+    })
   }
 }

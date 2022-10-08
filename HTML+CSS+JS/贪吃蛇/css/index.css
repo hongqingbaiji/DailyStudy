@@ -1,0 +1,26 @@
+div,
+i {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrap {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: 50px;
+  background-color: #000;
+}
+.round {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: green;
+}
+.round.head {
+  background-color: red;
+}

@@ -15,36 +15,47 @@ var initMagnifier = function () {
     imgX = getElemDocPosition(oImgWrap).left,
     imgY = getElemDocPosition(oImgWrap).top
 
-  console.log(magWidth, magHeight)
-  console.log(imgX, imgY)
-
   addEvent(oImgWrap, 'mouseover', function (e) {
     oMagWrap.className += ' show'
-
-    var e = e || window.event,
-      x = pagePos(e).X - magWidth / 2 - imgX,
-      y = pagePos(e).Y - magHeight / 2 - imgY
-
-    oMagWrap.style.left = x + 'px'
-    oMagWrap.style.top = y + 'px'
-    oMagImg.style.left = -x + 'px'
-    oMagImg.style.top = -y + 'px'
-
+    showMag(getXY(e).x, getXY(e).y)
     addEvent(document, 'mousemove', mouseMove)
   })
-  addEvent(oImgWrap, 'mouseout', imgWrapMouseOut)
+  addEvent(oImgWrap, 'mouseout', mouseOut)
 
   function mouseMove(e) {
-    var e = e || window.event,
-      x = pagePos(e).X - magWidth / 2 - imgX,
-      y = pagePos(e).Y - magHeight / 2 - imgY
+    showMag(getXY(e).x, getXY(e).y, getXY(e).mouseX, getXY(e).mouseY)
+  }
 
+  function mouseOut() {
+    oMagWrap.className = 'mag-wrap'
+    removeEvent(document, 'mousemove', mouseMove)
+  }
+
+  function getXY(e) {
+    var e = e || window.event
+    return {
+      x: pagePos(e).X - magWidth / 2 - imgX,
+      y: pagePos(e).Y - magHeight / 2 - imgY,
+      mouseX: pagePos(e).X - imgX,
+      mouseY: pagePos(e).Y - imgY
+    }
+  }
+
+  function showMag(x, y, mouseX, mouseY) {
     oMagWrap.style.left = x + 'px'
     oMagWrap.style.top = y + 'px'
     oMagImg.style.left = -x + 'px'
     oMagImg.style.top = -y + 'px'
-  }
-  function imgWrapMouseOut() {
-    oMagWrap.className = 'mag-wrap'
+
+    if (mouseX && mouseY) {
+      if (
+        mouseX < 0 ||
+        mouseX > getStyles(oImgWrap, 'width') ||
+        mouseY < 0 ||
+        mouseY > getStyles(oImgWrap, 'height')
+      ) {
+        oMagWrap.className = 'mag-wrap'
+      }
+    }
   }
 }
