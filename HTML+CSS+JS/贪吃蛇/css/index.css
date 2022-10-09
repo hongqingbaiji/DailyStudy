@@ -20,7 +20,18 @@ i {
   height: 20px;
   border-radius: 50%;
   background-color: green;
+  z-index: 1;
 }
 .round.head {
   background-color: red;
+}
+.food {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: yellow;
+  z-index: 2;
 }

@@ -31,7 +31,7 @@ var initGame = function () {
       this.bindEvent()
     },
 
-    // 创建蛇
+    // 创建蛇的身体
     initSnake: function () {
       var arr = this.bodyArr,
         Len = arr.length,
@@ -49,7 +49,7 @@ var initGame = function () {
       wrap.appendChild(frag)
     },
 
-    //事件绑定
+    // 绑定事件函数
     bindEvent: function () {
       var _self = this
       this.dir = 'DOWN'
@@ -58,7 +58,7 @@ var initGame = function () {
       })
     },
 
-    //让蛇动起来
+    // 利用定时器让蛇跑起来
     run: function () {
       var _self = this
       timer = setInterval(function () {
@@ -66,7 +66,7 @@ var initGame = function () {
       }, 200)
     },
 
-    //移动蛇的坐标
+    // 移动蛇的位置
     move: function () {
       var arr = this.bodyArr,
         Len = arr.length
@@ -85,7 +85,7 @@ var initGame = function () {
       this.headInBody()
     },
 
-    //设置蛇头的坐标
+    // 设置移动后蛇头部的坐标
     setHeadXY: function (arr) {
       var head = arr[arr.length - 1]
 
@@ -107,7 +107,7 @@ var initGame = function () {
       }
     },
 
-    // 删除蛇
+    // 移除蛇
     removeSnake: function () {
       var bodys = document.getElementsByClassName('round')
       while (bodys.length > 0) {
@@ -115,7 +115,7 @@ var initGame = function () {
       }
     },
 
-    // 更改蛇的方向
+    // 更改方向
     changeDir: function (e) {
       var e = e || window.event,
         code = e.keyCode
@@ -160,7 +160,7 @@ var initGame = function () {
       wrap.appendChild(food)
     },
 
-    // 设置食物的随机位置
+    // 随机生成食物坐标
     setRandomPos: function (size) {
       return Math.floor(Math.random() * (size / 20))
     },
@@ -168,10 +168,10 @@ var initGame = function () {
     // 吃掉食物
     eatFood: function (arr) {
       var food = document.getElementsByClassName('food')[0],
-        headX = arr[arr.length - 1].x,
-        headY = arr[arr.length - 1].y,
         foodX = getStyles(food, 'left'),
         foodY = getStyles(food, 'top'),
+        headX = arr[arr.length - 1].x,
+        headY = arr[arr.length - 1].y,
         x,
         y
 
@@ -199,7 +199,7 @@ var initGame = function () {
       }
     },
 
-    //删除食物
+    // 删除食物
     removeFood: function () {
       var food = document.getElementsByClassName('food')[0]
       food.remove()
@@ -209,9 +209,9 @@ var initGame = function () {
     headInBody: function () {
       var arr = this.bodyArr,
         Len = arr.length,
-        item,
         headX = arr[Len - 1].x,
-        headY = arr[Len - 1].y
+        headY = arr[Len - 1].y,
+        item
 
       for (var i = 0; i < Len - 2; i++) {
         item = arr[i]
