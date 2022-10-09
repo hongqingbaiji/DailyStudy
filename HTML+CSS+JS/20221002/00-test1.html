@@ -7,45 +7,47 @@
     <title>Document</title>
   </head>
   <body>
-    <div>
-      <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-      </ul>
-      <button>增加li</button>
-    </div>
-    <script src="js/utils.js"></script>
+    <!-- <script type="text/html" id="tpl">
+      <li>这是第{{num}}个项目 <button>按钮</button></li>
+    </script>
     <script>
-      var oUl = document.getElementsByTagName('ul')[0],
-        oBtn = document.getElementsByTagName('button')[0],
-        oLi = document.getElementsByTagName('li')
+      // ul -> 一次性生成50个li，每个li带一个删除按钮，注意性能
+      var oList = document.createElement('ul'),
+        tpl = document.getElementById('tpl').innerHTML,
+        list = ''
 
-      addEvent(oUl, 'click', function () {
+      for (var i = 0; i < 50; i++) {
+        var oLi = document.createElement('li')
+        list += tpl.replace(/{{(.*?)}}/, i + 1)
+      }
+      oList.innerHTML = list
+      document.body.appendChild(oList)
+
+      oList.addEventListener('click', function (e) {
         var e = e || window.event,
-          tar = e.target || e.srcElement
-        console.log(tar.innerHTML)
-      })
-      addEvent(oBtn, 'click', function (e) {
-        var li = document.createElement('li')
-        li.innerHTML = oLi.length + 1
-        oUl.appendChild(li)
-      })
+          tar = e.target || e.srcElement,
+          tagName = tar.tagName.toLowerCase()
 
-      // window.onload = function () {
-      //   init()
-      // }
-      // function init() {
-      //   console.log(initMenu)
-      //   initMenu
-      // }
-      // var initMenu = (function () {
-      //   return function () {
-      //     console.log(1)
-      //   }
-      // })()
+        if (tagName === 'button') {
+          tar.parentNode.remove()
+        }
+      })
+    </script> -->
+
+    <div class="wrap">123</div>
+    <!-- <input type="text" id="text" /> -->
+    <script>
+      var wrap = document.getElementsByClassName('wrap')[0]
+      // var text = document.getElementById('text')
+      // text.addEventListener('change', function () {
+      //   console.log(text.value)
+      // })
+
+      // var code = document.body.innerHTML.replace(/</g, '&lt;')
+      // console.log(code)
+
+      wrap.innerHTML = '<h1>12345</h1>'
+      wrap.innerHTML.replace(/</g, '&lt;')
     </script>
   </body>
 </html>
