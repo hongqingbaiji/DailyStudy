@@ -7,7 +7,14 @@
     <title>Document</title>
   </head>
   <body>
+    <input type="text" id="test" onkeyup="test(this)" />
     <script>
+      var oTest = document.getElementById('test')
+      function test(obj) {
+        var reg = /\D/g
+        obj.value = obj.value.replace(reg, '0')
+      }
+
       // var reg1 = /test/
       // var reg2 = RegExp('test')
       // var reg3 = new RegExp('test')
@@ -42,8 +49,81 @@
         5. 构建数组：new Array() Array.from() Array.of()
         6. 删改数组：splice slice
         7. 迭代： every some filter forEach reduce reduceRight map keys values entries
-        8. 通用方法： toString valueOf 
+        8. 通用方法： toString valueOf
       */
+
+      // var str = 'wenhewenhe'
+      // var reg = /wenhe/g
+      // var str1 = str.replace(reg, 'zs')
+      // console.log(str1)
+
+      // var str = 'aabbccdd'
+      // var reg = /(\w)\1(\w)\2/g
+      // var str1 = str.replace(reg, '$2$2$1$1')
+      // console.log(str1)
+
+      // var str = 'aabbccdd'
+      // var reg = /(\w)\1(\w)\2/g
+      // var str1 = str.replace(reg, function ($, $1, $2) {
+      //   console.log($, $1, $2)
+      //   return $2 + $2 + $1 + $1
+      // })
+      // console.log(str1)
+
+      // var str = 'JS-plus-plus'
+      // var reg = /-(\w)/g
+      // var str1 = str.replace(reg, function ($, $1) {
+      //   return $1.toUpperCase()
+      // })
+      // console.log(str1)
+
+      // var str = 'jsPlusPlus'
+      // var reg = /([A-Z])/g
+      // var str1 = str.replace(reg, function ($, $1) {
+      //   return '_' + $1.toLowerCase()
+      // })
+      // console.log(str1)
+
+      // // 把aabbccdd 换成 AaBbCcDd
+      // var str = 'aabbccdd'
+      // var reg = /(\w)\1/g
+      // var str1 = str.replace(reg, function ($, $1) {
+      //   return $1.toUpperCase() + $1
+      // })
+      // console.log(str1)
+
+      // // 把aabbcc 换成 a$b$c$
+      // var str = 'aabbcc'
+      // var reg = /(\w)\1(\w)\2(\w)\3/g
+      // var str1 = str.replace(reg, '$1$$$2$$$3$$')
+      // console.log(str1)
+
+      // // 把aabbcc 换成 a$b$c$
+      // var str = 'aa\\bb\\cc'
+      // var reg = /\\/g
+      // console.log(str.match(reg))
+
+      // // 把aabbcc 换成 abc
+      // var str = 'aaabbccddddddddd'
+      // var reg = /(\w)\1*/g
+      // var str1 = str.replace(reg, '$1')
+      // console.log(str1)
+
+      // 把100000000 换成 100,000,000
+      // var str = '100000'
+      // var reg = /(?=(\B)(\d{3})+$)/g
+      // var str1 = str.replace(reg, ',')
+      // console.log(str1)
+
+      // var str = "my name is {{name}}, i'm {{age}} years old"
+      // var reg = /{{(.*?)}}/g
+      // var str1 = str.replace(reg, function (node, key) {
+      //   return {
+      //     name: 'wenhe',
+      //     age: 30
+      //   }[key]
+      // })
+      // console.log(str1)
     </script>
   </body>
 </html>
