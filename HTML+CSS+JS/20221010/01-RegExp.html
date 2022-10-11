@@ -7,13 +7,38 @@
     <title>Document</title>
   </head>
   <body>
-    <input type="text" id="test" onkeyup="test(this)" />
+    <!-- <input type="text" id="test" />
+    <button onclick="test(this)">点击</button> -->
+
+    <div class="oDiv"></div>
+    <script type="text/html" id="tpl">
+      <h1>{{title}}</h1>
+      <p>{{content}}</p>
+    </script>
     <script>
-      var oTest = document.getElementById('test')
-      function test(obj) {
-        var reg = /\D/g
-        obj.value = obj.value.replace(reg, '0')
-      }
+      var tpl = document.getElementById('tpl').innerHTML,
+        oDiv = document.getElementsByClassName('oDiv')[0],
+        reg = /{{(.*?)}}/g
+
+      oDiv.innerHTML = tpl.replace(reg, function (node, key) {
+        return {
+          title: '我是标题',
+          content: '我是内容'
+        }[key]
+      })
+
+      // var oTest = document.getElementById('test')
+
+      // function test(obj) {
+      //   var val = oTest.value
+      //   var reg = /^([A-z0-9_-])+\@([A-z0-9_\-\.]+\.([A-z]{2,4}))$/
+      //   var pass = reg.test(val)
+      //   console.log(pass)
+      // }
+
+      // var reg = /^(19|20)\d{2}([-/.])(0[1-9]|1[0-2])\2([0-2][1-9]|10|20|30|31)$/
+
+      // var reg = /^#(?:(?:[A-Fa-f0-9]){6}|(?:[A-Fa-f0-9]){3})/
 
       // var reg1 = /test/
       // var reg2 = RegExp('test')
