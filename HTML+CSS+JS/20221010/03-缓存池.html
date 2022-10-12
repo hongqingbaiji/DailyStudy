@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/03.css" />
+  </head>
+  <body>
+    <!-- https://m.66rpg.com/main/ajax/indexNew/get_edit_recommend_data?token=&client=0 -->
+
+    <!-- 未完成，存在跨域问题 -->
+    <div class="wrap">
+      <div class="wrap-hd">
+        <h3>游戏列表</h3>
+      </div>
+      <div class="game">
+        <div class="loading">正在加载中...</div>
+        <ul class="list"></ul>
+      </div>
+      <div class="footer">
+        <div class="btns">
+          <div class="btn-item active">1</div>
+          <div class="btn-item">2</div>
+          <div class="btn-item">3</div>
+        </div>
+      </div>
+    </div>
+    <script type="text/html" id="J_tpl">
+      <li class="list-item">
+        <div class="thumb">
+          <img src="{{real_thumb}}" />
+        </div>
+        <div class="item-info">
+          <h3 class="gname">{{game}}</h3>
+          <p class="uname">{{author_uname}}</p>
+          <p class="wordSum">{{release_word_sum}} 字</p>
+        </div>
+      </li>
+    </script>
+    <script src="./js/jquery-3.5.1.min.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/03.js"></script>
+  </body>
+</html>
