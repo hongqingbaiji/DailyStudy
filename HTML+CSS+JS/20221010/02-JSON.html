@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #eee;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        vertical-align: middle;
+      }
+      .wrap {
+        width: 350px;
+        height: 500px;
+        margin: 50px;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+      }
+      .rank-hd {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+      }
+      .rank-con {
+        width: 100%;
+        height: 430px;
+      }
+      .list-item {
+        width: 310px;
+        height: 22px;
+        margin-top: 8px;
+        cursor: pointer;
+      }
+      .rank-info {
+        width: 310px;
+        height: 22px;
+        font-size: 14px;
+      }
+      .order {
+        float: left;
+        width: 18px;
+        height: 22px;
+        margin-right: 20px;
+      }
+      .order img {
+        width: 100%;
+        height: 100%;
+      }
+      .rank-info .gname {
+        float: left;
+        width: 180px;
+        margin-right: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 22px;
+      }
+      .rank-info .rank-hot {
+        float: left;
+        width: 14px;
+        height: 14px;
+      }
+      .rank-info .rank-hot img {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 1px;
+      }
+      .rank-info .rank-num {
+        float: left;
+        width: 40px;
+        margin: 0 10px 0 5px;
+        color: #989898;
+        line-height: 22px;
+      }
+      .gcon {
+        position: relative;
+        float: left;
+        width: 260px;
+        height: 145px;
+        border-radius: 7px;
+      }
+      .gcon .gimg {
+        width: 100%;
+        height: 100%;
+        border-radius: 7px;
+      }
+      .rank-info2 .gcon .gname {
+        position: absolute;
+        left: 10px;
+        bottom: 25px;
+        width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: #fff;
+        font-size: 14px;
+      }
+      .rank-info2 .gcon .uname {
+        position: absolute;
+        left: 10px;
+        bottom: 5px;
+        color: #fff;
+        font-size: 14px;
+      }
+      .rank-info2 .gcon .rank-hot {
+        position: absolute;
+        bottom: 5px;
+        right: 50px;
+        width: 14px;
+        height: 14px;
+        margin-bottom: 8px;
+      }
+      .rank-info2 .gcon .rank-hot img {
+        width: 100%;
+        height: 100%;
+      }
+      .rank-info2 .gcon .rank-num {
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+        color: #fff;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="rank-hd">
+        <h3>排行榜</h3>
+      </div>
+      <div class="rank-con">
+        <ul class="list"></ul>
+      </div>
+    </div>
+    <div id="j-rankdata" style="display: none">
+      [{"gname":"传闻中的女帝后宫","uname":"茄子萌萌哒","order":"https://c2.cgyouxi.com/website/orange/img/index/num1.png","gimg":"https://plat.cgyouxi.com/pic/thumb/4c3210284267689c8b8ad3a9e4deb3a6.jpg","oimg":"https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png","fNum":159829},{"gname":"星光不染尘","uname":"欧阳梦丶","order":"https://c2.cgyouxi.com/website/orange/img/index/num2.png","gimg":"https://plat.cgyouxi.com/pic/thumb/a30fd637a13f868b95e94761cfbf0d61.jpg","oimg":"https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png","fNum":151015},{"gname":"天后大小姐永不翻船","uname":"猴猴猴","order":"https://c2.cgyouxi.com/website/orange/img/index/num3.png","gimg":"https://plat.cgyouxi.com/pic/thumb/f286e53adadde472c699185153b33f9f.jpg","oimg":"https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png","fNum":148956},{"gname":"修仙学院有只妖","uname":"配音小夏","order":"https://c2.cgyouxi.com/website/orange/img/index/num4.png","gimg":"https://plat.cgyouxi.com/pic/thumb/21cec12f13ef829be4f44cd13d4034f5.jpg","oimg":"https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png","fNum":147985},{"gname":"女神诀","uname":"伊冠楚楚","order":"https://c2.cgyouxi.com/website/orange/img/index/num5.png","gimg":"https://pic.cgyouxi.com/orange/upload/202208/77509244_70ca185ddfd2a6ebfc0bb67a588e6e0e.gif","oimg":"https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png","fNum":145829},{"gname":"娱乐坊","uname":"衣冠楚楚","order":"https://c2.cgyouxi.com/website/orange/img/index/num6.png","gimg":"https://plat.cgyouxi.com/pic/thumb/5fc4de4dd580f0263ccbb36bf7bb3c50.jpg","oimg":"https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png","fNum":143829},{"gname":"天下无双","uname":"九莲灯","order":"https://c2.cgyouxi.com/website/orange/img/index/num7.png","gimg":"https://plat.cgyouxi.com/pic/thumb/acbb1e3e6c6dc8964fa90eaddb9450a9.png","oimg":"https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png","fNum":141829},{"gname":"儿孙满堂","uname":"喵喵小狐狸","order":"https://c2.cgyouxi.com/website/orange/img/index/num8.png","gimg":"https://pic.cgyouxi.com/orange/title/eff8b7fac95b197ec2155a9d043eb9b7_644.jpg","oimg":"https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png","fNum":139829},{"gname":"有灵万事屋","uname":"云栖松子球","order":"https://c2.cgyouxi.com/website/orange/img/index/num9.png","gimg":"https://pic.cgyouxi.com/orange/title/174d0101d0b174c9bd4d88baad0909a8_13.jpg","oimg":"https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png","fNum":137829},{"gname":"我在妖界当女王","uname":"小妖精","order":"https://c2.cgyouxi.com/website/orange/img/index/num10.png","gimg":"https://pic.cgyouxi.com/orange/upload/202206/87436688_7f265693b91cedb9e4deb6de825a5d5b.gif","oimg":"https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png","fNum":159829}]
+    </div>
+    <script type="text/html" id="tpl">
+      <li class="list-item">
+        <div class="rank-info" style="display: block">
+          <div class="order">
+            <img src="{{order}}" />
+          </div>
+          <div class="gname">{{gname}}</div>
+          <div class="rank-hot">
+            <img src="{{oimg}}" />
+          </div>
+          <span class="rank-num">{{fNum}}</span>
+        </div>
+        <div class="rank-info2" style="display: none">
+          <div class="order">
+            <img src="{{order}}" />
+          </div>
+          <div class="gcon">
+            <img class="gimg" src="{{gimg}}" />
+            <div class="gname">{{gname}}</div>
+            <div class="uname">{{uname}}</div>
+            <div class="rank-hot">
+              <img src="{{oimg}}" />
+            </div>
+            <span class="rank-num">{{fNum}}</span>
+          </div>
+        </div>
+      </li>
+    </script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/02.js"></script>
+
+    <!-- <script>
+      data = [
+        {
+          gname: '传闻中的女帝后宫',
+          uname: '茄子萌萌哒',
+          order: 'https://c2.cgyouxi.com/website/orange/img/index/num1.png',
+          gimg: 'https://plat.cgyouxi.com/pic/thumb/4c3210284267689c8b8ad3a9e4deb3a6.jpg',
+          oimg: 'https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png',
+          fNum: 159829
+        },
+        {
+          gname: '星光不染尘',
+          uname: '欧阳梦丶',
+          order: 'https://c2.cgyouxi.com/website/orange/img/index/num2.png',
+          gimg: 'https://plat.cgyouxi.com/pic/thumb/a30fd637a13f868b95e94761cfbf0d61.jpg',
+          oimg: 'https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png',
+          fNum: 151015
+        },
+        {
+          gname: '天后大小姐永不翻船',
+          uname: '猴猴猴',
+          order: 'https://c2.cgyouxi.com/website/orange/img/index/num3.png',
+          gimg: 'https://plat.cgyouxi.com/pic/thumb/f286e53adadde472c699185153b33f9f.jpg',
+          oimg: 'https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png',
+          fNum: 148956
+        },
+        {
+          gname: '修仙学院有只妖',
+          uname: '配音小夏',
+          order: 'https://c2.cgyouxi.com/website/orange/img/index/num4.png',
+          gimg: 'https://plat.cgyouxi.com/pic/thumb/21cec12f13ef829be4f44cd13d4034f5.jpg',
+          oimg: 'https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png',
+          fNum: 147985
+        },
+        {
+          gname: '女神诀',
+          uname: '伊冠楚楚',
+          order: 'https://c2.cgyouxi.com/website/orange/img/index/num5.png',
+          gimg: 'https://pic.cgyouxi.com/orange/upload/202208/77509244_70ca185ddfd2a6ebfc0bb67a588e6e0e.gif',
+          oimg: 'https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png',
+          fNum: 145829
+        },
+        {
+          gname: '娱乐坊',
+          uname: '衣冠楚楚',
+          order: 'https://c2.cgyouxi.com/website/orange/img/index/num6.png',
+          gimg: 'https://plat.cgyouxi.com/pic/thumb/5fc4de4dd580f0263ccbb36bf7bb3c50.jpg',
+          oimg: 'https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png',
+          fNum: 143829
+        },
+        {
+          gname: '天下无双',
+          uname: '九莲灯',
+          order: 'https://c2.cgyouxi.com/website/orange/img/index/num7.png',
+          gimg: 'https://plat.cgyouxi.com/pic/thumb/acbb1e3e6c6dc8964fa90eaddb9450a9.png',
+          oimg: 'https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png',
+          fNum: 141829
+        },
+        {
+          gname: '儿孙满堂',
+          uname: '喵喵小狐狸',
+          order: 'https://c2.cgyouxi.com/website/orange/img/index/num8.png',
+          gimg: 'https://pic.cgyouxi.com/orange/title/eff8b7fac95b197ec2155a9d043eb9b7_644.jpg',
+          oimg: 'https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png',
+          fNum: 139829
+        },
+        {
+          gname: '有灵万事屋',
+          uname: '云栖松子球',
+          order: 'https://c2.cgyouxi.com/website/orange/img/index/num9.png',
+          gimg: 'https://pic.cgyouxi.com/orange/title/174d0101d0b174c9bd4d88baad0909a8_13.jpg',
+          oimg: 'https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png',
+          fNum: 137829
+        },
+        {
+          gname: '我在妖界当女王',
+          uname: '小妖精',
+          order: 'https://c2.cgyouxi.com/website/orange/img/index/num10.png',
+          gimg: 'https://pic.cgyouxi.com/orange/upload/202206/87436688_7f265693b91cedb9e4deb6de825a5d5b.gif',
+          oimg: 'https://pic.cgyouxi.com/orange/upload/202011/7291276_5465d37a34e0bdbe5888f8fc9f6ec707.png',
+          fNum: 159829
+        }
+      ]
+
+      // console.log(JSON.stringify(data))
+    </script> -->
+  </body>
+</html>

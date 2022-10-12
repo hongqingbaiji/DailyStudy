@@ -273,3 +273,14 @@ var pointInTriangle = (function () {
     return sameSymbols(R1, R2) && sameSymbols(R2, R3)
   }
 })()
+
+// 正则表达式
+function setTplToHTML(tpl, regExp, opt) {
+  return tpl.replace(regExp(), function (node, key) {
+    return opt[key]
+  })
+}
+
+function regTpl() {
+  return new RegExp(/{{(.*?)}}/, 'gim')
+}
