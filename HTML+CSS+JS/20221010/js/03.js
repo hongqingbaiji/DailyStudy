@@ -1,24 +1,22 @@
 window.onload = function () {
   init()
 }
-
 function init() {
-  initGameList()
+  initCourses()
 }
 
-var initGameList = (function () {
+var initCourses = (function () {
   var oBtns = document.getElementsByClassName('btns')[0],
     oBtnItems = document.getElementsByClassName('btn-item'),
-    oTpl = document.getElementById('J_tpl'),
+    oTpl = document.getElementById('J_tpl').innerHTML,
     oLoading = document.getElementsByClassName('loading')[0],
     oList = document.getElementsByClassName('list')[0],
-    page = ['editor_fav', 'editor_subject', 'editor_complete'],
-    pageInfo = page[0],
+    page = 0,
     t = null,
     cache = {}
 
   function init() {
-    getAjaxGameInfo(pageInfo)
+    getAjaxCourses(page)
     bindEvent()
   }
 
@@ -37,9 +35,9 @@ var initGameList = (function () {
       var len = oBtnItems.length,
         item
       thisIdx = indexOf.call(oBtnItems, tar)
-      pageInfo = page[thisIdx]
+      page = thisIdx
 
-      cache[pageInfo] ? getCacheGameInfo() : getAjaxGameInfo()
+      cache[page] ? getCacheCourses() : getAjaxCourses()
 
       for (var i = 0; i < len; i++) {
         item = oBtnItems[i]
@@ -49,11 +47,11 @@ var initGameList = (function () {
     }
   }
 
-  function getAjaxGameInfo() {
+  function getAjaxCourses() {
     ajaxReturn({
-      url: APIs.getGameInfo,
+      url: APIs.getCourses,
       data: {
-        pageInfo: pageInfo
+        page: page
       },
       success: function (data) {
         cache[page] = data
@@ -69,26 +67,25 @@ var initGameList = (function () {
     })
   }
 
-  function getCacheGameInfo() {
-    var data = cache[pageInfo]
-    render(data)
-  }
-
   function render(data) {
-    var list = '',
-      len = data.length,
-      item
+    var len = data.length,
+      item,
+      list = ''
 
     for (var i = 0; i < len; i++) {
       item = data[i]
       list += setTplToHTML(oTpl, regTpl, {
-        real_thumb: item.real_thumb,
-        gname: item.gname,
-        author_uname: item.author_uname,
-        release_word_sum: item.release_word_sum
+        classname: item.classname,
+        name: item.name,
+        watched: item.watched
       })
     }
     oList.innerHTML = list
+  }
+
+  function getCacheCourses() {
+    var data = cache[page]
+    render(data)
   }
 
   return function () {
@@ -97,14 +94,14 @@ var initGameList = (function () {
 })()
 
 var APIs = {
-  getGameInfo: 'https://m.66rpg.com/main/ajax/indexNew/get_edit_recommend_data?token=&client=0'
+  getCourses: 'http://study.jsplusplus.com/Lfcourses/getCourses'
 }
-// 使用JQuery 封装Ajax
+
 function ajaxReturn(opt) {
   $.ajax({
     url: opt.url,
     type: 'POST',
-    dataType: 'JSON',
+    dataTypeL: 'JSON',
     data: opt.data,
     timeout: 100000,
     success: opt.success,

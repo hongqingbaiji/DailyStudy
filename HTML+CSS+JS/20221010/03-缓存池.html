@@ -4,16 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>缓存池</title>
     <link rel="stylesheet" href="./css/03.css" />
   </head>
   <body>
-    <!-- https://m.66rpg.com/main/ajax/indexNew/get_edit_recommend_data?token=&client=0 -->
-
-    <!-- 未完成，存在跨域问题 -->
     <div class="wrap">
       <div class="wrap-hd">
-        <h3>游戏列表</h3>
+        <h3>课程列表</h3>
       </div>
       <div class="game">
         <div class="loading">正在加载中...</div>
@@ -24,18 +21,20 @@
           <div class="btn-item active">1</div>
           <div class="btn-item">2</div>
           <div class="btn-item">3</div>
+          <div class="btn-item">4</div>
+          <div class="btn-item">5</div>
         </div>
       </div>
     </div>
     <script type="text/html" id="J_tpl">
       <li class="list-item">
         <div class="thumb">
-          <img src="{{real_thumb}}" />
+          <img src="./images/4.webp" />
         </div>
         <div class="item-info">
-          <h3 class="gname">{{game}}</h3>
-          <p class="uname">{{author_uname}}</p>
-          <p class="wordSum">{{release_word_sum}} 字</p>
+          <h3 class="gname">{{classname}}</h3>
+          <p class="uname">{{name}}老师</p>
+          <p class="wordSum">{{watched}} 人学习</p>
         </div>
       </li>
     </script>
