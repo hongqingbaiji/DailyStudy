@@ -22,6 +22,22 @@
       }
     </script> -->
 
+    <script type="text/javascript">
+      ;(function () {
+        function async_load() {
+          var s = document.createElement('script'),
+            oScript = document.getElementsByTagName('script')[0]
+          s.type = 'text/javascript'
+          s.src = 'utils.js'
+          oScript.parentNode.insertBefore(s, oScript)
+        }
+      })()
+      if (window.attachEvent) {
+        window.attachEvent('onload', asyne_load)
+      } else {
+        window.addEventListener('load', async_load, false)
+      }
+    </script>
     <script src="./js/04.js"></script>
   </body>
 </html>
