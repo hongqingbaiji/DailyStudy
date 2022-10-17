@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .clearfix::after {
+        content: '';
+        display: table;
+        clear: both;
+      }
+      .wrap {
+        width: 300px;
+        height: 300px;
+        margin: 50px auto;
+        border: 1px solid #999;
+      }
+      .wrap .tab {
+        width: 100%;
+        height: 30px;
+        border-bottom: 1px solid #999;
+        text-align: center;
+        line-height: 30px;
+      }
+      .tab .tab-item {
+        float: left;
+        width: 20%;
+        height: 30px;
+        cursor: pointer;
+      }
+      .tab .tab-item.active {
+        background-color: #000;
+        color: #fff;
+      }
+      .page {
+        position: relative;
+        width: 100%;
+        height: 270px;
+      }
+      .page .page-item {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        line-height: 270px;
+        text-align: center;
+        font-size: 40px;
+      }
+      .page .page-item.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="tab clearfix">
+        <div class="tab-item active">选项1</div>
+        <div class="tab-item">选项2</div>
+        <div class="tab-item">选项3</div>
+        <div class="tab-item">选项4</div>
+        <div class="tab-item">选项5</div>
+      </div>
+      <div class="page">
+        <div class="page-item active">页面1</div>
+        <div class="page-item">页面2</div>
+        <div class="page-item">页面3</div>
+        <div class="page-item">页面4</div>
+        <div class="page-item">页面5</div>
+      </div>
+    </div>
+    <script>
+      ;(function () {
+        var Tab = function () {
+          this.tab = document.getElementsByClassName('tab')[0]
+          this.tabItems = document.getElementsByClassName('tab-item')
+          this.pageItems = document.getElementsByClassName('page-item')
+        }
+
+        Tab.prototype = {
+          init: function () {
+            this.bindEvent()
+          },
+          bindEvent: function () {
+            this.tab.addEventListener('click', this.tabClick.bind(this))
+          },
+          tabClick: function (e) {
+            var e = e || window.event,
+              tar = e.target || e.srcElement,
+              tagName = tar.tagName.toLowerCase(),
+              thisIdx = Array.prototype.indexOf.call(this.tabItems, tar)
+
+            if (tagName === 'div') {
+              var len = this.tabItems.length,
+                item
+              for (var i = 0; i < len; i++) {
+                item = this.tabItems[i]
+                pItem = this.pageItems
+
+                item.className = 'tab-item'
+                pItem[i].className = 'page-item'
+              }
+              tar.className += ' active'
+              pItem[thisIdx].className += ' active'
+            }
+          }
+        }
+
+        return new Tab().init()
+      })()
+    </script>
+  </body>
+</html>
