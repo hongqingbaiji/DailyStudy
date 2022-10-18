@@ -73,6 +73,20 @@
       </div>
     </div>
     <script>
+      var p = {
+        age: 18
+      }
+
+      function Person() {
+        console.log(this)
+        console.log(this.age)
+      }
+
+      var p1 = Person.bind(p)
+      var p2 = new p1()
+      console.log(p2)
+    </script>
+    <script>
       ;(function () {
         var Tab = function () {
           this.tab = document.getElementsByClassName('tab')[0]
