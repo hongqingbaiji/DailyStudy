@@ -284,3 +284,17 @@ function setTplToHTML(tpl, regExp, opt) {
 function regTpl() {
   return new RegExp(/{{(.*?)}}/, 'gim')
 }
+
+// 封装节流函数
+function throttle(callback, time) {
+  var value = true
+  return function () {
+    if (value) {
+      value = false
+      setTimeout(function () {
+        callback.apply(this, arguments)
+        value = true
+      }, time)
+    }
+  }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .wrap {
+      width: 800px;
+      margin: 50px auto;
+    }
+
+    .img-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .img-list .img-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 50%;
+    }
+
+    .img-list .img-item .list-img {
+      width: 100%;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <ul class="img-list J-imgList"></ul>
+  </div>
+  <div style="display: none" id="J_data">
+    [{ "img": "images/1.webp", "name": "图片1" },
+    { "img": "images/2.webp", "name": "图片2"},
+    { "img": "images/3.webp", "name": "图片3"},
+    { "img": "images/4.webp", "name": "图片4"},
+    { "img": "images/5.webp", "name": "图片5"},
+    { "img": "images/6.webp", "name": "图片6"},
+    { "img": "images/7.webp", "name": "图片7"},
+    { "img": "images/8.webp", "name": "图片8"},
+    { "img": "images/9.webp", "name": "图片9"},
+    { "img": "images/10.webp", "name": "图片10" },
+    { "img": "images/11.webp", "name": "图片11" },
+    { "img": "images/12.webp", "name": "图片12" },
+    { "img": "images/13.webp", "name": "图片13" },
+    { "img": "images/14.webp", "name": "图片14" },
+    { "img": "images/15.webp", "name": "图片15" },
+    { "img": "images/16.webp", "name": "图片16" },
+    { "img": "images/17.webp", "name": "图片17" },
+    { "img": "images/18.webp", "name": "图片18" },
+    { "img": "images/19.webp", "name": "图片19" },
+    { "img": "images/20.webp", "name": "图片20" },
+    { "img": "images/21.webp", "name": "图片21" },
+    { "img": "images/22.webp", "name": "图片22" }]
+  </div>
+  <script type="text/html" id="J_imgTpl">
+      <li class="img-item">
+        <div class="img-wrap">
+          <img src="images/1.webp" class="list-img" data-src="{{img}}" alt="{{name}}" />
+        </div>
+        <div class="img-tt">
+          <h1>{{name}}</h1>
+        </div>
+      </li>
+    </script>
+  <script src="./js/utils.js"></script>
+  <script src="./js/08.js"></script>
+</body>
+
+</html>
