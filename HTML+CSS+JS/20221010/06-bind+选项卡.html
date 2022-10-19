@@ -72,21 +72,40 @@
         <div class="page-item">页面5</div>
       </div>
     </div>
+
     <script>
-      var p = {
-        age: 18
-      }
+      ;(function () {
+        var oTab = document.getElementsByClassName('tab')[0],
+          oTabItems = oTab.getElementsByClassName('tab-item'),
+          oPageItems = document.getElementsByClassName('page-item')
+        thisIdx = 0
 
-      function Person() {
-        console.log(this)
-        console.log(this.age)
-      }
+        function init() {
+          bindEvent()
+        }
+        function bindEvent() {
+          oTab.addEventListener('click', tabClick, false)
+        }
 
-      var p1 = Person.bind(p)
-      var p2 = new p1()
-      console.log(p2)
+        function tabClick(e) {
+          var e = e || window.event,
+            tar = e.target || e.srcElement,
+            tarClassName = tar.className
+
+          if (tarClassName === 'tab-item') {
+            oTabItems[thisIdx].className = 'tab-item'
+            oPageItems[thisIdx].className = 'page-item'
+            thisIdx = Array.prototype.indexOf.call(oTabItems, tar)
+            oTabItems[thisIdx].className += ' active'
+            oPageItems[thisIdx].className += ' active'
+          }
+        }
+
+        init()
+      })()
     </script>
-    <script>
+
+    <!-- <script>
       ;(function () {
         var Tab = function () {
           this.tab = document.getElementsByClassName('tab')[0]
@@ -125,6 +144,6 @@
 
         return new Tab().init()
       })()
-    </script>
+    </script> -->
   </body>
 </html>

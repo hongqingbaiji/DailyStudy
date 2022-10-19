@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body,
+      .wrap {
+        height: 100%;
+        margin: 0;
+      }
+
+      /* .wrap {
+        margin: 0 150px 0 100px;
+      }
+
+      .wrap .column {
+        position: relative;
+        float: left;
+        height: 100%;
+      }
+
+      .left {
+        width: 100px;
+        left: -100px;
+        margin-left: -100%;
+        background-color: pink;
+      }
+
+      .right {
+        right: -150px;
+        margin-left: -150px;
+        width: 150px;
+        background-color: purple;
+      }
+
+      .middle {
+        width: 100%;
+        background-color: green;
+      } */
+      .wrap {
+        border: 1px solid red;
+        color: #fff;
+      }
+      .wrap .column {
+        float: left;
+        height: 100%;
+      }
+      .left {
+        margin-left: -100%;
+        width: 100px;
+        background-color: green;
+      }
+      .right {
+        margin-left: -150px;
+        width: 150px;
+        background-color: pink;
+      }
+      .middle {
+        width: 100%;
+        background-color: purple;
+      }
+      .middle .main {
+        height: 100%;
+        margin: 0 150px 0 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="column middle">
+        <div class="main">middle部分</div>
+      </div>
+      <div class="column left">left部分</div>
+      <div class="column right">right部分</div>
+    </div>
+  </body>
+</html>

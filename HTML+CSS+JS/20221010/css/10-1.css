@@ -1,0 +1,7 @@
+@import url(./10-2.css);
+
+html {
+  background-color: red;
+  height: 100%;
+  color: #fff;
+}
