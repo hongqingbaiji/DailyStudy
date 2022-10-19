@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- renderer -->
-    <!-- <meta name="renderer" content="webkit" /> -->
-    <!-- 默认IE兼容模式 -->
-    <!-- <meta name="renderer" content="ie-comp" /> -->
-    <!-- 默认IE标准模式 -->
-    <!-- <meta name="renderer" content="ie-stand" /> -->
-    <!-- 用IE最高版本来渲染 -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="./css/10-1.css" /> -->
-    <style>
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- renderer -->
+  <!-- <meta name="renderer" content="webkit" /> -->
+  <!-- 默认IE兼容模式 -->
+  <!-- <meta name="renderer" content="ie-comp" /> -->
+  <!-- 默认IE标准模式 -->
+  <!-- <meta name="renderer" content="ie-stand" /> -->
+  <!-- 用IE最高版本来渲染 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="./css/10-1.css" /> -->
+  <!-- <style>
       div {
         width: 0;
         height: 0;
@@ -22,9 +23,76 @@
         border-bottom: 50px solid transparent;
         /* border-left: 50px solid transparent; */
       }
-    </style>
-  </head>
-  <body>
-    <div></div>
-  </body>
+    </style> -->
+</head>
+
+<body>
+  <!-- <div></div> -->
+  <script>
+    // var obj = {}
+    // Object.defineProperties(obj, {
+    //   a: {
+    //     value: 1,
+    //     writable: true,
+    //     enumerable: true,
+    //     configurable: true
+    //   },
+    //   b: {
+    //     value: 2
+    //   }
+    // })
+
+    // obj.a = 100
+    // obj.b = 200
+    // // delete obj.a
+    // delete obj.b
+
+    // for (var k in obj) {
+    //   console.log(k + ':' + obj[k]);
+    // }
+    // console.log(obj);
+
+    // 数据劫持
+    // var obj = {}
+    // var a = 1
+    // Object.defineProperties(obj, {
+    //   a: {
+    //     enumerable: true,
+    //     configurable: true,
+    //     get() {
+    //       return a
+    //     },
+    //     set(newVal) {
+    //       console.log(newVal);
+    //     }
+    //   }
+    // })
+    // console.log(obj.a);
+    // obj.a = 10
+
+    function DataArr() {
+      var _val = null,
+        _arr = []
+      Object.defineProperty(this, 'val', {
+        get() {
+          return _val
+        },
+        set(newVal) {
+          _val = newVal
+          _arr.push({ val: _val })
+        }
+      })
+      this.getArr = function () {
+        return _arr
+      }
+    }
+
+    var dataArr = new DataArr()
+    dataArr.val = 123
+    dataArr.val = 234
+    console.log(dataArr.getArr());
+
+  </script>
+</body>
+
 </html>
