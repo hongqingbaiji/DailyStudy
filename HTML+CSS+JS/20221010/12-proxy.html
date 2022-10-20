@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <script>
+      var obj = {
+        a: 1,
+        b: 2
+      }
+
+      var proxy = new Proxy(obj, {
+        get(obj, prop) {
+          return 'get: ' + obj[prop]
+        },
+        set(obj, prop, value) {
+          obj[prop] = value
+          console.log('set: ' + obj[prop])
+        }
+      })
+
+      console.log(proxy)
+      console.log(obj)
+      proxy.a = 10
+      proxy.b = 20
+      console.log(proxy)
+      console.log(obj)
+    </script> -->
+
+    <!-- <script>
+      var arr = [
+        { name: 'zs', age: 18 },
+        { name: 'ls', age: 20 }
+      ]
+
+      var persons = new Proxy(arr, {
+        get(arr, prop) {
+          return arr[prop]
+        },
+        set(arr, prop, value) {
+          arr[prop] = value
+          console.log('set: ' + arr[prop])
+        }
+      })
+
+      console.log(persons[0]) //{name:'zs',age:18}
+      persons[1]['age'] = 30
+      console.log(persons[1], arr[1]) //{name:'ls',age:30}
+    </script> -->
+
+    <!-- <script>
+      function fn() {}
+      fn.a = 123
+
+      var newFn = new Proxy(fn, {
+        get(fn, prop) {
+          return fn[prop]
+        }
+      })
+
+      console.log(newFn.a)
+    </script> -->
+
+    <!-- <script>
+      // 对象操作的 14 种方法
+      // var obj = { a: 1, b: 2 }
+
+      // 1. 获取原型
+      // console.log(Object.getPrototypeOf(obj))
+      // console.log(obj.__proto__)
+      // console.log(Object.prototype)
+
+      // // 2. 设置原型
+      // Object.setPrototypeOf(obj, { c: 3, d: 4 })
+      // console.log(obj.__proto__)
+
+      // // 3.  获取对象的可扩展性
+      // console.log(Object.isExtensible(obj))
+      // Object.freeze(obj) //冻结对象
+      // console.log(Object.isExtensible(obj))
+
+      // 4. 获取自有属性
+      // Object.setPrototypeOf(obj, { c: 3, d: 4 })
+      // console.log(Object.getOwnPropertyNames(obj))
+
+      // 5. 禁止扩展对象 [[PreventExtensions]]
+      // obj.c = 3
+      // Object.preventExtensions(obj)
+      // obj.d = 4
+      // console.log(obj) //{a:1,b:2,c:3}
+
+      // 6. 拦截对象操作 [[DefineOwnProperty]]
+      // Object.defineProperty() //其实就是数据劫持
+
+      // 7. 判断是否是自身属性 [[hasProperty]]
+      // console.log(obj.hasOwnProperty('c'))
+
+      // 第八种: [[GET]]
+      // console.log('a' in obj)
+      // console.log(obj.b)
+
+      // 第九种: [[GET]]
+      // obj.a = 3
+      // obj['b'] = 4
+      // console.log(obj)
+
+      // 第十种: [[Delete]]
+      // delete obj.a
+
+      // 第十一种: [[Enumerate]]
+      // for (var k in obj) {
+      //   console.log(obj[k])
+      // }
+
+      // 第十二种: 获取键集合 [[OwnPropertyKeys]]
+      // console.log(Object.keys(obj))
+    </script> -->
+
+    <!-- <script>
+      var target = {
+        a: 1,
+        b: 2
+      }
+
+      var proxy = new MyProxy(target, {
+        get(target, prop) {
+          return 'GET: ' + prop + ' = ' + target[prop]
+        },
+        set(target, prop, value) {
+          target[prop] = value
+          console.log('SET: ' + prop + ' = ' + target[prop])
+        }
+      })
+      console.log(proxy.a)
+      target.a = 10
+      proxy.b = 20
+      console.log(proxy)
+
+      function MyProxy(target, handler) {
+        let _target = deepClone(target)
+
+        Object.keys(_target).forEach(key => {
+          Object.defineProperty(_target, key, {
+            get() {
+              return handler.get && handler.get(target, key)
+            },
+            set(newVal) {
+              handler.set && handler.set(target, key, newVal)
+            }
+          })
+        })
+
+        return _target
+
+        // 深拷贝
+        function deepClone(org, tar) {
+          var tar = tar || {},
+            toStr = Object.prototype.toString,
+            arrType = '[object Array]'
+
+          for (var k in org) {
+            if (org.hasOwnProperty(k)) {
+              if (typeof org[k] === 'object' && org[k] !== null) {
+                if (toStr.call(org[k]) === arrType) {
+                  tar[k] = []
+                } else {
+                  tar[k] = {}
+                }
+                deepClone(org[k], tar[k])
+              } else {
+                tar[k] = org[k]
+              }
+            }
+          }
+          return tar
+        }
+      }
+    </script> -->
+
+    <script>
+      var target = {
+        a: 1,
+        b: 2
+      }
+
+      var proxy = new Proxy(target, {
+        get(target, prop) {
+          return Reflect.get(target, prop)
+        },
+        set(target, prop, value) {
+          Reflect.set(target, prop, value)
+          console.log('SET: ' + prop + ' = ' + target[prop])
+        }
+      })
+      console.log(proxy.a)
+      proxy.a = 10
+      proxy.b = 20
+      console.log(proxy)
+    </script>
+  </body>
+</html>
