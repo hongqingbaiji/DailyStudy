@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOM</title>
+</head>
+
+<body>
+  <div>
+    <p>窗口<span class="state">关闭</span>状态</p>
+    <button onclick="openWin()">打开窗口</button>
+    <button onclick="closeWin()">关闭窗口</button>
+
+  </div>
+  <div>
+    <button onclick="openAlert()">alert</button>
+    <button onclick="openConfirm()">confirm</button>
+    <button onclick="openPrompt()">prompt</button>
+  </div>
+  <div>
+    <button onclick="winResizeBy()">resizeBy</button>
+    <button onclick="winResizeTo()">resizeTo</button>
+    <button onclick="winMoveBy()">moveBy</button>
+    <button onclick="winMoveTo()">moveTo</button>
+    <button onclick="winPrint()">print</button>
+  </div>
+  <script>
+    var win,
+      oState = document.getElementsByClassName('state')[0]
+
+    function openWin() {
+      win = window.open('', '', 'width=200,height=200,left=200,top=200')
+      // win = window.open()
+      checkStatus()
+    }
+    function closeWin() {
+      win.close()
+      checkStatus()
+    }
+    function checkStatus() {
+      oState.innerText = win.closed ? '关闭' : '打开'
+    }
+    function openAlert() {
+      alert('你吃饭了没？')
+    }
+    function openConfirm() {
+      var w = confirm('你是女生吗？')
+      console.log(w ? '我是女生' : '我是男生')
+    }
+    function openPrompt() {
+      var n1 = Number(prompt('输入第一个数')),
+        n2 = Number(prompt('输入第二个数'))
+      console.log('两数之和为： ' + (n1 + n2));
+    }
+    function winResizeBy() {
+      win.resizeBy(10, 10)
+    }
+    function winResizeTo() {
+      win.resizeTo(300, 300)
+    }
+    function winMoveBy() {
+      win.moveBy(10, 10)
+    }
+    function winMoveTo() {
+      win.moveTo(300, 300)
+    }
+    function winPrint() {
+      window.print()
+    }
+  </script>
+</body>
+
+</html>
