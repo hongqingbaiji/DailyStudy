@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrap {
+        position: relative;
+        width: 300px;
+        height: 500px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        margin: 50px;
+      }
+      .wrap-hd {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 44px;
+        background-color: orange;
+        color: #fff;
+        text-align: center;
+        line-height: 44px;
+      }
+      .hd-item {
+        display: none;
+      }
+      .hd-item.show {
+        display: block;
+      }
+      .wrap-bd {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 44px;
+        border-top: 1px solid #ccc;
+      }
+
+      .wrap-bd .bd-item {
+        flex: 1;
+        display: block;
+        height: 44px;
+        line-height: 44px;
+        text-align: center;
+      }
+      .wrap-bd .bd-item.active {
+        background-color: orange;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="wrap-hd">
+        <div class="hd-item show">首页</div>
+        <div class="hd-item">分类</div>
+        <div class="hd-item">我的</div>
+      </div>
+      <div class="wrap-bd">
+        <div data-page="home" class="bd-item active">首页</div>
+        <div data-page="sort" class="bd-item">分类</div>
+        <div data-page="mine" class="bd-item">我的</div>
+      </div>
+    </div>
+    <script>
+      ;(function () {
+        var oWrapBd = document.getElementsByClassName('wrap-bd')[0],
+          oHdItems = document.getElementsByClassName('hd-item'),
+          oBdItems = document.getElementsByClassName('bd-item'),
+          oBdItemsLen = oBdItems.length
+
+        function init() {
+          pageChange()
+          bindEvent()
+        }
+
+        // 监听hash值是否发生改变
+        window.onhashchange = function () {
+          pageChange()
+        }
+
+        function bindEvent() {
+          oWrapBd.addEventListener('click', oBdItemsClick, false)
+        }
+
+        // 点击按钮，给hash值赋值
+        function oBdItemsClick(e) {
+          var e = e || window.event,
+            tar = e.target || w.srcElement,
+            className = tar.className,
+            hashName = tar.getAttribute('data-page')
+
+          if (className === 'bd-item') {
+            location.hash = '#' + hashName
+          }
+        }
+
+        // 改变页面的hash值
+        function pageChange() {
+          var hashName = location.hash.slice(1),
+            hasThisHash = checkHashName(hashName).hasThisHash,
+            thisIdx = checkHashName(hashName).index,
+            bdItem,
+            hdItem
+
+          if (hasThisHash) {
+            location.hash = '#' + hashName
+          } else {
+            location.hash = '#home'
+            thisIdx = 0
+          }
+
+          for (var i = 0; i < oBdItemsLen; i++) {
+            bdItem = oBdItems[i]
+            hdItem = oHdItems[i]
+            hdItem.className = 'hd-item'
+            bdItem.className = 'bd-item'
+          }
+          oBdItems[thisIdx].className += ' active'
+          oHdItems[thisIdx].className += ' show'
+        }
+
+        // 检测hash值的合法性
+        function checkHashName(hashName) {
+          var item,
+            page = '',
+            hasThisHash = false,
+            thisIdx = 0
+
+          for (var i = 0; i < oBdItemsLen; i++) {
+            item = oBdItems[i]
+            page = item.getAttribute('data-page')
+
+            if (hashName === page) {
+              hasThisHash = true
+              thisIdx = i
+              break
+            }
+          }
+          return {
+            hasThisHash: hasThisHash,
+            index: thisIdx
+          }
+        }
+
+        init()
+      })()
+    </script>
+  </body>
+</html>
