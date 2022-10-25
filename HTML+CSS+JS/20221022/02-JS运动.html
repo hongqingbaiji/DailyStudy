@@ -1,70 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
+      div {
+        position: absolute;
+        left: 0px;
+        top: 0;
+        width: 50px;
+        height: 50px;
+        background-color: orange;
+      }
 
-    div {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 50px;
-      height: 50px;
-      background-color: orange;
-    }
+      span {
+        position: absolute;
+        top: 0;
+        left: 300px;
+        width: 1px;
+        height: 50px;
+        background-color: red;
+      }
 
-    span {
-      position: absolute;
-      top: 0;
-      left: 300px;
-      width: 1px;
-      height: 50px;
-      background-color: red;
-    }
+      button {
+        margin-top: 100px;
+      }
+    </style>
+  </head>
 
-    button {
-      margin-top: 100px;
-    }
+  <body>
+    <div></div>
+    <span></span>
+    <button>点击</button>
+    <script>
+      var oDiv = document.getElementsByTagName('div')[0],
+        oBtn = document.getElementsByTagName('button')[0],
+        oSpan = document.getElementsByTagName('span')[0],
+        timer = null
 
-  </style>
-</head>
+      oBtn.onclick = function () {
+        startMove(oDiv, oSpan.offsetLeft)
+      }
 
-<body>
-  <div></div>
-  <span></span>
-  <button>点击</button>
-  <script>
-    var oDiv = document.getElementsByTagName('div')[0],
-      oBtn = document.getElementsByTagName('button')[0],
-      oSpan = document.getElementsByTagName('span')[0],
-      timer = null
+      function startMove(dom, target) {
+        var iSpeed = null
+        clearInterval(timer)
 
-    oBtn.onclick = function () {
-      var oLeft = oSpan.offsetLeft - oDiv.offsetLeft,
-        iSpeed = oLeft > 0 ? 7 : -7,
-        oDivW = oDiv.offsetWidth
+        timer = setInterval(function () {
+          iSpeed = (target - dom.offsetLeft) / 7
+          iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed)
 
-      clearInterval(timer)
+          if (dom.offsetLeft === target) {
+            clearInterval(timer)
+          } else {
+            dom.style.left = dom.offsetLeft + iSpeed + 'px'
+          }
+        }, 50)
+      }
 
-      timer = setInterval(function () {
-        if (Math.abs(oSpan.offsetLeft - oDiv.offsetLeft) < Math.abs(iSpeed)) {
-          clearInterval(timer)
-          oDiv.style.left = oSpan.offsetLeft + 'px'
-          return
-        }
-        oDiv.style.left = oDiv.offsetLeft + iSpeed + 'px'
+      // function startMove(dom, target) {
+      //   var iSpeed = target - dom.offsetLeft > 0 ? 7 : -7
 
-      }, 50)
-    }
-  </script>
-</body>
+      //   clearInterval(timer)
 
+      //   timer = setInterval(function () {
+      //     if (Math.abs(target - dom.offsetLeft) < Math.abs(iSpeed)) {
+      //       clearInterval(timer)
+      //       dom.style.left = target + 'px'
+      //     } else {
+      //       dom.style.left = dom.offsetLeft + iSpeed + 'px'
+      //     }
+      //   }, 50)
+      // }
+    </script>
+  </body>
 </html>
