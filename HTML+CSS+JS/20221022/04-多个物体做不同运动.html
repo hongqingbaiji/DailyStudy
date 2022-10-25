@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 50px;
+      height: 50px;
+      background-color: pink;
+      margin-top: 50px;
+      border: 5px solid purple;
+      opacity: 1;
+      box-sizing: border-box;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <script>
+    var oDivs = document.getElementsByTagName('div')
+    oDivs[0].onmouseover = function () {
+      startMove(this, 'width', 300)
+    }
+
+    oDivs[0].onmouseout = function () {
+      startMove(this, 'width', 50)
+    }
+
+    oDivs[1].onmouseover = function () {
+      startMove(this, 'opacity', 20)
+    }
+
+    oDivs[1].onmouseout = function () {
+      startMove(this, 'opacity', 100)
+    }
+
+    oDivs[2].onmouseover = function () {
+      startMove(this, 'borderWidth', 20)
+    }
+
+    oDivs[2].onmouseout = function () {
+      startMove(this, 'borderWidth', 5)
+    }
+
+    oDivs[3].onmouseover = function () {
+      startMove(this, 'height', 300)
+    }
+
+    oDivs[3].onmouseout = function () {
+      startMove(this, 'height', 50)
+    }
+
+    function startMove(dom, attr, target) {
+      var iCur,
+        iSpeed = null
+
+      clearInterval(dom.timer)
+
+      dom.timer = setInterval(function () {
+        iCur = attr === 'opacity' ? parseFloat(getStyles(dom, attr)) * 100 : parseInt(getStyles(dom, attr));
+
+        iSpeed = (target - iCur) / 7
+        iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed)
+
+        if (iCur === target) {
+          clearInterval(dom.timer)
+        } else {
+          dom.style[attr] = attr === 'opacity' ? (iCur + iSpeed) / 100 : iCur + iSpeed + 'px'
+        }
+      }, 50)
+    }
+
+    function getStyles(elem, prop) {
+      if (window.getComputedStyle) {
+        return prop ? window.getComputedStyle(elem, null)[prop]
+          : window.getComputedStyle(elem, null)
+      } else if (elem.currentStyle) {
+        return prop ? elem.currentStyle[prop] : elem.currentStyle
+      }
+    }
+  </script>
+</body>
+
+</html>
