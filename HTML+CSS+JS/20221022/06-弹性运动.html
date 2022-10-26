@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        position: absolute;
+        left: 0;
+        top: 100px;
+        width: 50px;
+        height: 50px;
+        background-color: pink;
+      }
+      span {
+        position: absolute;
+        left: 300px;
+        top: 100px;
+        width: 1px;
+        height: 50px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <button>弹性运动</button>
+
+    <div></div>
+    <span></span>
+
+    <script>
+      var oDiv = document.getElementsByTagName('div')[0],
+        oSpan = document.getElementsByTagName('span')[0],
+        oBtn = document.getElementsByTagName('button')[0],
+        oSpanLeft = parseInt(getStyles(oSpan, 'left')),
+        oDivLeft
+
+      oBtn.onclick = function () {
+        oDivLeft = parseInt(getStyles(oDiv, 'left'))
+
+        if (oDivLeft === 0) {
+          elasticMove({
+            obj: oDiv,
+            target: oSpanLeft
+          })
+        }
+      }
+
+      // 第一种方法
+      // function elasticMove(json) {
+      //   var obj = json.obj,
+      //     target = json.target || 300,
+      //     attr = json.attr || 'left',
+      //     len = json.len || target / 5,
+      //     init = parseInt(getStyles(obj, attr)),
+      //     set = 0
+
+      //   if (!obj.timers) {
+      //     obj.timers = {}
+      //   }
+      //   console.log(obj.timers)
+      //   obj.timers[attr] = setInterval(function () {
+      //     set = init + target + len
+      //     len = -len * 0.9
+      //     obj.style[attr] = set + 'px'
+
+      //     if (Math.round(len) === 0) {
+      //       obj.style[attr] = target + 'px'
+      //       clearInterval(obj.timers[attr])
+      //       obj.timers[attr] = null
+      //     }
+      //   }, 50)
+      // }
+
+      // 第二种方法
+
+      function elasticMove(json) {
+        var obj = json.obj,
+          target = json.target || 300,
+          attr = json.attr || 'left',
+          len = target,
+          k = json.k || 0.7, // 弹性系数
+          z = json.z || 0.7, // 阻力系数
+          cur = parseInt(getStyles(obj, attr)),
+          step = 0
+
+        if (!obj.timers) {
+          obj.timers = {}
+        }
+
+        obj.timers[attr] = setInterval(function () {
+          cur = parseInt(getStyles(obj, attr))
+          len = target - cur
+          step += len * k
+          step = step * z
+          obj.style[attr] = cur + step + 'px'
+
+          if (Math.round(step) === 0 && Math.round(len) === 0) {
+            obj.style[attr] = target + 'px'
+            clearInterval(obj.timers[attr])
+            obj.timers[attr] = null
+          }
+        }, 50)
+      }
+
+      function getStyles(elem, prop) {
+        if (window.getComputedStyle) {
+          return prop
+            ? window.getComputedStyle(elem, null)[prop]
+            : window.getComputedStyle(elem, null)
+        } else if (elem.currentStyle) {
+          return prop ? elem.currentStyle[prop] : elem.currentStyle
+        }
+      }
+    </script>
+  </body>
+</html>

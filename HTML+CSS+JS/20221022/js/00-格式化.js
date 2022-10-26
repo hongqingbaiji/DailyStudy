@@ -1,55 +1,41 @@
-var oTop = document.getElementsByClassName('top')[0],
-  oBottom = document.getElementsByClassName('bottom')[0]
+var oDiv = document.getElementsByTagName('div')[0],
+  oSpan = document.getElementsByTagName('span')[0],
+  oBtn = document.getElementsByTagName('button')[0],
+  oSpanLeft = parseInt(getStyles(oSpan, 'left')),
+  oDivLeft
 
-oTop.onclick = function () {
-  startMove(
-    this,
-    {
-      width: 200,
-      height: 200,
-      left: 200,
-      top: 200,
-      opacity: 50
-    },
-    function () {
-      startMove(
-        oBottom,
-        {
-          width: 200,
-          height: 200,
-          left: 200,
-          top: 200,
-          opacity: 50
-        },
-        function () {
-          console.log('over')
-        }
-      )
-    }
-  )
+oBtn.onclick = function () {
+  oDivLeft = parseInt(getStyles(oDiv, 'left'))
+
+  if (oDivLeft === 0) {
+    elasticMove({
+      obj: oDiv,
+      target: oSpanLeft
+    })
+  }
 }
-oTop.onmouseout = function () {}
 
-function startMove(dom, attrObj, callback) {
-  var iCur = null,
-    iSpeed = null
-  clearInterval(dom.timer)
-  dom.timer = setInterval(function () {
-    var allStop = true
-    for (var attr in attrObj) {
-      iCur =
-        attr === 'opacity' ? parseFloat(getStyles(dom, attr)) * 100 : parseInt(getStyles(dom, attr))
-      iSpeed = (attrObj[attr] - iCur) / 7
-      iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed)
+function elasticMove(json) {
+  var obj = json.obj,
+    target = json.target || 300,
+    attr = json.attr || 'left',
+    len = json.len || target / 5,
+    init = parseInt(getStyles(obj, attr)),
+    set = 0
 
-      if (iCur !== attrObj[attr]) {
-        allStop = false
-      }
-      dom.style[attr] = attr === 'opacity' ? (iCur + iSpeed) / 100 : iCur + iSpeed + 'px'
-    }
-    if (allStop) {
-      clearInterval(dom.timer)
-      typeof callback === 'function' && callback()
+  if (!obj.timers) {
+    obj.timers = {}
+  }
+  console.log(obj.timers)
+  obj.timers[attr] = setInterval(function () {
+    set = init + target + len
+    len = -len * 0.9
+    obj.style[attr] = set + 'px'
+
+    if (Math.round(len) === 0) {
+      obj.style[attr] = target + 'px'
+      clearInterval(obj.timers[attr])
+      obj.timers[attr] = null
     }
   }, 50)
 }
