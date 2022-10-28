@@ -1,144 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    .box {
-      position: absolute;
-      top: 100px;
-      width: 50px;
-      height: 50px;
-      background-color: red;
-      border-radius: 50%;
-    }
-
-    .box1 {
-      left: 0px;
-    }
-
-    .box2 {
-      left: 50px;
-    }
-
-    .box3 {
-      left: 100px;
-    }
-
-    .box4 {
-      left: 150px;
-    }
-
-    .box5 {
-      left: 200px;
-    }
-
-  </style>
-</head>
-
-<body>
-  <div class="box box1"></div>
-  <div class="box box2"></div>
-  <div class="box box3"></div>
-  <div class="box box4"></div>
-  <div class="box box5"></div>
-  <button id="btn">开始运行</button>
-
-  <script src="./js/utils.js"></script>
-  <script>
-    (function () {
-      var oBoxs = document.getElementsByClassName('box'),
-        oBtn = document.getElementById('btn'),
-        idx = 0
-
-      var init = function () {
-        bindEvent()
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        position: absolute;
+        top: 100px;
+        width: 50px;
+        height: 50px;
+        background-color: red;
+        border-radius: 50%;
       }
 
-      function bindEvent() {
-        oBtn.addEventListener('click', btnClick, false)
+      .box1 {
+        left: 0px;
       }
 
-      function btnClick() {
-        var t = setInterval(function () {
-          gravityMove({
-            obj: oBoxs[idx++]
-          })
-
-          if (idx === oBoxs.length) {
-            clearInterval(t)
-          }
-        }, 1000)
+      .box2 {
+        left: 50px;
       }
 
-      function gravityMove(json) {
-        var obj = json.obj,
-          curY = parseInt(getStyles(obj, 'top')),
-          curX = parseInt(getStyles(obj, 'left')),
-          height = parseInt(getStyles(obj, 'height')),
-          width = parseInt(getStyles(obj, 'width')),
-          activeHeight = json.activeHeight,
-          activeWidth = json.activeWidth,
+      .box3 {
+        left: 100px;
+      }
 
-          stepY = 0,
-          stepX = 5,
-          top,
-          left,
-          k = .9,  // 减速系数
-          i = 0    // 声明一个碰撞次数
+      .box4 {
+        left: 150px;
+      }
 
-        activeHeight = Number(json.activeHeight) || getViewportSize().height
-        activeWidth = Number(json.activeWidth) || getViewportSize().width
+      .box5 {
+        left: 200px;
+      }
+    </style>
+  </head>
 
-        if (obj.timer) {
-          return
+  <body>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+    <div class="box box4"></div>
+    <div class="box box5"></div>
+    <button id="btn">开始运行</button>
+
+    <script src="./js/utils.js"></script>
+    <script>
+      ;(function () {
+        var oBoxs = document.getElementsByClassName('box'),
+          oBtn = document.getElementById('btn'),
+          idx = 0
+
+        var init = function () {
+          bindEvent()
         }
 
-        obj.timer = setInterval(function () {
-          curY = parseInt(getStyles(obj, 'top'))
-          curX = parseInt(getStyles(obj, 'left'))
-          stepY += 5
-          top = curY + stepY
-          left = curX + stepX
+        function bindEvent() {
+          oBtn.addEventListener('click', btnClick, false)
+        }
 
+        function btnClick() {
+          var t = setInterval(function () {
+            gravityMove({
+              obj: oBoxs[idx++]
+            })
 
-          if (top > activeHeight - height) {
-            top = activeHeight - height
-          }
-          if (left > activeWidth - width) {
-            left = activeWidth - width
-          }
-
-          if (top === activeHeight - height) {
-            i++
-            stepY = -stepY * k
-
-            if (i === 20) {
-              clearInterval(obj.timer)
-              obj.timer = null
+            if (idx === oBoxs.length) {
+              clearInterval(t)
             }
-          }
-          if (left === activeWidth - width) {
-            i++
-            stepX = -stepX * k
+          }, 1000)
+        }
 
-            if (i === 20) {
-              clearInterval(obj.timer)
-              obj.timer = null
+        function gravityMove(json) {
+          var obj = json.obj,
+            width = parseInt(getStyles(obj, 'width')),
+            height = parseInt(getStyles(obj, 'height')),
+            curX = parseInt(getStyles(obj, 'left')),
+            curY = parseInt(getStyles(obj, 'top')),
+            activeWidth = json.activeWidth,
+            activeHeight = json.activeHeight,
+            stepX = 5,
+            stepY = 0,
+            left,
+            top,
+            k = 0.9,
+            i
+
+          activeWidth = Number(json.activeWidth) || getViewportSize().width
+          activeHeight = Number(json.activeHeight) || getViewportSize().height
+
+          if (obj.timer) {
+            return
+          }
+
+          obj.timer = setInterval(function () {
+            curX = parseInt(getStyles(obj, 'left'))
+            curY = parseInt(getStyles(obj, 'top'))
+            stepY += 5
+            left = curX + stepX
+            top = curY + stepY
+
+            if (left > activeWidth - width) {
+              left = activeWidth - width
             }
-          }
-          obj.style.top = top + 'px'
-          obj.style.left = left + 'px'
-        }, 50)
-      }
 
+            if (top > activeHeight - height) {
+              top = activeHeight - height
+            }
 
-      init()
-    })()
-  </script>
-</body>
+            if (left === activeWidth - width) {
+              stepX = -stepX
+            }
+            if (top === activeHeight - height) {
+              stepY = -stepY * k
+              i++
+              if (i === 20) {
+                clearInterval(obj.timer)
+                obj.timer = null
+              }
+            }
 
+            obj.style.left = left + 'px'
+            obj.style.top = top + 'px'
+          }, 50)
+        }
+
+        init()
+      })()
+    </script>
+  </body>
 </html>

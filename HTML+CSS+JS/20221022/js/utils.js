@@ -247,7 +247,32 @@ function pagePos(e) {
   }
 }
 
-// 16. 判断点是否在一个三角形内
+// 16.元素拖拽
+function elemDrag(elem) {
+  var x, y
+  addEvent(elem, 'mousedown', function (e) {
+    var e = e || window.event
+    x = pagePos(e).X - getStyles(elem, 'left')
+    y = pagePos(e).Y - getStyles(elem, 'top')
+
+    addEvent(document, 'mousemove', mouseMove)
+    addEvent(document, 'mouseup', mouseUp)
+  })
+  function mouseMove(e) {
+    var e = e || window.event
+    elem.style.left = pagePos(e).X - x + 'px'
+    elem.style.top = pagePos(e).Y - y + 'px'
+  }
+  function mouseUp(e) {
+    var e = e || window.event
+    removeEvent(document, 'mousemove', mouseMove)
+    removeEvent(document, 'mouseup', mouseUp)
+    cancelBubble(e)
+    preventDefaultEvent(e)
+  }
+}
+
+// 17. 判断点是否在一个三角形内
 var pointInTriangle = (function () {
   function vec(a, b) {
     return {
@@ -274,7 +299,7 @@ var pointInTriangle = (function () {
   }
 })()
 
-// 正则表达式
+// 18. 正则表达式
 function setTplToHTML(tpl, regExp, opt) {
   return tpl.replace(regExp(), function (node, key) {
     return opt[key]
@@ -285,7 +310,7 @@ function regTpl() {
   return new RegExp(/{{(.*?)}}/, 'gim')
 }
 
-// 封装节流函数
+// 19. 封装节流函数
 function throttle(callback, time) {
   var value = true
   return function () {
@@ -297,4 +322,74 @@ function throttle(callback, time) {
       }, time)
     }
   }
+}
+
+// 21. 弹性运动封装
+function elasticMove(json) {
+  var obj = json.obj,
+    target = json.target,
+    attr = json.attr || 'left',
+    len = target,
+    k = json.k || 0.7, // 弹性系数
+    z = json.z || 0.6, // 阻力系数
+    cur = parseInt(getStyles(obj, attr)),
+    step = 0
+
+  // 判断target值是否合规，不合规给一个默认值300
+  target = isNaN(Number(target)) ? 300 : Number(target)
+
+  if (!obj.timers) {
+    obj.timers = {}
+  }
+
+  //判断是否存在定时器，存在的话直接return，不开启新的定时器
+  if (obj.timers[attr]) {
+    return
+  }
+
+  obj.timers[attr] = setInterval(function () {
+    cur = parseInt(getStyles(obj, attr))
+    len = target - cur
+    step += len * k
+    step = step * z
+
+    if ((attr === 'width' || attr === 'height') && cur + step < 0) {
+      obj.style[attr] = 0
+    } else {
+      obj.style[attr] = cur + step + 'px'
+    }
+
+    if (Math.round(step) === 0 && Math.round(len) === 0) {
+      obj.style[attr] = target + 'px'
+      clearInterval(obj.timers[attr])
+      obj.timers[attr] = null
+    }
+  }, 10)
+}
+
+// 22. 普通运动封装
+function startMove(dom, attrObj, callback) {
+  var iCur = null,
+    iSpeed = null
+  clearInterval(dom.timer)
+  dom.timer = setInterval(function () {
+    var allStop = true // 声明一个标识符，判断是否所有运动项都已结束
+    // 循环遍历运动属性的对象
+    for (var attr in attrObj) {
+      iCur =
+        attr === 'opacity' ? parseFloat(getStyles(dom, attr)) * 100 : parseInt(getStyles(dom, attr))
+      iSpeed = (attrObj[attr] - iCur) / 7
+      iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed)
+
+      if (iCur !== attrObj[attr]) {
+        allStop = false
+      }
+      dom.style[attr] = attr === 'opacity' ? (iCur + iSpeed) / 100 : iCur + iSpeed + 'px'
+    }
+    // 只有所有属性都运动完毕 才能清除计时器，并执行回调函数
+    if (allStop) {
+      clearInterval(dom.timer)
+      typeof callback === 'function' && callback()
+    }
+  }, 10)
 }

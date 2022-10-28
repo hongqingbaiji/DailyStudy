@@ -1,138 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    .nav {
-      position: relative;
-      width: 600px;
-      height: 30px;
-      margin: 50px;
-    }
-
-    .nav-item {
-      float: left;
-      width: 120px;
-      height: 30px;
-      border-right: 1px solid #fff;
-      line-height: 30px;
-      text-align: center;
-      background-color: #789;
-      color: #fff;
-    }
-
-    #nav-active {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 120px;
-      height: 30px;
-      background-color: rgba(0, 0, 0, .3);
-      cursor: pointer;
-    }
-
-  </style>
-</head>
-
-<body>
-  <div class="nav">
-    <a href="javascript:;" class="nav-item">首页</a>
-    <a href="javascript:;" class="nav-item">精华</a>
-    <a href="javascript:;" class="nav-item">候选</a>
-    <a href="javascript:;" class="nav-item">新闻</a>
-    <a href="javascript:;" class="nav-item">关注</a>
-    <div id="nav-active"></div>
-  </div>
-  <script src="./js/utils.js"></script>
-  <script>
-    ; (function () {
-      var oNav = document.getElementsByClassName('nav')[0],
-        oNavItems = document.getElementsByClassName('nav-item'),
-        oNavActive = document.getElementById('nav-active')
-
-      var init = function () {
-        bindEvent()
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
-      function bindEvent() {
-        oNav.addEventListener('mousemove', mouseMove, false)
+      a {
+        text-decoration: none;
       }
 
-      function mouseMove(e) {
-        var e = e || window.event,
-          tar = e.target || e.srcElement,
-          className = tar.className
-
-        if (className === 'nav-item') {
-          var index = [].indexOf.call(oNavItems, tar)
-
-          elasticMove({
-            obj: oNavActive,
-            attr: 'left',
-            target: index * 120
-          })
-        }
+      .nav {
+        position: relative;
+        width: 600px;
+        height: 30px;
+        margin: 50px;
       }
 
-      function elasticMove(json) {
-        var obj = json.obj,
-          target = json.target,
-          attr = json.attr || 'left',
-          len = target,
-          k = json.k || 0.7, // 弹性系数
-          z = json.z || 0.6, // 阻力系数
-          cur = parseInt(getStyles(obj, attr)),
-          step = 0
+      .nav-item {
+        float: left;
+        width: 120px;
+        height: 30px;
+        border-right: 1px solid #fff;
+        line-height: 30px;
+        text-align: center;
+        background-color: #789;
+        color: #fff;
+      }
 
-        // 判断target值是否合规，不合规给一个默认值300
-        target = isNaN(Number(target)) ? 300 : Number(target)
+      #nav-active {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 120px;
+        height: 30px;
+        background-color: rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+      }
+    </style>
+  </head>
 
-        if (!obj.timers) {
-          obj.timers = {}
+  <body>
+    <div class="nav">
+      <a href="javascript:;" class="nav-item">首页</a>
+      <a href="javascript:;" class="nav-item">精华</a>
+      <a href="javascript:;" class="nav-item">候选</a>
+      <a href="javascript:;" class="nav-item">新闻</a>
+      <a href="javascript:;" class="nav-item">关注</a>
+      <div id="nav-active"></div>
+    </div>
+    <script src="./js/utils.js"></script>
+    <script>
+      ;(function () {
+        var oNav = document.getElementsByClassName('nav')[0],
+          oNavItems = document.getElementsByClassName('nav-item'),
+          oNavActive = document.getElementById('nav-active')
+
+        var init = function () {
+          bindEvent()
         }
 
-        //判断是否存在定时器，存在的话直接return，不开启新的定时器
-        if (obj.timers[attr]) {
-          return
+        function bindEvent() {
+          oNav.addEventListener('mousemove', mouseMove, false)
         }
 
-        obj.timers[attr] = setInterval(function () {
-          cur = parseInt(getStyles(obj, attr))
-          len = target - cur
-          step += len * k
-          step = step * z
+        function mouseMove(e) {
+          var e = e || window.event,
+            tar = e.target || e.srcElement,
+            className = tar.className
 
-          if ((attr === 'width' || attr === 'height') && (cur + step) < 0) {
-            obj.style[attr] = 0
-          } else {
+          if (className === 'nav-item') {
+            var index = [].indexOf.call(oNavItems, tar)
+
+            elasticMove({
+              obj: oNavActive,
+              attr: 'left',
+              target: index * 120
+            })
+          }
+        }
+
+        function elasticMove(json) {
+          /*
+          len: 代表移动元素到目标位置的距离
+          cur: 代表移动元素的left值
+          target: 代表目标位置的left值
+          k: 弹性系数
+          z: 阻力系数
+          step: 步长
+        */
+          var obj = json.obj,
+            attr = json.attr || 'left',
+            target = json.target,
+            cur = parseInt(getStyles(obj, attr)),
+            len = target,
+            k = json.k || 0.7,
+            z = json.z || 0.6,
+            step = 0
+
+          target = isNaN(Number(target)) ? 300 : Number(target)
+
+          if (!obj.timers) {
+            obj.timers = {}
+          }
+
+          if (obj.timers[attr]) {
+            return
+          }
+
+          obj.timers[attr] = setInterval(function () {
+            cur = parseInt(getStyles(obj, attr))
+            len = target - cur
+            step += len * k
+            step = step * z
+
             obj.style[attr] = cur + step + 'px'
-          }
 
-          if (Math.round(step) === 0 && Math.round(len) === 0) {
-            obj.style[attr] = target + 'px'
-            clearInterval(obj.timers[attr])
-            obj.timers[attr] = null
-          }
-        }, 10)
-      }
+            if (Math.round(step) === 0 && Math.round(len) === 0) {
+              obj.style[attr] = target + 'px'
+              clearInterval(obj.timers[attr])
+              obj.timers[attr] = null
+            }
+          }, 10)
+        }
 
-      init()
-    })()
-  </script>
-</body>
-
+        init()
+      })()
+    </script>
+  </body>
 </html>
