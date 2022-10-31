@@ -397,7 +397,8 @@ Node.prototype.insertAfter = function (target, origin) {
   return nextElem ? this.insertBefore(target, nextElem) : this.appendChild(target)
 }
 
-// 23.封装forEach()
+// 23.封装forEach/filter/map/every/some
+// 封装 forEach()
 Array.prototype.myForEach = function (fn) {
   var arr = this,
     len = arr.length,
@@ -408,7 +409,7 @@ Array.prototype.myForEach = function (fn) {
   }
 }
 
-// 24. 封装filter()
+// 封装 filter()
 Array.prototype.myFilter = function (fn) {
   var arr = this,
     len = arr.length,
@@ -425,7 +426,7 @@ Array.prototype.myFilter = function (fn) {
   return newArr
 }
 
-// 25.封装map() 因为使用了深拷贝，所以不会修改原数组
+// 封装 map() 因为使用了深拷贝，所以不会修改原数组
 Array.prototype.myMap = function (fn) {
   var arr = this,
     len = arr.length,
@@ -438,4 +439,63 @@ Array.prototype.myMap = function (fn) {
     nArr.push(fn.apply(arg2, [item, i, arr]))
   }
   return nArr
+}
+
+// 封装 every()
+Array.prototype.myEvery = function (fn) {
+  var arr = this,
+    len = arr.length,
+    arg2 = arguments[1] || window,
+    res = true
+
+  for (var i = 0; i < len; i++) {
+    if (!fn.apply(arg2, [arr[i], i, arr])) {
+      res = false
+      break
+    }
+  }
+  return res
+}
+
+// 封装 some()
+Array.prototype.mySome = function (fn) {
+  var arr = this,
+    len = arr.length,
+    arg2 = arguments[1] || window,
+    res = false
+
+  for (var i = 0; i < len; i++) {
+    if (fn.apply(arg2, [arr[i], i, arr])) {
+      res = true
+      break
+    }
+  }
+  return res
+}
+
+// 24. 封装 reduce() / reduceRight()
+// 封装 reduce()
+Array.prototype.myReduce = function (fn, initialValue) {
+  var arr = this,
+    len = arr.length,
+    arg2 = arguments[2] || window,
+    item
+
+  for (var i = 0; i < len; i++) {
+    initialValue = fn.apply(arg2, [initialValue, arr[i], i, arr])
+  }
+  return initialValue
+}
+
+// 封装 reduceRight()
+Array.prototype.myReduceRight = function (fn, initialValue) {
+  var arr = this,
+    len = arr.length,
+    arg2 = arguments[2] || window,
+    item
+
+  for (var i = len - 1; i >= 0; i--) {
+    initialValue = fn.apply(arg2, [initialValue, arr[i], i, arr])
+  }
+  return initialValue
 }
