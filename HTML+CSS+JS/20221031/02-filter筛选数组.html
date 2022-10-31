@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="data" style="display: none">
+      [{"id":"1","uname":"zs","age":"18"},{"id":"2","uname":"ls","age":"16"},{"id":"3","uname":"ww","age":"20"},{"id":"4","uname":"zl","age":"17"},{"id":"5","uname":"qu","age":"22"},{"id":"6","uname":"af","age":"15"}]
+    </div>
+    <div class="nav">
+      <a href="javascript:;" data-field="all">全部</a>
+      <a href="javascript:;" data-field="grow">已成年</a>
+      <a href="javascript:;" data-field="under">未成年</a>
+    </div>
+    <ul class="list"></ul>
+    <script type="text/html" id="tpl">
+      <li>{{uname}}---{{age}}</li>
+    </script>
+    <script src="./js/utils.js"></script>
+    <script>
+      ;(function () {
+        var data = JSON.parse(document.getElementById('data').innerHTML),
+          oList = document.getElementsByClassName('list')[0],
+          oNav = document.getElementsByClassName('nav')[0],
+          tpl = document.getElementById('tpl').innerHTML
+
+        var init = function () {
+          oList.innerHTML = renderList(filterData(data, 'all'))
+          bindEvent()
+        }
+
+        function bindEvent() {
+          tools.addEvent(oNav, 'click', navClick)
+        }
+
+        function navClick(e) {
+          var e = e || window.event,
+            tar = e.target || e.srcElement,
+            tagName = tar.tagName.toLowerCase()
+
+          if (tagName === 'a') {
+            var field = tar.getAttribute('data-field')
+          }
+          oList.innerHTML = renderList(filterData(data, field))
+        }
+
+        function renderList(data) {
+          var list = ''
+          data.forEach(function (elem, index, array) {
+            list += tpl.replace(/{{(.*?)}}/g, function (node, key) {
+              return {
+                uname: elem.uname,
+                age: elem.age
+              }[key]
+            })
+          })
+          return list
+        }
+
+        function filterData(data, field) {
+          var arr = data.filter(function (elem, index, array) {
+            switch (field) {
+              case 'all':
+                return true
+                break
+              case 'grow':
+                return elem.age >= 18
+                break
+              case 'under':
+                return elem.age < 18
+                break
+              default:
+                return true
+                break
+            }
+          })
+          return arr
+        }
+
+        init()
+      })()
+    </script>
+  </body>
+</html>

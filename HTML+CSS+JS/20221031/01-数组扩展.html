@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="data" style="display: none">
+      [{"id":"1","uname":"zs","age":"18"},{"id":"2","uname":"ls","age":"18"},{"id":"3","uname":"ww","age":"20"},{"id":"4","uname":"zl","age":"17"},{"id":"5","uname":"qu","age":"22"},{"id":"6","uname":"af","age":"15"}]
+    </div>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <script src="./js/utils.js"></script>
+    <script>
+      var data = JSON.parse(document.getElementById('data').innerHTML),
+        oLis = document.getElementsByTagName('li')
+
+      /*
+      // 1. forEach() 遍历 循环
+
+      // for (var i = 0; i < data.length; i++) {
+      //   oLis[i].innerHTML = data[i].uname
+      // }
+
+      // data.forEach(function (elem, i, array) {
+      //   oLis[i].innerHTML = elem.uname
+      // })
+
+      // Array.prototype.myForEach = function (fn) {
+      //   var arr = this,
+      //     len = arr.length,
+      //     arg2 = arguments[1] || window
+
+      //   for (var i = 0; i < len; i++) {
+      //     fn.apply(arg2, [arr[i], i, arr])
+      //   }
+      // }
+
+      // data.myForEach(function (elem, index, array) {
+      //   this[index].innerHTML = elem.uname
+      // }, oLis)
+
+      */
+
+      /*
+      // 2. filter() 筛选 过滤  返回一个新数组
+      // var newArr = data.filter(function (elem, index, array) {
+      //   return this[index].age >= 20
+      // }, data)
+      // console.log(newArr)
+
+      // Array.prototype.myFilter = function (fn) {
+      //   var arr = this,
+      //     len = arr.length,
+      //     arg2 = arguments[1] || window,
+      //     newArr = [],
+      //     item
+
+      //   for (var i = 0; i < len; i++) {
+      //     item = tools.deepClone(arr[i])
+      //     if (fn.apply(arg2, [arr[i], i, arr])) {
+      //       newArr.push(item)
+      //     }
+      //   }
+      //   return newArr
+      // }
+      // var nArr = data.myFilter(function (elem, index, array) {
+      //   return this[index].age < 20
+      // }, data)
+
+      // console.log(nArr)
+      */
+
+      /*
+        //3. map() 映射 如果给的条件修改了数组元素值，会影响到原数组
+        // var newArr = data.map(function (elem, index, array) {
+        //   elem.age = parseInt(elem.age) + 10
+        //   return elem
+        // })
+        // console.log(newArr)
+        // console.log(data) // 会修改原数组
+
+        // 重写map() 因为使用了深拷贝，所以不会修改原数组
+        // Array.prototype.myMap = function (fn) {
+        //   var arr = this,
+        //     len = arr.length,
+        //     arg2 = arguments[1] || window,
+        //     nArr = [],
+        //     item
+
+        //   for (var i = 0; i < len; i++) {
+        //     item = tools.deepClone(arr[i])
+        //     nArr.push(fn.apply(arg2, [item, i, arr]))
+        //   }
+        //   return nArr
+        // }
+
+        // var newArr = data.myMap(function (elem, index, array) {
+        //   elem.age = parseInt(elem.age) + 10
+        //   return elem
+        // })
+        // console.log(newArr)
+        // console.log(data)
+      */
+    </script>
+  </body>
+</html>
