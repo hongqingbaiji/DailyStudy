@@ -1,10 +1,10 @@
 var initCourseTab = (function (doc) {
   var courseData = JSON.parse(doc.getElementById('js-course-data').innerHTML),
-    cardItemTpl = doc.getElementById('js-card-item-tpl').innerHTML,
-    courseCardList = doc.getElementsByClassName('js-course-card-list')[0],
+    oCardItemTpl = doc.getElementById('js-card-item-tpl').innerHTML,
+    oCourseCardList = doc.getElementsByClassName('js-course-card-list')[0],
     oSearchInput = doc.getElementById('js-search-input'),
-    courseTabLks = doc.getElementsByClassName('course-tab-lk'),
-    courseTabLksLen = courseTabLks.length
+    oCourseTabLks = doc.getElementsByClassName('course-tab-lk'),
+    oCourseTabLksLen = oCourseTabLks.length
 
   return {
     searchCourse: function () {
@@ -15,9 +15,9 @@ var initCourseTab = (function (doc) {
         var data = this.searchData(courseData, val)
 
         if (data && data.length > 0) {
-          courseCardList.innerHTML = this.makeList(data)
+          oCourseCardList.innerHTML = this.makeList(data)
         } else {
-          courseCardList.innerHTML = this.showTips('未搜索到相关课程')
+          oCourseCardList.innerHTML = this.showTips('未搜索到相关课程')
         }
       } else {
         this.restoreList()
@@ -33,14 +33,14 @@ var initCourseTab = (function (doc) {
       if (className === 'course-tab-lk') {
         var field = tar.getAttribute('data-field')
         this.changeTabCurrent(tar)
-        courseCardList.innerHTML = this.makeList(this.filterData(courseData, field))
+        oCourseCardList.innerHTML = this.makeList(this.filterData(courseData, field))
       }
     },
 
     makeList: function (data) {
       var list = ''
       data.forEach(function (elem) {
-        list += cardItemTpl.replace(/{{(.*?)}}/g, function (node, key) {
+        list += oCardItemTpl.replace(/{{(.*?)}}/g, function (node, key) {
           return {
             img: elem.img,
             courseName: elem.course,
@@ -80,17 +80,17 @@ var initCourseTab = (function (doc) {
     },
 
     initCourseList: function () {
-      courseCardList.innerHTML = this.makeList(courseData)
+      oCourseCardList.innerHTML = this.makeList(courseData)
     },
 
     restoreList: function () {
-      courseCardList.innerHTML = this.makeList(courseData)
-      this.changeTabCurrent(courseTabLks[0])
+      this.initCourseList()
+      this.changeTabCurrent(oCourseTabLks[0])
     },
 
     changeTabCurrent: function (currentDom) {
-      for (var i = 0; i < courseTabLksLen; i++) {
-        item = courseTabLks[i]
+      for (var i = 0; i < oCourseTabLksLen; i++) {
+        item = oCourseTabLks[i]
         item.className = 'course-tab-lk'
       }
       currentDom.className += ' current'
