@@ -5,31 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./css/04-index.css" />
   </head>
-
   <body>
-    <div class="courses-wrap">
-      <input type="text" class="search-input" id="js-search-input" placeholder="搜索课程" />
-      <div class="course-tab">
-        <ul class="course-tab-list js-course-tab-list clearfix">
-          <li class="tab-item">
-            <a href="javascript:;" class="course-tab-lk current" data-field="all">全部课程</a>
-          </li>
-          <li class="tab-item">
-            <a href="javascript:;" class="course-tab-lk" data-field="free">免费课程</a>
-          </li>
-          <li class="tab-item">
-            <a href="javascript:;" class="course-tab-lk" data-field="vip">VIP课程</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="course-card-list-wrap">
-        <ul class="course-card-list js-course-card-list"></ul>
-      </div>
-    </div>
-
     <div id="js-course-data" style="display: none">
       [{"id":"1","course":"前端开发之企业级深度JavaScript特训课","classes":"19","teacher":"小野","img":"ecmascript.jpg","is_free":"1","datetime":"1540454477","price":"0"},
       {"id":"2","course":"WEB前端工程师就业班之深度JSDOM+讲师辅导-第3期","classes":"22","teacher":"小野","img":"dom.jpg","is_free":"0","datetime":"1540454477","price":"699"},
@@ -39,25 +16,75 @@
       {"id":"6","course":"前端就业班ReactJS+新闻头条实战+讲师辅导-第3期","classes":"21","teacher":"托尼","img":"reactjs.jpg","is_free":"0","datetime":"1540454477","price":"2180"},
       {"id":"7","course":"WEB前端开发工程师就业班-直播/录播+就业辅导-第3期","classes":"700","teacher":"JS++名师团","img":"jiuyeban.jpg","is_free":"0","datetime":"1540454477","price":"4980"}]
     </div>
+    <script>
+      var data = JSON.parse(document.getElementById('js-course-data').innerHTML)
 
-    <script type="text/html" id="js-card-item-tpl">
-      <li class="card-item">
-        <a href="javascript:;" class="img-lk">
-          <img src="images/{{img}}" alt="" />
-        </a>
-        <div class="item-status">
-          <span class="item-status-text">随到随学</span>
-        </div>
-        <h4 class="item-tt">
-          <a href="javascript:;" class="tt-lk">{{courseName}}</a>
-        </h4>
-        <div class="item-line">
-          <span class="item-price {{isFree}}">{{price}}</span>
-          <span class="item-info">{{hours}}课时</span>
-        </div>
-      </li>
+      function toUpperCase(str) {
+        return str.toUpperCase()
+      }
+
+      function exclaim(str) {
+        return str + '!'
+      }
+
+      function split(str) {
+        return str.split('')
+      }
+
+      function reverse(str) {
+        return str.reverse()
+      }
+
+      function join(str) {
+        return str.join('-')
+      }
+
+      // function compose() {
+      //   var args = [].slice.call(arguments),
+      //     len = args.length - 1
+
+      //   return function (x) {
+      //     var res = args[len](x)
+
+      //     while (len--) {
+      //       res = args[len](res)
+      //     }
+      //     return res
+      //   }
+      // }
+      // var f = compose(exclaim, join, reverse, split, toUpperCase)
+      // console.log(f('hello'))
+
+      function compose1() {
+        var args = [].slice.call(arguments)
+
+        return function (x) {
+          return args.reduceRight(function (prev, callback) {
+            return callback(prev)
+          }, x)
+        }
+      }
+
+      // var f = compose1(exclaim, join, reverse, split, toUpperCase)
+      // console.log(f('hello'))
+
+      function classesFilter(elem) {
+        return elem.classes < 20 && elem
+      }
+
+      function isFreeFilter(elem) {
+        return elem.is_free === '1' && elem
+      }
+
+      var arr = [],
+        f = null
+
+      data.forEach(function (val) {
+        f = compose1(classesFilter, isFreeFilter)
+        f(val) && arr.push(f(val))
+      })
+
+      console.log(arr)
     </script>
-
-    <script src="./js/04-03函数式编程.js"></script>
   </body>
 </html>
