@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="./js/jquery-3.5.1.min.js"></script>
+  <script>
+    function curry(fn, len) {
+      var len = len || fn.length
+      var func = function (fn) {
+        var _arg = [].slice.call(arguments, 1)
+
+        return function () {
+          var newArgs = _arg.concat([].slice.call(arguments))
+          return fn.apply(this, newArgs)
+        }
+      }
+
+      return function () {
+        var argLen = arguments.length
+
+        if (argLen < len) {
+          var formatedArr = [fn].concat([].slice.call(arguments))
+          return curry(func.apply(this, formatedArr), len - argLen)
+        } else {
+          return fn.apply(this, arguments)
+        }
+      }
+    }
+
+    function add(a, b, c, d) {
+      return a + b + c + d
+    }
+    var add2 = curry(add)
+
+    var res = add2(1)(2)(3)(4)
+    console.log(res);
+  </script>
+</body>
+
+</html>
