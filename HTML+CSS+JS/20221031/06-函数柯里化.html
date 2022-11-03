@@ -1,47 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+  <body>
+    <button>按钮</button>
+    <script src="./js/jquery-3.5.1.min.js"></script>
 
-<body>
-  <script src="./js/jquery-3.5.1.min.js"></script>
-  <script>
-    function curry(fn, len) {
-      var len = len || fn.length
-      var func = function (fn) {
-        var _arg = [].slice.call(arguments, 1)
+    <!--
+    <script>
+      // 使用柯里化函数分批传参
+      function curry(fn, len) {
+        var len = len || fn.length
+
+        function func(fn) {
+          var _args = [].slice.call(arguments, 1)
+
+          return function () {
+            var newArgs = _args.concat([].slice.call(arguments))
+            return fn.apply(this, newArgs)
+          }
+        }
 
         return function () {
-          var newArgs = _arg.concat([].slice.call(arguments))
-          return fn.apply(this, newArgs)
+          var argLen = arguments.length
+          if (argLen < len) {
+            var formatedArr = [fn].concat([].slice.call(arguments))
+            return curry(func.apply(this, formatedArr), len - argLen)
+          } else {
+            return fn.apply(this, arguments)
+          }
         }
       }
 
-      return function () {
-        var argLen = arguments.length
+      function add(a, b, c, d) {
+        return a + b + c + d
+      }
 
-        if (argLen < len) {
-          var formatedArr = [fn].concat([].slice.call(arguments))
-          return curry(func.apply(this, formatedArr), len - argLen)
+      var add2 = curry(add)
+
+      var res = add2(1)(2)(3)(4)
+      console.log(res)
+
+      // 使用柯里化函数方法 封装 绑定事件处理程序
+      var oBtn = document.getElementsByTagName('button')[0]
+
+      var addEvent = (function () {
+        if (window.addEventListener) {
+          console.log('init')
+          return function (el, type, fn, capture) {
+            el.addEventListener(type, fn, capture)
+          }
+        } else if (window.attachEvent) {
+          return function (el, type, fn) {
+            el.attachEvent('on' + type, function () {
+              fn.call(el)
+            })
+          }
         } else {
-          return fn.apply(this, arguments)
+          return function (el, type, fn) {
+            el['on' + type] = fn
+          }
+        }
+      })()
+      // 因为addEvent是立即执行函数，所以会先判断系统支持哪种绑定方法，
+      // 直接把该方法返回给addEvent变量，然后点击按钮时直接使用，就不需要再次判断了
+
+      addEvent(oBtn, 'click', cb, false)
+      function cb() {
+        console.log('点击')
+      }
+    </script>
+
+    -->
+
+    <script>
+      var oBtn = document.getElementsByTagName('button')[0]
+      // 偏函数
+
+      function add(a, b, c, d) {
+        return a + b + c + d
+      }
+
+      Function.prototype.partial = function () {
+        var _self = this,
+          _args = [].slice.call(arguments)
+
+        return function () {
+          var newArgs = _args.concat([].slice.call(arguments))
+          return _self.apply(null, newArgs)
         }
       }
-    }
 
-    function add(a, b, c, d) {
-      return a + b + c + d
-    }
-    var add2 = curry(add)
+      var newAdd = add.partial(1, 2)
+      console.log(newAdd(3, 4))
 
-    var res = add2(1)(2)(3)(4)
-    console.log(res);
-  </script>
-</body>
+      //惰性函数
+      function addEvent(el, type, fn, capture) {
+        if (el.addEventListener) {
+          addEvent = function (el, type, fn, capture) {
+            el.addEventListener(type, fn, capture)
+          }
+        } else if (el.attachEvent) {
+          addEvent = function (el, type, fn) {
+            el.attachEvent('on' + type, function () {
+              fn.call(el)
+            })
+          }
+        } else {
+          addEvent = function (el, type, fn) {
+            el['on' + type] = fn
+          }
+        }
+        addEvent(el, type, fn, capture)
+        console.log(addEvent)
+      }
 
+      addEvent(
+        oBtn,
+        'click',
+        function () {
+          console.log(111)
+        },
+        false
+      )
+    </script>
+  </body>
 </html>
