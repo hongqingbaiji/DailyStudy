@@ -5,9 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+    </style>
   </head>
 
   <body>
+    <div class="box"></div>
+    <input type="text" id="search" />
     <button>按钮</button>
     <script src="./js/jquery-3.5.1.min.js"></script>
 
@@ -78,7 +87,7 @@
 
     -->
 
-    <script>
+    <!-- <script>
       var oBtn = document.getElementsByTagName('button')[0]
       // 偏函数
 
@@ -128,6 +137,73 @@
         },
         false
       )
+    </script> -->
+
+    <script>
+      var oBox = document.getElementsByClassName('box')[0],
+        timer = null,
+        oSearch = document.getElementById('search')
+
+      // oSearch.addEventListener('input', searchInput, false)
+      // oBox.addEventListener('mouseover', mouseOver, false)
+
+      // function searchInput() {
+      //   clearTimeout(timer)
+      //   var _self = this
+      //   console.log('1111:' + this.value)
+      //   timer = setTimeout(function () {
+      //     console.log('22222:' + _self.value)
+      //   }, 1000)
+      // }
+      // function mouseOver() {
+      //   clearTimeout(timer)
+      //   timer = setTimeout(function () {
+      //     console.log(111)
+      //   }, 1000)
+      // }
+
+      function debounce(fn, time, triggleNow) {
+        var t = null
+
+        var debounced = function () {
+          var _self = this,
+            args = arguments
+
+          if (t) {
+            clearTimeout(t)
+          }
+
+          if (triggleNow) {
+            var exec = !t
+
+            t = setTimeout(function () {
+              t = null
+            }, time)
+
+            if (exec) {
+              fn.apply(_self, args)
+            }
+          } else {
+            t = setTimeout(function () {
+              fn.apply(_self, args)
+            }, time)
+          }
+        }
+
+        debounced.remove = function () {
+          clearTimeout(t)
+          t = null
+        }
+
+        return debounced
+      }
+
+      function test() {
+        console.log(1)
+      }
+
+      // oBox.onmouseover = debounce(test, 1000, true)
+      oBox.addEventListener('mouseover', debounce(test, 1000, true))
     </script>
   </body>
 </html>
