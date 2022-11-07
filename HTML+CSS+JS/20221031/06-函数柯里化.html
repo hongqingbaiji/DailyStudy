@@ -139,11 +139,14 @@
       )
     </script> -->
 
+    <script src="./js/jquery-3.5.1.min.js"></script>
     <script>
       var oBox = document.getElementsByClassName('box')[0],
-        timer = null,
-        oSearch = document.getElementById('search')
+        t = null,
+        oSearch = document.getElementById('search'),
+        oBtn = document.getElementsByTagName('button')[0]
 
+      /* 防抖函数
       // oSearch.addEventListener('input', searchInput, false)
       // oBox.addEventListener('mouseover', mouseOver, false)
 
@@ -162,12 +165,52 @@
       //   }, 1000)
       // }
 
+      // function debounce(fn, time, triggleNow) {
+      //   var t = null
+
+      //   var debounced = function () {
+      //     var _self = this,
+      //       args = arguments
+
+      //     if (t) {
+      //       clearTimeout(t)
+      //     }
+
+      //     // 判断是否立即执行
+      //     if (triggleNow) {
+      //       var exec = !t
+
+      //       t = setTimeout(function () {
+      //         t = null
+      //       }, time)
+
+      //       if (exec) {
+      //         fn.apply(_self, args)
+      //       }
+      //     } else {
+      //       t = setTimeout(function () {
+      //         fn.apply(_self, args)
+      //       }, time)
+      //     }
+      //   }
+
+      //   debounced.remove = function () {
+      //     clearTimeout(t)
+      //     t = null
+      //   }
+
+      //   return debounced
+      // }
+
+     
+      // 防抖函数
       function debounce(fn, time, triggleNow) {
-        var t = null
+        var t = null,
+          res
 
         var debounced = function () {
-          var _self = this,
-            args = arguments
+          var _args = arguments,
+            _self = this
 
           if (t) {
             clearTimeout(t)
@@ -181,13 +224,14 @@
             }, time)
 
             if (exec) {
-              fn.apply(_self, args)
+              res = fn.apply(_self, _args)
             }
           } else {
             t = setTimeout(function () {
-              fn.apply(_self, args)
+              res = fn.apply(_self, _args)
             }, time)
           }
+          return res
         }
 
         debounced.remove = function () {
@@ -198,12 +242,79 @@
         return debounced
       }
 
+      // oBox.onmouseover = debounce(test, 1000, true)
+      oBox.addEventListener('mouseover', debounce(test, 1000, true))
+
       function test() {
         console.log(1)
       }
 
-      // oBox.onmouseover = debounce(test, 1000, true)
-      oBox.addEventListener('mouseover', debounce(test, 1000, true))
+      //实例1： 判断input输入框的位数,要用false，因为首位也需要延迟
+      oSearch.oninput = debounce(searchInput, 500, false)
+
+      function searchInput() {
+        var val = this.value,
+          len = val.length
+
+        if (len < 6) {
+          console.log('error:小于6位')
+        } else {
+          console.log('success')
+        }
+      }
+
+      //实例2： 请求接口时，就需要用true,因为首次点击不需要延迟
+      oBtn.onclick = debounce(btnClick, 1000, true)
+      function btnClick() {
+        $.ajax({
+          url: 'http://study.jsplusplus.com/Index/getCourses',
+          type: 'POST',
+          dataType: 'JSON',
+          data: {
+            page: 1
+          },
+          success: function (data) {
+            console.log(data)
+          }
+        })
+      }
+*/
+
+      // 函数节流： n秒内只执行一次
+
+      oSearch.onkeyup = throttle(check, 3000)
+
+      function throttle(fn, delay) {
+        var t = null,
+          begin = new Date().getTime()
+
+        return function () {
+          var _self = this,
+            args = arguments,
+            cur = new Date().getTime()
+
+          clearTimeout(t)
+
+          if (cur - begin >= delay) {
+            fn.apply(_self, args)
+            begin = cur
+          } else {
+            t = setTimeout(function () {
+              fn.apply(_self, args)
+            }, delay)
+          }
+        }
+      }
+
+      function check() {
+        var len = this.value.length
+
+        if (len < 6) {
+          console.log('输入小于六位数')
+        } else {
+          console.log('sucess')
+        }
+      }
     </script>
   </body>
 </html>

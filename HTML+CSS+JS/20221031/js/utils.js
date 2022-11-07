@@ -379,6 +379,111 @@ var tools = {
         typeof callback === 'function' && callback()
       }
     }, 10)
+  },
+
+  // 25. 防抖函数
+  // 延迟执行，n秒内重复触发会重新计时
+  debounce: function (fn, time, triggleNow) {
+    var t = null,
+      res
+
+    var debounced = function () {
+      var _args = arguments,
+        _self = this
+
+      if (t) {
+        clearTimeout(t)
+      }
+
+      if (triggleNow) {
+        var exec = !t
+
+        t = setTimeout(function () {
+          t = null
+        }, time)
+
+        if (exec) {
+          res = fn.apply(_self, _args)
+        }
+      } else {
+        t = setTimeout(function () {
+          res = fn.apply(_self, _args)
+        }, time)
+      }
+      return res
+    }
+
+    debounced.remove = function () {
+      clearTimeout(t)
+      t = null
+    }
+
+    return debounced
+  },
+
+  // 26. 节流函数
+  // n秒内只执行一次绑定事件处理函数
+  throttle: function (fn, delay) {
+    var t = null,
+      begin = new Date().getTime()
+
+    return function () {
+      var _self = this,
+        args = arguments,
+        cur = new Date().getTime()
+
+      clearTimeout(t)
+
+      if (cur - begin >= delay) {
+        fn.apply(_self, args)
+        begin = cur
+      } else {
+        t = setTimeout(function () {
+          fn.apply(_self, args)
+        }, delay)
+      }
+    }
+  },
+
+  // 27. 封装数据归类函数
+  //sort:据以归类的表格， data：要归类的表格数据
+  sortDatas: function (sort, data) {
+    var cache = {}
+
+    //foreign_key: 外键, sortType: 归类类型
+    return function (foreign_key, sortType) {
+      if (sortType !== 'single' && sortType !== 'multi') {
+        console.log(new Error('Invalid sort type.[only "single" and "multi" are valid values]'))
+        return
+      }
+
+      sort.forEach(function (sortElem) {
+        var _id = sortElem.id
+        cache[_id] = []
+
+        data.forEach(function (dataElem) {
+          var foreign_val = dataElem[foreign_key]
+          switch (sortType) {
+            case 'single':
+              if (foreign_val === _id) {
+                cache[_id].push(dataElem)
+              }
+              break
+            case 'multi':
+              var _arr = foreign_val.split(',')
+              _arr.forEach(function (_arrElem) {
+                if (_arrElem === _id) {
+                  cache[_id].push(dataElem)
+                }
+              })
+              break
+            default:
+              break
+          }
+        })
+      })
+      return cache
+    }
   }
 }
 
