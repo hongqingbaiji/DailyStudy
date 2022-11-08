@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var arr = [1, 2, 3, 4, {}, null, [5, 6, 7, [8, 9, undefined, { a: [10, 11], b: [12, 13] }]]]
+
+      // function flatten1(arr) {
+      //   var _arr = arr || 0,
+      //     fArr = [],
+      //     len = _arr.length,
+      //     item
+
+      //   for (var i = 0; i < len; i++) {
+      //     item = _arr[i]
+      //     if (_isArr(item)) {
+      //       fArr = fArr.concat(flatten(item))
+      //     } else {
+      //       fArr.push(item)
+      //     }
+      //   }
+
+      //   function _isArr(obj) {
+      //     return {}.toString.call(obj) === '[object Array]'
+      //   }
+
+      //   return fArr
+      // }
+
+      // 第二种写法
+      // Array.prototype.flatten2 = function () {
+      //   var _arr = this,
+      //     toStr = {}.toString
+
+      //   if (toStr.call(_arr) !== '[object Array]') {
+      //     throw new Error('只有数组类型的数据可以使用flatten2方法')
+      //   }
+
+      //   var fArr = []
+
+      //   _arr.forEach(function (elem) {
+      //     if (toStr.call(elem) === '[object Array]') {
+      //       fArr = fArr.concat(elem.flatten2())
+      //     } else {
+      //       fArr.push(elem)
+      //     }
+      //   })
+      //   return fArr
+      // }
+
+      // 第三种写法
+      // Array.prototype.flatten3 = function () {
+      //   var _arr = this,
+      //     toStr = {}.toString
+
+      //   if (toStr.call(_arr) !== '[object Array]') {
+      //     throw new Error('只有数组类型的数据可以使用flatten3方法')
+      //   }
+
+      //   return _arr.reduce(function (prev, elem) {
+      //     return prev.concat(toStr.call(elem) === '[object Array]' ? elem.flatten3() : elem)
+      //   }, [])
+      // }
+
+      //ES6 写法
+      const flatten4 = arr =>
+        arr.reduce(
+          (prev, elem) =>
+            prev.concat({}.toString.call(elem) === '[object Array]' ? flatten4(elem) : elem),
+          []
+        )
+    </script>
+  </body>
+</html>
