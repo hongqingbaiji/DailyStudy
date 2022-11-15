@@ -6,9 +6,14 @@ var initCommentModule = (function (doc) {
     oTxtCount = doc.getElementsByClassName('J_txtCount')[0],
     oSubmitBtn = doc.getElementsByClassName('J_submitBtn')[0],
     oRadioTabItems = doc.getElementsByClassName('tab-radio'),
+    oLoading = doc.getElementsByClassName('J_loading')[0],
+    oCommentList = doc.getElementsByClassName('J_commentList')[0],
+    warningTip = doc.getElementById('J_warningTip').innerHTML,
     starNum = 5,
     t = null,
-    delayTime = 500
+    delayTime = 500,
+    fieldId = 0,
+    pageNum = 0
 
   var APIs = {
     submitComment: 'http://localhost/api_for_study/Comment/submitComment',
@@ -22,6 +27,7 @@ var initCommentModule = (function (doc) {
     closeBoard: function () {
       oCommentEditBoard.style.display = 'none'
     },
+
     starsHover: function (e) {
       var e = e || window.event,
         tar = e.target || e.srcElement,
@@ -42,6 +48,7 @@ var initCommentModule = (function (doc) {
         }
       }
     },
+
     editInput: function () {
       var val = trimSpace(oEditTxt.value),
         valLen = val.length
@@ -54,6 +61,39 @@ var initCommentModule = (function (doc) {
         this.submitBtnStatusChange(false)
       }
     },
+
+    getComments: function (fieldId, pageNum) {
+      var _self = this
+
+      xhr.ajax({
+        url: APIs.getComments,
+        type: 'POST',
+        data: {
+          field: fieldId,
+          page: pageNum
+        },
+        success: function (data) {
+          var num = data.num,
+            data = data.res,
+            len = data.length
+
+          oLoading.style.display = 'block'
+
+          t = setTimeout(function () {
+            _self.setTabStarNum(num)
+            oLoading.style.display = 'none'
+            oCommentList.innerHTML = ''
+            clearTimeout(t)
+
+            if (len <= 0) {
+              _self._setWarningTip('暂无评论')
+              return
+            }
+          }, delayTime)
+        }
+      })
+    },
+
     submitComment: function (userId) {
       var val = oEditTxt.value,
         len = trimSpace(val).length,
@@ -76,20 +116,51 @@ var initCommentModule = (function (doc) {
 
             t = setTimeout(function () {
               _self.submitBtnTxtChange(false)
+              clearTimeout(t)
 
               if (errorCode === '10010') {
                 alert('您已经对该课程做了评价，感谢您！')
                 return
               }
               _self.setTabStarNum(data.num)
-              _self.closeBoard()
-              oEditTxt.value = ''
-              clearTimeout(t)
+              _self.restoreBoardStatus()
             }, delayTime)
           }
         })
       }
     },
+
+    restoreBoardStatus: function () {
+      oEditTxt.value = ''
+      oTxtCount.innerHTML = 0
+      oSubmitBtn.innerHTML = '提交评论'
+      this.submitBtnStatusChange(false)
+      this.closeBoard()
+    },
+
+    radioTabClick: function (e) {
+      var e = e || window.event,
+        tar = e.target || e.srcElement,
+        className = tar.className
+
+      if (className === 'radio-icon' || className === 'radio-txt') {
+        var oParent = tar.parentNode,
+          tabLen = oRadioTabItems.length,
+          tabItem
+
+        fieldId = oParent.getAttribute('data-id')
+
+        console.log(tar, fieldId)
+
+        for (var i = 0; i < tabLen; i++) {
+          tabItem = oRadioTabItems[i]
+          tabItem.className = 'tab-radio'
+        }
+        oParent.className += ' cur'
+        this.getComments(fieldId, pageNum)
+      }
+    },
+
     submitBtnTxtChange: function (isChange) {
       if (isChange) {
         oSubmitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i>'
@@ -99,6 +170,7 @@ var initCommentModule = (function (doc) {
         this.submitBtnStatusChange(true)
       }
     },
+
     submitBtnStatusChange: function (isChange) {
       if (isChange) {
         oSubmitBtn.className = 'comment-btn submit J_submitBtn'
@@ -108,12 +180,17 @@ var initCommentModule = (function (doc) {
         oSubmitBtn.setAttribute('disabled', 'disabled')
       }
     },
+
     setTabStarNum: function (arr) {
       var oRadioCount = null
       arr.forEach(function (elem, idx) {
         oRadioCount = oRadioTabItems[idx].getElementsByClassName('radio-count')[0]
         oRadioCount.innerHTML = elem
       })
+    },
+
+    _setWarningTip: function (text) {
+      oCommentList.innerHTML = warningTip.replace(/{{(.*?)}}/gim, text)
     }
   }
 })(document)
