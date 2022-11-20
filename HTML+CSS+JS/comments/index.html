@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
 	<section class="comment-edit-bd J_commentEditBoard">
 		<div class="mask">
 			<div class="comment-wrap">
@@ -16,11 +17,11 @@
 				<a href="javascript:;" class="fa fa-times J_closeBtn"></a>
 				<p class="tt">您觉得课程怎么样</p>
 				<div class="comment-star J_stars">
-					<i class="fa fa-star active" data-count="1" data-title="差评！课程太差了，我要吐槽！"></i>
-					<i class="fa fa-star active" data-count="2" data-title="勉强中评！课程不满意"></i>
-					<i class="fa fa-star active" data-count="3" data-title="中评！课程一般"></i>
-					<i class="fa fa-star active" data-count="4" data-title="好评！课程还不错，继续保持！"></i>
-					<i class="fa fa-star active" data-count="5" data-title="五星好评！课程非常棒，点赞！"></i>
+					<i class="fa fa-star J_hoverStar active" data-count="1" data-title="差评！课程太差了，我要吐槽！"></i>
+					<i class="fa fa-star J_hoverStar active" data-count="2" data-title="勉强中评！课程不满意"></i>
+					<i class="fa fa-star J_hoverStar active" data-count="3" data-title="中评！课程一般"></i>
+					<i class="fa fa-star J_hoverStar active" data-count="4" data-title="好评！课程还不错，继续保持！"></i>
+					<i class="fa fa-star J_hoverStar active" data-count="5" data-title="五星好评！课程非常棒，点赞！"></i>
 					<span class="star-label J_starTip">五星好评！课程非常棒，点赞！</span>
 				</div>
 				<div class="edit-txt-bd">
@@ -73,7 +74,7 @@
 	</section>
 	<script type="text/html" id="J_itemTpl">
 		<div class="item-left">
-			<img src="http://imgtest.jsplusplus.com/avatar/{{avatar}}" class="user-avatar" width="40" height="40" alt="" />
+			<img src="{{avatar}}" class="user-avatar" width="40" height="40" alt="" />
 			<p class="user-name">{{nickname}}</p>
 		</div>
 		<div class="item-right">
