@@ -9,7 +9,6 @@
   var userId = 14
 
   var init = function () {
-    Comment.getComments(0, 0)
     bindEvent()
   }
 
@@ -19,8 +18,7 @@
     oStars.addEventListener('mouseover', Comment.starsHover, false)
     oEditTxt.addEventListener('input', Comment.editInput.bind(Comment), false)
     oSubmitBtn.addEventListener('click', Comment.submitComment.bind(Comment, userId), false)
-    oRadioTabs.addEventListener('click', Comment.radioTabClick.bind(Comment), false)
+    oRadioTabs.addEventListener('click', Comment.radioTabClick, false)
   }
-
   init()
 })(document, initCommentModule)
