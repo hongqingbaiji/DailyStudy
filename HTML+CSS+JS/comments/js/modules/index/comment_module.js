@@ -1,4 +1,82 @@
-var initCommentModule = (function () {
+var initPageBtns = function (pages, curPage) {
+  var oBtnBox = $get('.J_btnBox')[0],
+    btnGroup = ''
+
+  render()
+
+  function pageBtnTpl(type, num) {
+    switch (type) {
+      case 'btn':
+        if (curPage == num) {
+          return '<span class="page-btn page-btn-cur">' + num + '</span>'
+        } else {
+          return (
+            '<a href="javascript:;" class="page-btn" data-page="' +
+            num +
+            '" data-field="btn">' +
+            num +
+            '</a>'
+          )
+        }
+      case 'prev':
+        if (curPage == 1) {
+          return '<span class="dir-btn prev-btn disabled"><i class="fa fa-angle-left"></i></span>'
+        } else {
+          return '<a href="javascript:;" class="dir-btn prev-btn" data-field="prev"><i class="fa fa-angle-left" data-field="prev"></i></a>'
+        }
+      case 'next':
+        if (curPage == pages) {
+          return '<span class="dir-btn next-btn disabled"><i class="fa fa-angle-right"></i></span>'
+        } else {
+          return '<a href="javascript:;" class="dir-btn next-btn" data-field="next"><i class="fa fa-angle-right" data-field="next"></i></a>'
+        }
+      case 'points':
+        return '<span class="points">...</span>'
+    }
+  }
+
+  function makeBtnGroup(start, end) {
+    for (var i = start; i <= end; i++) {
+      btnGroup += pageBtnTpl('btn', i, curPage)
+    }
+  }
+
+  function render() {
+    btnGroup += pageBtnTpl('prev', pages, curPage)
+    if (pages > 7) {
+      if (curPage < 3) {
+        makeBtnGroup(1, 3, curPage)
+        btnGroup += pageBtnTpl('points')
+        makeBtnGroup(pages - 1, pages, curPage)
+      } else if (curPage >= 3 && curPage < 5) {
+        makeBtnGroup(1, curPage + 1, curPage)
+        btnGroup += pageBtnTpl('points')
+        makeBtnGroup(pages - 1, pages, curPage)
+      } else if (curPage >= 5 && curPage < pages - 3) {
+        makeBtnGroup(1, 2, curPage)
+        btnGroup += pageBtnTpl('points')
+        makeBtnGroup(curPage - 1, curPage + 1, curPage)
+        btnGroup += pageBtnTpl('points')
+        makeBtnGroup(pages - 1, pages, curPage)
+      } else if (curPage >= pages - 3 && curPage <= pages - 1) {
+        makeBtnGroup(1, 2, curPage)
+        btnGroup += pageBtnTpl('points')
+        makeBtnGroup(curPage - 1, pages, curPage)
+      } else if (curPage == pages) {
+        makeBtnGroup(1, 2, curPage)
+        btnGroup += pageBtnTpl('points')
+        makeBtnGroup(curPage - 2, pages, curPage)
+      }
+    } else {
+      makeBtnGroup(1, pages, curPage)
+    }
+    btnGroup += pageBtnTpl('next', pages, curPage)
+
+    oBtnBox.innerHTML = btnGroup
+  }
+}
+
+var initCommentModule = (function (initPageBtns) {
   var oCommentEditBoard = $get('.J_commentEditBoard')[0],
     oStarTip = $get('.J_starTip')[0],
     oStarItems = $get('.J_hoverStar'),
@@ -9,13 +87,16 @@ var initCommentModule = (function () {
     oLoading = $get('.J_loading')[0],
     oCommentList = $get('.J_commentList')[0],
     oStatisticsNum = $get('.J_statisticsNum')[0],
+    oBtnBox = $get('J_btnBox')[0],
     warningTip = $get('#J_warningTip').innerHTML,
     itemTpl = $get('#J_itemTpl').innerHTML,
+    addCommentTpl = $get('#J_addCommentTpl').innerHTML,
     starNum = 5,
     t = null,
     delayTime = 500,
     fieldId = 0,
-    pageNum = 0
+    pages = 0,
+    curPage = 1
 
   var APIs = {
     submitComment: 'http://localhost/api_for_study/Comment/submitComment',
@@ -66,7 +147,6 @@ var initCommentModule = (function () {
         valLen = val.length
 
       oTxtCount.innerHTML = valLen
-
       if (valLen >= 15 && valLen < 1000) {
         this.submitBtnChange({
           txtChange: false,
@@ -91,14 +171,14 @@ var initCommentModule = (function () {
         type: 'POST',
         data: {
           field: fieldId,
-          page: pageNum
+          page: curPage - 1
         },
         success: function (data) {
-          console.log(data)
           var num = data.num,
-            data = data.res,
-            len = data.length
+            res = data.res,
+            len = res.length
 
+          pages = data.pages
           oLoading.style.display = 'block'
 
           t = setTimeout(function () {
@@ -112,9 +192,16 @@ var initCommentModule = (function () {
               return
             }
 
-            oCommentList.appendChild(_self.renderList(data))
+            if (pages > 1) {
+              initPageBtns(pages, curPage)
+            } else {
+              oBtnBox.innerHTML = ''
+            }
+
+            oCommentList.appendChild(_self.renderList(res))
           }, delayTime)
         },
+
         error: function () {
           _self._setWarningTip('获取评论列表失败')
         }
@@ -157,10 +244,15 @@ var initCommentModule = (function () {
                 return
               }
 
-              if (oFirstCommentItem) {
-                oCommentList.insertBefore(_self._makeItem(data.res), oFirstCommentItem)
-              } else {
-                oCommentList.appendChild(_self._makeItem(data.res))
+              if (data.res.is_add_comment === '0') {
+                if (oFirstCommentItem) {
+                  oCommentList.insertBefore(_self._makeItem(data.res), oFirstCommentItem)
+                } else {
+                  oCommentList.innerHTML = ''
+                  oCommentList.appendChild(_self._makeItem(data.res))
+                }
+              } else if (data.res.is_add_comment === '1') {
+                _self._appendAddComment(data.res)
               }
 
               _self.restoreBoardStatus()
@@ -191,10 +283,10 @@ var initCommentModule = (function () {
     _makeItem: function (data) {
       var dom = document.createElement('div'),
         starNum = data.star_num,
-        count = 0,
-        ts = data.uptime
+        count = 0
 
       dom.className = 'comment-item'
+      dom.setAttribute('data-id', data.id)
 
       dom.innerHTML = itemTpl.replace(/{{(.*?)}}/gim, function (node, key) {
         key === 'isActive' && count++
@@ -204,11 +296,41 @@ var initCommentModule = (function () {
           nickname: data.nickname,
           comment: data.comment,
           isActive: starNum >= count ? 'active' : '',
-          uptime: getDateTime(ts, 'dateTime')
+          uptime: getDateTime(data.uptime, 'dateTime')
         }[key]
       })
 
+      if (data.add_comment) {
+        dom.innerHTML += addCommentTpl.replace(/{{(.*?)}}/gim, function (node, key) {
+          return {
+            comment: data.add_comment.comment,
+            uptime: getDateTime(data.add_comment.uptime, 'dateTime')
+          }[key]
+        })
+      }
+
       return dom
+    },
+
+    // 追加评论
+    _appendAddComment: function (data) {
+      var oCommentItems = $get('.comment-item'),
+        itemLen = oCommentItems.length,
+        item,
+        dataId
+
+      for (var i = 0; i < itemLen; i++) {
+        item = oCommentItems[i]
+        dataId = item.getAttribute('data-id')
+        if (dataId === data.add_id) {
+          item.innerHTML += addCommentTpl.replace(/{{(.*?)}}/gim, function (node, key) {
+            return {
+              comment: data.comment,
+              uptime: getDateTime(data.uptime, 'dateTime')
+            }[key]
+          })
+        }
+      }
     },
 
     // 重置评论窗口
@@ -247,9 +369,37 @@ var initCommentModule = (function () {
           tabItem.className = 'tab-radio'
         }
         oParent.className += ' cur'
+        curPage = 1
         this.getComments({
           fieldId: fieldId,
-          pageNum: pageNum
+          page: curPage - 1
+        })
+      }
+    },
+
+    // 评论页翻页
+    pageBtnClick: function (e) {
+      var e = e || window.event,
+        tar = e.target || e.srcElement,
+        field = tar.getAttribute('data-field')
+
+      if (field) {
+        switch (field) {
+          case 'btn':
+            curPage = parseInt(tar.getAttribute('data-page'))
+            break
+          case 'prev':
+            console.log('prev')
+            curPage -= 1
+            break
+          case 'next':
+            console.log('next')
+            curPage += 1
+            break
+        }
+        this.getComments({
+          fieldId: fieldId,
+          page: curPage - 1
         })
       }
     },
@@ -287,4 +437,4 @@ var initCommentModule = (function () {
       oCommentList.innerHTML = warningTip.replace(/{{(.*?)}}/gim, text)
     }
   }
-})()
+})(initPageBtns)

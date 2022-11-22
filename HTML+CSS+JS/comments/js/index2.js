@@ -9,16 +9,21 @@
   var userId = 14
 
   var init = function () {
+    Comment.getComments({
+      fieldId: 0,
+      pageNum: 0
+    })
     bindEvent()
   }
 
   function bindEvent() {
     oOpenBtn.addEventListener('click', Comment.openBoard, false)
-    oCloseBtn.addEventListener('click', Comment.closeBoard, false)
+    oCloseBtn.addEventListener('click', Comment.closeBoard.bind(Comment), false)
     oStars.addEventListener('mouseover', Comment.starsHover, false)
     oEditTxt.addEventListener('input', Comment.editInput.bind(Comment), false)
     oSubmitBtn.addEventListener('click', Comment.submitComment.bind(Comment, userId), false)
-    oRadioTabs.addEventListener('click', Comment.radioTabClick, false)
+    oRadioTabs.addEventListener('click', Comment.radioTabClick.bind(Comment), false)
   }
+
   init()
 })(document, initCommentModule)

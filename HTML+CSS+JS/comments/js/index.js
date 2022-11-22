@@ -4,7 +4,8 @@
     oStars = $get('.J_stars')[0],
     oEditTxt = $get('.J_editTxt')[0],
     oSubmitBtn = $get('.J_submitBtn')[0],
-    oRadioTabs = $get('.J_radioTabs')[0]
+    oRadioTabs = $get('.J_radioTabs')[0],
+    oBtnBox = $get('.J_btnBox')[0]
 
   var userId = 14
 
@@ -23,6 +24,7 @@
     oEditTxt.addEventListener('input', Comment.editInput.bind(Comment), false)
     oSubmitBtn.addEventListener('click', Comment.submitComment.bind(Comment, userId), false)
     oRadioTabs.addEventListener('click', Comment.radioTabClick.bind(Comment), false)
+    oBtnBox.addEventListener('click', Comment.pageBtnClick.bind(Comment), false)
   }
 
   init()

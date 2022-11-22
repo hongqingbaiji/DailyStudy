@@ -131,7 +131,6 @@ function trimSpace(str) {
   return str.replace(/\s+/gim, '')
 }
 
-// 封装
 function $get(target) {
   var _s = target.charAt(0),
     rTarget = target.replace(_s, '')
