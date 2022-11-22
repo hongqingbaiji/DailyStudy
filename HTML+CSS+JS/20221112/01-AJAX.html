@@ -98,28 +98,46 @@
     // })()
 
     // 调用
-    tools.xhr.ajax({
-      type: 'POST',
-      url: 'XXX',
-      data: {
-        status: 1,
-        flag: 2
-      },
-      success: function (data) {
-        console.log(data);
+    // tools.xhr.ajax({
+    //   type: 'POST',
+    //   url: 'XXX',
+    //   data: {
+    //     status: 1,
+    //     flag: 2
+    //   },
+    //   success: function (data) {
+    //     console.log(data);
+    //   }
+    // })
+
+    // tools.xhr.post('xxx', {
+    //   status: 1,
+    //   flag: 2
+    // }, function (data) {
+    //   console.log(data);
+    // })
+
+    // tools.xhr.get('xxx?status=1&flag=2', function (data) {
+    //   console.log(data);
+    // })
+
+
+    var xhr;
+    if (window.XMLHttpRequest) {
+      xhr = new XMLHttpRequest()
+    } else {
+      xhr = new ActiveXObject('Microsoft XMLHTTP')
+    }
+
+    xhr.onreadystatuschange = function () {
+      if (xhr.status === 200 && xhr.readyState === 4) {
+        console.log(xhr.responseText);
       }
-    })
+    }
 
-    tools.xhr.post('xxx', {
-      status: 1,
-      flag: 2
-    }, function (data) {
-      console.log(data);
-    })
-
-    tools.xhr.get('xxx?status=1&flag=2', function (data) {
-      console.log(data);
-    })
+    xhr.open('POST', 'http://localhost/api_for_study/Comment/getComments', true)
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+    xhr.send('status=1&flag=2')
 
 
   </script>
