@@ -510,11 +510,11 @@ var tools = {
         t = null
 
       if (!url) {
-        throw new Error('您没有配置URL')
+        throw new Error('您没有填写URL')
       }
 
       if (dataType.toUpperCase() === 'JSONP' && type !== 'GET') {
-        throw new Error('如果dataType为JSONP,type请您设置GET或不设置')
+        throw new Error('如果dataType为JSONP, type请您设置GET或不设置')
       }
 
       if (dataType.toUpperCase() === 'JSONP') {
@@ -536,10 +536,10 @@ var tools = {
           if ((o.status >= 200 && o.status < 300) || o.status === 304) {
             switch (dataType.toUpperCase()) {
               case 'JSON':
-                success(JSON.parse(o.responseText)) // 返回类型为JSON
+                success(JSON.parse(o.responseText))
                 break
               case 'TEXT':
-                success(o.responseText) // 返回类型为TEXT
+                success(o.responseText)
                 break
               case 'XML':
                 success(o.responseXML)
@@ -590,21 +590,23 @@ var tools = {
       ajax: function (opt) {
         _doAjax(opt)
       },
-      get: function (url, dataType, successCB, errorCB, completeCB) {
+
+      post: function (url, data, dataType, successCB, errorCB, completeCB) {
         _doAjax({
-          type: 'GET',
+          type: 'POST',
           url: url,
+          data: data,
           dataType: dataType,
           success: successCB,
           error: errorCB,
           complete: completeCB
         })
       },
-      post: function (url, data, dataType, successCB, errorCB, completeCB) {
+
+      get: function (url, dataType, successCB, errorCB, completeCB) {
         _doAjax({
-          type: 'POST',
+          type: 'GET',
           url: url,
-          data: data,
           dataType: dataType,
           success: successCB,
           error: errorCB,

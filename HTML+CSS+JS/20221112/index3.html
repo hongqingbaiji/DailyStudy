@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      console.log(window.parent.parent.name) //mainWindow
+    </script>
+
+    <!-- index1 -->
+    <iframe src="http://text.xxx.com/index.html" id="iframe"></iframe>
+    <script type="text/javascript">
+      window.onmessage = function (e) {
+        //等待接收数据
+        var e = e || window.event
+        console.log(JSON.parse(e.data))
+      }
+      //index2
+      $.post('http://test.xxx.com/get.php', { status: 1 }, function (data) {
+        window.name = JSON.stringify(data) //只能传字符串
+        window.parent.postMessage(JSON.stringIfy(data), 'http://index1.html') //发送数据和接收地址源
+      })
+    </script>
+  </body>
+</html>

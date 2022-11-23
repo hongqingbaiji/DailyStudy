@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./js/utils.js"></script>
+    <script>
+      tools.xhr.ajax({
+        url: 'http://study.jsplusplus.com/Lfcourses/getCourses',
+        type: 'GET',
+        success: function (data) {
+          console.log(data)
+        }
+      })
+
+      var ajaxDomain = (function () {
+        function createIframe(frameId, frameUrl) {
+          var frame = document.createElement('iframe')
+          frame.src = frameUrl
+          frame.id = frameId
+          frame.style.display = 'none'
+          return frame
+        }
+        return function (opt) {
+          document.domain = opt.basicDomain
+          var frame = createIframe(opt.frameId, opt.frameUrl)
+          frame.onload = function () {
+            var xhr2 = document.getElementById(opt.frameId).contentWindow.xhr
+            xhr2.ajax({
+              url: opt.url,
+              type: opt.type,
+              data: opt.data,
+              success: opt.success,
+              error: opt.error
+            })
+          }
+          document.body.appendChild(frame)
+        }
+      })()
+
+      //调用
+      ajaxDomain({
+        basicDomain: 'jsplusplus.com',
+        frameUrl: 'http://test.jsplusplus.com/index.html',
+        url: 'http://test.jsplusplus.com/get_courses1.php',
+        type: 'POST',
+        data: {
+          status: 1
+        },
+        success: function (data) {
+          console.log(data)
+        },
+        error: function (data) {
+          console.log('error')
+        }
+      })
+    </script>
+  </body>
+</html>
