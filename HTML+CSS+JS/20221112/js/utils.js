@@ -513,6 +513,7 @@ var tools = {
         throw new Error('您没有填写URL')
       }
 
+      console.log(dataType)
       if (dataType.toUpperCase() === 'JSONP' && type !== 'GET') {
         throw new Error('如果dataType为JSONP, type请您设置GET或不设置')
       }
