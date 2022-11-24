@@ -9,25 +9,21 @@
   <body>
     <script src="./js/utils.js"></script>
     <script>
-      tools.xhr.ajax({
-        url: 'http://study.jsplusplus.com/Lfcourses/getCourses',
-        type: 'GET',
-        success: function (data) {
-          console.log(data)
-        }
-      })
-
       var ajaxDomain = (function () {
         function createIframe(frameId, frameUrl) {
           var frame = document.createElement('iframe')
+
           frame.src = frameUrl
           frame.id = frameId
           frame.style.display = 'none'
+
           return frame
         }
+
         return function (opt) {
           document.domain = opt.basicDomain
           var frame = createIframe(opt.frameId, opt.frameUrl)
+
           frame.onload = function () {
             var xhr2 = document.getElementById(opt.frameId).contentWindow.xhr
             xhr2.ajax({
@@ -38,6 +34,7 @@
               error: opt.error
             })
           }
+
           document.body.appendChild(frame)
         }
       })()
