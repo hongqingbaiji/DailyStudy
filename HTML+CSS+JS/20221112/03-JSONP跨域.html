@@ -1,18 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-</head>
+  <body>
+    <input type="text" class="search_input" />
+    <script src="./js/utils.js"></script>
+    <script>
+      var searchInput = document.getElementsByClassName('search_input')[0]
 
-<body>
-  <script src="./js/03.txt"></script>
-  <script>
-    console.log(add(1, 2))
-  </script>
-</body>
+      searchInput.addEventListener('input', typeInput, false)
 
+      function typeInput() {
+        var val = this.value
+        getDatas(val, 'setDatas')
+      }
+
+      function getDatas(value, callbackName) {
+        var oScript = document.createElement('script')
+        oScript.src =
+          'https://fanyi.youdao.com/openapi.do?keyfrom=Skykai521&key=977124034&type=data&doctype=jsonp&version=1.1&q=' +
+          value +
+          '&callback=' +
+          callbackName
+        document.body.appendChild(oScript)
+        document.body.removeChild(oScript)
+
+        // tools.xhr.ajax({
+        //   url: 'https://suggest.taobao.com/sug?q=' + value,
+        //   type: 'GET',
+        //   dataType: 'jsonp',
+        //   jsonp: 'callback',
+        //   jsonpCallback: '_jp1',
+        //   success: function (data) {
+        //     console.log(data)
+        //   }
+        // })
+      }
+
+      window.setDatas = function (data) {
+        console.log(data)
+      }
+    </script>
+  </body>
 </html>
