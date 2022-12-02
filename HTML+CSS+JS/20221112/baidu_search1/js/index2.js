@@ -9,7 +9,7 @@
   }
 
   function bindEvent() {
-    searchInput.addEventListener('input', inputSearch, false)
+    searchInput.addEventListener('input', tools.debounce(inputSearch, 500, false), false)
   }
 
   function inputSearch() {

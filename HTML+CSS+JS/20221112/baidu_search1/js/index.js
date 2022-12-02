@@ -9,7 +9,7 @@
   }
 
   function bindEvent() {
-    oSearchInput.addEventListener('input', typeInput, false)
+    oSearchInput.addEventListener('input', tools.debounce(typeInput, 500, false), false)
   }
 
   function typeInput() {
