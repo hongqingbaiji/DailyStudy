@@ -615,6 +615,8 @@ var tools = {
       }
     }
   })()
+
+  // 封装
 }
 
 // 3. 在原型上封装一下星期
@@ -733,4 +735,31 @@ Array.prototype.myReduceRight = function (fn, initialValue) {
     initialValue = fn.apply(arg2, [initialValue, arr[i], i, arr])
   }
   return initialValue
+}
+
+// 封装设置cookie
+var manageCookies = {
+  set: function (key, value, expTime) {
+    document.cookie = key + '=' + value + ';max-age=' + expTime
+    return this
+  },
+  delete: function (key) {
+    return this.set(key, '', -1)
+  },
+  get: function (key, cb) {
+    var cookiesArr = document.cookie.split('; '),
+      len = cookiesArr.length,
+      cookieItem
+    for (var i = 0; i < len; i++) {
+      cookieItem = cookiesArr[i]
+      var cookieItemArr = cookieItem.split('=')
+
+      if (cookieItemArr[0] == key) {
+        cb(cookieItemArr[1])
+        return this
+      }
+    }
+    cb(undefined)
+    return this
+  }
 }

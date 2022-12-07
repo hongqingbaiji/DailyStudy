@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>验证表单</title>
+  </head>
+  <body>
+    <form action="server/04.php" method="post" id="J_Form">
+      <input type="text" id="J_Username" placeholder="用户名" /><br />
+      <input type="password" id="J_Password" placeholder="密码" /><br />
+
+      <button type="submit" class="J_SubmitBtn">提交</button>
+    </form>
+    <script src="./js/utils.js"></script>
+    <script>
+      var oUsername = document.getElementById('J_Username'),
+        oPassword = document.getElementById('J_Password'),
+        oSubmitBtn = document.getElementsByClassName('J_SubmitBtn')[0],
+        submitURL = document.getElementById('J_Form').action
+
+      oSubmitBtn.onclick = function (e) {
+        var e = e || window.event
+        e.preventDefault()
+
+        var username = oUsername.value,
+          password = oPassword.value
+
+        if (username.length < 6 || username.length > 20) {
+          alert('用户名6-20位')
+          return
+        }
+        if (password.length < 6 || password.length > 20) {
+          alert('密码6-20位')
+          return
+        }
+        alert('前端校验：输入合法，提交后端验证')
+
+        tools.xhr.ajax({
+          url: submitURL,
+          type: 'POST',
+          dataType: 'TEXT',
+          data: {
+            username: username,
+            password: password
+          },
+          success: function (data) {
+            console.log(JSON.parse(data))
+          }
+        })
+      }
+    </script>
+  </body>
+</html>
