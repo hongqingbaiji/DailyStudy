@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 数字n 代表生成括号的对数，用函数生成有效的括号组合
+
+    function demo(n) {
+      var l = '(',
+        r = ')'
+
+      if (n === 1) {
+        return [l + r]
+      }
+
+      if (n >= 2) {
+        var arr = demo(n - 1),
+          item,
+          newArr = [],
+          str1 = '',
+          str2 = '',
+          str3 = ''
+
+        for (var i = 0; i < arr.length; i++) {
+          item = arr[i]
+
+          str1 = item + l + r
+          str2 = l + item + r
+          str3 = l + r + item
+
+          if (newArr.indexOf(str1) === -1) {
+            newArr.push(str1)
+          }
+          if (newArr.indexOf(str2) === -1) {
+            newArr.push(str2)
+          }
+          if (newArr.indexOf(str3) === -1) {
+            newArr.push(str3)
+          }
+        }
+        return newArr
+      }
+
+    }
+
+    console.log(demo(3));
+  </script>
+</body>
+
+</html>
