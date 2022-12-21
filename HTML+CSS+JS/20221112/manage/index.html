@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>后台管理列表</title>
+    <link rel="stylesheet" href="css/icons.min.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <div class="list-wrap">
+      <table class="list-tb">
+        <caption class="tb-tt">
+          <h1>腾讯课堂课程管理系统</h1>
+        </caption>
+        <thead>
+          <tr>
+            <td colspan="6">
+              <ul class="nav-list J_nav clearfix">
+                <li class="nav-item active"><a href="javascript:;" class="nav-lk">列表管理</a></li>
+                <li class="nav-item"><a href="javascript:;" class="nav-lk">垃圾箱</a></li>
+                <li class="nav-item"><a href="javascript:;" class="nav-lk">课程搜索</a></li>
+              </ul>
+            </td>
+          </tr>
+          <tr class="search-row J_searchRow">
+            <td class="search-cell" colspan="6">
+              <div class="search-wrap">
+                <span class="fa fa-search"></span>
+                <input type="text" id="J_searchInput" class="search-input" placeholder="课程搜索" />
+              </div>
+            </td>
+          </tr>
+          <tr class="field-tt">
+            <th>ID</th>
+            <th>课程名称</th>
+            <th>课时数</th>
+            <th>任课老师</th>
+            <th>课程类型</th>
+            <th>课程操作</th>
+          </tr>
+          <tr class="tip-row J_tipRow">
+            <td colspan="6" class="warning-tip J_warningTip">- 暂无数据 -</td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+      </table>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
