@@ -81,3 +81,62 @@
 .list-tb .field-tt {
   background-color: #eee;
 }
+
+.list-tb .tip-row {
+  display: none;
+}
+
+.list-tb .tip-row.show {
+  display: table-row;
+}
+
+.list-tb .course-name-cell {
+  text-align: left;
+}
+
+.list-tb .list-btn {
+  height: 30px;
+  padding: 0 15px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.list-tb .list-btn.delete {
+  background-color: red;
+}
+
+.list-tb .list-btn.regain {
+  background-color: orange;
+}
+
+.list-tb .page-btn-row {
+  display: none;
+}
+
+.list-tb .page-btn-row.show {
+  display: table-row;
+}
+
+.list-tb .btn-item {
+  float: left;
+  width: 25px;
+  height: 25px;
+  margin: 0 15px;
+  text-align: center;
+  line-height: 25px;
+  background-color: #ddd;
+}
+
+.list-tb .btn-item .page-btn {
+  display: block;
+  height: 100%;
+  color: #999;
+}
+
+.list-tb .btn-item.cur {
+  background-color: #333;
+}
+
+.list-tb .btn-item.cur .page-btn {
+  color: #fff;
+}

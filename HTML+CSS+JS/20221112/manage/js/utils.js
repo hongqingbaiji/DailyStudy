@@ -148,3 +148,7 @@ function throttle(fn, delay) {
     }
   }
 }
+
+function trimSpace(str) {
+  return str.replace(/\s+/g, '')
+}

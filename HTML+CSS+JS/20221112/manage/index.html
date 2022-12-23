@@ -19,9 +19,15 @@
           <tr>
             <td colspan="6">
               <ul class="nav-list J_nav clearfix">
-                <li class="nav-item active"><a href="javascript:;" class="nav-lk">列表管理</a></li>
-                <li class="nav-item"><a href="javascript:;" class="nav-lk">垃圾箱</a></li>
-                <li class="nav-item"><a href="javascript:;" class="nav-lk">课程搜索</a></li>
+                <li class="nav-item active" data-field="manage">
+                  <a href="javascript:;" class="nav-lk">列表管理</a>
+                </li>
+                <li class="nav-item" data-field="trash">
+                  <a href="javascript:;" class="nav-lk">垃圾箱</a>
+                </li>
+                <li class="nav-item" data-field="search">
+                  <a href="javascript:;" class="nav-lk">课程搜索</a>
+                </li>
               </ul>
             </td>
           </tr>
@@ -45,11 +51,34 @@
             <td colspan="6" class="warning-tip J_warningTip">- 暂无数据 -</td>
           </tr>
         </thead>
-        <tbody></tbody>
-        <tfoot></tfoot>
+        <tbody class="J_courseList"></tbody>
+        <tfoot>
+          <tr class="page-btn-row J_pageBtnRow">
+            <td colspan="6">
+              <ul class="page-btn-list J_pageBtnList clearfix"></ul>
+            </td>
+          </tr>
+        </tfoot>
       </table>
     </div>
 
+    <script type="text/html" id="J_listItemTpl">
+      <tr>
+        <td>{{id}}</td>
+        <td class="course-name-cell">{{course}}</td>
+        <td>{{hour}}</td>
+        <td>{{teacher}}</td>
+        <td>{{field}}</td>
+        <td>
+          <button class="list-btn {{type}}">{{typeText}}</button>
+        </td>
+      </tr>
+    </script>
+    <script type="text/html" id="J_pageBtnItemTpl">
+      <li class="btn-item {{isCur}}">
+        <a href="javascript:;" class="page-btn">{{pageNum}}</a>
+      </li>
+    </script>
     <script src="js/utils.js"></script>
     <script src="js/index.js"></script>
   </body>
