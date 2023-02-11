@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始VUE</title>
+    <script src="../01VUE/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo">
+      <h1>Hello {{ message }} {{ age }}!!!</h1>
+      <p><a :href="url">百度一下 </a></p>
+      <p>单向数据绑定: <input type="text" :value="msg" /></p>
+      <p>单向数据绑定: <input type="text" v-model="msg" /></p>
+    </div>
+
+    <script>
+      Vue.config.productionTip = false
+
+      // 创建Vue实例
+      const vm = new Vue({
+        // el: '#demo',
+        data() {
+          return {
+            message: 'VUE',
+            age: 18,
+            url: 'http://www.baidu.com',
+            msg: 'wenhe'
+          }
+        }
+      })
+      vm.$mount('#demo')
+    </script>
+  </body>
+</html>
