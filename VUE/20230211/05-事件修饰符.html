@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../01VUE/vue.js"></script>
+    <style>
+      * {
+        margin-top: 20px;
+      }
+      .father {
+        height: 100px;
+        background-color: pink;
+      }
+      .son {
+        height: 30px;
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo">
+      <!-- 阻止默认事件 -->
+      <a href="http://www.baidu.com" @click.prevent="showInfo">百度一下</a>
+      <!-- 阻止事件冒泡 -->
+      <div class="father" @click="showInfo">
+        father
+        <div class="son" @click.stop="showInfo">son</div>
+      </div>
+      <!-- 事件只能触发一次 -->
+      <button @click.once="showInfo">测试once</button>
+      <!-- 使用事件的捕获模式 -->
+      <div class="father" @click.capture="showMsg(1)">
+        father
+        <div class="son" @click="showMsg(2)">son</div>
+      </div>
+      <!-- self -->
+      <div class="father" @click.self="showInfo">
+        father
+        <button @click="showInfo">测试self</button>
+      </div>
+    </div>
+    <script>
+      Vue.config.productionTip = false
+      const vm = new Vue({
+        el: '#demo',
+        data() {
+          return {}
+        },
+        methods: {
+          showInfo() {
+            alert('123')
+          },
+          showMsg(msg) {
+            console.log(msg)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

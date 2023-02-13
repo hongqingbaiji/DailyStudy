@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../01VUE/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo">
+      <input type="text" v-model="firstName" />
+      <input type="text" v-model="lastName" />
+      <p>methods方法实现：{{fullName1()}}</p>
+      <p>computed方法实现：{{fullName2}}</p>
+    </div>
+    <script>
+      Vue.config.productionTip = false
+      const vm = new Vue({
+        el: '#demo',
+        data() {
+          return {
+            firstName: '张',
+            lastName: '三'
+          }
+        },
+        methods: {
+          fullName1() {
+            return this.firstName.slice(0, 3) + '-' + this.lastName.substring(0, 3)
+          }
+        },
+        computed: {
+          fullName2: {
+            get() {
+              return this.firstName.slice(0, 3) + '-' + this.lastName.substring(0, 3)
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
