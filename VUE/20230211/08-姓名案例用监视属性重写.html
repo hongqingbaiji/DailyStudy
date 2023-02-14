@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../01VUE/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo">
+      姓: <input type="text" v-model="firstName" /> <br />
+      名: <input type="text" v-model="lastName" /> <br />
+      <p>全称: {{fullName}}</p>
+    </div>
+    <script>
+      Vue.config.productionTip = false
+      const vm = new Vue({
+        el: '#demo',
+        data() {
+          return {
+            firstName: '张',
+            lastName: '三',
+            fullName: '张-三'
+          }
+        },
+        watch: {
+          firstName(newVal) {
+            this.fullName = newVal + '-' + this.lastName
+          },
+          lastName(newVal) {
+            this.fullName = this.firstName + '-' + newVal
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
