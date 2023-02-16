@@ -24,12 +24,19 @@
             fullName: '张-三'
           }
         },
+        // computed: {
+        //   fullName() {
+        //     return this.firstName + '-' + this.lastName
+        //   }
+        // }
         watch: {
-          firstName(newVal) {
-            this.fullName = newVal + '-' + this.lastName
+          firstName(val) {
+            setTimeout(() => {
+              this.fullName = val + '-' + this.lastName
+            }, 1000)
           },
-          lastName(newVal) {
-            this.fullName = this.firstName + '-' + newVal
+          lastName(val) {
+            this.fullName = this.firstName + '-' + val
           }
         }
       })
