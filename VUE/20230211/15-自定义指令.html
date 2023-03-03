@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../01VUE/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <h2>v-big</h2>
+      <h3>当前n的值：<span v-text="n"></span></h3>
+      <h3>使用v-big后n的值：<span v-big="n"></span></h3>
+      <button @click="n++">n+1</button>
+      <hr />
+      <h2>v-fbind</h2>
+      <input type="text" v-bind:value="n" />
+      <input type="text" v-fbind:value="n" />
+    </div>
+    <script>
+      Vue.config.productionTip = false
+
+      new Vue({
+        el: '#root',
+        data() {
+          return {
+            n: 1
+          }
+        },
+        directives: {
+          // big函数何时会被调用？
+          // 1、指令与元素成功绑定时（一上来） 2、指令所在的模板被重新解析时
+          big(element, binding) {
+            element.innerText = binding.value * 10
+          },
+
+          fbind: {
+            // 指令与元素成功绑定时
+            bind(element, binding) {
+              element.value = binding.value
+            },
+            // 指令所在元素被插入页面时
+            inserted(element, binding) {
+              element.focus()
+            },
+            // 指令所在的模板被重新解析时
+            update(element, binding) {
+              element.value = binding.value
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
