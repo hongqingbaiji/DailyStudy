@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../01VUE/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h2>{{ msg }}</h2>
+    <!-- 使用组件 -->
+    <school></school>
+    <hr>
+    <student></student>
+  </div>
+
+  <script>
+    Vue.config.productionTip = false
+
+
+    // 1. 创建school组件
+    const school = Vue.extend({
+      template: `
+        <div>
+            <h3>学校名称：{{schoolName}}</h3>
+            <h3>学校地址：{{address}}</h3>  
+        </div>
+      `,
+      data() {
+        return {
+          schoolName: '江西农业大学',
+          address: '江西南昌'
+        }
+      }
+    })
+
+    // 1. 创建student组件
+    const student = Vue.extend({
+      template: `
+        <div>
+          <h3>学生名称：{{studentName}}</h3>
+          <h3>学生年龄：{{age}}</h3>
+        </div>
+      `,
+      data() {
+        return {
+          studentName: '文和',
+          age: 18
+        }
+      }
+    })
+
+    //全局注册组件
+    Vue.component('student', student)
+
+    // 创建vm
+    new Vue({
+      el: '#root',
+      data() {
+        return {
+          msg: '非单文件组件'
+        }
+      },
+      // 2. 注册组件
+      components: {
+        school
+      }
+    })
+  </script>
+</body>
+
+</html>
