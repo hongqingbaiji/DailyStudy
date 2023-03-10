@@ -47,12 +47,12 @@ export default {
       })
     },
     deleteTodo(id) {
-      if (confirm('确认删除吗?')) {
-        this.todos = this.todos.filter(todo => {
-          return todo.id !== id
-        })
-      }
+      // this.todos.forEach(todo => {
+      //   if (todo.id === id) return this.todos.splice(todo, 1)
+      // })
+      this.todos = this.todos.filter(todo => todo.id !== id)
     },
+
     checkAllTodo(done) {
       this.todos.forEach(todo => {
         todo.done = done
