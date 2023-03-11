@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sessionStorage</title>
+  </head>
+  <body>
+    <h2>sessionStorage</h2>
+    <button onclick="saveData()">点我保存一个数据</button>
+    <button onclick="readData()">点我读取一个数据</button>
+    <button onclick="deleteData()">点我删除一个数据</button>
+    <button onclick="deleteAllData()">点我删除全部数据</button>
+    <script>
+      function saveData() {
+        let p = { a: 1, b: 2 }
+        sessionStorage.setItem('name', 'wenhe')
+        sessionStorage.setItem('age', 18) // 会自动转换为字符串 '18'
+        // sessionStorage.setItem('msg', hello) // 不会保存
+        sessionStorage.setItem('hobby', p) // [object Object]
+        sessionStorage.setItem('like', [1, 2, 3]) // 1,2,3
+        sessionStorage.setItem('hobby2', JSON.stringify(p)) // {a:1,b:2}
+      }
+
+      function readData() {
+        console.log(sessionStorage.getItem('name'))
+        const a = sessionStorage.getItem('hobby2')
+        console.log(JSON.parse(a))
+        console.log(sessionStorage.getItem('password'))
+      }
+
+      function deleteData() {
+        sessionStorage.removeItem('like')
+      }
+
+      function deleteAllData() {
+        sessionStorage.clear()
+      }
+    </script>
+  </body>
+</html>

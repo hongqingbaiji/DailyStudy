@@ -14,7 +14,7 @@ import { nanoid } from 'nanoid'
 
 export default {
   name: 'MyHeader',
-  // props: ['addTodo'],
+  props: ['addTodo'],
   data() {
     return {
       title: ''
@@ -25,9 +25,7 @@ export default {
       if (!this.title.trim()) return alert('请输入内容!')
       const todoObj = { id: nanoid(), title: this.title, done: false }
       this.title = ''
-      // this.addTodo(todoObj) // 使用的是父组件先准备一个函数的方法
-      // this.$emit('addTodo2', todoObj) //使用自定义组件的方法
-      this.$emit('addTodo3', todoObj)
+      this.addTodo(todoObj)
     }
   }
 }
